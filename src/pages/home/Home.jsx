@@ -35,7 +35,7 @@ export default function Home() {
   return (
     <div className={`flex ${isRTL ? "flex-row-reverse" : ""}`} dir={isRTL ? "rtl" : "ltr"}>
       <Sidebar activePage={page} setActivePage={handlePageChange} />
-      <main className="sm:ml-64 w-full responsive-fill transition-all duration-300">
+      <main className="sm:ms-64 w-full responsive-fill transition-all duration-300">
         <Navbar UserName={profile?.name} Image={profile?.avatar} setActivePage={handlePageChange} />
         <div className="p-8 mt-14 ">
           {pageComponent}
