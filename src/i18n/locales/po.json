@@ -1,0 +1,40 @@
+{
+  "greeting": "Olá",
+  "date": "12 de Dezembro de 2024",
+  "profile": "Perfil",
+  "settings": "Configurações",
+  "logout": "Sair",
+  "menu": {
+    "dashboard": "Painel de controle",
+    "allTickets": "Todos os chamados",
+    "myTickets": "Meus chamados",
+    "manageTickets": "Gerenciar chamados",
+    "assignedTickets": "Chamados atribuídos",
+    "addManager": "Adicionar gerente",
+    "addTechnician": "Adicionar técnico",
+    "addService": "Adicionar serviço",
+    "chat": "Chat"
+  },
+  "stats": {
+    "allTickets": "Todos os chamados",
+    "openTickets": "Chamados abertos",
+    "closedTickets": "Chamados fechados",
+    "inProgressTickets": "Chamados em andamento",
+    "managersCount": "Número de gerentes",
+    "servicesCount": "Número de serviços",
+    "techniciansCount": "Número de técnicos",
+    "annualTickets": "Média anual de chamados",
+    "dailyRespond": "Resposta diária",
+    "recentTickets": "Chamados recentes"
+  },
+  "table": {
+    "id": "ID",
+    "title": "Título",
+    "service": "Serviço",
+    "manager": "Gerente",
+    "user": "Usuário",
+    "technician": "Técnico",
+    "status": "Status",
+    "date": "Data"
+  }
+}

@@ -1,0 +1,40 @@
+{
+    "greeting": "Bonjour",
+    "date": "12 Décembre 2024",
+    "profile": "Profil",
+    "settings": "Paramètres",
+    "logout": "Se déconnecter",
+    "menu": {
+        "dashboard": "Tableau de bord",
+        "allTickets": "Tous les tickets",
+        "myTickets": "Mes tickets",
+        "manageTickets": "Gérer les tickets",
+        "assignedTickets": "Tickets assignés",
+        "addManager": "Ajouter un responsable",
+        "addTechnician": "Ajouter un technicien",
+        "addService": "Ajouter un service",
+        "chat": "Discussion"
+    },
+    "stats": {
+        "allTickets": "Tous les tickets",
+        "openTickets": "Tickets ouverts",
+        "closedTickets": "Tickets fermés",
+        "inProgressTickets": "Tickets en cours",
+        "managersCount": "Nombre de responsables",
+        "servicesCount": "Nombre de services",
+        "techniciansCount": "Nombre de techniciens",
+        "annualTickets": "Moyenne annuelle des tickets",
+        "dailyRespond": "Réponse quotidienne",
+        "recentTickets": "Tickets récents"
+    },
+    "table": {
+        "id": "ID",
+        "title": "Titre",
+        "service": "Service",
+        "manager": "Responsable",
+        "user": "Utilisateur",
+        "technician": "Technicien",
+        "status": "Statut",
+        "date": "Date"
+    }
+}

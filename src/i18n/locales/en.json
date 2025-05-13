@@ -1,0 +1,40 @@
+{
+    "greeting": "Hello",
+    "date": "December 12TH 2024",
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Logout",
+    "menu": {
+        "dashboard": "Dashboard",
+        "allTickets": "All Tickets",
+        "myTickets": "My Tickets",
+        "manageTickets": "Manage Tickets",
+        "assignedTickets": "Assigned Tickets",
+        "addManager": "Add Manager",
+        "addTechnician": "Add Technician",
+        "addService": "Add Service",
+        "chat": "Chat"
+    },
+    "stats": {
+        "allTickets": "All Tickets",
+        "openTickets": "Open Tickets",
+        "closedTickets": "Closed Tickets",
+        "inProgressTickets": "In Progress Tickets",
+        "managersCount": "Managers Count",
+        "servicesCount": "Services Count",
+        "techniciansCount": "Technicians Count",
+        "annualTickets": "Annual Tickets Average",
+        "dailyRespond": "Daily Respond",
+        "recentTickets": "Recent Tickets"
+    },
+    "table": {
+        "id": "ID",
+        "title": "Title",
+        "service": "Service",
+        "manager": "Manager",
+        "user": "User",
+        "technician": "Technician",
+        "status": "Status",
+        "date": "Date"
+    }
+}

@@ -1,0 +1,40 @@
+{
+    "greeting": "مرحبا",
+    "date": "١٢ ديسمبر ٢٠٢٤",
+    "profile": "الملف الشخصي",
+    "settings": "الإعدادات",
+    "logout": "تسجيل الخروج",
+    "menu": {
+        "dashboard": "لوحة التحكم",
+        "allTickets": "كل التذاكر",
+        "myTickets": "تذاكري",
+        "manageTickets": "إدارة التذاكر",
+        "assignedTickets": "التذاكر المسندة",
+        "addManager": "إضافة مدير",
+        "addTechnician": "إضافة فني",
+        "addService": "إضافة خدمة",
+        "chat": "المحادثة"
+    },
+    "stats": {
+        "allTickets": "كل التذاكر",
+        "openTickets": "التذاكر المفتوحة",
+        "closedTickets": "التذاكر المغلقة",
+        "inProgressTickets": "التذاكر قيد المعالجة",
+        "managersCount": "عدد المديرين",
+        "servicesCount": "عدد الخدمات",
+        "techniciansCount": "عدد الفنيين",
+        "annualTickets": "متوسط التذاكر السنوية",
+        "dailyRespond": "الرد اليومي",
+        "recentTickets": "التذاكر الحديثة"
+    },
+    "table": {
+        "id": "المعرف",
+        "title": "العنوان",
+        "service": "الخدمة",
+        "manager": "المدير",
+        "user": "المستخدم",
+        "technician": "الفني",
+        "status": "الحالة",
+        "date": "التاريخ"
+    }
+}
