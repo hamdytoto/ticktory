@@ -13,6 +13,7 @@ import AboutPage from './pages/about/About';
 import { UserProvider } from './context/userContext';
 import TicketDetails from './Components/TicketDetails.jsx';
 import useDirection from './hooks/useDirection.js';
+import ChatUI from './modules/Chat/ChatUi.jsx';
 // import AdminTickets from './modules/Admin/ticket/AdminTickets.jsx';
 
 
@@ -32,10 +33,10 @@ function App() {
       </Route>
       <Route path="dashboard">
         <Route path=":page?" element={<Home />} >
-          <Route path="view/:ticketId" element={<TicketDetails/>} />
+          <Route path="view/:ticketId" element={<TicketDetails />} />
+          <Route path=":conversationId" element={<ChatUI />} />
         </Route>
       </Route>
-
       <Route path="about" element={<AboutPage />} />
       <Route path="*" element={<NotFoundPage />} />
 

@@ -13,19 +13,22 @@ const ChatInput = ({ onSendMessage }) => {
     };
 
     return (
-        <div className="flex items-center p-2 border rounded-full bg-white shadow-sm w-[90%] absolute bottom-25 left-15">
-            <input
-                type="text"
-                className="flex-grow px-4 py-2 text-gray-700 rounded-full focus:outline-none"
-                placeholder="Type your message here..."
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-            />
-            <button className="text-gray-400 hover:text-gray-600 p-2">
+        <div className="flex items-center gap-2 p-3 bg-white border border-gray-200 rounded-full shadow-sm w-full">
+            <button className="text-gray-500 hover:text-gray-700">
                 <AiOutlinePaperClip size={20} />
             </button>
+            <input
+                type="text"
+                className="flex-grow px-4 py-2 text-sm text-gray-800 rounded-full focus:outline-none"
+                placeholder="Type your message..."
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                onKeyDown={(e) => {
+                    if (e.key === "Enter") handleSend();
+                }}
+            />
             <button
-                className="bg-black text-white px-4 py-2 rounded-full flex items-center gap-1 hover:bg-gray-800"
+                className="flex items-center gap-1 px-4 py-2 text-white bg-black rounded-full hover:bg-gray-800 transition"
                 onClick={handleSend}
             >
                 Send <AiOutlineSend size={16} />

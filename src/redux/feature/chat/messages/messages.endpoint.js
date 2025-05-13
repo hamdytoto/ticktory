@@ -2,7 +2,7 @@
 export const getPinnedMessages = (builder) =>
 	builder.query({
 		query: (params) => ({
-			url: "conversation/pinned",
+			url: "api/conversations/pinned",
 			method: "GET",
 			params,
 		}),
@@ -11,7 +11,7 @@ export const getPinnedMessages = (builder) =>
 export const pinMessage = (builder) =>
 	builder.mutation({
 		query: (body) => ({
-			url: "conversation/pin",
+			url: "api/conversations/pin",
 			method: "POST",
 			body,
 		}),
@@ -21,7 +21,7 @@ export const pinMessage = (builder) =>
 export const changeReaction = (builder) =>
 	builder.mutation({
 		query: (body) => ({
-			url: "conversation/reactions",
+			url: "api/conversations/reactions",
 			method: "PATCH",
 			body,
 		}),
@@ -30,8 +30,8 @@ export const changeReaction = (builder) =>
 // Main Messages
 export const getAllMessages = (builder) =>
 	builder.query({
-		query: (params) => ({
-			url: "conversation",
+		query: ({ id, ...params }) => ({
+			url: `api/conversations/${id}/messages`,
 			method: "GET",
 			params,
 		}),
@@ -39,8 +39,8 @@ export const getAllMessages = (builder) =>
 
 export const storeMessage = (builder) =>
 	builder.mutation({
-		query: (body) => ({
-			url: "conversation",
+		query: ({ id, ...body }) => ({
+			url: `api/conversations/${id}/messages`,
 			method: "POST",
 			body,
 		}),
@@ -49,7 +49,7 @@ export const storeMessage = (builder) =>
 export const deleteMessage = (builder) =>
 	builder.mutation({
 		query: ({ id, ...params }) => ({
-			url: `conversation/${id}`,
+			url: `api/conversation/${id}`,
 			method: "DELETE",
 			params,
 		}),
@@ -58,7 +58,7 @@ export const deleteMessage = (builder) =>
 export const forwardMessage = (builder) =>
 	builder.mutation({
 		query: (body) => ({
-			url: "conversation/forward",
+			url: "api/conversation/forward",
 			method: "POST",
 			body,
 		}),

@@ -6,7 +6,7 @@ import { dashboardContent } from "./DashContent";
 import getUserRole from "../../context/userType";
 import { useGetProfileQuery } from "../../redux/feature/auth/authApiSlice";
 import LoadingSpinner from "../../common/Loadingspinner";
-import { useNavigate, useParams } from "react-router-dom";
+import {  useNavigate, useParams } from "react-router-dom";
 
 export default function Home() {
   const { user } = useUser();

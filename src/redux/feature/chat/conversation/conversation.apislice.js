@@ -1,71 +1,26 @@
-export const getAllConversations = (builder) =>
-	builder.query({
-		query: (params) => ({
-			url: "conversation",
-			method: "GET",
-			params,
-		}),
-	});
+import { apiSlice } from "../../../app/api/apiSlice";
+import * as conversationApi from "./conversation.endpoint";
 
-export const storeConversation = (builder) =>
-	builder.mutation({
-		query: (body) => ({
-			url: "conversation",
-			method: "POST",
-			body,
-		}),
-	});
+export const conversationSlice = apiSlice.injectEndpoints({
+	endpoints: (builder) => ({
+		getAllConversations: conversationApi.getAllConversations(builder),
+		storeConversation: conversationApi.storeConversation(builder),
+		pinChat: conversationApi.pinChat(builder),
+		getUserConversation: conversationApi.getUserConversation(builder),
+		deleteConversation: conversationApi.deleteConversation(builder),
+		getOtherUser: conversationApi.getOtherUser(builder),
+		markAsSeen: conversationApi.markAsSeen(builder),
+		getUnseenCount: conversationApi.getUnseenCount(builder),
+	}),
+});
 
-export const pinChat = (builder) =>
-	builder.mutation({
-		query: (body) => ({
-			url: "conversation/pin",
-			method: "POST",
-			body,
-		}),
-	});
-
-export const getUserConversation = (builder) =>
-	builder.query({
-		query: (params) => ({
-			url: "conversation/user",
-			method: "GET",
-			params,
-		}),
-	});
-
-export const deleteConversation = (builder) =>
-	builder.mutation({
-		query: ({ id, ...params }) => ({
-			url: `conversation/${id}`,
-			method: "DELETE",
-			params,
-		}),
-	});
-
-export const getOtherUser = (builder) =>
-	builder.query({
-		query: (params) => ({
-			url: "conversation/other-user",
-			method: "GET",
-			params,
-		}),
-	});
-
-export const markAsSeen = (builder) =>
-	builder.mutation({
-		query: (params) => ({
-			url: "conversation/mark-as-seen",
-			method: "PATCH",
-			params,
-		}),
-	});
-
-export const getUnseenCount = (builder) =>
-	builder.query({
-		query: (params) => ({
-			url: "conversation/unseen-count",
-			method: "GET",
-			params,
-		}),
-	});
+export const {
+	useGetAllConversationsQuery,
+	useStoreConversationMutation,
+	usePinChatMutation,
+	useGetUserConversationQuery,
+	useDeleteConversationMutation,
+	useGetOtherUserQuery,
+	useMarkAsSeenMutation,
+	useGetUnseenCountQuery,
+} = conversationSlice;

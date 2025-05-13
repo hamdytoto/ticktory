@@ -1,26 +1,71 @@
-import { apiSlice } from "../../../app/api/apiSlice";
-import * as conversationApi from "./conversation.endpoint";
+export const getAllConversations = (builder) =>
+	builder.query({
+		query: (params) => ({
+			url: "api/conversations",
+			method: "GET",
+			params,
+		}),
+	});
 
-export const conversationSlice = apiSlice.injectEndpoints({
-	endpoints: (builder) => ({
-		getAllConversations: conversationApi.getAllConversations(builder),
-		storeConversation: conversationApi.storeConversation(builder),
-		pinChat: conversationApi.pinChat(builder),
-		getUserConversation: conversationApi.getUserConversation(builder),
-		deleteConversation: conversationApi.deleteConversation(builder),
-		getOtherUser: conversationApi.getOtherUser(builder),
-		markAsSeen: conversationApi.markAsSeen(builder),
-		getUnseenCount: conversationApi.getUnseenCount(builder),
-	}),
-});
+export const storeConversation = (builder) =>
+	builder.mutation({	
+		query: (body) => ({
+			url: "api/conversations",
+			method: "POST",
+			body,
+		}),
+	});
 
-export const {
-	useGetAllConversationsQuery,
-	useStoreConversationMutation,
-	usePinChatMutation,
-	useGetUserConversationQuery,
-	useDeleteConversationMutation,
-	useGetOtherUserQuery,
-	useMarkAsSeenMutation,
-	useGetUnseenCountQuery,
-} = conversationSlice;
+export const pinChat = (builder) =>
+	builder.mutation({
+		query: (body) => ({
+			url: "api/conversations/pin",
+			method: "POST",
+			body,
+		}),
+	});
+
+export const getUserConversation = (builder) =>
+	builder.query({
+		query: (params) => ({
+			url: "api/conversations/for",
+			method: "GET",
+			params,
+		}),
+	});
+
+export const deleteConversation = (builder) =>
+	builder.mutation({
+		query: ({ id, ...params }) => ({
+			url: `api/conversations/${id}`,
+			method: "DELETE",
+			params,
+		}),
+	});
+
+export const getOtherUser = (builder) =>
+	builder.query({
+		query: (params) => ({
+			url: "api/conversations/other-user",
+			method: "GET",
+			params,
+		}),
+	});
+
+export const markAsSeen = (builder) =>
+	builder.mutation({
+		query: (params) => ({
+			url: "api/conversations/mark-as-seen",
+			method: "PATCH",
+			params,
+		}),
+	});
+
+export const getUnseenCount = (builder) =>
+	builder.query({
+		query: (params) => ({
+			url: "api/conversations/unseen-count",
+			method: "GET",
+			params,
+		}),
+	});

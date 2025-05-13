@@ -6,6 +6,7 @@ import { getTicketQueryHookByRole } from "./utils/ticketQuires";
 import { getTicketStatusInfo } from "./utils/ticketSatus";
 import LoadingSpinner from "../common/Loadingspinner";
 import moment from "moment";
+import ChatActions from "../modules/Chat/chatActions";
 
 export default function TicketDetails({ ticketId: propTicketId }) {
     const { ticketId: routeTicketId } = useParams();
@@ -75,6 +76,7 @@ export default function TicketDetails({ ticketId: propTicketId }) {
                     {ticket.description || "No description provided."}
                 </div>
             </div>
+            <ChatActions currentUser={user} ticket={ticket} />
         </div>
     );
 }
