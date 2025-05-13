@@ -18,8 +18,8 @@ export default function Navbar({ UserName, Image, setActivePage }) {
   const unreadCount = data?.data?.unreadNotificationsCount;
 
   return (
-<nav className={`fixed top-0 ${isRTL ? "right-0 md:right-64" : "left-0 md:left-64"} h-20 z-50 w-full md:w-[calc(100%-16rem)] bg-white border-b border-gray-200 px-4 md:px-6 py-3 shadow-md flex items-center justify-between`}>
-        {/* Left Section: Greeting & Date */}
+    <nav className={`fixed top-0 ${isRTL ? "right-0 md:right-64" : "left-0 md:left-64"} h-20 z-50 w-full md:w-[calc(100%-16rem)] bg-white border-b border-gray-200 px-4 md:px-6 py-3 shadow-md flex items-center justify-between`}>
+      {/* Left Section: Greeting & Date */}
       <div>
         <p className="text-lg font-semibold text-gray-700">{t("greeting")} {UserName}</p>
         <p className="text-xs text-gray-500">{t("date")}</p>
@@ -30,22 +30,25 @@ export default function Navbar({ UserName, Image, setActivePage }) {
         {/* Language Switcher */}
         <LanguageSelector />
         {/* Notification Icon */}
-        <button onClick={() => {
-          setIsNotificationOpen((prev) => !prev)
-          refetch(); // Refetch notifications when the button is clicked
-        }} className="relative text-gray-500 hover:text-gray-700">
-          <Badge
-            badgeContent={unreadCount}
-            color="error"
-            overlap="circular"
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-          >
-            <NotificationsIcon />
-          </Badge>
-        </button>
+        <div className="relative">
+          <button onClick={() => {
+            setIsNotificationOpen((prev) => !prev)
+            refetch(); // Refetch notifications when the button is clicked
+          }} className="relative text-gray-500 hover:text-gray-700">
+            <Badge
+              badgeContent={unreadCount}
+              color="error"
+              overlap="circular"
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+            >
+              <NotificationsIcon />
+            </Badge>
+          </button>
+        </div>
+
         {/* Profile Dropdown */}
         <div className="relative">
           <button
@@ -87,7 +90,12 @@ export default function Navbar({ UserName, Image, setActivePage }) {
         </div>
       </div>
       {isNotificationOpen && (
-        <NotificationModal />
+        <div
+          className={`absolute top-full mt-2 ${isRTL ? 'left-0' : 'right-0'
+            } z-50`}
+        >
+          <NotificationModal />
+        </div>
       )}
     </nav>
   );

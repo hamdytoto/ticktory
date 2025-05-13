@@ -68,7 +68,7 @@ export default function Notifications() {
     };
 
     return (
-        <div className="fixed top-20 right-40 z-50 w-96 max-h-[80vh] overflow-y-auto bg-white shadow-2xl rounded-lg border border-gray-200 p-4">
+        <div className=" z-50 w-96 max-h-[80vh] overflow-y-auto bg-white shadow-2xl rounded-lg border border-gray-200 p-4">
             {/* Header */}
             <div className="flex justify-between items-center mb-4">
                 <h2 className="text-xl font-bold text-gray-800">Notifications</h2>
