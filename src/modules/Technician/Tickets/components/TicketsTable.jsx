@@ -88,7 +88,7 @@ const TicketsTable = ({ ticketsData, search, searchColumn, onTicketClick }) => {
                                     key={ticket.id}
                                     className="border-b border-gray-200 hover:bg-gray-100 transition"
                                 >
-                                    <td className="py-3 px-4"
+                                    <td className="py-3 px-4 cursor-pointer"
                                         onClick={() => onTicketClick(ticket.id)}
                                     >
                                         <p className="text-gray-800 text-md font-medium">
