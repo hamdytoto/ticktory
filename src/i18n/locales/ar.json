@@ -13,7 +13,8 @@
         "addManager": "إضافة مدير",
         "addTechnician": "إضافة فني",
         "addService": "إضافة خدمة",
-        "chat": "المحادثة"
+        "chat": "المحادثة",
+        "collapse": "طي"
     },
     "stats": {
         "allTickets": "كل التذاكر",

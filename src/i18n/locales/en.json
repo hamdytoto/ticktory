@@ -13,7 +13,8 @@
         "addManager": "Add Manager",
         "addTechnician": "Add Technician",
         "addService": "Add Service",
-        "chat": "Chat"
+        "chat": "Chat",
+        "collapse": "Collapse"
     },
     "stats": {
         "allTickets": "All Tickets",
