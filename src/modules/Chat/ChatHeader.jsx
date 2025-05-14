@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 // import LoadingSpinner from "../../common/Loadingspinner";`
-import { useGetUserConversationQuery } from "../../redux/feature/chat/conversation/conversation.apiSlice";
+import { useGetUserConversationQuery } from "../../redux/feature/chat/conversation/conversation.apislice";
 const ChatHeader = ({ selectedUser }) => {
   const { data: conversationData, isLoading } = useGetUserConversationQuery({
     user_id: selectedUser,

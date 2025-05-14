@@ -19,9 +19,6 @@ const ChatInput = ({ onSendMessage, conversationId, ticketId, message, setMessag
         if (file) formData.append("media", file);
         formData.append("ticket_id", ticketId.toString());
         formData.append("record_duration", "0");
-        formData.append("location[latitude]", "30.1");
-        formData.append("location[longitude]", "29.1");
-
         try {
             await storeMessage({ id: conversationId, body: formData, headers: { "X-Socket-Id": pusher?.connection.socket_id } }).unwrap();
             onSendMessage(message);

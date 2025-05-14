@@ -3,7 +3,7 @@
 import { useNavigate } from "react-router-dom";
 import { FaCommentDots } from "react-icons/fa";
 import getUserRole from "../../context/userType";
-import { useStoreConversationMutation } from "../../redux/feature/chat/conversation/conversation.apiSlice";
+import { useStoreConversationMutation } from "../../redux/feature/chat/conversation/conversation.apislice";
 
 export default function ChatActions({ currentUser, ticket }) {
     const navigate = useNavigate();
