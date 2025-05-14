@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+// import LoadingSpinner from "../../common/Loadingspinner";`
 import { useGetUserConversationQuery } from "../../redux/feature/chat/conversation/conversation.apiSlice";
 const ChatHeader = ({ selectedUser }) => {
   const { data: conversationData, isLoading } = useGetUserConversationQuery({
@@ -10,7 +11,7 @@ const ChatHeader = ({ selectedUser }) => {
   if (isLoading || !otherUser) {
     return (
       <div className="flex items-center gap-3 p-4 border-b border-gray-200">
-        <p className="text-sm text-gray-500">Loading chat...</p>
+        {/* <p className="text-sm text-gray-500"><LoadingSpinner /></p> */}
       </div>
     );
   }
@@ -26,16 +27,16 @@ const ChatHeader = ({ selectedUser }) => {
         />
         {/* Online Status */}
         <span
-          className={`absolute bottom-0 right-0 w-3 h-3 border-2 border-white rounded-full ${otherUser.online ? "bg-green-500" : "bg-gray-400"
+          className={`absolute bottom-0 right-0 w-3 h-3 border-2 border-white rounded-full ${otherUser.online ? "bg-green-500" : "bg-green-500"
             }`}
         ></span>
       </div>
 
       {/* User Info */}
       <div>
-        <p className="text-lg font-semibold">{otherUser.name}</p>
+        <p className="text-lg font-semibold">{otherUser.name }</p>
         <p className="text-xs text-gray-500">
-          {otherUser.online ? "Online" : "Offline"}
+          {otherUser.online ? "Online" : "Online"}
         </p>
       </div>
     </div>

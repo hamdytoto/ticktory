@@ -1,19 +1,14 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { AiOutlinePaperClip, AiOutlineSend, AiOutlineClose } from "react-icons/ai";
-import { useStoreMessageMutation, useGetAllMessagesQuery } from "../../redux/feature/chat/messages/messages.apislice";
+import { useStoreMessageMutation } from "../../redux/feature/chat/messages/messages.apislice";
+import pusher from "./pusherClient";
 
-const ChatInput = ({ onSendMessage, conversationId, ticketId }) => {
-    const [message, setMessage] = useState("");
+const ChatInput = ({ onSendMessage, conversationId, ticketId, message, setMessage }) => {
     const [file, setFile] = useState(null);
     const [previewUrl, setPreviewUrl] = useState(null);
 
     const [storeMessage, { isLoading }] = useStoreMessageMutation();
-    const { refetch } = useGetAllMessagesQuery({
-        id: conversationId,
-        ticket_id: ticketId,
-        per_page: 100,
-    });
 
     const handleSend = async () => {
         if (!message.trim() && !file) return;
@@ -28,12 +23,12 @@ const ChatInput = ({ onSendMessage, conversationId, ticketId }) => {
         formData.append("location[longitude]", "29.1");
 
         try {
-            await storeMessage({ id: conversationId, body: formData }).unwrap();
+            await storeMessage({ id: conversationId, body: formData, headers: { "X-Socket-Id": pusher?.connection.socket_id } }).unwrap();
             onSendMessage(message);
             setMessage("");
             setFile(null);
             setPreviewUrl(null);
-            refetch();
+            // refetch();
         } catch (err) {
             console.error("Failed to send message:", err);
         }

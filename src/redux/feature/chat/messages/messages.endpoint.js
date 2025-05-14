@@ -44,6 +44,7 @@ export const storeMessage = (builder) =>
 			method: "POST",
 			body,
 		}),
+		Headers: (headers) => headers,
 	});
 
 export const deleteMessage = (builder) =>
