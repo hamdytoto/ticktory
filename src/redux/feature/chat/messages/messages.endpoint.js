@@ -39,7 +39,7 @@ export const getAllMessages = (builder) =>
 
 export const storeMessage = (builder) =>
 	builder.mutation({
-		query: ({ id, ...body }) => ({
+		query: ({ id, body }) => ({
 			url: `api/conversations/${id}/messages`,
 			method: "POST",
 			body,

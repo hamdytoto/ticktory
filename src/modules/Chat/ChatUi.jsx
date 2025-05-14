@@ -84,6 +84,8 @@ const ChatUI = () => {
                         onSendMessage={sendMessage}
                         newMessage={newMessage}
                         setNewMessage={setNewMessage}
+                        conversationId={conversationId}
+                        ticketId={ticketId}
                     />
                 </div>
             </div>

@@ -18,6 +18,7 @@ export const {
 	usePinMessageMutation,
 	useChangeReactionMutation,
 	useGetAllMessagesQuery,
+	useLazyGetAllMessagesQuery,	
 	useStoreMessageMutation,
 	useDeleteMessageMutation,
 	useForwardMessageMutation,
