@@ -73,7 +73,6 @@ const ChatUI = () => {
             pusher.unsubscribe(`chat.${user.id}`);
             pusher.unsubscribe(`conversations.${conversationId}`);
         };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user?.id, conversationId, messagesMp]);
 
     // Log or handle real-time update to conversation
