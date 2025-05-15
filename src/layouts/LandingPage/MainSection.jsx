@@ -5,54 +5,53 @@ import AnimatedText from './AnimatedText.jsx';
 
 const MainSection = () => {
   return (
-    <>
-      {/*  Main section  */}
-      <div
-        className="relative text-white py-0 pb-100 min-h-screen flex flex-col justify-center items-center text-center px-4 overflow"
-        style={{ background: 'linear-gradient(to bottom,#00001c, #000046)' }}
-        id='home' // Moves the whole section up
-      >
-        {/* Hexagonal background effect */}
-        <div>
-          <img src={hexagonBg} className="absolute inset-0 w-[50%] h-[50%] object-cover opacity-50" alt="Hexagonal Background" />
-          <img src={hexagonBg} className="absolute inset-y-0 w-[50%] h-[50%] object-cover opacity-50" alt="Hexagonal Background" />
-        </div>
+    <section
+      id="home"
+      className="relative text-white min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8"
+      style={{ background: 'linear-gradient(to bottom,#00001c, #000046)' }}
+    >
+      <img
+        src={hexagonBg}
+        className="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none"
+        alt="Hexagonal Background"
+      />
 
-        <h1 className="text-4xl md:text-5xl font-extrabold mt-0 md:mt-16 leading-tight relative z-10">
-          Turn Queries into <br className="hidden md:block" />
-          Resolutions
-          <AnimatedText/>
-        </h1>
-        <p className="text-lg md:text-xl mt-4 max-w-2xl text-gray-300 relative z-10">
-          Effortlessly manage customer queries and deliver quick solutions <br className="hidden md:block" />
-          with our intuitive support ticketing system.
-        </p>
+      <h1 className="text-[clamp(1.8rem,6vw,3.5rem)] font-extrabold leading-tight z-10 mt-20 sm:mt-32">
+        Turn Queries into <br className="hidden sm:block" />
+        Resolutions <span className="text-cyan-400">efficiently</span>
+        <AnimatedText />
+      </h1>
 
-        {/* Navigation buttons */}
-        <div className="mt-8 flex flex-col md:flex-row items-center gap-4 relative z-10">
-          <Link
-            className="px-8 py-3 rounded-[16px] text-white text-lg font-semibold shadow-lg transition duration-300 bg-gradient-to-r from-blue-500 to-cyan-400"
-            to="/auth/login"
-          >
-            Sign in
-          </Link>
-          <Link
-            className="px-8 py-3 rounded-[16px] text-lg font-semibold text-cyan-400 border-2 border-cyan-400 transition duration-300 hover:bg-cyan-400 hover:text-white"
-            to="/auth/register"
-          >
-            Submit Ticket
-          </Link>
-        </div>
+      <p className="text-[clamp(1rem,2.5vw,1.25rem)] mt-4 max-w-2xl text-gray-300 z-10">
+        Effortlessly manage customer queries and deliver quick solutions <br className="hidden sm:block" />
+        with our intuitive support ticketing system.
+      </p>
 
-
-        {/* Dashboard Image */}
-        <div className="hidden md:block absolute bottom-[0%] left-1/2 transform -translate-x-1/2 w-11/12 sm:w-3/4 md:w-3/5 lg:w-1/2" style={{ bottom: '-30%' }}>
-          <img src={dash} className="mx-auto shadow-2xl rounded-lg" alt="Dashboard Preview" />
-        </div>
+      <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center gap-4 z-10">
+        <Link
+          className="px-6 py-2 sm:px-8 sm:py-3 rounded-xl text-white font-semibold shadow-lg bg-gradient-to-r from-blue-500 to-cyan-400"
+          to="/auth/login"
+        >
+          Sign in
+        </Link>
+        <Link
+          className="px-6 py-2 sm:px-8 sm:py-3 rounded-xl text-cyan-400 border-2 border-cyan-400 font-semibold hover:bg-cyan-400 hover:text-white"
+          to="/auth/register"
+        >
+          Submit Ticket
+        </Link>
       </div>
 
-    </>
-  )
-}
+      <div className="relative w-full flex justify-center mt-12 sm:mt-20 z-10 px-4">
+        <img
+          src={dash}
+          className="w-full sm:w-4/5 md:w-3/5 max-w-[700px] shadow-2xl rounded-lg"
+          alt="Dashboard Preview"
+        />
+      </div>
+    </section>
 
-export default MainSection
+  );
+};
+
+export default MainSection;
