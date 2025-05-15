@@ -37,5 +37,77 @@
         "technician": "Technician",
         "status": "Status",
         "date": "Date"
+    },
+    "landing": {
+        "home": "Home",
+        "about": "About",
+        "services": "Services",
+        "signin": "Sign In",
+        "animatedText1": "with ease",
+        "animatedText2": "efficiently"
+    },
+    "main": {
+        "headline1": "Turn Queries into",
+        "headline2": "Resolutions",
+        "description": "Effortlessly manage customer queries and deliver quick solutions with our intuitive support ticketing system.",
+        "signin": "Sign in",
+        "submitTicket": "Submit Ticket",
+        "bgAlt": "Hexagonal Background",
+        "dashboardAlt": "Dashboard Preview"
+    },
+    "services": {
+        "titlePart1": "Looking For",
+        "titlePart2": "Help?",
+        "subtitle": "Here’s an example of our services.",
+        "cards": [
+            {
+                "title": "Submit A Ticket",
+                "description": "You can submit a ticket from this home page or dashboard after login. If you don’t have an account, you can create one from this link."
+            },
+            {
+                "title": "Instant Talk with Agent",
+                "description": "You can discuss with an agent directly if your ticket is delayed in getting a response."
+            },
+            {
+                "title": "Get Notified Instantly",
+                "description": "You will be notified when the ticket status changes, or you can comment and discuss with the agent for a particular ticket."
+            },
+            {
+                "title": "Close Resolved Tickets",
+                "description": "After resolving a ticket, the agent will close it. You may receive a notification upon closure."
+            }
+        ]
+    },
+    "createTicket": {
+        "title": "Create a Ticket",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Email",
+        "department": "Department",
+        "selectDepartment": "Select Department",
+        "support": "Support",
+        "technical": "Technical",
+        "billing": "Billing",
+        "details": "Ticket Details",
+        "placeholder": "Enter your text",
+        "submit": "Submit"
+    },
+    "footer": {
+        "logoHighlight": "Ticketing",
+        "logoText": "System",
+        "description": "Platform for Technical Support and providing solutions for our customer queries.",
+        "navigationTitle": "Navigation",
+        "nav": {
+            "home": "Home",
+            "services": "Services",
+            "about": "About Us"
+        },
+        "accountTitle": "Account",
+        "account": {
+            "login": "Login",
+            "register": "Register"
+        },
+        "followUs": "Follow Us",
+        "rights": "All rights reserved."
     }
 }

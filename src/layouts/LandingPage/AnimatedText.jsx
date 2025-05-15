@@ -1,8 +1,10 @@
 import { motion, AnimatePresence } from 'framer-motion'
+import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 const AnimatedText = () => {
+    const { t } = useTranslation();
     const [textIndex, setTextIndex] = useState(0);
-    const words = ["with ease", "efficiently"];
+    const words = [t("landing.animatedText1"), t("landing.animatedText2")];
 
     useEffect(() => {
         const interval = setInterval(() => {
