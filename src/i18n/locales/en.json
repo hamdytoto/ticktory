@@ -132,5 +132,26 @@
         "fail": "Registration failed",
         "helloFriend": "Hello Friend !",
         "toKeepConnected": " To keep connected with us, please sign in with your personal info."
+    },
+    "login": {
+        "logoAlt": "Ticketing System Logo",
+        "noAccount": "Don't have an account?",
+        "applyNow": "Apply Now",
+        "invalidEmail": "Invalid email format",
+        "passwordMin": "Password must be at least 4 characters",
+        "success": "Login successful",
+        "failed": "Login failed",
+        "welcome": "Welcome Back!",
+        "keepConnected": "To keep connected with us, please login with your personal info.",
+        "signIn": "Sign In",
+        "signingIn": "Signing In...",
+        "description": "With Ticketing System dashboard, you can track analytics for how your business is performing.",
+        "email": "Email",
+        "emailPlaceholder": "Enter your email",
+        "password": "Password",
+        "passwordPlaceholder": "Enter your password",
+        "remember": "Remember me",
+        "forgot": "Forgot Password?",
+        "apply": "Apply Now"
     }
 }

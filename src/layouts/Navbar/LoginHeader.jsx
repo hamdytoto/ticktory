@@ -1,22 +1,32 @@
 import { Link } from "react-router-dom";
-import logo from "../../images/logo bg-black.png";
+import { useTranslation } from "react-i18next";
+import logo from "../../images/logo-bg-white.png";
+import LanguageSelector from "../../i18n/languageSelector";
 
 const LoginHeader = () => {
-  return (
-    <div className="w-full absolute top-0 left-0 py-4 bg-transparent shadow-md  ">
-      <div className="container mx-auto flex justify-between items-center px-8">
-        <div>
-          <Link to="/"><img src={logo} alt="Ticketing System Logo" className="h-10" /></Link>
-        </div>
+  const { t } = useTranslation();
 
-        <Link
-          to="/auth/register"
-          className="bg-[#0A0F1A] text-white px-6 py-2 rounded-full text-sm hover:bg-gray-800 transition border border-gray-700"
-        >
-          Don&apos;t have an account? <span className="text-blue-400">Apply Now</span>
+  return (
+    <header className="w-full py-4 bg-transparent shadow-sm z-50 border-b border-gray-200">
+      <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center px-4 md:px-8 space-y-3 sm:space-y-0">
+        {/* Logo */}
+        <Link to="/" className="flex items-center space-x-2">
+          <img src={logo} alt={t("login.logoAlt")} className="h-10" />
         </Link>
+
+        {/* Register Button + Language Selector */}
+        <div className="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-4">
+          <Link
+            to="/auth/register"
+            className="bg-[#0A0F1A] text-white px-6 py-2 rounded-full text-sm hover:bg-gray-800 transition border border-gray-700 text-center"
+          >
+            {t("login.noAccount")}{" "}
+            <span className="text-blue-400">{t("login.applyNow")}</span>
+          </Link>
+          <LanguageSelector />
+        </div>
       </div>
-    </div>
+    </header>
   );
 };
 

@@ -7,18 +7,20 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
+import { useTranslation } from "react-i18next";
 import "react-toastify/dist/ReactToastify.css";
 
-const schema = z.object({
-  email: z.string().email("Invalid email format"),
-  pass: z.string().min(4, "Password must be at least 4 characters"),
-});
-
-export default function Login() {
-  const { setUser} = useUser();
+const Login = () => {
+  const { t } = useTranslation();
+  const { setUser } = useUser();
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const [login, { isLoading }] = useLoginMutation();
+
+  const schema = z.object({
+    email: z.string().email(t("login.invalidEmail")),
+    pass: z.string().min(4, t("login.passwordMin")),
+  });
 
   const {
     register,
@@ -39,72 +41,76 @@ export default function Login() {
         password: data.pass,
       }).unwrap();
 
-      toast.success("Login successful");
+      toast.success(t("login.success"));
 
-      // Save token to localStorage or Redux if needed
       localStorage.setItem("token", response.data.token);
       Cookies.set("accessToken", response.data.token);
       setUser(response.data.user);
       localStorage.setItem("user", JSON.stringify(response.data.user));
-      setTimeout(() => {
 
+      setTimeout(() => {
         navigate("/dashboard");
       }, 1500);
     } catch (error) {
-      if (error.data?.message) {
-        toast.error(error.data.message);
-      } else {
-        toast.error("Login failed");
-      }
+      toast.error(error.data?.message || t("login.failed"));
     }
   };
 
   return (
     <div className="w-full h-screen flex flex-col bg-gray-100">
       <div className="flex flex-col md:flex-row w-full h-full">
-        {/* Left Side - Welcome Section */}
+        {/* Left Side */}
         <div className="md:w-2/5 flex flex-col items-center justify-center text-white bg-[#03091E] p-8 md:p-12">
-          <h1 className="text-3xl md:text-4xl font-extrabold mb-4 text-center">Welcome Back!</h1>
+          <h1 className="text-3xl md:text-4xl font-extrabold mb-4 text-center">
+            {t("login.welcome")}
+          </h1>
           <p className="text-lg text-center leading-relaxed">
-            To keep connected with us, please <br /> login with your personal info.
+            {t("login.keepConnected")}
           </p>
         </div>
 
-        {/* Right Side - Login Form */}
+        {/* Right Side */}
         <div className="md:w-3/5 flex flex-col justify-center items-center bg-white px-6 md:px-12 py-12 w-full">
           <div className="w-full max-w-md">
-            <h2 className="text-2xl md:text-3xl font-extrabold text-gray-800 text-center mb-4">Sign In</h2>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-gray-800 text-center mb-4">
+              {t("login.signIn")}
+            </h2>
             <p className="text-md text-center text-gray-600 mb-6">
-              With <span className="text-blue-500 font-semibold">Ticketing System</span> dashboard, you can track <br />
-              analytics for how your business is performing.
+              {t("login.description")}
             </p>
 
             <form onSubmit={handleSubmit(save)} className="space-y-6">
               {/* Email Input */}
               <div>
-                <label className="block text-sm font-semibold text-gray-700">Email</label>
+                <label className="block text-sm font-semibold text-gray-700">
+                  {t("login.email")}
+                </label>
                 <div className="relative mt-2">
                   <i className="fas fa-envelope absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg"></i>
                   <input
                     {...register("email")}
                     type="email"
                     className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none text-lg"
-                    placeholder="Enter your email"
+                    placeholder={t("login.emailPlaceholder")}
                   />
                 </div>
-                {errors.email && <small className="text-red-500">{errors.email.message}</small>}
+                {errors.email && (
+                  <small className="text-red-500">{errors.email.message}</small>
+                )}
               </div>
 
-              {/* Password Input with Toggle */}
+              {/* Password Input */}
               <div>
-                <label className="block text-sm font-semibold text-gray-700">Password</label>
+                <label className="block text-sm font-semibold text-gray-700">
+                  {t("login.password")}
+                </label>
                 <div className="relative mt-2">
                   <i className="fas fa-lock absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg"></i>
                   <input
                     {...register("pass")}
                     type={showPassword ? "text" : "password"}
                     className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none text-lg"
-                    placeholder="Enter your password"
+                    placeholder={t("login.passwordPlaceholder")}
                   />
                   <button
                     type="button"
@@ -114,34 +120,36 @@ export default function Login() {
                     <i className={showPassword ? "fas fa-eye-slash" : "fas fa-eye"}></i>
                   </button>
                 </div>
-                {errors.pass && <small className="text-red-500">{errors.pass.message}</small>}
+                {errors.pass && (
+                  <small className="text-red-500">{errors.pass.message}</small>
+                )}
               </div>
 
-              {/* Remember Me & Forgot Password */}
+              {/* Remember Me + Forgot */}
               <div className="flex justify-between items-center text-sm text-gray-600">
                 <label className="flex items-center">
-                  <input type="checkbox" className="mr-2" /> Remember me
+                  <input type="checkbox" className="mr-2" /> {t("login.remember")}
                 </label>
                 <Link to="/auth/forget-password" className="text-blue-500 hover:underline">
-                  Forgot Password?
+                  {t("login.forgot")}
                 </Link>
               </div>
 
-              {/* Submit Button */}
+              {/* Submit */}
               <button
                 type="submit"
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-300 text-lg"
                 disabled={isLoading}
               >
-                {isLoading ? "Signing In..." : "Sign In"}
+                {isLoading ? t("login.signingIn") : t("login.signIn")}
               </button>
             </form>
 
-            {/* Sign Up Link */}
+            {/* Sign Up */}
             <div className="mt-4 text-center">
-              <span className="text-gray-600">Don&apos;t have an account? </span>
+              <span className="text-gray-600">{t("login.noAccount")} </span>
               <Link to="/auth/register" className="text-blue-500 font-semibold hover:underline">
-                Apply Now
+                {t("login.apply")}
               </Link>
             </div>
           </div>
@@ -150,4 +158,6 @@ export default function Login() {
       <ToastContainer position="top-right" autoClose={1500} />
     </div>
   );
-}
+};
+
+export default Login;

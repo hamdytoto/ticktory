@@ -3,9 +3,9 @@ import Register from "../../modules/Auth/Register/Register";
 
 const RegisterPage = () => {
   return (
-    <div className="flex flex-col h-100vh">
+    <div className="flex flex-col h-screen">
       <RegisterHeader />
-      <main className="pt-20"> {/* offset for fixed header */}
+      <main className="pt-19"> {/* offset for fixed header */}
         <Register />
       </main>
     </div>
