@@ -109,5 +109,28 @@
         },
         "followUs": "تابعنا",
         "rights": "جميع الحقوق محفوظة."
+    },
+    "register": {
+        "alreadyHaveAccount": "هل لديك حساب بالفعل؟",
+        "signIn": "تسجيل الدخول",
+        "logoAlt": "شعار نظام التذاكر",
+        "createAccount": "إنشاء حساب",
+        "subtitle": {
+            "part1": "قم بإنشاء حسابك للوصول إلى",
+            "part2": "نظام التذاكر"
+        },
+        "name": "الاسم",
+        "email": "البريد الإلكتروني",
+        "password": "كلمة المرور",
+        "confirmPassword": "تأكيد كلمة المرور",
+        "namePlaceholder": "ادخل اسمك",
+        "emailPlaceholder": "ادخل بريدك الإلكتروني",
+        "passwordPlaceholder": "ادخل كلمة المرور",
+        "confirmPasswordPlaceholder": "أعد إدخال كلمة المرور",
+        "submit": "تسجيل",
+        "success": "تم التسجيل بنجاح",
+        "fail": "فشل في التسجيل",
+         "helloFriend": "مرحبًا صديقي !",
+        "toKeepConnected": " للبقاء على اتصال معنا، يرجى تسجيل الدخول بمعلوماتك الشخصية."
     }
 }

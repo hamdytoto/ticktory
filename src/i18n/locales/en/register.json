@@ -1,0 +1,23 @@
+{
+    "alreadyHaveAccount": "Already have an account?",
+    "signIn": "Sign in",
+    "logoAlt": "Ticketing System Logo",
+    "createAccount": "Create Account",
+    "subtitle": {
+        "part1": "Create your account to access our",
+        "part2": "Ticketing System"
+    },
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "namePlaceholder": "Enter your name",
+    "emailPlaceholder": "Enter your email",
+    "passwordPlaceholder": "Enter your password",
+    "confirmPasswordPlaceholder": "Confirm your password",
+    "submit": "Sign Up",
+    "success": "Registration successful",
+    "fail": "Registration failed",
+    "helloFriend": "Hello Friend !",
+    "toKeepConnected": " To keep connected with us, please sign in with your personal info."
+}

@@ -5,9 +5,10 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 import logo from '../../images/logo bg-black.png';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import LanguageSelector from '../../i18n/languageSelector';
 export default function NavbarLanding() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <nav className="fixed top-0 z-50 w-full bg-[#0b0f1a] py-4 shadow-md">
@@ -32,7 +33,7 @@ export default function NavbarLanding() {
           <ScrollLink to="home" smooth={true} className="block md:inline text-white text-lg hover:text-gray-400 transition py-2 md:py-0 md:px-4">{t('landing.home')}</ScrollLink>
           <ScrollLink to="services" smooth={true} className="block md:inline text-white text-lg hover:text-gray-400 transition py-2 md:py-0 md:px-4">{t('landing.services')}</ScrollLink >
           <Link to="/about" className="block md:inline text-white text-lg hover:text-gray-400 transition py-2 md:py-0 md:px-4">{t('landing.about')}</Link>
-
+          <LanguageSelector />
           {/* Sign In Button inside menu for small screens */}
           <Link to="/auth/login" className="block md:hidden bg-gradient-to-r from-blue-500 to-cyan-400 text-white px-6 py-2 w-full text-center rounded-[16px] text-lg font-medium shadow-md hover:opacity-90 transition mt-4">
             {t('landing.signin')}
