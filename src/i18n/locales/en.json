@@ -153,5 +153,16 @@
         "remember": "Remember me",
         "forgot": "Forgot Password?",
         "apply": "Apply Now"
+    },
+    "reset": {
+        "title": "Reset Your Password",
+        "subtitle": "We will send an email with instructions to reset your password.",
+        "emailLabel": "Email",
+        "emailPlaceholder": "Enter your email",
+        "emailRequired": "Email is required.",
+        "invalidEmail": "Please enter a valid email address.",
+        "sendButton": "Send Email",
+        "otpSent": "OTP sent to your email",
+        "failed": "Reset password failed."
     }
 }
