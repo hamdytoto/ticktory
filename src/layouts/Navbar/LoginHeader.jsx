@@ -7,7 +7,7 @@ const LoginHeader = () => {
   const { t } = useTranslation();
 
   return (
-    <header className="w-full py-4 bg-transparent shadow-sm z-50 border-b border-gray-200">
+    <header className="w-full py-4 lg:px-50  bg-transparent shadow-sm z-50 border-b border-gray-200">
       <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center px-4 md:px-8 space-y-3 sm:space-y-0">
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-2">

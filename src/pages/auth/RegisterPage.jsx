@@ -5,7 +5,7 @@ const RegisterPage = () => {
   return (
     <div className="flex flex-col h-screen">
       <RegisterHeader />
-      <main className="pt-19"> {/* offset for fixed header */}
+      <main className=""> {/* offset for fixed header */}
         <Register />
       </main>
     </div>

@@ -63,7 +63,7 @@ export default function Register() {
   };
 
   return (
-    <div className="w-full min-h-screen flex flex-col bg-gray-200">
+    <div className="w-full h-screen flex flex-col bg-gray-200">
       <div className="flex flex-col md:flex-row w-full h-full">
         {/* Left - Register Form */}
         <div className="md:w-7/12 flex flex-col justify-center items-center bg-white px-6 md:px-12 py-12 w-full text-[#03091E]">
