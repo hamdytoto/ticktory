@@ -1,11 +1,12 @@
 import { useGetAdminStatisticsQuery } from "../../redux/feature/statistics/stat.apiSlice";
 import DashboardLayout from "./DashboardLayout";
 import { calcPercent } from "./helper";
+import  useTranslation  from "i18next";
 
 const AdminDash = () => {
   const { data } = useGetAdminStatisticsQuery();
   const statsData = data?.data || {};
-  console.log(statsData);
+  const { t } = useTranslation();
 
   const stats = [
     { label: "stats.allTickets", value: statsData.all_tickets, percentage: 100 },
@@ -19,6 +20,7 @@ const AdminDash = () => {
 
   return (
     <DashboardLayout
+      title = {t("menu.dashboard")}
       stats={stats}
       annualTickets={statsData.annual_tickets_average}
       recentTickets={statsData.recent_tickets || []}

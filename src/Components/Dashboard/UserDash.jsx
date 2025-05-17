@@ -1,11 +1,13 @@
 import { useGetUserStatisticsQuery } from "../../redux/feature/statistics/stat.apiSlice";
 import DashboardLayout from "./DashboardLayout";
 import { calcPercent } from "./helper";
+import {useTranslation} from "react-i18next";
 
 const UserDash = () => {
   const { data } = useGetUserStatisticsQuery();
   const statistics = data?.data || {};
-  console.log(statistics);
+  const { t } = useTranslation();
+  const title = t("menu.dashboard");
 
   const stats = [
     { label: "stats.allTickets", value: statistics.all_tickets, percentage: 100 },
@@ -16,6 +18,7 @@ const UserDash = () => {
 
   return (
     <DashboardLayout
+      title={title}
       stats={stats}
       annualTickets={statistics.annual_tickets_average}
       recentTickets={statistics.recent_tickets || []}

@@ -5,7 +5,7 @@ import AnnualTicketsChart from "./charts/AnnalChart";
 import RecentTicketsTable from "./charts/RecentTickets";
 
 const DashboardLayout = ({
-    title = "Dashboard",
+    title,
     stats,
     annualTickets,
     recentTickets,

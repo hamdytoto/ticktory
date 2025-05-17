@@ -18,7 +18,7 @@ export default function Home() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
 
-  const { page = "dashboard" } = useParams(); // من URL
+  const { page = "dashboard" } = useParams(); 
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -75,7 +75,7 @@ export default function Home() {
           isMobileOpen={windowWidth <= 700 && isMobileOpen}
         />
 
-        <div className="p-8 mt-14">{pageComponent}</div>
+        <div className="py-8 mt-14">{pageComponent}</div>
       </main>
     </div>
   );

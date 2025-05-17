@@ -164,5 +164,14 @@
         "sendButton": "Send Email",
         "otpSent": "OTP sent to your email",
         "failed": "Reset password failed."
+    },
+    "notifications": {
+        "title": "Notifications",
+        "markAllRead": "Mark All as Read",
+        "deleteAll": "Delete All",
+        "loading": "Loading...",
+        "noNotifications": "No notifications",
+        "delete": "Delete",
+        "loadMore": "Load More"
     }
 }
