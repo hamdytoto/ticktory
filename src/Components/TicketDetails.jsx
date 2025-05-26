@@ -7,8 +7,10 @@ import { getTicketStatusInfo } from "./utils/ticketSatus";
 import LoadingSpinner from "../common/Loadingspinner";
 import moment from "moment";
 import ChatActions from "../modules/Chat/ChatActions";
+import { useTranslation } from "react-i18next";
 
 export default function TicketDetails({ ticketId: propTicketId }) {
+    const { t } = useTranslation(); 
     const { ticketId: routeTicketId } = useParams();
     const ticketId = propTicketId || routeTicketId;
     const { user } = useUser();
@@ -38,7 +40,7 @@ export default function TicketDetails({ ticketId: propTicketId }) {
     }
 
     const ticket = data.data;
-    const { label: statusLabel, className: statusClass } = getTicketStatusInfo(ticket.status);
+    const { label: statusLabel, className: statusClass } = getTicketStatusInfo(ticket.status,t);
 
     return (
         <div className="max-w-5xl mx-auto mt-10 bg-white p-6 rounded-xl shadow-md">

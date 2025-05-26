@@ -1,7 +1,7 @@
 import { useGetAdminStatisticsQuery } from "../../redux/feature/statistics/stat.apiSlice";
 import DashboardLayout from "./DashboardLayout";
 import { calcPercent } from "./helper";
-import  useTranslation  from "i18next";
+import  {useTranslation}  from "react-i18next";
 
 const AdminDash = () => {
   const { data } = useGetAdminStatisticsQuery();

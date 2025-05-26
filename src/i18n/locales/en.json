@@ -28,16 +28,6 @@
         "dailyRespond": "Daily Respond",
         "recentTickets": "Recent Tickets"
     },
-    "table": {
-        "id": "ID",
-        "title": "Title",
-        "service": "Service",
-        "manager": "Manager",
-        "user": "User",
-        "technician": "Technician",
-        "status": "Status",
-        "date": "Date"
-    },
     "landing": {
         "home": "Home",
         "about": "About",
@@ -173,5 +163,25 @@
         "noNotifications": "No notifications",
         "delete": "Delete",
         "loadMore": "Load More"
+    },
+    "status": {
+        "pending": "Pending",
+        "in_progress": "In Progress",
+        "resolved": "Resolved",
+        "closed": "Closed",
+        "unknown": "Unknown"
+    },
+    "table": {
+        "columns": {
+            "title": "Title",
+            "id": "ID",
+            "description": "Description",
+            "status": "Status",
+            "service": "Service",
+            "manager": "Manager",
+            "user": "User",
+            "technician": "Technician",
+            "createdAt": "Created At"
+        }
     }
 }

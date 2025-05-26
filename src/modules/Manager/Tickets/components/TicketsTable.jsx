@@ -4,6 +4,7 @@ import Pagination from "../../../../common/Pagnitation.jsx";
 import { getTicketStatusInfo } from "../../../../Components/utils/ticketSatus.js"; // ensure you have this utility
 import { FaRegCircle, FaCheckCircle, FaPaperPlane, FaCheckDouble, FaLock } from "react-icons/fa";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 import { useFinishTicketApiMutation, useShowAllTicketsApiQuery, useAssignTicketApiMutation }
     from "../../../../redux/feature/Manager/Tickets/manager.ticket.apislice.js";
@@ -18,6 +19,7 @@ const TicketsTable = ({ ticketsData, search, searchColumn, onTicketClick }) => {
     const [selectedTicketId, setSelectedTicketId] = useState(null);
     const { refetch } = useShowAllTicketsApiQuery();
     const [currentPage, setCurrentPage] = useState(1);
+    const { t } = useTranslation();
 
     const totalPages = Math.ceil(ticketsData.length / itemsPerPage);
 
@@ -99,7 +101,7 @@ const TicketsTable = ({ ticketsData, search, searchColumn, onTicketClick }) => {
                     </thead>
                     <tbody>
                         {displayedTickets.map((ticket) => {
-                            const { label, className } = getTicketStatusInfo(ticket.status);
+                            const { label, className } = getTicketStatusInfo(ticket.status,t);
                             return (
                                 <tr
                                     key={ticket.id}

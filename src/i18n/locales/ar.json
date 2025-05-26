@@ -28,16 +28,6 @@
         "dailyRespond": "الرد اليومي",
         "recentTickets": "التذاكر الحديثة"
     },
-    "table": {
-        "id": "المعرف",
-        "title": "العنوان",
-        "service": "الخدمة",
-        "manager": "المدير",
-        "user": "المستخدم",
-        "technician": "الفني",
-        "status": "الحالة",
-        "date": "التاريخ"
-    },
     "landing": {
         "home": "الرئيسية",
         "about": "حول",
@@ -173,5 +163,25 @@
         "noNotifications": "لا يوجد اشعارات",
         "delete": "حذف",
         "loadMore": "تحميل المزيد"
+    },
+    "status": {
+        "pending": "قيد الانتظار",
+        "in_progress": "قيد التنفيذ",
+        "resolved": "تم الحل",
+        "closed": "مغلق",
+        "unknown": "غير معروف"
+    },
+    "table": {
+        "columns": {
+            "title": "العنوان",
+            "id": "المعرف",
+            "description": "الوصف",
+            "status": "الحالة",
+            "service": "الخدمة",
+            "manager": "المدير",
+            "technician": "الفني",
+            "user": "المستخدم",
+            "createdAt": "تاريخ الإنشاء"
+        }
     }
 }
