@@ -2,7 +2,9 @@
 import { useGetServicesQuery } from "../../../../redux/feature/selectMenu/select.apislice.js";
 
 const EditTicketModal = ({ show, onClose, ticketData, setTicketData, onUpdate }) => {
-    const { data: servicesData } = useGetServicesQuery();
+    const { data: servicesData } = useGetServicesQuery({
+        only_associated_to_managers: 1,
+    });
     const services = servicesData?.data || [];
 
     if (!show) return null;

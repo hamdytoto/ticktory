@@ -1,45 +1,123 @@
 import { useParams } from "react-router-dom";
-import TicketDetails from "../../../Components/TicketDetails"; // import the details component
+import TicketDetails from "../../../Components/TicketDetails";
 import TicketsTable from "./components/TicketsTable";
 import TicketActions from "./components/TicketActions";
 import { useGetAllTicketsApiQuery } from "../../../redux/feature/admin/Tickets/admin.ticket.apislice";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function AdminTickets() {
-  const { ticketId } = useParams(); // read ticket ID from route
-  const { data } = useGetAllTicketsApiQuery();
-  const ticketsData = data?.data || [];
+  const { ticketId } = useParams();
   const navigate = useNavigate();
 
+  // State for search and filters
   const [search, setSearch] = useState("");
   const [searchColumn, setSearchColumn] = useState("title");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(7);
+  const [dateFrom, setDateFrom] = useState("");
+  const [dateTo, setDateTo] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
+
+  // Debounce search input
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearch(search);
+      setCurrentPage(1); // Reset to first page when search changes
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [search]);
+
+  // Build query parameters
+  const queryParams = {
+    page: currentPage,
+    per_page: itemsPerPage,
+    ...(debouncedSearch && { handle: debouncedSearch, search_column: searchColumn }),
+    ...(dateFrom && { from: dateFrom }),
+    ...(dateTo && { to: dateTo }),
+  };
+
+  const { data, isLoading, error } = useGetAllTicketsApiQuery(queryParams);
+  
+  const ticketsData = data?.data || [];
+  const totalPages = data?.meta?.last_page || 1;
+  const totalRecords = data?.meta?.total || 0;
 
   if (ticketId) {
-    // If there's a ticketId in the route, show the detail view
     return <TicketDetails ticketId={ticketId} />;
   }
-   const handleTicketClick = (ticketId) => {
+
+  const handleTicketClick = (ticketId) => {
     navigate(`view/${ticketId}`);
   };
 
-  // Otherwise show the full tickets list
+  const handlePageChange = (page) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+    }
+  };
+
+  const handleItemsPerPageChange = (newItemsPerPage) => {
+    setItemsPerPage(newItemsPerPage);
+    setCurrentPage(1); // Reset to first page when changing items per page
+  };
+
+  const handleSearch = (searchValue, column) => {
+    setSearch(searchValue);
+    setSearchColumn(column);
+    // Don't reset currentPage here as useEffect will handle it
+  };
+
+  const handleDateFilter = (from, to) => {
+    setDateFrom(from);
+    setDateTo(to);
+    setCurrentPage(1); // Reset to first page when filtering
+  };
+
+  if (isLoading) {
+    return (
+      <div className="p-6 mx-auto">
+        <div className="flex justify-center items-center h-64">
+          <div className="text-lg text-gray-600">Loading tickets...</div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="p-6 mx-auto">
+        <div className="flex justify-center items-center h-64">
+          <div className="text-lg text-red-600">Error loading tickets</div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="p-6 mx-auto">
       <h1 className="text-4xl font-bold text-gray-800">All Tickets</h1>
 
       <TicketActions
         search={search}
-        setSearch={setSearch}
         searchColumn={searchColumn}
-        setSearchColumn={setSearchColumn}
+        onSearch={handleSearch}
+        dateFrom={dateFrom}
+        dateTo={dateTo}
+        onDateFilter={handleDateFilter}
+        itemsPerPage={itemsPerPage}
+        onItemsPerPageChange={handleItemsPerPageChange}
       />
 
       <TicketsTable
         ticketsData={ticketsData}
-        search={search}
-        searchColumn={searchColumn}
         onTicketClick={handleTicketClick}
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+        itemsPerPage={itemsPerPage}
+        totalRecords={totalRecords}
       />
     </div>
   );

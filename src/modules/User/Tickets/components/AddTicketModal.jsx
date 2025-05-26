@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useGetServicesQuery } from "../../../../redux/feature/selectMenu/select.apislice.js";
 const AddTicketModal = ({ show, onClose, ticketData, setTicketData, onAdd }) => {
-    const { data: servicesData} = useGetServicesQuery();
+    const { data: servicesData} = useGetServicesQuery({
+        only_associated_to_managers: 1,
+    });
     const services = servicesData?.data || [];
     // console.log(services, "services from add ticket modal");
     if (!show) return null;

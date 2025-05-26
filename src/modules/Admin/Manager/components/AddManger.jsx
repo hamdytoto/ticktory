@@ -2,7 +2,9 @@
 import { useGetServicesQuery } from "../../../../redux/feature/selectMenu/select.apislice.js";
 
 const AddManagerModal = ({ show, onClose, managerData, setManagerData, onAdd }) => {
-    const { data: servicesData } = useGetServicesQuery();
+    const { data: servicesData } = useGetServicesQuery({
+            only_unique: 1,
+    });
     const services = servicesData?.data || [];
 
     if (!show) return null;

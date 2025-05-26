@@ -1,7 +1,7 @@
 export const getServicesApi = (builder) =>
 	builder.query({
 		query: (params) => ({
-			url: "api/select_menu/services?only_associated_to_managers=1",
+			url: "api/select_menu/services",
 			method: "GET",
 			params,
 		}),

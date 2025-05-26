@@ -1,7 +1,12 @@
 /* eslint-disable react/prop-types */
 import { FaSave, FaTimes } from "react-icons/fa";
+import { useGetServicesQuery } from "../../../../redux/feature/selectMenu/select.apislice";
 
 const EditManagerModal = ({ show, onClose, managerData, setManagerData, onSave }) => {
+    const { data: servicesData } = useGetServicesQuery({
+        only_unique: 1,
+    });
+    const services = servicesData?.data || [];
     if (!show || !managerData || !managerData.user) return null;
 
     const handleChange = (e) => {
@@ -21,6 +26,12 @@ const EditManagerModal = ({ show, onClose, managerData, setManagerData, onSave }
                 [name]: value,
             });
         }
+    };
+    const handleServiceIdChange = (e) => {
+        setManagerData({
+            ...managerData,
+            service_id: e.target.value,
+        });
     };
 
     return (
@@ -45,16 +56,21 @@ const EditManagerModal = ({ show, onClose, managerData, setManagerData, onSave }
                 {/* Modal Header */}
                 <h2 className="text-2xl font-bold mb-6 text-gray-800">Edit Manager</h2>
 
-                {/* Service ID */}
-                <input
-                    type="text"
-                    name="service_id"
-                    placeholder="Service ID"
-                    value={managerData.service_id}
-                    onChange={handleChange}
-                    className="border border-gray-300 p-3 rounded-lg w-full mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
+                <div className="mb-4">
 
+                    <select
+                        value={managerData.service_id || ""}
+                        onChange={handleServiceIdChange}
+                        className="p-3 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    >
+                        <option value="">Select a Service</option>
+                        {services.map((service) => (
+                            <option key={service.id} value={service.id}>
+                                {service.name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
                 {/* Manager Info */}
                 <input
                     type="text"
