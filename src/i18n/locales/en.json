@@ -181,7 +181,12 @@
             "manager": "Manager",
             "user": "User",
             "technician": "Technician",
-            "createdAt": "Created At"
+            "createdAt": "Created At",
+            "actions": "Actions"
+        },
+        "pagination":{
+            "page": "Page",
+            "showing": "Showing"
         }
     }
 }

@@ -181,7 +181,12 @@
             "manager": "المدير",
             "technician": "الفني",
             "user": "المستخدم",
-            "createdAt": "تاريخ الإنشاء"
+            "createdAt": "تاريخ الإنشاء",
+            "actions": "الإجراءات"
+        },
+        "pagination":{
+            "showing": "عرض",
+            "page": "صفحة"
         }
     }
 }

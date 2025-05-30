@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
-import { useShowAllTechnicianQuery } from "../../../../redux/feature/Manager/technician/manager.tech.apiSlice.js";
+import { useShowAllTechnicianQuery } from "../../../redux/feature/Manager/technician/manager.tech.apiSlice.js";
 
 const TechnicianAssignModal = ({ isOpen, onClose, onSubmit, ticketId }) => {
     const [selectedTechnician, setSelectedTechnician] = useState("");

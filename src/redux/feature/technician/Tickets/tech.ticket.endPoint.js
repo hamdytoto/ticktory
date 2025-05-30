@@ -1,8 +1,9 @@
 export const showAllTicketsApi = (builder) =>
 	builder.query({
-		query: () => ({
-			url: "api/technicians/tickets?per_page=100",
+		query: (params) => ({
+			url: "api/technicians/tickets",
 			method: "GET",
+			params
 		}),
 	});
 
