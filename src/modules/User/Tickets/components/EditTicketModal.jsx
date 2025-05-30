@@ -7,7 +7,7 @@ const EditTicketModal = ({ show, onClose, ticketData, setTicketData, onUpdate })
     });
     const services = servicesData?.data || [];
 
-    if (!show) return null;
+    if (!show || !ticketData) return null;
 
     const handleChange = (e) => {
         const { name, value } = e.target;

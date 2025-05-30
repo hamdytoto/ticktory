@@ -1,16 +1,15 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
-import { FaEdit } from "react-icons/fa";
-import Pagination from "../../../../common/Pagnitation.jsx";
-import Table from "../../../../Components/Table/Table.jsx";
-import { getTicketStatusInfo } from "../../../../Components/utils/ticketSatus.js";
-import EditTicketModal from "./EditTicketModal.jsx";
+import { FaRegCircle, FaCheckCircle, FaLock } from "react-icons/fa";
+
+import Pagination from "../../../common/Pagnitation.jsx";
+import Table from "../../../Components/Table/Table.jsx";
+import { getTicketStatusInfo } from "../../../Components/utils/ticketSatus.js";
 
 import {
-    useUpdateTicketUserMutation,
-} from "../../../../redux/feature/user/Tickets/user.ticket.apislice.js";
+    useFinishTicketTechMutation,
+} from "../../../redux/feature/technician/Tickets/tech.ticket.apislice.js";
 
 const TicketsTable = ({
     ticketsData,
@@ -25,32 +24,18 @@ const TicketsTable = ({
     const { t, i18n } = useTranslation();
     const isArabic = i18n.language === "ar";
 
-    const [updateTicket] = useUpdateTicketUserMutation();
-    const [showEditModal, setShowEditModal] = useState(false);
-    const [selectedTicket, setSelectedTicket] = useState(null);
+    const [finishTicket] = useFinishTicketTechMutation();
 
-    const handleEditClick = (ticket) => {
-        setSelectedTicket(ticket);
-        setShowEditModal(true);
-
-    };
-
-    const handleUpdateTicket = async () => {
-        try {
-            await updateTicket({
-                id: selectedTicket.id,
-                data: {
-                    title: selectedTicket.title,
-                    description: selectedTicket.description,
-                    service_id: selectedTicket.service_id,
-                },
-            }).unwrap();
-            refetch();
-            toast.success(t("toast.ticketUpdated") || "Ticket updated successfully!");
-            setShowEditModal(false);
-        } catch (err) {
-            toast.error(t("toast.updateFailed") || "Failed to update ticket!");
-            console.error("Error updating ticket:", err);
+    const handleResolveClick = async (ticket) => {
+        if (ticket.status !== 2) {
+            try {
+                await finishTicket(ticket.id).unwrap();
+                toast.success(t("toast.ticketResolved") || "Ticket resolved successfully!");
+                refetch();
+            } catch (err) {
+                toast.error(t("toast.resolveFailed") || "Failed to resolve ticket!");
+                console.error("Error resolving ticket:", err);
+            }
         }
     };
 
@@ -88,19 +73,14 @@ const TicketsTable = ({
             },
         },
         {
-            key: "assignedBy",
-            label: t("table.columns.manager") || "ASSIGNED BY",
-            render: (ticket) => ticket.manager?.user?.name || "—",
-        },
-        {
-            key: "assignedTo",
-            label: t("table.columns.technician") || "ASSIGNED TO",
-            render: (ticket) => ticket.technician?.user?.name || "—",
-        },
-        {
             key: "service",
             label: t("table.columns.service") || "SERVICE",
             render: (ticket) => ticket.service?.name || "—",
+        },
+        {
+            key: "manager",
+            label: t("table.columns.manager") || "MANAGER",
+            render: (ticket) => ticket.manager?.user?.name || "—",
         },
         {
             key: "createdAt",
@@ -113,17 +93,29 @@ const TicketsTable = ({
         {
             key: "actions",
             label: t("table.columns.actions") || "Actions",
-            render: (ticket) => (
-                <div className="flex items-center space-x-3">
-                    <button
-                        onClick={() => handleEditClick(ticket)}
-                        className="text-blue-600 hover:text-blue-700"
-                        title={t("tooltip.editTicket") || "Edit Ticket"}
-                    >
-                        <FaEdit />
-                    </button>
-                </div>
-            ),
+            render: (ticket) =>
+                ticket.status === 3 ? (
+                    <span className="text-gray-500 flex items-center space-x-1" title={t("tooltip.closed") || "Ticket Closed"}>
+                        <FaLock /> <span className="text-sm">{t("status.closed") || "Closed"}</span>
+                    </span>
+                ) : (
+                    <div className="flex items-center space-x-3">
+                        <button
+                            onClick={() => handleResolveClick(ticket)}
+                            className={`${ticket.status === 2
+                                ? "text-green-600 cursor-default"
+                                : "text-yellow-500 hover:text-yellow-600"
+                                }`}
+                            title={
+                                ticket.status === 2
+                                    ? t("tooltip.ticketResolved") || "Ticket Resolved"
+                                    : t("tooltip.resolveTicket") || "Resolve Ticket"
+                            }
+                        >
+                            {ticket.status === 2 ? <FaCheckCircle /> : <FaRegCircle />}
+                        </button>
+                    </div>
+                ),
         },
     ];
 
@@ -150,7 +142,6 @@ const TicketsTable = ({
                     tickets={ticketsData}
                     onTicketClick={onTicketClick}
                     getTicketStatusInfo={getTicketStatusInfo}
-                // actionsRenderer={handleEditClick}
                 />
             </div>
 
@@ -161,15 +152,6 @@ const TicketsTable = ({
                 onPageChange={onPageChange}
                 itemsPerPage={itemsPerPage}
                 dataLength={totalRecords}
-            />
-
-            {/* Edit Modal */}
-            <EditTicketModal
-                show={showEditModal}
-                onClose={() => setShowEditModal(false)}
-                ticketData={selectedTicket}
-                setTicketData={setSelectedTicket}
-                onUpdate={handleUpdateTicket}
             />
         </div>
     );
