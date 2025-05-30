@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import TicketDetails from "../../../Components/TicketDetails";
-import TicketsTable from "./components/TicketsTable";
-import TicketActions from "./components/TicketActions";
+import TicketsTable from "./TicketsTable";
+import TicketActions from "../../../Components/Ticket/Actions/TicketActions";
 import { useGetAllTicketsApiQuery } from "../../../redux/feature/admin/Tickets/admin.ticket.apislice";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -39,7 +39,7 @@ export default function AdminTickets() {
   };
 
   const { data, isLoading, error } = useGetAllTicketsApiQuery(queryParams);
-  
+
   const ticketsData = data?.data || [];
   const totalPages = data?.meta?.last_page || 1;
   const totalRecords = data?.meta?.total || 0;

@@ -1,17 +1,17 @@
 /* eslint-disable react/prop-types */
-import Pagination from "../../../../common/Pagnitation.jsx";
-import { getTicketStatusInfo } from "../../../../Components/utils/ticketSatus.js";
-import Table from "../../../../Components/Table/Table.jsx";
+import Pagination from "../../../common/Pagnitation.jsx";
+import { getTicketStatusInfo } from "../../../Components/utils/ticketSatus.js";
+import Table from "../../../Components/Table/Table.jsx";
 import { useTranslation } from "react-i18next";
 
-const TicketsTable = ({ 
-  ticketsData, 
-  onTicketClick, 
-  currentPage, 
-  totalPages, 
-  onPageChange, 
-  itemsPerPage, 
-  totalRecords 
+const TicketsTable = ({
+  ticketsData,
+  onTicketClick,
+  currentPage,
+  totalPages,
+  onPageChange,
+  itemsPerPage,
+  totalRecords
 }) => {
   const { t, i18n } = useTranslation();
   const isArabic = i18n.language === "ar";
