@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 import {
   useGetProfileQuery,
@@ -14,16 +15,17 @@ import ErrorAlert from "../../common/ErrorAlert";
 import ProfileCard from "./components/profileCard";
 import EditProfileModal from "./components/EditProfileModal";
 
-const schema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Enter a valid email"),
-  phone: z.string().min(11, "Phone must be at least 11 digits"),
-});
-
 export default function ProfileUpdate() {
+  const { t } = useTranslation();
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [avatar, setAvatar] = useState(null);
   const [avatarPreview, setAvatarPreview] = useState(null);
+
+  const schema = z.object({
+    name: z.string().min(2, t("profilePage.nameMin")),
+    email: z.string().email(t("profilePage.emailValid")),
+    phone: z.string().min(11, t("profilePage.phoneMin")),
+  });
 
   const { data: response, isLoading, isError, refetch } = useGetProfileQuery();
   const [updateProfile] = useUpdateProfileMutation();
@@ -53,19 +55,17 @@ export default function ProfileUpdate() {
     const file = e.target.files[0];
     if (file) {
       if (!file.type.startsWith("image/")) {
-        toast.error("Please upload a valid image file.");
+        toast.error(t("profilePage.invalidImage"));
         return;
       }
-      // Set the selected avatar file and its preview
       setAvatar(file);
       setAvatarPreview(URL.createObjectURL(file));
     }
   };
 
   const onSubmit = async (data) => {
-    // Check that avatar is a valid file object
     if (avatar && !(avatar instanceof File)) {
-      toast.error("Invalid avatar file.");
+      toast.error(t("profilePage.invalidAvatarFile"));
       return;
     }
 
@@ -75,28 +75,22 @@ export default function ProfileUpdate() {
     formData.append("phone", data.phone);
 
     if (avatar) {
-      formData.append("avatar", avatar); // Attach the avatar file if selected
-    }
-
-    // Log the form data for debugging purposes
-    for (let pair of formData.entries()) {
-      console.log(pair[0] + ": " + pair[1]);
+      formData.append("avatar", avatar);
     }
 
     try {
-      const result = await updateProfile(formData).unwrap();
-      console.log(result);
-      toast.success("Profile updated successfully!");
-      await refetch(); // Refetch the profile data after update
+      await updateProfile(formData).unwrap();
+      toast.success(t("profilePage.updateSuccess"));
+      await refetch();
       setIsEditModalOpen(false);
     } catch (error) {
+      toast.error(t("profilePage.updateFail"));
       console.error("Error updating profile:", error);
-      toast.error("Failed to update profile.");
     }
   };
 
   if (isLoading) return <LoadingSpinner />;
-  if (isError) return <ErrorAlert message="Failed to load profile data." />;
+  if (isError) return <ErrorAlert message={t("profilePage.loadFail")} />;
 
   return (
     <div className="p-6 max-w-6xl mx-auto">

@@ -14,7 +14,7 @@ const SearchForm = ({
     <>
         <form
             onSubmit={handleSearchSubmit}
-            className="flex items-center rounded-xl bg-gray-50 shadow-xl overflow-hidden w-full lg:max-w-xl p-2"
+            className="flex items-center rounded-xl bg-gray-50 shadow-md overflow-hidden w-full lg:max-w-xl p-3"
         >
             <div className="pl-4 pr-2 text-gray-400 flex-shrink-0">
                 <FaSearch />

@@ -70,11 +70,11 @@ const TicketsTable = ({
                 </>
             ),
         },
-        {
-            key: "description",
-            label: t("table.columns.description") || "DESCRIPTION",
-            render: (ticket) => `${ticket.description.slice(0, 50)} ...`,
-        },
+        // {
+        //     key: "description",
+        //     label: t("table.columns.description") || "DESCRIPTION",
+        //     render: (ticket) => `${ticket.description.slice(0, 50)} ...`,
+        // },
         {
             key: "status",
             label: t("table.columns.status") || "STATUS",
@@ -113,17 +113,18 @@ const TicketsTable = ({
         {
             key: "actions",
             label: t("table.columns.actions") || "Actions",
-            render: (ticket) => (
-                <div className="flex items-center space-x-3">
-                    <button
-                        onClick={() => handleEditClick(ticket)}
-                        className="text-blue-600 hover:text-blue-700"
-                        title={t("tooltip.editTicket") || "Edit Ticket"}
-                    >
-                        <FaEdit />
-                    </button>
-                </div>
-            ),
+            render: (ticket) =>
+                ticket.status === 0 ? (
+                    <div className="flex items-center space-x-3">
+                        <button
+                            onClick={() => handleEditClick(ticket)}
+                            className="text-blue-600 hover:text-blue-700"
+                            title={t("tooltip.editTicket") || "Edit Ticket"}
+                        >
+                            <FaEdit />
+                        </button>
+                    </div>
+                ) : null
         },
     ];
 

@@ -45,6 +45,18 @@ const AddTicketModal = ({ show, onClose, ticketData, setTicketData, onAdd }) => 
                 <h2 className="text-2xl font-semibold mb-6 text-gray-800">Add New Ticket</h2>
 
                 {/* Dropdown for Service Selection */}
+
+                <div className="mb-4">
+                    <input
+                        type="text"
+                        name="title"
+                        placeholder="Title"
+                        value={ticketData.title}
+                        onChange={handleChange}
+                        className="mt-2 p-3 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                </div>
+
                 <div className="mb-4">
                     <select
                         value={ticketData.service_id || ''}
@@ -59,18 +71,6 @@ const AddTicketModal = ({ show, onClose, ticketData, setTicketData, onAdd }) => 
                         ))}
                     </select>
                 </div>
-
-                <div className="mb-4">
-                    <input
-                        type="text"
-                        name="title"
-                        placeholder="Title"
-                        value={ticketData.title}
-                        onChange={handleChange}
-                        className="mt-2 p-3 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                </div>
-
                 <div className="mb-6">
                     <textarea
                         name="description"

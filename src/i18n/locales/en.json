@@ -184,9 +184,61 @@
             "createdAt": "Created At",
             "actions": "Actions"
         },
-        "pagination":{
+        "pagination": {
             "page": "Page",
             "showing": "Showing"
         }
+    },
+    "chat": {
+        "technician": "Technician",
+        "manager": "Manager",
+        "user": "User",
+        "quickChat": "Quick Chat",
+        "chatWith": "Chat with {{label}}",
+        "resolvedOrClosed": "Resolved Or Closed Ticket",
+        "notAssigned": "Not assigned"
+    },
+    "ticketDetails": {
+        "unsupportedRole": "Unsupported user role. Cannot fetch ticket details.",
+        "notFound": "Ticket not found.",
+        "title": "Ticket Details",
+        "back": "Back",
+        "ticketId": "Ticket ID",
+        "ticketTitle": "Title",
+        "status": "Status",
+        "createdAt": "Created At",
+        "service": "Service",
+        "user": "User",
+        "manager": "Manager",
+        "technician": "Technician",
+        "unknown": "Unknown",
+        "notAssigned": "Not Assigned",
+        "description": "Description",
+        "noDescription": "No description provided."
+    },
+    "profilePage": {
+        "invalidImage": "Please upload a valid image file.",
+        "invalidAvatarFile": "Invalid avatar file.",
+        "updateSuccess": "Profile updated successfully!",
+        "updateFail": "Failed to update profile.",
+        "loadFail": "Failed to load profile data.",
+        "editProfile": "Edit Profile",
+        "personalInfo": "Personal Information",
+        "fullName": "Full Name",
+        "email": "Email",
+        "phone": "Phone",
+        "accountStatus": "Account Status",
+        "accountType": "Account Type",
+        "status": "Status",
+        "active": "Active",
+        "inactive": "Inactive",
+        "lastLogin": "Last Login",
+        "memberSince": "Member since {{date}}",
+        "updating": "Updating...",
+        "saveChanges": "Save Changes",
+        "nameMin": "Name must be at least 3 characters",
+        "phoneMin": "Phone number must be at least 10 digits",
+        "emailValid": "Please enter a valid email address."
+
     }
 }

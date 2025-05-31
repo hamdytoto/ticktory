@@ -12,7 +12,7 @@ const StatsCards = ({ stats }) => {
             {stats.map((stat, index) => (
                 <div
                     key={index}
-                    className="bg-white p-4 sm:p-6 rounded-xl shadow-md flex flex-col sm:flex-row items-center sm:items-start justify-between min-w-0 transition-all duration-300 hover:shadow-2xl"
+                    className="bg-white p-4 sm:p-6 rounded-xl shadow-md flex flex-col lg:flex-row items-center lg:items-start justify-between min-w-0 transition-all duration-300 hover:shadow-2xl"
                     style={{
                         borderRadius: "16px",
                         border: "1px solid #D1D5DB",
@@ -20,18 +20,18 @@ const StatsCards = ({ stats }) => {
                     }}
                 >
                     {/* Left: Label & Value */}
-                    <div className="flex flex-col items-center sm:items-start text-center sm:text-left space-y-1 w-full">
-                        <div className="flex items-center justify-center sm:justify-start gap-1 sm:gap-2 text-sm sm:text-base text-gray-600 font-medium flex-wrap">
+                    <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-1 w-full">
+                        <div className="flex items-center justify-center lg:justify-start gap-1 lg:gap-2 text-sm lg:text-base text-gray-600 font-medium flex-wrap">
                             {t(stat.label)}
                             <span className="text-lg">{getIconByLabel(stat.label)}</span>
                         </div>
-                        <p className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 break-words">
+                        <p className="text-lg lg:text-xl font-bold text-gray-900 break-words">
                             {stat.value}
                         </p>
                     </div>
 
                     {/* Right: Circular Progress Bar */}
-                    <div className="relative mt-4 sm:mt-0 sm:ml-4 w-16 h-16 flex items-center justify-center">
+                    <div className="relative mt-4 lg:mt-0 lg:ml-4 w-16 h-16 flex items-center justify-center">
                         {/* Outer Shadow Circle */}
                         <div
                             className="absolute inset-0 rounded-full"

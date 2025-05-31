@@ -65,13 +65,6 @@ const TicketActions = ({
   return (
     <div className="p-0 mb-6 mt-6 space-y-4">
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-        {setShowModal && (
-          <button
-            className="bg-blue-600 text-white px-4 py-2 md:py-3 rounded-lg flex items-center gap-2 hover:bg-blue-700 transition"
-            onClick={() => setShowModal(true)}
-          >
-            <FaPlus className="w-4 h-4" /> New Ticket
-          </button>)}
         <SearchForm
           localSearch={localSearch}
           setLocalSearch={setLocalSearch}
@@ -82,11 +75,21 @@ const TicketActions = ({
           clearSearch={clearSearch}
           handleSearchSubmit={handleSearchSubmit}
         />
+        <div className="flex items-center gap-4">
+          {setShowModal && (
+          <button
+            className="bg-blue-600 text-white px-4 py-2 md:py-3 rounded-lg flex items-center gap-2 hover:bg-blue-700 transition"
+            onClick={() => setShowModal(true)}
+          >
+            <FaPlus className="w-4 h-4" /> New Ticket
+          </button>)}
         <ItemsPerPageSelector
           itemsPerPage={itemsPerPage}
           onItemsPerPageChange={onItemsPerPageChange}
           options={itemsPerPageOptions}
         />
+        </div>
+        
       </div>
 
       <DateFilterForm

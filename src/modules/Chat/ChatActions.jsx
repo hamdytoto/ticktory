@@ -1,28 +1,22 @@
 /* eslint-disable react/prop-types */
-// components/ChatActions.jsx
 import { useNavigate } from "react-router-dom";
 import { FaCommentDots } from "react-icons/fa";
 import getUserRole from "../../context/userType";
 import { useStoreConversationMutation } from "../../redux/feature/chat/conversation/conversation.apislice";
+import { useTranslation } from "react-i18next";
 
 export default function ChatActions({ currentUser, ticket }) {
+    const { t } = useTranslation();
     const navigate = useNavigate();
     const role = getUserRole(currentUser?.type);
     const [storeConversation] = useStoreConversationMutation();
 
     const handleChat = async (userId) => {
-        console.log('user', userId, ticket.id)
         const conversation = await storeConversation({
             user_id: userId,
             type: 0,
-        })
-        // console.log('conversation', conversation)
-        console.log('conversation', conversation.data?.data.id)
-
+        });
         navigate(`/dashboard/chat/${conversation.data?.data.id}?ticket_id=${ticket.id}&user_id=${userId}`);
-        // if (userId) navigate(`/dashboard/chat/${userId}`);
-        // if (userId) navigate(`/dashboard/chat/${userId}`, { state: { userId } });
-        // if (userId) navigate(`/dashboard/chat`, { state: { userId } });
     };
 
     const colorClasses = {
@@ -35,36 +29,36 @@ export default function ChatActions({ currentUser, ticket }) {
     const buttons = {
         user: [
             {
-                label: "Technician",
+                label: t("chat.technician"),
                 color: "green",
                 user: ticket.technician?.user,
             },
             {
-                label: "Manager",
+                label: t("chat.manager"),
                 color: "purple",
                 user: ticket.manager?.user,
             },
         ],
         manager: [
             {
-                label: "User",
+                label: t("chat.user"),
                 color: "blue",
                 user: ticket.user,
             },
             {
-                label: "Technician",
+                label: t("chat.technician"),
                 color: "green",
                 user: ticket.technician?.user,
             },
         ],
         technician: [
             {
-                label: "User",
+                label: t("chat.user"),
                 color: "blue",
                 user: ticket.user,
             },
             {
-                label: "Manager",
+                label: t("chat.manager"),
                 color: "purple",
                 user: ticket.manager?.user,
             },
@@ -73,16 +67,18 @@ export default function ChatActions({ currentUser, ticket }) {
 
     return (
         <div className="mt-12">
-            <h3 className="text-xl font-semibold text-gray-800 mb-4">💬 Quick Chat</h3>
+            <h3 className="text-xl font-semibold text-gray-800 mb-4">{t("chat.quickChat")}</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {buttons[role]?.map(({ label, color, user }) => {
-                    const isAvailable = !!user?.id;
+                    const isAssigned = !!user?.id;
+                    const isChatDisabled = ticket.status === 2 || ticket.status === 3;
+                    const isAvailable = isAssigned && !isChatDisabled;
                     return (
                         <button
                             key={label}
                             onClick={() => isAvailable && handleChat(user.id)}
                             disabled={!isAvailable}
-                            aria-label={`Chat with ${label}`}
+                            aria-label={t("chat.chatWith", { label })}
                             className={`
                                 flex items-center justify-between w-full px-5 py-3 rounded-xl shadow-md 
                                 text-white font-semibold transition-all duration-200
@@ -91,10 +87,16 @@ export default function ChatActions({ currentUser, ticket }) {
                         >
                             <div className="flex items-center gap-3">
                                 <FaCommentDots size={18} />
-                                <span>Chat with {label + " " + user?.name}</span>
+                                <span>
+                                    {t("chat.chatWith", { label })}{user?.name ? " " + user.name : ""}
+                                </span>
                             </div>
                             {!isAvailable && (
-                                <span className="text-sm italic opacity-80">Not assigned</span>
+                                <span className="text-sm italic opacity-80">
+                                    {isChatDisabled
+                                        ? t("chat.resolvedOrClosed")
+                                        : t("chat.notAssigned")}
+                                </span>
                             )}
                         </button>
                     );

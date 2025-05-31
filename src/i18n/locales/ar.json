@@ -184,9 +184,61 @@
             "createdAt": "تاريخ الإنشاء",
             "actions": "الإجراءات"
         },
-        "pagination":{
+        "pagination": {
             "showing": "عرض",
             "page": "صفحة"
         }
+    },
+    "chat": {
+        "technician": "الفني",
+        "manager": "المدير",
+        "user": "المستخدم",
+        "quickChat": "الدردشة السريعة",
+        "chatWith": "الدردشة مع {{label}}",
+        "resolvedOrClosed": "التذكرة محلولة أو مغلقة",
+        "notAssigned": "غير مسندة"
+    },
+    "ticketDetails": {
+        "unsupportedRole": "الدور غير مدعوم",
+        "notFound": "التذكرة غير موجودة.",
+        "title": "تفاصيل التذكرة",
+        "back": "العودة",
+        "ticketId": "رقم التذكرة",
+        "ticketTitle": "العنوان",
+        "status": "الحالة",
+        "createdAt": "تاريخ الإنشاء",
+        "service": "الخدمة",
+        "user": "المستخدم",
+        "manager": "المدير",
+        "technician": "الفني",
+        "unknown": "غير معروف",
+        "notAssigned": "غير مسند",
+        "description": "الوصف",
+        "noDescription": "لم يتم توفير وصف."
+    },
+    "profilePage": {
+        "invalidImage": "يرجى تحميل ملف صورة صالح.",
+        "invalidAvatarFile": "ملف الصورة غير صالح.",
+        "updateSuccess": "تم تحديث الملف الشخصي بنجاح!",
+        "updateFail": "فشل في تحديث الملف الشخصي.",
+        "loadFail": "فشل في تحميل بيانات الملف الشخصي.",
+        "editProfile": "تعديل الملف الشخصي",
+        "personalInfo": "المعلومات الشخصية",
+        "fullName": "الاسم الكامل",
+        "email": "البريد الإلكتروني",
+        "phone": "رقم الهاتف",
+        "accountStatus": "حالة الحساب",
+        "accountType": "نوع الحساب",
+        "status": "الحالة",
+        "active": "نشط",
+        "inactive": "غير نشط",
+        "lastLogin": "آخر تسجيل دخول",
+        "memberSince": "عضو منذ {{date}}",
+        "avatarAlt": "الصورة الرمزية",
+        "updating": "جاري التحديث...",
+        "saveChanges": "حفظ التغييرات",
+        "nameMin": "الاسم يجب أن يكون على الأقل 3 أحرف",
+        "phoneMin": "رقم الهاتف يجب أن يكون على الأقل 10 أرقام",
+        "emailValid": "يرجى إدخال عنوان بريد إلكتروني صالح"
     }
 }
