@@ -80,11 +80,11 @@ const TicketsTable = ({
       {/* Results Summary */}
       <div className="mb-4 flex justify-between items-center">
         <div className="text-sm text-gray-600">
-          Showing {ticketsData.length > 0 ? ((currentPage - 1) * itemsPerPage + 1) : 0} to{" "}
-          {Math.min(currentPage * itemsPerPage, totalRecords)} of {totalRecords} tickets
+          {t("table.pagination.showing", "Showing")} {ticketsData.length > 0 ? ((currentPage - 1) * itemsPerPage + 1) : 0} {t("table.pagination.to", "to")}{" "}
+          {Math.min(currentPage * itemsPerPage, totalRecords)} {t("table.pagination.of", "of")} {totalRecords} {t("table.pagination.tickets", "tickets")}
         </div>
         <div className="text-sm text-gray-500">
-          Page {currentPage} of {totalPages}
+          {t("table.pagination.page", "Page")} {currentPage} {t("table.pagination.of", "of")} {totalPages}
         </div>
       </div>
 
@@ -100,8 +100,8 @@ const TicketsTable = ({
         ) : (
           <div className="text-center py-12">
             <div className="text-gray-400 text-lg mb-2">📋</div>
-            <div className="text-gray-600 text-lg font-medium">No tickets found</div>
-            <div className="text-gray-500 text-sm">Try adjusting your search or filter criteria</div>
+            <div className="text-gray-600 text-lg font-medium">{t("table.noTickets", "No tickets found")}</div>
+            <div className="text-gray-500 text-sm">{t("table.tryAdjusting", "Try adjusting your search or filter criteria")}</div>
           </div>
         )}
       </div>

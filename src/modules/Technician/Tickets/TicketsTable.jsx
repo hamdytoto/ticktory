@@ -124,14 +124,11 @@ const TicketsTable = ({
             {/* Top summary */}
             <div className="mb-4 flex justify-between items-center">
                 <div className="text-sm text-gray-600">
-                    {t("table.pagination.showing", {
-                        from: ticketsData.length > 0 ? (currentPage - 1) * itemsPerPage + 1 : 0,
-                        to: Math.min(currentPage * itemsPerPage, totalRecords),
-                        total: totalRecords,
-                    }) || `Showing ${ticketsData.length > 0 ? (currentPage - 1) * itemsPerPage + 1 : 0} to ${Math.min(currentPage * itemsPerPage, totalRecords)} of ${totalRecords} entries`}
+                    {t("table.pagination.showing", "Showing")} {ticketsData.length > 0 ? ((currentPage - 1) * itemsPerPage + 1) : 0} {t("table.pagination.to", "to")}{" "}
+                    {Math.min(currentPage * itemsPerPage, totalRecords)} {t("table.pagination.of", "of")} {totalRecords} {t("table.pagination.tickets", "tickets")}
                 </div>
                 <div className="text-sm text-gray-500">
-                    {t("table.pagination.page", { current: currentPage, total: totalPages }) || `Page ${currentPage} of ${totalPages}`}
+                    {t("table.pagination.page", "Page")} {currentPage} {t("table.pagination.of", "of")} {totalPages}
                 </div>
             </div>
 

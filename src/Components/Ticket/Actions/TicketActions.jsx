@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import SearchForm from "./SearchForm";
 import ItemsPerPageSelector from "./ItemsPerPageSelector";
 import DateFilterForm from "./DateFilterForm";
@@ -17,6 +18,7 @@ const TicketActions = ({
   onItemsPerPageChange,
   setShowModal,
 }) => {
+  const { t } = useTranslation();
   const [localSearch, setLocalSearch] = useState(search);
   const [localSearchColumn, setLocalSearchColumn] = useState(searchColumn);
   const [localDateFrom, setLocalDateFrom] = useState(dateFrom);
@@ -31,12 +33,12 @@ const TicketActions = ({
   }, [searchColumn]);
 
   const columns = [
-    { value: "title", label: "Title" },
-    { value: "status", label: "Status" },
-    { value: "user", label: "User" },
-    { value: "manager", label: "Manager" },
-    { value: "technician", label: "Technician" },
-    { value: "service", label: "Service" },
+    { value: "title", label: t("table.columns.title", "Title") },
+    { value: "status", label: t("table.columns.status", "Status") },
+    { value: "user", label: t("table.columns.user", "User") },
+    { value: "manager", label: t("table.columns.manager", "Manager") },
+    { value: "technician", label: t("table.columns.technician", "Technician") },
+    { value: "service", label: t("table.columns.service", "Service") },
   ];
 
   const itemsPerPageOptions = [5, 7, 10, 15, 20, 25, 50];
@@ -77,19 +79,19 @@ const TicketActions = ({
         />
         <div className="flex items-center gap-4">
           {setShowModal && (
-          <button
-            className="bg-blue-600 text-white px-4 py-2 md:py-3 rounded-lg flex items-center gap-2 hover:bg-blue-700 transition"
-            onClick={() => setShowModal(true)}
-          >
-            <FaPlus className="w-4 h-4" /> New Ticket
-          </button>)}
-        <ItemsPerPageSelector
-          itemsPerPage={itemsPerPage}
-          onItemsPerPageChange={onItemsPerPageChange}
-          options={itemsPerPageOptions}
-        />
+            <button
+              className="bg-blue-600 text-white px-4 py-2 md:py-3 rounded-lg flex items-center gap-2 hover:bg-blue-700 transition"
+              onClick={() => setShowModal(true)}
+            >
+              <FaPlus className="w-4 h-4" /> {t("ticketActions.newTicket", "New Ticket")}
+            </button>
+          )}
+          <ItemsPerPageSelector
+            itemsPerPage={itemsPerPage}
+            onItemsPerPageChange={onItemsPerPageChange}
+            options={itemsPerPageOptions}
+          />
         </div>
-        
       </div>
 
       <DateFilterForm

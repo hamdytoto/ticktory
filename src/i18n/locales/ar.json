@@ -191,8 +191,15 @@
         },
         "pagination": {
             "showing": "عرض",
-            "page": "صفحة"
-        }
+            "page": "صفحة",
+            "to": "إلى",
+            "of": "من",
+            "tickets": "تذاكر"
+        },
+        "show": "عرض:",
+        "perPage": "لكل صفحة",
+        "noTickets": "لا توجد تذاكر",
+        "tryAdjusting": "حاول تعديل معايير البحث أو التصفية"
     },
     "chat": {
         "technician": "الفني",
@@ -245,5 +252,47 @@
         "nameMin": "الاسم يجب أن يكون على الأقل 3 أحرف",
         "phoneMin": "رقم الهاتف يجب أن يكون على الأقل 10 أرقام",
         "emailValid": "يرجى إدخال عنوان بريد إلكتروني صالح"
+    },
+    "filters": {
+        "activeFilters": "عوامل التصفية النشطة:",
+        "search": "بحث",
+        "in": "في",
+        "date": "التاريخ",
+        "start": "البداية",
+        "end": "النهاية",
+        "to": "إلى",
+        "dateRangeFilter": "تصفية حسب النطاق الزمني",
+        "from": "من:",
+        "applyFilter": "تطبيق التصفية",
+        "clear": "مسح",
+        "searchPlaceholder": "ابحث في التذاكر...",
+        "searchIn": "البحث في:",
+        "clearSearch": "مسح البحث"
+    },
+    "ticketActions": {
+        "newTicket": "إنشاء تذكرة جديدة"
+    },
+    "adminTickets": {
+        "loading": "جاري تحميل التذاكر...",
+        "error": "حدث خطأ أثناء تحميل التذاكر",
+        "allTickets": "كل التذاكر"
+    },
+    "addTicket": {
+        "close": "إغلاق",
+        "title": "إضافة تذكرة جديدة",
+        "ticketTitle": "العنوان",
+        "selectService": "اختر خدمة",
+        "description": "الوصف",
+        "cancel": "إلغاء",
+        "submit": "إرسال"
+    },
+    "editTicket": {
+        "close": "إغلاق",
+        "title": "تعديل التذكرة",
+        "ticketTitle": "العنوان",
+        "selectService": "اختر خدمة",
+        "description": "الوصف",
+        "cancel": "إلغاء",
+        "saveChanges": "حفظ التغييرات"
     }
 }

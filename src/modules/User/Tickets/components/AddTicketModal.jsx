@@ -1,11 +1,13 @@
 /* eslint-disable react/prop-types */
+import { useTranslation } from "react-i18next";
 import { useGetServicesQuery } from "../../../../redux/feature/selectMenu/select.apislice.js";
+
 const AddTicketModal = ({ show, onClose, ticketData, setTicketData, onAdd }) => {
-    const { data: servicesData} = useGetServicesQuery({
+    const { t } = useTranslation();
+    const { data: servicesData } = useGetServicesQuery({
         only_associated_to_managers: 1,
     });
     const services = servicesData?.data || [];
-    // console.log(services, "services from add ticket modal");
     if (!show) return null;
 
     const handleChange = (e) => {
@@ -31,6 +33,7 @@ const AddTicketModal = ({ show, onClose, ticketData, setTicketData, onAdd }) => 
                 <button
                     className="absolute top-3 right-3 text-gray-400 hover:text-red-500 transition"
                     onClick={onClose}
+                    aria-label={t("addTicket.close", "Close")}
                 >
                     <svg
                         className="w-5 h-5"
@@ -42,15 +45,14 @@ const AddTicketModal = ({ show, onClose, ticketData, setTicketData, onAdd }) => 
                     </svg>
                 </button>
 
-                <h2 className="text-2xl font-semibold mb-6 text-gray-800">Add New Ticket</h2>
+                <h2 className="text-2xl font-semibold mb-6 text-gray-800">{t("addTicket.title", "Add New Ticket")}</h2>
 
                 {/* Dropdown for Service Selection */}
-
                 <div className="mb-4">
                     <input
                         type="text"
                         name="title"
-                        placeholder="Title"
+                        placeholder={t("addTicket.ticketTitle", "Title")}
                         value={ticketData.title}
                         onChange={handleChange}
                         className="mt-2 p-3 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -63,7 +65,7 @@ const AddTicketModal = ({ show, onClose, ticketData, setTicketData, onAdd }) => 
                         onChange={handleServiceChange}
                         className="mt-2 p-3 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     >
-                        <option value="">Select a Service</option>
+                        <option value="">{t("addTicket.selectService", "Select a Service")}</option>
                         {services?.map(service => (
                             <option key={service.id} value={service.id}>
                                 {service.name}
@@ -74,7 +76,7 @@ const AddTicketModal = ({ show, onClose, ticketData, setTicketData, onAdd }) => 
                 <div className="mb-6">
                     <textarea
                         name="description"
-                        placeholder="Description"
+                        placeholder={t("addTicket.description", "Description")}
                         value={ticketData.description}
                         onChange={handleChange}
                         className="mt-2 p-3 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -87,13 +89,13 @@ const AddTicketModal = ({ show, onClose, ticketData, setTicketData, onAdd }) => 
                         onClick={onClose}
                         className="bg-gray-200 px-4 py-2 rounded-md hover:bg-gray-300 transition"
                     >
-                        Cancel
+                        {t("addTicket.cancel", "Cancel")}
                     </button>
                     <button
                         onClick={onAdd}
                         className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition"
                     >
-                        Submit
+                        {t("addTicket.submit", "Submit")}
                     </button>
                 </div>
             </div>

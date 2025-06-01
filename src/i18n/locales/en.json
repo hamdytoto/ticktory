@@ -190,9 +190,16 @@
             "email": "Email"
         },
         "pagination": {
-            "page": "Page",
-            "showing": "Showing"
-        }
+            "showing": "Showing",
+            "to": "to",
+            "of": "of",
+            "tickets": "tickets",
+            "page": "Page"
+        },
+        "show": "Show:",
+        "perPage": "per page",
+        "noTickets": "No tickets found",
+        "tryAdjusting": "Try adjusting your search or filter criteria"
     },
     "chat": {
         "technician": "Technician",
@@ -244,6 +251,46 @@
         "nameMin": "Name must be at least 3 characters",
         "phoneMin": "Phone number must be at least 10 digits",
         "emailValid": "Please enter a valid email address."
-
+    },
+    "filters": {
+        "activeFilters": "Active Filters:",
+        "search": "Search",
+        "in": "in",
+        "date": "Date",
+        "start": "Start",
+        "end": "End",
+        "dateRangeFilter": "Date Range Filter",
+        "from": "From:",
+        "applyFilter": "Apply Filter",
+        "clear": "Clear",
+        "searchPlaceholder": "Search tickets...",
+        "searchIn": "Search in:",
+        "clearSearch": "Clear search"
+    },
+    "ticketActions": {
+        "newTicket": "New Ticket"
+    },
+    "adminTickets": {
+        "loading": "Loading tickets...",
+        "error": "Error loading tickets",
+        "allTickets": "All Tickets"
+    },
+    "addTicket": {
+        "close": "Close",
+        "title": "Add New Ticket",
+        "ticketTitle": "Title",
+        "selectService": "Select a Service",
+        "description": "Description",
+        "cancel": "Cancel",
+        "submit": "Submit"
+    },
+    "editTicket": {
+        "close": "Close",
+        "title": "Edit Ticket",
+        "ticketTitle": "Title",
+        "selectService": "Select a Service",
+        "description": "Description",
+        "cancel": "Cancel",
+        "saveChanges": "Save Changes"
     }
 }

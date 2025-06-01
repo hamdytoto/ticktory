@@ -5,8 +5,10 @@ import TicketActions from "../../../Components/Ticket/Actions/TicketActions";
 import { useGetAllTicketsApiQuery } from "../../../redux/feature/admin/Tickets/admin.ticket.apislice";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function AdminTickets() {
+  const { t } = useTranslation();
   const { ticketId } = useParams();
   const navigate = useNavigate();
 
@@ -79,7 +81,7 @@ export default function AdminTickets() {
     return (
       <div className="p-6 mx-auto">
         <div className="flex justify-center items-center h-64">
-          <div className="text-lg text-gray-600">Loading tickets...</div>
+          <div className="text-lg text-gray-600">{t("adminTickets.loading", "Loading tickets...")}</div>
         </div>
       </div>
     );
@@ -89,7 +91,7 @@ export default function AdminTickets() {
     return (
       <div className="p-6 mx-auto">
         <div className="flex justify-center items-center h-64">
-          <div className="text-lg text-red-600">Error loading tickets</div>
+          <div className="text-lg text-red-600">{t("adminTickets.error", "Error loading tickets")}</div>
         </div>
       </div>
     );
@@ -97,8 +99,7 @@ export default function AdminTickets() {
 
   return (
     <div className="p-6 mx-auto">
-      <h1 className="text-4xl font-bold text-gray-800">All Tickets</h1>
-
+      <h1 className="text-4xl font-bold text-gray-800">{t("adminTickets.allTickets", "All Tickets")}</h1>
       <TicketActions
         search={search}
         searchColumn={searchColumn}

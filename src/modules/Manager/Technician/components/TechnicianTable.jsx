@@ -11,9 +11,8 @@ import EditTechnicianModal from "./EditTechnician.jsx";
 import Pagination from "../../../../common/Pagnitation.jsx";
 import ConfirmDialog from "../../../../common/ConfirmDialogu.jsx";
 
-const itemsPerPage = 7;
 
-const TechnicianTable = ({ search }) => {
+const TechnicianTable = ({ search, itemsPerPage }) => {
     const { data, refetch } = useShowAllTechnicianQuery();
     const [deleteTechnician] = useDeleteTechnicianMutation();
     const [updateTechnician] = useUpdateTechnicianMutation();
@@ -96,7 +95,7 @@ const TechnicianTable = ({ search }) => {
                             <th className="py-3 px-4">NAME</th>
                             <th className="py-3 px-4">EMAIL</th>
                             <th className="py-3 px-4">PHONE</th>
-                            <th className="py-3 px-4">DEPARTMENT</th>
+                            {/* <th className="py-3 px-4">DEPARTMENT</th> */}
                             <th className="py-3 px-4">ACTIONS</th>
                         </tr>
                     </thead>
@@ -111,8 +110,8 @@ const TechnicianTable = ({ search }) => {
                                 </td>
                                 <td className="py-3 px-4 text-gray-800 text-md font-medium">{tech.user.name}</td>
                                 <td className="py-3 px-4 text-gray-500 text-md">{tech.user.email}</td>
-                                <td className="py-3 px-4 text-gray-500 text-md">{tech.user.phone}</td>
-                                <td className="py-3 px-4 text-gray-500 text-md">{tech.service?.name}</td>
+                                <td className="py-3 px-4 text-gray-500 text-md">{tech.user.phone||"_"}</td>
+                                {/* <td className="py-3 px-4 text-gray-500 text-md">{tech.service?.name}</td> */}
                                 <td className="py-3 px-4 flex items-center space-x-3">
                                     <button
                                         onClick={() => handleDeleteClick(tech.id)}
