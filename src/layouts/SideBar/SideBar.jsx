@@ -59,11 +59,11 @@ export default function Sidebar({
             {/* Mobile toggle button */}
             {isMobile && (
                 <button
-                    className={`fixed top-4 ${isRTL ? "right-4" : "left-4"} z-100 bg-gray-900 text-white p-2 rounded-full shadow-lg`}
+                    className={`fixed top-4 ${isRTL ? "right-4" : "left-4"} z-100  text-gray p-2 `}
                     onClick={() => setIsMobileOpen(!isMobileOpen)}
                 >
                     {isMobileOpen ? (
-                        <CloseIcon fontSize="medium" />
+                        <CloseIcon fontSize="medium" className="text-white" />
                     ) : (
                         <MenuIcon fontSize="medium" />
                     )}
@@ -83,12 +83,13 @@ export default function Sidebar({
                             {menuConfig[getUserRole(user.type)]?.map((item) => (
                                 <li key={item.id} className="mt-5">
                                     <button
-                                        onClick={() => {setActivePage(item.id);
+                                        onClick={() => {
+                                            setActivePage(item.id);
                                             setIsMobileOpen(false);
                                         }}
                                         className={`flex w-full items-center p-3.5 rounded-lg transition ${activePage === item.id
-                                                ? "bg-[#051754] text-white"
-                                                : "hover:bg-[#051754]"
+                                            ? "bg-[#051754] text-white"
+                                            : "hover:bg-[#051754]"
                                             }`}
                                     >
                                         <div className="flex justify-center w-6">{item.icon}</div>

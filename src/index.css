@@ -18,8 +18,6 @@ code {
 		monospace;
 }
 
-/*  */
-/* sidebar.css */
 .sidebar {
 	background-color: #1e293b;
 	color: white;
@@ -38,7 +36,6 @@ code {
 	transition: width 0.3s ease-in-out;
 }
 
-/* تنسيق عناصر القائمة */
 .sidebar .menu-item {
 	padding: 12px;
 	font-size: 16px;
@@ -53,24 +50,20 @@ code {
 	-o-transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
 
-/* تأثير عند تمرير الفأرة */
 .sidebar .menu-item:hover {
 	background-color: #3b82f6;
 	transform: scale(1.05);
 }
 
-/* أيقونات القائمة */
 .sidebar .menu-item svg {
 	font-size: 20px;
 	transition: transform 0.3s ease-in-out;
 }
 
-/* تأثير على الأيقونات عند التحويم */
 .sidebar .menu-item:hover svg {
 	transform: rotate(10deg);
 }
 
-/* تأثير عند النقر على زر التصغير */
 .toggle-btn {
 	background-color: transparent;
 	border: none;
@@ -108,3 +101,8 @@ code {
   background-repeat: no-repeat;
   z-index: -1;
 } */
+@media (max-width: 700px) {
+	.naav {
+		margin-inline: 45px !important;
+	}
+}

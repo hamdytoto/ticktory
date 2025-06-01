@@ -11,20 +11,26 @@ import EditManagerModal from "./EditManger.jsx";
 import Pagination from "../../../../common/Pagnitation.jsx";
 import ConfirmDialog from "../../../../common/ConfirmDialogu.jsx";
 
-const itemsPerPage = 7;
-
-const ManagerTable = ({ search }) => {
-    const { data, refetch } = useShowAllManagersApiQuery();
+const ManagerTable = ({ search, itemsPerPage, currentPage, setCurrentPage }) => {
+    // Send page and search parameters to the API
+    const { data, refetch } = useShowAllManagersApiQuery({
+        per_page: itemsPerPage,
+        page: currentPage,
+        handle: search || '', // Send search parameter to backend
+    });
+    
     const [deleteManager] = useDeleteManagerApiMutation();
     const [updateManager] = useUpdateManagerApiMutation();
+    
+    // Get data from API response
     const managersData = data?.data || [];
+    const meta = data?.meta || {};
+    
+    // Use pagination info from API response
+    const totalPages = meta.last_page || 1;
+    const totalItems = meta.total || 0;
+    
     console.log(managersData);
-
-    const [currentPage, setCurrentPage] = useState(1);
-    const filteredManagers = managersData.filter((manager) =>
-        manager.user.name.toLowerCase().includes(search.toLowerCase())
-    );
-    const totalPages = Math.ceil(filteredManagers?.length / itemsPerPage);
 
     const handlePageChange = (page) => {
         if (page >= 1 && page <= totalPages) {
@@ -87,11 +93,6 @@ const ManagerTable = ({ search }) => {
         }
     };
 
-    const displayedManagers = filteredManagers?.slice(
-        (currentPage - 1) * itemsPerPage,
-        currentPage * itemsPerPage
-    );
-
     return (
         <div className="bg-white p-4 md:p-6 rounded-xl shadow-lg">
             <div className="overflow-x-auto">
@@ -107,7 +108,7 @@ const ManagerTable = ({ search }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {displayedManagers?.map((manager) => (
+                        {managersData?.map((manager) => (
                             <tr
                                 key={manager.id}
                                 className="border-b border-gray-200 hover:bg-gray-100 transition"
@@ -144,7 +145,7 @@ const ManagerTable = ({ search }) => {
                 totalPages={totalPages}
                 onPageChange={handlePageChange}
                 itemsPerPage={itemsPerPage}
-                dataLength={filteredManagers.length}
+                dataLength={totalItems} // Use total from API instead of filtered length
             />
 
             <EditManagerModal

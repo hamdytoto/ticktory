@@ -1,8 +1,9 @@
 export const showAllManagersApi = (builder) =>
 	builder.query({
-		query: () => ({
+		query: (params) => ({
 			url: "api/admin/managers",
 			method: "GET",
+			params,
 		}),
 		providesTags: ["Managers"],
 	});

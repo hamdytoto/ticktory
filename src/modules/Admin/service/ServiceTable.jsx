@@ -11,9 +11,8 @@ import EditServiceModal from "./EditService.jsx";
 import Pagination from "../../../common/Pagnitation.jsx";
 import ConfirmDialog from "../../../common/ConfirmDialogu.jsx";
 
-const itemsPerPage = 9;
 
-const ServicesTable = ({ search }) => {
+const ServicesTable = ({ search , itemsPerPage}) => {
     const { data, refetch } = useShowAllServicesApiQuery();
     const [deleteService] = useDeleteServiceApiMutation();
     const [updateService] = useUpdateServiceApiMutation();

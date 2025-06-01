@@ -8,6 +8,7 @@ export default function LanguageSelector() {
   const languages = [
     { code: "en", label: "English", flag: "https://flagcdn.com/w2560/gb.png" },
     { code: "ar", label: "العربية", flag: "https://flagcdn.com/w2560/eg.png" },
+
   ];
 
   const handleLanguageChange = (code) => {

@@ -1,8 +1,9 @@
 export const showAllServicesApi = (builder) =>
 	builder.query({
-		query: () => ({
+		query: (params) => ({
 			url: "api/admin/services",
 			method: "GET",
+			params
 		}),
 	});
 export const searchServiceApi = (builder) =>

@@ -4,11 +4,13 @@ const TableRow = ({
     ticket,
     columns,
     onTicketClick,
-    getTicketStatusInfo,
+    getTicketStatusInfo = undefined,
     actionsRenderer,
 }) => {
     const { t } = useTranslation();
-    const { label, className } = getTicketStatusInfo(ticket.status,t);
+    const statusInfo = getTicketStatusInfo ? getTicketStatusInfo(ticket.status, t) : {};
+    const label = statusInfo.label || ticket.status || "";
+    const className = statusInfo.className || "";
 
     return (
         <tr className="border-b border-gray-200 hover:bg-gray-100 transition cursor-pointer">

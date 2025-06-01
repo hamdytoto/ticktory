@@ -182,7 +182,12 @@
             "technician": "الفني",
             "user": "المستخدم",
             "createdAt": "تاريخ الإنشاء",
-            "actions": "الإجراءات"
+            "actions": "الإجراءات",
+            "phone": "الهاتف",
+            "department": "القسم",
+            "name": "الاسم",
+            "avatar": "الصورة الشخصية",
+            "email": "البريد الإلكتروني"
         },
         "pagination": {
             "showing": "عرض",

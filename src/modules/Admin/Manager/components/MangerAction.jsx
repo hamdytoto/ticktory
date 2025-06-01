@@ -30,7 +30,7 @@ const ManagerActions = ({
                         value={itemsPerPage}
                         onChange={(e) => setItemsPerPage(Number(e.target.value))}
                     >
-                        {[10, 25, 50, 100].map(size => (
+                        {[5,7, 10, 25, 50].map(size => (
                             <option key={size} value={size}>{size}</option>
                         ))}
                     </select>

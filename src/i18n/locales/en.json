@@ -182,7 +182,12 @@
             "user": "User",
             "technician": "Technician",
             "createdAt": "Created At",
-            "actions": "Actions"
+            "actions": "Actions",
+            "phone": "Phone",
+            "department": "Department",
+            "name": "Name",
+            "avatar": "Avatar",
+            "email": "Email"
         },
         "pagination": {
             "page": "Page",

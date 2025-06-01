@@ -13,6 +13,7 @@ import {
 const Manager = () => {
   const [search, setSearch] = useState("");
   const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1); // Add page state here
   const [showModal, setShowModal] = useState(false);  
 
   const [managerData, setManagerData] = useState({
@@ -26,7 +27,23 @@ const Manager = () => {
   });
 
   const [createManager] = useCreateManagerApiMutation();
-  const { refetch } = useShowAllManagersApiQuery();
+  const { refetch } = useShowAllManagersApiQuery({
+    per_page: itemsPerPage,
+    page: currentPage,
+    handle: search,
+  });
+
+  // Handle search change and reset page to 1
+  const handleSearchChange = (newSearch) => {
+    setSearch(newSearch);
+    setCurrentPage(1); // Reset to first page when search changes
+  };
+
+  // Handle items per page change and reset page to 1
+  const handleItemsPerPageChange = (newItemsPerPage) => {
+    setItemsPerPage(newItemsPerPage);
+    setCurrentPage(1); // Reset to first page when items per page changes
+  };
 
   const handleAddManager = async () => {
     const { service_id, user } = managerData;
@@ -61,9 +78,9 @@ const Manager = () => {
     <div className="p-6 mx-auto">
       <ManagerActions
         search={search}
-        setSearch={setSearch}
+        setSearch={handleSearchChange} // Use the handler function
         itemsPerPage={itemsPerPage}
-        setItemsPerPage={setItemsPerPage}
+        setItemsPerPage={handleItemsPerPageChange} // Use the handler function
         setShowModal={setShowModal}
       />
 
@@ -71,6 +88,8 @@ const Manager = () => {
         <ManagerTable
           search={search}
           itemsPerPage={itemsPerPage}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
         />
       </div>
 
