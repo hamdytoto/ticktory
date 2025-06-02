@@ -3,6 +3,7 @@ import ManagerActions from "./components/MangerAction.jsx";
 import ManagerTable from "./components/MangerTable.jsx";
 import AddManagerModal from "./components/AddManger.jsx";
 import { ToastContainer, toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 // API Hooks
 import {
@@ -11,13 +12,14 @@ import {
 } from "../../../redux/feature/admin/Managers/admin.manager.apislice.js";
 
 const Manager = () => {
+  const { t } = useTranslation();
   const [search, setSearch] = useState("");
   const [itemsPerPage, setItemsPerPage] = useState(10);
-  const [currentPage, setCurrentPage] = useState(1); // Add page state here
-  const [showModal, setShowModal] = useState(false);  
+  const [currentPage, setCurrentPage] = useState(1);
+  const [showModal, setShowModal] = useState(false);
 
   const [managerData, setManagerData] = useState({
-    service_id: "", // Set this dynamically if needed
+    service_id: "",
     user: {
       name: "",
       email: "",
@@ -36,13 +38,13 @@ const Manager = () => {
   // Handle search change and reset page to 1
   const handleSearchChange = (newSearch) => {
     setSearch(newSearch);
-    setCurrentPage(1); // Reset to first page when search changes
+    setCurrentPage(1);
   };
 
   // Handle items per page change and reset page to 1
   const handleItemsPerPageChange = (newItemsPerPage) => {
     setItemsPerPage(newItemsPerPage);
-    setCurrentPage(1); // Reset to first page when items per page changes
+    setCurrentPage(1);
   };
 
   const handleAddManager = async () => {
@@ -50,13 +52,13 @@ const Manager = () => {
     const { name, email, password, password_confirmation } = user;
 
     if (!service_id || !name || !email || !password || !password_confirmation) {
-      toast.warn("Please fill all the fields.");
+      toast.warn(t("manager.toast.fillAllFields", "Please fill all the fields."));
       return;
     }
 
     try {
       await createManager(managerData).unwrap();
-      toast.success("Manager added successfully!");
+      toast.success(t("manager.toast.addSuccess", "Manager added successfully!"));
       setManagerData({
         service_id: "",
         user: {
@@ -69,7 +71,7 @@ const Manager = () => {
       setShowModal(false);
       refetch();
     } catch (error) {
-      toast.error("Failed to add manager.");
+      toast.error(t("manager.toast.addFail", "Failed to add manager."));
       console.error(error);
     }
   };
@@ -78,9 +80,9 @@ const Manager = () => {
     <div className="p-6 mx-auto">
       <ManagerActions
         search={search}
-        setSearch={handleSearchChange} // Use the handler function
+        setSearch={handleSearchChange}
         itemsPerPage={itemsPerPage}
-        setItemsPerPage={handleItemsPerPageChange} // Use the handler function
+        setItemsPerPage={handleItemsPerPageChange}
         setShowModal={setShowModal}
       />
 

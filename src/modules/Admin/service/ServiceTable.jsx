@@ -10,9 +10,9 @@ import { toast } from "react-toastify";
 import EditServiceModal from "./EditService.jsx";
 import Pagination from "../../../common/Pagnitation.jsx";
 import ConfirmDialog from "../../../common/ConfirmDialogu.jsx";
+import AppTable from "../../../Components/Table/AppTable.jsx"; // Adjust path as needed
 
-
-const ServicesTable = ({ search , itemsPerPage}) => {
+const ServicesTable = ({ search, itemsPerPage }) => {
     const { data, refetch } = useShowAllServicesApiQuery();
     const [deleteService] = useDeleteServiceApiMutation();
     const [updateService] = useUpdateServiceApiMutation();
@@ -20,7 +20,8 @@ const ServicesTable = ({ search , itemsPerPage}) => {
     const [currentPage, setCurrentPage] = useState(1);
 
     const filteredServices = servicesData.filter((service) =>
-        service.name.toLowerCase().includes(search.toLowerCase()))
+        service.name.toLowerCase().includes(search.toLowerCase())
+    );
     const totalPages = Math.ceil(filteredServices.length / itemsPerPage);
 
     const [editingService, setEditingService] = useState(null);
@@ -34,10 +35,12 @@ const ServicesTable = ({ search , itemsPerPage}) => {
 
     const [showConfirm, setShowConfirm] = useState(false);
     const [selectedId, setSelectedId] = useState(null);
+
     const handleDeleteClick = (id) => {
         setSelectedId(id);
         setShowConfirm(true);
     };
+
     const confirmDelete = async () => {
         try {
             await deleteService(selectedId).unwrap();
@@ -78,56 +81,73 @@ const ServicesTable = ({ search , itemsPerPage}) => {
         currentPage * itemsPerPage
     );
 
+    // Define columns for AppTable
+    const columns = [
+        {
+            key: "id",
+            header: "Id",
+            render: (row) => (
+                <span className="text-gray-800 text-md font-medium">
+                    #{row.id}
+                </span>
+            ),
+        },
+        {
+            key: "name",
+            header: "Name",
+            render: (row) => (
+                <span className="text-gray-800 text-md font-medium">
+                    {row.name}
+                </span>
+            ),
+        },
+        {
+            key: "actions",
+            header: "Actions",
+            render: (row) => (
+                <div className="flex items-center space-x-2">
+                    {renderActions(row)}
+                </div>
+            ),
+        }
+    ];
+
+    // Define actions for AppTable
+    const renderActions = (service) => (
+        <>
+            <button
+                onClick={() => handleDeleteClick(service.id)}
+                className="text-red-500 hover:text-red-700"
+                title="Delete service"
+            >
+                <FaTrash />
+            </button>
+            <button
+                onClick={() => handleEdit(service)}
+                className="text-gray-600 hover:text-black"
+                title="Edit service"
+            >
+                <FaEdit />
+            </button>
+        </>
+    );
+
     return (
         <div className="bg-white p-4 md:p-6 rounded-xl shadow-lg">
-            <div className="overflow-x-auto">
-                <table className="w-full border-collapse">
-                    <thead>
-                        <tr className="text-gray-600 text-left text-lg md:text-md font-semibold border-b border-gray-300">
-                            <th className="py-3 px-4">ID</th>
-                            <th className="py-3 px-4">NAME</th>
-                            <th className="py-3 px-4">ACTIONS</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {displayedServices.map((service) => (
-                            <tr
-                                key={service.id}
-                                className="border-b border-gray-200 hover:bg-gray-100 transition"
-                            >
-                                <td className="py-3 px-4 text-gray-800 text-md font-medium">
-                                    #{service.id}
-                                </td>
-                                <td className="py-3 px-4 text-gray-800 text-md font-medium">
-                                    {service.name}
-                                </td>
-                                <td className="py-3 px-4 flex items-center space-x-3">
-                                    <button
-                                        onClick={() => handleDeleteClick(service.id)}
-                                        className="text-red-500 hover:text-red-700"
-                                    >
-                                        <FaTrash />
-                                    </button>
-                                    <button
-                                        onClick={() => handleEdit(service)}
-                                        className="text-gray-600 hover:text-black"
-                                    >
-                                        <FaEdit />
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+            <AppTable
+                columns={columns}
+                data={displayedServices}
+            />
+            <div className="mt-4">
+                <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={handlePageChange}
+                    itemsPerPage={itemsPerPage}
+                    dataLength={servicesData?.length}
+                />
             </div>
 
-            <Pagination
-                currentPage={currentPage}
-                totalPages={totalPages}
-                onPageChange={handlePageChange}
-                itemsPerPage={itemsPerPage}
-                dataLength={servicesData?.length}
-            />
             <EditServiceModal
                 show={editingService !== null}
                 onClose={() => setEditingService(null)}

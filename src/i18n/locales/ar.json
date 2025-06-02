@@ -294,5 +294,59 @@
         "description": "الوصف",
         "cancel": "إلغاء",
         "saveChanges": "حفظ التغييرات"
+    },
+    "managerTable": {
+        "avatar": "الصورة",
+        "avatarAlt": "الصورة الرمزية",
+        "name": "الاسم",
+        "email": "البريد الإلكتروني",
+        "phone": "الهاتف",
+        "department": "القسم",
+        "actions": "الإجراءات",
+        "delete": "حذف",
+        "edit": "تعديل",
+        "deleteSuccess": "تم حذف المدير بنجاح",
+        "deleteFail": "فشل في حذف المدير",
+        "updateSuccess": "تم تحديث المدير بنجاح",
+        "updateFail": "فشل في تحديث المدير",
+        "confirmDelete": "هل تريد حقًا حذف هذا المدير؟ لا يمكن التراجع عن ذلك."
+    },
+    "addManager": {
+        "close": "إغلاق",
+        "title": "إضافة مدير جديد",
+        "selectService": "اختر خدمة",
+        "name": "الاسم",
+        "email": "البريد الإلكتروني",
+        "password": "كلمة المرور",
+        "passwordConfirmation": "تأكيد كلمة المرور",
+        "showPassword": "إظهار كلمة المرور",
+        "hidePassword": "إخفاء كلمة المرور",
+        "cancel": "إلغاء",
+        "add": "إضافة"
+    },
+    "editManager": {
+        "close": "إغلاق",
+        "title": "تعديل المدير",
+        "selectService": "اختر خدمة",
+        "name": "الاسم",
+        "email": "البريد الإلكتروني",
+        "password": "كلمة المرور (اتركها فارغة للاحتفاظ بالحالية)",
+        "passwordConfirmation": "تأكيد كلمة المرور",
+        "showPassword": "إظهار كلمة المرور",
+        "hidePassword": "إخفاء كلمة المرور",
+        "cancel": "إلغاء",
+        "save": "حفظ"
+    },
+    "managerActions": {
+        "title": "إضافة مديرين ",
+        "searchPlaceholder": "إبحث عن مديرين...",
+        "newManager": "مدير جديد"
+    },
+    "manager": {
+        "toast": {
+            "fillAllFields": "يرجى تعبئة جميع الحقول.",
+            "addSuccess": "تمت إضافة المدير بنجاح!",
+            "addFail": "فشل في إضافة المدير."
+        }
     }
 }

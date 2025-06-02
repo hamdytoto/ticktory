@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { FaTrash, FaEdit } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 import {
     useShowAllManagersApiQuery,
     useDeleteManagerApiMutation,
@@ -10,27 +11,29 @@ import { toast } from "react-toastify";
 import EditManagerModal from "./EditManger.jsx";
 import Pagination from "../../../../common/Pagnitation.jsx";
 import ConfirmDialog from "../../../../common/ConfirmDialogu.jsx";
+import AppTable from "../../../../Components/Table/AppTable.jsx"; // Adjust path as needed
 
 const ManagerTable = ({ search, itemsPerPage, currentPage, setCurrentPage }) => {
+    const { t, i18n } = useTranslation();
+    const isArabic = i18n.language === 'ar';
+
     // Send page and search parameters to the API
     const { data, refetch } = useShowAllManagersApiQuery({
         per_page: itemsPerPage,
         page: currentPage,
-        handle: search || '', // Send search parameter to backend
+        handle: search || '',
     });
-    
+
     const [deleteManager] = useDeleteManagerApiMutation();
     const [updateManager] = useUpdateManagerApiMutation();
-    
+
     // Get data from API response
     const managersData = data?.data || [];
     const meta = data?.meta || {};
-    
+
     // Use pagination info from API response
     const totalPages = meta.last_page || 1;
     const totalItems = meta.total || 0;
-    
-    console.log(managersData);
 
     const handlePageChange = (page) => {
         if (page >= 1 && page <= totalPages) {
@@ -50,10 +53,10 @@ const ManagerTable = ({ search, itemsPerPage, currentPage, setCurrentPage }) => 
     const confirmDelete = async () => {
         try {
             await deleteManager(selectedId).unwrap();
-            toast.success("Manager deleted successfully");
+            toast.success(t("managerTable.deleteSuccess", "Manager deleted successfully"));
             refetch();
         } catch (err) {
-            toast.error("Failed to delete manager");
+            toast.error(t("managerTable.deleteFail", "Failed to delete manager"));
             console.error(err);
         } finally {
             setShowConfirm(false);
@@ -72,8 +75,8 @@ const ManagerTable = ({ search, itemsPerPage, currentPage, setCurrentPage }) => 
                 id: manager.user.id,
                 name: manager.user.name,
                 email: manager.user.email,
-                password: manager.user.password, // Leave blank for optional update
-                password_confirmation: manager.user.password, // Leave blank for optional update
+                password: manager.user.password,
+                password_confirmation: manager.user.password,
             },
         });
     };
@@ -84,69 +87,112 @@ const ManagerTable = ({ search, itemsPerPage, currentPage, setCurrentPage }) => 
                 id: editingManager.id,
                 body: editingManager,
             }).unwrap();
-            toast.success("Manager updated successfully");
+            toast.success(t("managerTable.updateSuccess", "Manager updated successfully"));
             setEditingManager(null);
             refetch();
         } catch (err) {
-            toast.error(err?.data?.message || "Failed to update manager");
+            toast.error(err?.data?.message || t("managerTable.updateFail", "Failed to update manager"));
             console.error(err);
         }
     };
 
+    // Define columns for AppTable
+    const columns = [
+        {
+            key: "avatar",
+            header: t("managerTable.avatar", "Avatar"),
+            render: (row) => (
+                <img 
+                    src={row.avatar} 
+                    alt={t("managerTable.avatarAlt", "Avatar")} 
+                    className="w-10 h-10 rounded-full object-cover"
+                />
+            ),
+        },
+        {
+            key: "name",
+            header: t("managerTable.name", "Name"),
+            render: (row) => (
+                <span className="text-gray-800 text-md font-medium">
+                    {row.user.name}
+                </span>
+            ),
+        },
+        {
+            key: "email",
+            header: t("managerTable.email", "Email"),
+            render: (row) => (
+                <span className="text-gray-500 text-md">
+                    {row.user.email}
+                </span>
+            ),
+        },
+        {
+            key: "phone",
+            header: t("managerTable.phone", "Phone"),
+            render: (row) => (
+                <span className="text-gray-500 text-md">
+                    {row.user.phone||"__"}
+                </span>
+            ),
+        },
+        {
+            key: "department",
+            header: t("managerTable.department", "Department"),
+            render: (row) => (
+                <span className="text-gray-500 text-md">
+                    {row.service?.name}
+                </span>
+            ),
+        },
+        {
+            key: "actions",
+            header: t("managerTable.actions", "Actions"),
+            render: (row) => renderActions(row),
+        },
+    ];
+
+    // Define actions for AppTable
+    const renderActions = (manager) => (
+        <div className={`flex items-center ${isArabic ? 'space-x-reverse space-x-3' : 'space-x-3'}`}>
+            <button
+                onClick={() => handleDeleteClick(manager.id)}
+                className="text-red-500 hover:text-red-700 transition-colors"
+                aria-label={t("managerTable.delete", "Delete")}
+                title={t("managerTable.delete", "Delete")}
+            >
+                <FaTrash />
+            </button>
+            <button
+                onClick={() => handleEdit(manager)}
+                className="text-gray-600 hover:text-black transition-colors"
+                aria-label={t("managerTable.edit", "Edit")}
+                title={t("managerTable.edit", "Edit")}
+            >
+                <FaEdit />
+            </button>
+        </div>
+    );
+
     return (
         <div className="bg-white p-4 md:p-6 rounded-xl shadow-lg">
-            <div className="overflow-x-auto">
-                <table className="w-full border-collapse">
-                    <thead>
-                        <tr className="text-gray-600 text-left text-lg md:text-md font-semibold border-b border-gray-300">
-                            <th className="py-3 px-4">AVATAR</th>
-                            <th className="py-3 px-4">NAME</th>
-                            <th className="py-3 px-4">EMAIL</th>
-                            <th className="py-3 px-4">PHONE</th>
-                            <th className="py-3 px-4">DEPARTMENT</th>
-                            <th className="py-3 px-4">ACTIONS</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {managersData?.map((manager) => (
-                            <tr
-                                key={manager.id}
-                                className="border-b border-gray-200 hover:bg-gray-100 transition"
-                            >
-                                <td className="py-3 px-4">
-                                    <img src={manager.avatar} alt="Avatar" className="w-10 h-10 rounded-full" />
-                                </td>
-                                <td className="py-3 px-4 text-gray-800 text-md font-medium">{manager.user.name}</td>
-                                <td className="py-3 px-4 text-gray-500 text-md">{manager.user.email}</td>
-                                <td className="py-3 px-4 text-gray-500 text-md">{manager.user.phone}</td>
-                                <td className="py-3 px-4 text-gray-500 text-md">{manager.service?.name}</td>
-                                <td className="py-3 px-4 flex items-center space-x-3">
-                                    <button
-                                        onClick={() => handleDeleteClick(manager.id)}
-                                        className="text-red-500 hover:text-red-700"
-                                    >
-                                        <FaTrash />
-                                    </button>
-                                    <button
-                                        onClick={() => handleEdit(manager)}
-                                        className="text-gray-600 hover:text-black"
-                                    >
-                                        <FaEdit />
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+            <div className={`${isArabic ? 'rtl' : 'ltr'}`}>
+                <AppTable
+                    columns={columns}
+                    data={managersData}
+                    // renderActions={renderActions}
+                />
             </div>
 
-            <Pagination
-                currentPage={currentPage}
-                totalPages={totalPages}
-                onPageChange={handlePageChange}
-                itemsPerPage={itemsPerPage}
-                dataLength={totalItems} // Use total from API instead of filtered length
-            />
+            <div className="mt-4">
+                <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={handlePageChange}
+                    itemsPerPage={itemsPerPage}
+                    dataLength={totalItems}
+                />
+            </div>
 
             <EditManagerModal
                 show={editingManager !== null}
@@ -158,7 +204,7 @@ const ManagerTable = ({ search, itemsPerPage, currentPage, setCurrentPage }) => 
 
             <ConfirmDialog
                 show={showConfirm}
-                message="Do you really want to delete this manager? It cannot be undone."
+                message={t("managerTable.confirmDelete", "Do you really want to delete this manager? It cannot be undone.")}
                 onConfirm={confirmDelete}
                 onCancel={() => setShowConfirm(false)}
             />

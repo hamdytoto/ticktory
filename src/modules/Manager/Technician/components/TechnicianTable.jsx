@@ -10,14 +10,14 @@ import { toast } from "react-toastify";
 import EditTechnicianModal from "./EditTechnician.jsx";
 import Pagination from "../../../../common/Pagnitation.jsx";
 import ConfirmDialog from "../../../../common/ConfirmDialogu.jsx";
-
-
+import AppTable from "../../../../Components/Table/AppTable.jsx"; // Adjust path as neede
 const TechnicianTable = ({ search, itemsPerPage }) => {
     const { data, refetch } = useShowAllTechnicianQuery();
     const [deleteTechnician] = useDeleteTechnicianMutation();
     const [updateTechnician] = useUpdateTechnicianMutation();
     const techniciansData = data?.data || [];
     const [currentPage, setCurrentPage] = useState(1);
+    
     const filteredTechnicians = techniciansData.filter((tech) =>
         tech.user.name.toLowerCase().includes(search.toLowerCase())
     );
@@ -85,60 +85,93 @@ const TechnicianTable = ({ search, itemsPerPage }) => {
         currentPage * itemsPerPage
     );
 
+    // Define columns for AppTable
+    const columns = [
+        {
+            key: "avatar",
+            header: "AVATAR",
+            render: (row) => (
+                <img 
+                    src={row.user.avatar} 
+                    alt="Avatar" 
+                    className="w-10 h-10 rounded-full object-cover"
+                />
+            ),
+        },
+        {
+            key: "name",
+            header: "NAME",
+            render: (row) => (
+                <span className="text-gray-800 text-md font-medium">
+                    {row.user.name}
+                </span>
+            ),
+        },
+        {
+            key: "email",
+            header: "EMAIL",
+            render: (row) => (
+                <span className="text-gray-500 text-md">
+                    {row.user.email}
+                </span>
+            ),
+        },
+        {
+            key: "phone",
+            header: "PHONE",
+            render: (row) => (
+                <span className="text-gray-500 text-md">
+                    {row.user.phone || "_"}
+                </span>
+            ),
+        },
+        {
+            key:"actions",
+            header: "ACTIONS",
+            render: (row) => (
+                <div className="flex items-center space-x-2">
+                    {renderActions(row)}
+                </div>
+            ),
+        }
+    ];
+
+    // Define actions for AppTable
+    const renderActions = (tech) => (
+        <>
+            <button
+                onClick={() => handleDeleteClick(tech.id)}
+                className="text-red-500 hover:text-red-700 transition-colors"
+                title="Delete technician"
+            >
+                <FaTrash />
+            </button>
+            <button
+                onClick={() => handleEdit(tech)}
+                className="text-gray-600 hover:text-black transition-colors"
+                title="Edit technician"
+            >
+                <FaEdit />
+            </button>
+        </>
+    );
+
     return (
         <div className="bg-white p-4 md:p-6 rounded-xl shadow-lg">
-            <div className="overflow-x-auto">
-                <table className="w-full border-collapse">
-                    <thead>
-                        <tr className="text-gray-600 text-left text-lg md:text-md font-semibold border-b border-gray-300">
-                            <th className="py-3 px-4">AVATAR</th>
-                            <th className="py-3 px-4">NAME</th>
-                            <th className="py-3 px-4">EMAIL</th>
-                            <th className="py-3 px-4">PHONE</th>
-                            {/* <th className="py-3 px-4">DEPARTMENT</th> */}
-                            <th className="py-3 px-4">ACTIONS</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {displayedTechnicians?.map((tech) => (
-                            <tr
-                                key={tech.id}
-                                className="border-b border-gray-200 hover:bg-gray-100 transition"
-                            >
-                                <td className="py-3 px-4">
-                                    <img src={tech.user.avatar} alt="Avatar" className="w-10 h-10 rounded-full" />
-                                </td>
-                                <td className="py-3 px-4 text-gray-800 text-md font-medium">{tech.user.name}</td>
-                                <td className="py-3 px-4 text-gray-500 text-md">{tech.user.email}</td>
-                                <td className="py-3 px-4 text-gray-500 text-md">{tech.user.phone||"_"}</td>
-                                {/* <td className="py-3 px-4 text-gray-500 text-md">{tech.service?.name}</td> */}
-                                <td className="py-3 px-4 flex items-center space-x-3">
-                                    <button
-                                        onClick={() => handleDeleteClick(tech.id)}
-                                        className="text-red-500 hover:text-red-700"
-                                    >
-                                        <FaTrash />
-                                    </button>
-                                    <button
-                                        onClick={() => handleEdit(tech)}
-                                        className="text-gray-600 hover:text-black"
-                                    >
-                                        <FaEdit />
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
-
-            <Pagination
-                currentPage={currentPage}
-                totalPages={totalPages}
-                onPageChange={handlePageChange}
-                itemsPerPage={itemsPerPage}
-                dataLength={filteredTechnicians.length}
+            <AppTable
+                columns={columns}
+                data={displayedTechnicians}
             />
+
+            <div className="mt-4">
+                <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={handlePageChange}
+                    itemsPerPage={itemsPerPage}
+                    dataLength={filteredTechnicians.length}
+                />
+            </div>
 
             <EditTechnicianModal
                 show={editingTechnician !== null}

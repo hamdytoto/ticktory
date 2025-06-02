@@ -292,5 +292,59 @@
         "description": "Description",
         "cancel": "Cancel",
         "saveChanges": "Save Changes"
+    },
+    "managerTable": {
+        "avatar": "Avatar",
+        "avatarAlt": "Avatar",
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone",
+        "department": "Department",
+        "actions": "Actions",
+        "delete": "Delete",
+        "edit": "Edit",
+        "deleteSuccess": "Manager deleted successfully",
+        "deleteFail": "Failed to delete manager",
+        "updateSuccess": "Manager updated successfully",
+        "updateFail": "Failed to update manager",
+        "confirmDelete": "Do you really want to delete this manager? It cannot be undone."
+    },
+    "addManager": {
+        "close": "Close",
+        "title": "Add New Manager",
+        "selectService": "Select a Service",
+        "name": "Name",
+        "email": "Email",
+        "password": "Password",
+        "passwordConfirmation": "Confirm Password",
+        "showPassword": "Show password",
+        "hidePassword": "Hide password",
+        "cancel": "Cancel",
+        "add": "Add"
+    },
+    "managerActions": {
+        "title": "Add Managers",
+        "searchPlaceholder": "Search Managers",
+        "newManager": "New Manager"
+    },
+    "editManager": {
+        "close": "Close",
+        "title": "Edit Manager",
+        "selectService": "Select a Service",
+        "name": "Name",
+        "email": "Email",
+        "password": "Password (leave blank to keep current)",
+        "passwordConfirmation": "Confirm Password",
+        "showPassword": "Show password",
+        "hidePassword": "Hide password",
+        "cancel": "Cancel",
+        "save": "Save"
+    },
+    "manager": {
+        "toast": {
+            "fillAllFields": "Please fill all the fields.",
+            "addSuccess": "Manager added successfully!",
+            "addFail": "Failed to add manager."
+        }
     }
 }
