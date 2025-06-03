@@ -1,18 +1,23 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { FaTrash, FaEdit } from "react-icons/fa";
+import { useTranslation } from "react-i18next"; 
+
 import {
     useShowAllServicesApiQuery,
     useDeleteServiceApiMutation,
     useUpdateServiceApiMutation,
 } from "../../../redux/feature/admin/Services/admin.service.apislice.js";
+
 import { toast } from "react-toastify";
 import EditServiceModal from "./EditService.jsx";
 import Pagination from "../../../common/Pagnitation.jsx";
 import ConfirmDialog from "../../../common/ConfirmDialogu.jsx";
-import AppTable from "../../../Components/Table/AppTable.jsx"; // Adjust path as needed
+import AppTable from "../../../Components/Table/AppTable.jsx";
 
 const ServicesTable = ({ search, itemsPerPage }) => {
+    const { t } = useTranslation(); 
+
     const { data, refetch } = useShowAllServicesApiQuery();
     const [deleteService] = useDeleteServiceApiMutation();
     const [updateService] = useUpdateServiceApiMutation();
@@ -44,10 +49,10 @@ const ServicesTable = ({ search, itemsPerPage }) => {
     const confirmDelete = async () => {
         try {
             await deleteService(selectedId).unwrap();
-            toast.success("Service deleted successfully");
+            toast.success(t("service.deleted_success")); 
             refetch();
         } catch (err) {
-            toast.error("Failed to delete service");
+            toast.error(t("service.delete_error")); 
             console.error(err);
         } finally {
             setShowConfirm(false);
@@ -67,11 +72,11 @@ const ServicesTable = ({ search, itemsPerPage }) => {
                 id: editingService.id,
                 body: { name: editName },
             }).unwrap();
-            toast.success("Service updated successfully");
+            toast.success(t("service.updated_success")); 
             setEditingService(null);
             refetch();
         } catch (err) {
-            toast.error("Failed to update service");
+            toast.error(t("service.update_error")); 
             console.error(err);
         }
     };
@@ -81,11 +86,10 @@ const ServicesTable = ({ search, itemsPerPage }) => {
         currentPage * itemsPerPage
     );
 
-    // Define columns for AppTable
     const columns = [
         {
             key: "id",
-            header: "Id",
+            header: t("service.id"), 
             render: (row) => (
                 <span className="text-gray-800 text-md font-medium">
                     #{row.id}
@@ -94,7 +98,7 @@ const ServicesTable = ({ search, itemsPerPage }) => {
         },
         {
             key: "name",
-            header: "Name",
+            header: t("service.name"), 
             render: (row) => (
                 <span className="text-gray-800 text-md font-medium">
                     {row.name}
@@ -103,29 +107,28 @@ const ServicesTable = ({ search, itemsPerPage }) => {
         },
         {
             key: "actions",
-            header: "Actions",
+            header: t("service.actions"), // ✅
             render: (row) => (
                 <div className="flex items-center space-x-2">
                     {renderActions(row)}
                 </div>
             ),
-        }
+        },
     ];
 
-    // Define actions for AppTable
     const renderActions = (service) => (
         <>
             <button
                 onClick={() => handleDeleteClick(service.id)}
                 className="text-red-500 hover:text-red-700"
-                title="Delete service"
+                title={t("service.delete_tooltip")} // optional
             >
                 <FaTrash />
             </button>
             <button
                 onClick={() => handleEdit(service)}
                 className="text-gray-600 hover:text-black"
-                title="Edit service"
+                title={t("service.edit_tooltip")} // optional
             >
                 <FaEdit />
             </button>
@@ -134,10 +137,7 @@ const ServicesTable = ({ search, itemsPerPage }) => {
 
     return (
         <div className="bg-white p-4 md:p-6 rounded-xl shadow-lg">
-            <AppTable
-                columns={columns}
-                data={displayedServices}
-            />
+            <AppTable columns={columns} data={displayedServices} />
             <div className="mt-4">
                 <Pagination
                     currentPage={currentPage}
@@ -158,7 +158,7 @@ const ServicesTable = ({ search, itemsPerPage }) => {
 
             <ConfirmDialog
                 show={showConfirm}
-                message="Do you really want to delete this service? it cannot be undone."
+                message={t("service.confirm_delete")} 
                 onConfirm={confirmDelete}
                 onCancel={() => setShowConfirm(false)}
             />

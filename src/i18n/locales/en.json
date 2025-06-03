@@ -346,5 +346,57 @@
             "addSuccess": "Manager added successfully!",
             "addFail": "Failed to add manager."
         }
+    },
+    "technicianActions": {
+        "title": "Add Technicians",
+        "searchPlaceholder": "Search Technicians",
+        "newTechnician": "New Technician"
+    },
+    "technicianTable": {
+        "avatar": "Avatar",
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone",
+        "actions": "Actions",
+        "deleteSuccess": "Technician deleted successfully",
+        "deleteError": "Failed to delete technician",
+        "updateSuccess": "Technician updated successfully",
+        "updateError": "Failed to update technician",
+        "confirmDeleteMessage": "Do you really want to delete this technician? It cannot be undone.",
+        "deleteButtonTitle": "Delete technician",
+        "editButtonTitle": "Edit technician"
+    },
+    "tickets": {
+        "header": "All Tickets",
+        "loading": "Loading tickets...",
+        "error": "Error loading tickets",
+        "create_success": "Ticket created successfully!",
+        "create_failed": "Failed to create ticket!"
+    },
+    "service": {
+        "header": "Add Services",
+        "search_placeholder": "Search Services",
+        "new": "New Service",
+        "id": "Id",
+        "name": "Name",
+        "actions": "Actions",
+        "deleted_success": "Service deleted successfully",
+        "delete_error": "Failed to delete service",
+        "updated_success": "Service updated successfully",
+        "update_error": "Failed to update service",
+        "confirm_delete": "Do you really want to delete this service? It cannot be undone.",
+        "delete_tooltip": "Delete service",
+        "edit_tooltip": "Edit service",
+        "edit_title": "Edit Service",
+        "add_title": "Add New Service",
+        "name_placeholder": "Service Name",
+        "add_success": "Service added successfully!",
+        "add_error": "Failed to add service. Please try again.",
+        "name_empty_warning": "Service name cannot be empty"
+    },
+    "common": {
+        "cancel": "Cancel",
+        "save": "Save",
+        "add": "Add"
     }
 }

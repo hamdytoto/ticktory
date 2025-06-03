@@ -1,7 +1,14 @@
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 const CreateTicketL = () => {
     const { t } = useTranslation();
+    const navigate = useNavigate();
+
+    // Add this handler
+    const handleSubmit = () => {
+        navigate("auth/login");
+    };
 
     return (
         <>
@@ -67,7 +74,10 @@ const CreateTicketL = () => {
 
                     {/* Submit Button */}
                     <div className="mt-6 text-center">
-                        <button className="bg-blue-400 text-white px-6 py-2 rounded-md hover:bg-blue-500 transition">
+                        <button
+                            onClick={handleSubmit}
+                            className="bg-blue-400 text-white px-6 py-2 rounded-md hover:bg-blue-500 transition"
+                        >
                             {t("createTicket.submit")}
                         </button>
                     </div>

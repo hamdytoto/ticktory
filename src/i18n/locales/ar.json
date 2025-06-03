@@ -348,5 +348,57 @@
             "addSuccess": "تمت إضافة المدير بنجاح!",
             "addFail": "فشل في إضافة المدير."
         }
+    },
+    "technicianActions": {
+        "title": "إضافة فنيين",
+        "searchPlaceholder": "ابحث عن الفنيين",
+        "newTechnician": "فني جديد"
+    },
+    "technicianTable": {
+        "avatar": "الصورة",
+        "name": "الاسم",
+        "email": "البريد الإلكتروني",
+        "phone": "رقم الهاتف",
+        "actions": "الإجراءات",
+        "deleteSuccess": "تم حذف الفني بنجاح",
+        "deleteError": "فشل في حذف الفني",
+        "updateSuccess": "تم تحديث الفني بنجاح",
+        "updateError": "فشل في تحديث الفني",
+        "confirmDeleteMessage": "هل تريد بالتأكيد حذف هذا الفني؟ لا يمكن التراجع عن هذا الإجراء.",
+        "deleteButtonTitle": "حذف الفني",
+        "editButtonTitle": "تعديل الفني"
+    },
+    "tickets": {
+        "header": "جميع التذاكر",
+        "loading": "جارٍ تحميل التذاكر...",
+        "error": "حدث خطأ أثناء تحميل التذاكر",
+        "create_success": "تم إنشاء التذكرة بنجاح!",
+        "create_failed": "فشل في إنشاء التذكرة!"
+    },
+    "service": {
+        "header": "إضافة خدمات",
+        "search_placeholder": "ابحث عن خدمة",
+        "new": "خدمة جديدة",
+        "id": "المعرف",
+        "name": "الاسم",
+        "actions": "الإجراءات",
+        "deleted_success": "تم حذف الخدمة بنجاح",
+        "delete_error": "فشل في حذف الخدمة",
+        "updated_success": "تم تحديث الخدمة بنجاح",
+        "update_error": "فشل في تحديث الخدمة",
+        "confirm_delete": "هل أنت متأكد من حذف هذه الخدمة؟ لا يمكن التراجع.",
+        "delete_tooltip": "حذف الخدمة",
+        "edit_tooltip": "تعديل الخدمة",
+        "edit_title": "تعديل الخدمة",
+        "add_title": "إضافة خدمة جديدة",
+        "name_placeholder": "اسم الخدمة",
+        "add_success": "تمت إضافة الخدمة بنجاح!",
+        "add_error": "فشل في إضافة الخدمة. حاول مرة أخرى.",
+        "name_empty_warning": "لا يمكن ترك اسم الخدمة فارغًا"
+    },
+    "common": {
+        "cancel": "إلغاء",
+        "save": "حفظ",
+        "add": "إضافة"
     }
 }

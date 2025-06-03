@@ -1,12 +1,14 @@
 /* eslint-disable react/prop-types */
+import { useTranslation } from "react-i18next";
+
 const EditServiceModal = ({ show, onClose, editName, setEditName, onSave }) => {
+    const { t } = useTranslation();
+
     if (!show) return null;
 
     return (
         <div className="absolute inset-0 z-50 flex items-center justify-center backdrop-blur-sm">
             <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md mx-4 p-6 relative">
-
-                {/* Close Button */}
                 <button
                     className="absolute top-3 right-3 text-gray-400 hover:text-red-500 transition"
                     onClick={onClose}
@@ -21,13 +23,14 @@ const EditServiceModal = ({ show, onClose, editName, setEditName, onSave }) => {
                     </svg>
                 </button>
 
-                {/* Modal Content */}
-                <h2 className="text-2xl font-bold mb-6 text-gray-800">Edit Service</h2>
+                <h2 className="text-2xl font-bold mb-6 text-gray-800">
+                    {t("service.edit_title")}
+                </h2>
                 <input
                     type="text"
                     value={editName}
                     onChange={(e) => setEditName(e.target.value)}
-                    placeholder="Service Name"
+                    placeholder={t("services.name_placeholder")}
                     className="border border-gray-300 p-3 rounded-lg w-full mb-6 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
                 <div className="flex justify-end gap-2">
@@ -35,13 +38,13 @@ const EditServiceModal = ({ show, onClose, editName, setEditName, onSave }) => {
                         onClick={onClose}
                         className="bg-gray-200 px-4 py-2 rounded-md hover:bg-gray-300 transition"
                     >
-                        Cancel
+                        {t("common.cancel")}
                     </button>
                     <button
                         onClick={onSave}
                         className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition"
                     >
-                        Save
+                        {t("common.save")}
                     </button>
                 </div>
             </div>

@@ -1,12 +1,16 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import ServiceActions from "./ServiceAction.jsx";
 import ServiceTable from "./ServiceTable.jsx";
 import AddServiceModal from "./AddService.jsx";
-import { useCreateServiceApiMutation, useShowAllServicesApiQuery } from "../../../redux/feature/admin/Services/admin.service.apislice.js";
-import { ToastContainer } from "react-toastify";
-import { toast } from "react-toastify";
+import {
+  useCreateServiceApiMutation,
+  useShowAllServicesApiQuery,
+} from "../../../redux/feature/admin/Services/admin.service.apislice.js";
+import { ToastContainer, toast } from "react-toastify";
 
 const Service = () => {
+  const { t } = useTranslation();
   const [search, setSearch] = useState("");
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [showModal, setShowModal] = useState(false);
@@ -16,20 +20,19 @@ const Service = () => {
 
   const handleAddService = async () => {
     if (!serviceName.trim()) {
-      toast.warn("Service name cannot be empty");
+      toast.warn(t("service.name_empty_warning"));
       return;
     }
 
     try {
-      const response = await createService({ name: serviceName }).unwrap();
-      console.log("Service created:", response);
-      toast.success("Service added successfully!");
+      await createService({ name: serviceName }).unwrap();
+      toast.success(t("service.add_success"));
       setServiceName("");
       setShowModal(false);
       refetch();
     } catch (error) {
-      console.error("Failed to create service:", error);
-      toast.error("Failed to add service. Please try again.");
+      toast.error(t("service.add_error"));
+      console.error(error);
     }
   };
 
@@ -53,6 +56,7 @@ const Service = () => {
         setServiceName={setServiceName}
         onAdd={handleAddService}
       />
+
       <ToastContainer
         position="top-right"
         autoClose={3000}
