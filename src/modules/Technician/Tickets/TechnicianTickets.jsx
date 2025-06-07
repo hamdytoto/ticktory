@@ -5,9 +5,11 @@ import TicketDetails from "../../../Components/TicketDetails.jsx";
 import TicketActions from "../../../Components/Ticket/Actions/TicketActions.jsx";
 import TicketsTable from "./TicketsTable.jsx";
 import { ToastContainer } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 export default function TechnicianTickets() {
     const { ticketId } = useParams();
+    const { t } = useTranslation();
     const navigate = useNavigate();
 
     // State
@@ -70,7 +72,7 @@ export default function TechnicianTickets() {
     if (isLoading) {
         return (
             <div className="p-6 mx-auto flex justify-center items-center h-64 text-lg text-gray-600">
-                Loading tickets...
+                {t("tickets.loading", "Loading tickets...")}
             </div>
         );
     }
@@ -78,14 +80,14 @@ export default function TechnicianTickets() {
     if (error) {
         return (
             <div className="p-6 mx-auto flex justify-center items-center h-64 text-lg text-red-600">
-                Error loading tickets
+                {t("tickets.error", "Failed to load tickets. Please try again later.")}
             </div>
         );
     }
 
     return (
         <div className="p-6 mx-auto">
-            <h1 className="text-4xl font-bold text-gray-800">All Tickets</h1>
+            <h1 className="text-4xl font-bold text-gray-800">{t("tickets.header", "All Tickets")}</h1>
 
             <TicketActions
                 search={search}

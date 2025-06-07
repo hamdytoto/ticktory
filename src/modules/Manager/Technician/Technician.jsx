@@ -3,6 +3,7 @@ import TechnicianAction from "./components/TechnicianAction.jsx";
 import TechnicianTable from "./components/TechnicianTable.jsx";
 import AddTechnicianModal from "./components/AddTechnician.jsx";
 import { ToastContainer, toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 // API Hooks
 import {
@@ -11,6 +12,7 @@ import {
 } from "../../../redux/feature/Manager/technician/manager.tech.apiSlice.js";
 
 const Technician = () => {
+  const { t } = useTranslation();
   const [search, setSearch] = useState("");
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [showModal, setShowModal] = useState(false);
@@ -29,13 +31,13 @@ const Technician = () => {
     const { name, email, password, password_confirmation } = technicianData;
 
     if (!name || !email || !password || !password_confirmation) {
-      toast.warn("Please fill all the fields.");
+      toast.warn(t("technician.toast.fillFields", "Please fill all the fields."));
       return;
     }
 
     try {
       await createTechnician(technicianData).unwrap();
-      toast.success("Technician added successfully!");
+      toast.success(t("technician.toast.addSuccess", "Technician added successfully!"));
       setTechnicianData({
         name: "",
         email: "",
@@ -45,7 +47,9 @@ const Technician = () => {
       setShowModal(false);
       refetch();
     } catch (error) {
-      toast.error(error?.data?.message || "Failed to add technician.");
+      toast.error(
+        error?.data?.message || t("technician.toast.addError", "Failed to add technician.")
+      );
     }
   };
 

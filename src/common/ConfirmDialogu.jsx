@@ -1,5 +1,9 @@
 /* eslint-disable react/prop-types */
+import { useTranslation } from "react-i18next";
+
 const ConfirmDialog = ({ show, message, onConfirm, onCancel }) => {
+    const { t } = useTranslation();
+
     if (!show) return null;
 
     return (
@@ -10,7 +14,7 @@ const ConfirmDialog = ({ show, message, onConfirm, onCancel }) => {
                 <button
                     className="absolute top-3 right-3 text-gray-400 hover:text-red-500 transition"
                     onClick={onCancel}
-                    aria-label="Close dialog"
+                    aria-label={t("confirmDialog.close", "Close dialog")}
                 >
                     <svg
                         className="w-5 h-5"
@@ -24,7 +28,7 @@ const ConfirmDialog = ({ show, message, onConfirm, onCancel }) => {
 
                 {/* Dialog Content */}
                 <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 text-gray-800 text-center">
-                    Are you sure?
+                    {t("confirmDialog.title", "Are you sure?")}
                 </h2>
 
                 <p className="text-sm sm:text-base text-gray-600 mb-5 sm:mb-6 text-center">
@@ -37,13 +41,13 @@ const ConfirmDialog = ({ show, message, onConfirm, onCancel }) => {
                         onClick={onCancel}
                         className="w-full sm:w-auto bg-gray-200 px-4 py-2 rounded-md hover:bg-gray-300 transition text-sm"
                     >
-                        Cancel
+                        {t("confirmDialog.cancel", "Cancel")}
                     </button>
                     <button
                         onClick={onConfirm}
                         className="w-full sm:w-auto bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition text-sm"
                     >
-                        Delete
+                        {t("confirmDialog.delete", "Delete")}
                     </button>
                 </div>
             </div>

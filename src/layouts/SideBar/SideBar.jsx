@@ -112,8 +112,8 @@ export default function Sidebar({
                             <div className="flex justify-center w-6">
                                 <ViewSidebarIcon />
                             </div>
-                            <span className={`ms-3 ${!isCollapsed ? "inline" : "hidden"}`}>
-                                {t("collapse")}
+                            <span className={`ms-3 font-medium ${!isCollapsed ? "inline" : "hidden"}`}>
+                                {t("menu.collapse")}
                             </span>
                         </button>
 
@@ -125,7 +125,7 @@ export default function Sidebar({
                             <div className="flex justify-center w-6">
                                 <ExitToAppIcon />
                             </div>
-                            <span className={`ms-3 ${showText ? "inline" : "hidden"}`}>
+                            <span className={`ms-3 font-medium ${showText ? "inline" : "hidden"}`}>
                                 {t("logout")}
                             </span>
                         </button>

@@ -1,5 +1,9 @@
 /* eslint-disable react/prop-types */
+import { useTranslation } from "react-i18next";
+
 const Pagination = ({ currentPage, totalPages, onPageChange, itemsPerPage, dataLength }) => {
+    const { t } = useTranslation();
+
     // Generate page numbers to show
     const getPageNumbers = () => {
         const pages = [];
@@ -59,9 +63,10 @@ const Pagination = ({ currentPage, totalPages, onPageChange, itemsPerPage, dataL
             {/* Results info */}
             <div className="flex flex-col sm:flex-row items-center gap-2">
                 <p>
-                    Showing <span className="font-semibold">{startItem}</span> to{" "}
-                    <span className="font-semibold">{endItem}</span> of{" "}
-                    <span className="font-semibold">{dataLength}</span> entries
+                    {t("pagination.showing", "Showing")} <span className="font-semibold">{startItem}</span>{" "}
+                    {t("pagination.to", "to")} <span className="font-semibold">{endItem}</span>{" "}
+                    {t("pagination.of", "of")} <span className="font-semibold">{dataLength}</span>{" "}
+                    {t("pagination.entries", "entries")}
                 </p>
             </div>
 
@@ -75,7 +80,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange, itemsPerPage, dataL
                             ? "bg-gray-200 text-gray-400 cursor-not-allowed"
                             : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                         }`}
-                    title="First page"
+                    title={t("pagination.firstPage", "First page")}
                 >
                     ««
                 </button>
@@ -88,7 +93,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange, itemsPerPage, dataL
                             ? "bg-gray-200 text-gray-400 cursor-not-allowed"
                             : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                         }`}
-                    title="Previous page"
+                    title={t("pagination.previousPage", "Previous page")}
                 >
                     ‹
                 </button>
@@ -120,7 +125,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange, itemsPerPage, dataL
                             ? "bg-gray-200 text-gray-400 cursor-not-allowed"
                             : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                         }`}
-                    title="Next page"
+                    title={t("pagination.nextPage", "Next page")}
                 >
                     ›
                 </button>
@@ -133,7 +138,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange, itemsPerPage, dataL
                             ? "bg-gray-200 text-gray-400 cursor-not-allowed"
                             : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                         }`}
-                    title="Last page"
+                    title={t("pagination.lastPage", "Last page")}
                 >
                     »»
                 </button>

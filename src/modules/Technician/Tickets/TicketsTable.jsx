@@ -30,10 +30,10 @@ const TicketsTable = ({
         if (ticket.status !== 2) {
             try {
                 await finishTicket(ticket.id).unwrap();
-                toast.success(t("toast.ticketResolved") || "Ticket resolved successfully!");
+                toast.success(t("ticekts.toast.ticketResolved") || "Ticket resolved successfully!");
                 refetch();
             } catch (err) {
-                toast.error(t("toast.resolveFailed") || "Failed to resolve ticket!");
+                toast.error(t("ticekts.toast.resolveFailed") || "Failed to resolve ticket!");
                 console.error("Error resolving ticket:", err);
             }
         }
@@ -108,8 +108,8 @@ const TicketsTable = ({
                                 }`}
                             title={
                                 ticket.status === 2
-                                    ? t("tooltip.ticketResolved") || "Ticket Resolved"
-                                    : t("tooltip.resolveTicket") || "Resolve Ticket"
+                                    ? t("tickets.tooltip.ticketResolved") || "Ticket Resolved"
+                                    : t("tickets.tooltip.resolveTicket") || "Resolve Ticket"
                             }
                         >
                             {ticket.status === 2 ? <FaCheckCircle /> : <FaRegCircle />}

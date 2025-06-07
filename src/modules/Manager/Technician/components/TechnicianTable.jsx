@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { FaTrash, FaEdit } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 import {
     useShowAllTechnicianQuery,
     useDeleteTechnicianMutation,
@@ -10,14 +11,16 @@ import { toast } from "react-toastify";
 import EditTechnicianModal from "./EditTechnician.jsx";
 import Pagination from "../../../../common/Pagnitation.jsx";
 import ConfirmDialog from "../../../../common/ConfirmDialogu.jsx";
-import AppTable from "../../../../Components/Table/AppTable.jsx"; // Adjust path as neede
+import AppTable from "../../../../Components/Table/AppTable.jsx";
+
 const TechnicianTable = ({ search, itemsPerPage }) => {
+    const { t } = useTranslation();
     const { data, refetch } = useShowAllTechnicianQuery();
     const [deleteTechnician] = useDeleteTechnicianMutation();
     const [updateTechnician] = useUpdateTechnicianMutation();
     const techniciansData = data?.data || [];
     const [currentPage, setCurrentPage] = useState(1);
-    
+
     const filteredTechnicians = techniciansData.filter((tech) =>
         tech.user.name.toLowerCase().includes(search.toLowerCase())
     );
@@ -41,10 +44,10 @@ const TechnicianTable = ({ search, itemsPerPage }) => {
     const confirmDelete = async () => {
         try {
             await deleteTechnician(selectedId).unwrap();
-            toast.success("Technician deleted successfully");
+            toast.success(t("technician.toast.deleteSuccess", "Technician deleted successfully"));
             refetch();
         } catch (err) {
-            toast.error("Failed to delete technician");
+            toast.error(t("technician.toast.deleteFail", "Failed to delete technician"));
             console.error(err);
         } finally {
             setShowConfirm(false);
@@ -60,8 +63,8 @@ const TechnicianTable = ({ search, itemsPerPage }) => {
             id: tech.id,
             name: tech.user.name,
             email: tech.user.email,
-            password: tech.user.password, 
-            password_confirmation: tech.user.password_confirmation, 
+            password: tech.user.password,
+            password_confirmation: tech.user.password_confirmation,
         });
     };
 
@@ -71,11 +74,11 @@ const TechnicianTable = ({ search, itemsPerPage }) => {
                 id: editingTechnician.id,
                 body: editingTechnician,
             }).unwrap();
-            toast.success("Technician updated successfully");
+            toast.success(t("technician.toast.updateSuccess", "Technician updated successfully"));
             setEditingTechnician(null);
             refetch();
         } catch (err) {
-            toast.error(err?.data?.message || "Failed to update technician");
+            toast.error(t("technician.toast.updateFail", "Failed to update technician"));
             console.error(err);
         }
     };
@@ -89,18 +92,18 @@ const TechnicianTable = ({ search, itemsPerPage }) => {
     const columns = [
         {
             key: "avatar",
-            header: "AVATAR",
+            header: t("technician.columns.avatar", "AVATAR"),
             render: (row) => (
-                <img 
-                    src={row.user.avatar} 
-                    alt="Avatar" 
+                <img
+                    src={row.user.avatar}
+                    alt={t("technician.avatarAlt", "Avatar")}
                     className="w-10 h-10 rounded-full object-cover"
                 />
             ),
         },
         {
             key: "name",
-            header: "NAME",
+            header: t("technician.columns.name", "NAME"),
             render: (row) => (
                 <span className="text-gray-800 text-md font-medium">
                     {row.user.name}
@@ -109,7 +112,7 @@ const TechnicianTable = ({ search, itemsPerPage }) => {
         },
         {
             key: "email",
-            header: "EMAIL",
+            header: t("technician.columns.email", "EMAIL"),
             render: (row) => (
                 <span className="text-gray-500 text-md">
                     {row.user.email}
@@ -118,16 +121,16 @@ const TechnicianTable = ({ search, itemsPerPage }) => {
         },
         {
             key: "phone",
-            header: "PHONE",
+            header: t("technician.columns.phone", "PHONE"),
             render: (row) => (
                 <span className="text-gray-500 text-md">
-                    {row.user.phone || "_"}
+                    {row.user.phone || "—"}
                 </span>
             ),
         },
         {
-            key:"actions",
-            header: "ACTIONS",
+            key: "actions",
+            header: t("technician.columns.actions", "ACTIONS"),
             render: (row) => (
                 <div className="flex items-center space-x-2">
                     {renderActions(row)}
@@ -142,14 +145,14 @@ const TechnicianTable = ({ search, itemsPerPage }) => {
             <button
                 onClick={() => handleDeleteClick(tech.id)}
                 className="text-red-500 hover:text-red-700 transition-colors"
-                title="Delete technician"
+                title={t("technician.actions.delete", "Delete technician")}
             >
                 <FaTrash />
             </button>
             <button
                 onClick={() => handleEdit(tech)}
                 className="text-gray-600 hover:text-black transition-colors"
-                title="Edit technician"
+                title={t("technician.actions.edit", "Edit technician")}
             >
                 <FaEdit />
             </button>
@@ -183,7 +186,7 @@ const TechnicianTable = ({ search, itemsPerPage }) => {
 
             <ConfirmDialog
                 show={showConfirm}
-                message="Do you really want to delete this technician? It cannot be undone."
+                message={t("technician.confirmDelete", "Do you really want to delete this technician? It cannot be undone.")}
                 onConfirm={confirmDelete}
                 onCancel={() => setShowConfirm(false)}
             />

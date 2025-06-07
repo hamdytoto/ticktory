@@ -349,31 +349,25 @@
             "addFail": "فشل في إضافة المدير."
         }
     },
-    "technicianActions": {
-        "title": "إضافة فنيين",
-        "searchPlaceholder": "ابحث عن الفنيين",
-        "newTechnician": "فني جديد"
-    },
-    "technicianTable": {
-        "avatar": "الصورة",
-        "name": "الاسم",
-        "email": "البريد الإلكتروني",
-        "phone": "رقم الهاتف",
-        "actions": "الإجراءات",
-        "deleteSuccess": "تم حذف الفني بنجاح",
-        "deleteError": "فشل في حذف الفني",
-        "updateSuccess": "تم تحديث الفني بنجاح",
-        "updateError": "فشل في تحديث الفني",
-        "confirmDeleteMessage": "هل تريد بالتأكيد حذف هذا الفني؟ لا يمكن التراجع عن هذا الإجراء.",
-        "deleteButtonTitle": "حذف الفني",
-        "editButtonTitle": "تعديل الفني"
-    },
     "tickets": {
         "header": "جميع التذاكر",
         "loading": "جارٍ تحميل التذاكر...",
         "error": "حدث خطأ أثناء تحميل التذاكر",
         "create_success": "تم إنشاء التذكرة بنجاح!",
-        "create_failed": "فشل في إنشاء التذكرة!"
+        "create_failed": "فشل في إنشاء التذكرة!",
+        "toast": {
+            "ticketUpdated": "تم تحديث التذكرة بنجاح!",
+            "updateFailed": "فشل في تحديث التذكرة!",
+            "createSuccess": "تم إنشاء التذكرة بنجاح!",
+            "createError": "فشل في إنشاء التذكرة!",
+            "ticketResolved": "تم حل التذكرة بنجاح!",
+            "resolveFailed": "فشل في حل التذكرة!"
+        },
+        "tooltip":{
+            "ticketResolved": "تم حل التذكرة",
+            "resolveTicket": "حل التذكرة",
+            "editTicket": "تعديل التذكرة"
+        }
     },
     "service": {
         "header": "إضافة خدمات",
@@ -400,5 +394,72 @@
         "cancel": "إلغاء",
         "save": "حفظ",
         "add": "إضافة"
+    },
+    "technician": {
+        "columns": {
+            "avatar": "الصورة",
+            "name": "الاسم",
+            "email": "البريد الإلكتروني",
+            "phone": "الهاتف",
+            "actions": "الإجراءات"
+        },
+        "avatarAlt": "الصورة الرمزية",
+        "actions": {
+            "delete": "حذف الفني",
+            "edit": "تعديل الفني",
+            "title": "إضافة فنيين",
+            "searchPlaceholder": "ابحث عن الفنيين",
+            "newTechnician": "فني جديد"
+        },
+        "toast": {
+            "deleteSuccess": "تم حذف الفني بنجاح",
+            "deleteFail": "فشل في حذف الفني",
+            "updateSuccess": "تم تحديث الفني بنجاح",
+            "updateFail": "فشل في تحديث الفني",
+            "fillFields": "يرجى تعبئة جميع الحقول.",
+            "addSuccess": "تمت إضافة الفني بنجاح!",
+            "addError": "فشل في إضافة الفني."
+        },
+        "confirmDelete": "هل تريد حقاً حذف هذا الفني؟ لا يمكن التراجع عن هذا الإجراء.",
+        "add": {
+            "title": "إضافة فني جديد",
+            "name": "الاسم",
+            "email": "البريد الإلكتروني",
+            "password": "كلمة المرور",
+            "confirmPassword": "تأكيد كلمة المرور",
+            "showPassword": "إظهار كلمة المرور",
+            "hidePassword": "إخفاء كلمة المرور",
+            "cancel": "إلغاء",
+            "submit": "إضافة",
+            "close": "إغلاق"
+        },
+        "edit": {
+            "title": "تعديل الفني",
+            "name": "الاسم",
+            "email": "البريد الإلكتروني",
+            "password": "كلمة المرور (اتركها فارغة للإبقاء على الحالية)",
+            "confirmPassword": "تأكيد كلمة المرور",
+            "showPassword": "إظهار كلمة المرور",
+            "hidePassword": "إخفاء كلمة المرور",
+            "cancel": "إلغاء",
+            "submit": "حفظ",
+            "close": "إغلاق"
+        }
+    },
+    "confirmDialog": {
+        "title": "هل أنت متأكد؟",
+        "close": "إغلاق",
+        "cancel": "إلغاء",
+        "delete": "حذف"
+    },
+    "pagination": {
+        "showing": "عرض",
+        "to": "إلى",
+        "of": "من",
+        "entries": "سجلات",
+        "firstPage": "الصفحة الأولى",
+        "previousPage": "الصفحة السابقة",
+        "nextPage": "الصفحة التالية",
+        "lastPage": "الصفحة الأخيرة"
     }
 }

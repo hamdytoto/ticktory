@@ -1,16 +1,20 @@
 import { useMemo, useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { toast, ToastContainer } from "react-toastify";
 import TicketsTable from "./components/TicketsTable.jsx";
 import TicketActions from "../../../Components/Ticket/Actions/TicketActions.jsx";
-import { useGetAllTicketUserQuery, useCreateTicketUserMutation } from "../../../redux/feature/user/Tickets/user.ticket.apislice.js";
-import { toast, ToastContainer } from "react-toastify";
-import { useNavigate, useParams } from "react-router-dom";
-import AddTicketModal from "./components/AddTicketModal.jsx";
 import TicketDetails from "../../../Components/TicketDetails.jsx";
+import AddTicketModal from "./components/AddTicketModal.jsx";
+import {
+    useGetAllTicketUserQuery,
+    useCreateTicketUserMutation
+} from "../../../redux/feature/user/Tickets/user.ticket.apislice.js";
 
 export default function UserTickets() {
+    const { t } = useTranslation();
     const { ticketId } = useParams();
     const navigate = useNavigate();
-
     // State for search, pagination, and modal
     const [search, setSearch] = useState("");
     const [searchColumn, setSearchColumn] = useState("title");
@@ -57,11 +61,11 @@ export default function UserTickets() {
     const handleAddTicket = () => {
         createTicket(ticketData).unwrap()
             .then(() => {
-                toast.success("Ticket created successfully!");
+                toast.success(t("tickets.toast.createSuccess", "Ticket created successfully!"));
                 refetch();
             })
             .catch(() => {
-                toast.error("Failed to create ticket!");
+                toast.error(t("tickets.toast.createError", "Failed to create ticket!"));
             });
         setShowTicketModal(false);
         setTicketData({ title: '', description: '', service_id: '' });
@@ -99,7 +103,9 @@ export default function UserTickets() {
         return (
             <div className="p-6 mx-auto">
                 <div className="flex justify-center items-center h-64">
-                    <div className="text-lg text-gray-600">Loading tickets...</div>
+                    <div className="text-lg text-gray-600">
+                        {t("tickets.loading", "Loading tickets...")}
+                    </div>
                 </div>
             </div>
         );
@@ -109,7 +115,9 @@ export default function UserTickets() {
         return (
             <div className="p-6 mx-auto">
                 <div className="flex justify-center items-center h-64">
-                    <div className="text-lg text-red-600">Error loading tickets</div>
+                    <div className="text-lg text-red-600">
+                        {t("tickets.error", "Error loading tickets")}
+                    </div>
                 </div>
             </div>
         );
@@ -117,7 +125,10 @@ export default function UserTickets() {
 
     return (
         <div className="p-6 mx-auto">
-            <h1 className="text-4xl font-bold text-gray-800">All Tickets</h1>
+            <h1 className="text-4xl font-bold text-gray-800">
+                {t("tickets.header", "My Tickets")}
+            </h1>
+
             <TicketActions
                 search={search}
                 searchColumn={searchColumn}

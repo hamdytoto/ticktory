@@ -46,10 +46,10 @@ const TicketsTable = ({
                 },
             }).unwrap();
             refetch();
-            toast.success(t("toast.ticketUpdated") || "Ticket updated successfully!");
+            toast.success(t("tickets.toast.ticketUpdated") || "Ticket updated successfully!");
             setShowEditModal(false);
         } catch (err) {
-            toast.error(t("toast.updateFailed") || "Failed to update ticket!");
+            toast.error(t("tickets.toast.updateFailed") || "Failed to update ticket!");
             console.error("Error updating ticket:", err);
         }
     };
@@ -119,7 +119,7 @@ const TicketsTable = ({
                         <button
                             onClick={() => handleEditClick(ticket)}
                             className="text-blue-600 hover:text-blue-700"
-                            title={t("tooltip.editTicket") || "Edit Ticket"}
+                            title={t("tickets.tooltip.editTicket") || "Edit Ticket"}
                         >
                             <FaEdit />
                         </button>

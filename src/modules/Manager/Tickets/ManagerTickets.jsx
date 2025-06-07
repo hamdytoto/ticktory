@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { useShowAllTicketsApiQuery } from "../../../redux/feature/Manager/Tickets/manager.ticket.apislice.js";
 import TicketDetails from "../../../Components/TicketDetails.jsx";
 import TicketActions from "../../../Components/Ticket/Actions/TicketActions.jsx";
@@ -7,6 +8,7 @@ import TicketsTable from "./TicketsTable.jsx";
 import { ToastContainer } from "react-toastify";
 
 export default function ManagerTickets() {
+    const { t } = useTranslation();
     const { ticketId } = useParams();
     const navigate = useNavigate();
 
@@ -14,7 +16,6 @@ export default function ManagerTickets() {
     const [search, setSearch] = useState("");
     const [searchColumn, setSearchColumn] = useState("title");
     const [debouncedSearch, setDebouncedSearch] = useState("");
-
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(7);
     const [dateFrom, setDateFrom] = useState("");
@@ -70,7 +71,7 @@ export default function ManagerTickets() {
     if (isLoading) {
         return (
             <div className="p-6 mx-auto flex justify-center items-center h-64 text-lg text-gray-600">
-                Loading tickets...
+                {t("tickets.loading", "Loading tickets...")}
             </div>
         );
     }
@@ -78,7 +79,7 @@ export default function ManagerTickets() {
     if (error) {
         return (
             <div className="p-6 mx-auto flex justify-center items-center h-64 text-lg text-red-600">
-                Error loading tickets
+                {t("tickets.error", "Error loading tickets")}
             </div>
         );
     }
@@ -86,10 +87,12 @@ export default function ManagerTickets() {
     // Main Render
     return (
         <div className="p-6 mx-auto">
-            <h1 className="text-4xl font-bold text-gray-800">All Tickets</h1>
+            <h1 className="text-4xl font-bold text-gray-800">
+                {t("tickets.header", "All Tickets")}
+            </h1>
 
             <TicketActions
-                search={search}
+                search={search} 
                 searchColumn={searchColumn}
                 onSearch={handleSearch}
                 dateFrom={dateFrom}

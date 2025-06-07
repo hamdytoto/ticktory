@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 import { FaPlus, FaSearch } from "react-icons/fa";
-import { useTranslation } from "react-i18next"; // ✅ الترجمة
+import { useTranslation } from "react-i18next";
 
 const ServiceActions = ({
     search, setSearch,
     itemsPerPage, setItemsPerPage,
     setShowModal
 }) => {
-    const { t } = useTranslation(); // ✅ التهيئة
+    const { t } = useTranslation();
 
     return (
         <>
@@ -28,15 +28,15 @@ const ServiceActions = ({
                 </div>
 
                 {/* Dropdown & Button */}
-                <div className="flex items-center gap-6">
+                <div className="flex flex-col sm:flex-row w-full sm:w-auto items-center gap-4">
                     <button
-                        className="px-4 py-3 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2"
+                        className="w-full sm:w-auto px-4 py-3 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
                         onClick={() => setShowModal(true)}
                     >
-                        <FaPlus className="w-4 h-4" /> {t("service.new")} {/* ✅ */}
+                        <FaPlus className="w-4 h-4" /> {t("service.new")}
                     </button>
                     <select
-                        className="border rounded-lg px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full sm:w-28 px-4 py-2.5 border border-gray-300 rounded-lg text-sm outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer hover:border-gray-400 transition-colors"
                         value={itemsPerPage}
                         onChange={(e) => setItemsPerPage(Number(e.target.value))}
                     >

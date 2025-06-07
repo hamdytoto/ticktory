@@ -8,7 +8,7 @@ import {
 } from "../../redux/feature/notifications/notifi.apislice.js";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
-import { t  } from "i18next";
+import { t } from "i18next";
 import { useTranslation } from "react-i18next";
 import ConfirmDialog from "../../common/ConfirmDialogu.jsx";
 
@@ -109,13 +109,14 @@ export default function Notifications() {
         >
             {/* Confirmation Modal */}
             {showConfirm && (
-                ConfirmDialog({
-                    show: showConfirm,
-                    message: confirmType === "one" ? t("notifications.delete") : t("notifications.deleteAll"),
-                    onConfirm: handleConfirmDelete,
-                    onCancel: handleCancelDelete,
-                })
+                <ConfirmDialog
+                    show={showConfirm}
+                    message={confirmType === "one" ? t("notifications.delete") : t("notifications.deleteAll")}
+                    onConfirm={handleConfirmDelete}
+                    onCancel={handleCancelDelete}
+                />
             )}
+
 
             {/* Header */}
             <div className="flex justify-between items-center mb-3 sm:mb-4">

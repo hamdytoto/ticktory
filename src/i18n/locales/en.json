@@ -347,31 +347,25 @@
             "addFail": "Failed to add manager."
         }
     },
-    "technicianActions": {
-        "title": "Add Technicians",
-        "searchPlaceholder": "Search Technicians",
-        "newTechnician": "New Technician"
-    },
-    "technicianTable": {
-        "avatar": "Avatar",
-        "name": "Name",
-        "email": "Email",
-        "phone": "Phone",
-        "actions": "Actions",
-        "deleteSuccess": "Technician deleted successfully",
-        "deleteError": "Failed to delete technician",
-        "updateSuccess": "Technician updated successfully",
-        "updateError": "Failed to update technician",
-        "confirmDeleteMessage": "Do you really want to delete this technician? It cannot be undone.",
-        "deleteButtonTitle": "Delete technician",
-        "editButtonTitle": "Edit technician"
-    },
     "tickets": {
         "header": "All Tickets",
         "loading": "Loading tickets...",
         "error": "Error loading tickets",
         "create_success": "Ticket created successfully!",
-        "create_failed": "Failed to create ticket!"
+        "create_failed": "Failed to create ticket!",
+        "toast": {
+            "ticketUpdated": "Ticket updated successfully!",
+            "updateFailed": "Failed to update ticket!",
+            "createSuccess": "Ticket created successfully!",
+            "createError": "Failed to create ticket!",
+            "ticketResolved": "Ticket resolved successfully!",
+            "resolveFailed": "Failed to resolve ticket!"
+        },
+        "tooltip":{
+            "ticketResolved": "Ticket Resolved",
+            "resolveTicket": "Resolve Ticket",
+            "editTicket": "Edit Ticket"
+        }
     },
     "service": {
         "header": "Add Services",
@@ -398,5 +392,72 @@
         "cancel": "Cancel",
         "save": "Save",
         "add": "Add"
+    },
+    "technician": {
+        "columns": {
+            "avatar": "Avatar",
+            "name": "Name",
+            "email": "Email",
+            "phone": "Phone",
+            "actions": "Actions"
+        },
+        "avatarAlt": "Avatar",
+        "actions": {
+            "delete": "Delete technician",
+            "edit": "Edit technician",
+            "title": "Add Technicians",
+            "searchPlaceholder": "Search Technicians",
+            "newTechnician": "New Technician"
+        },
+        "toast": {
+            "deleteSuccess": "Technician deleted successfully",
+            "deleteFail": "Failed to delete technician",
+            "updateSuccess": "Technician updated successfully",
+            "updateFail": "Failed to update technician",
+            "fillFields": "Please fill all the fields.",
+            "addSuccess": "Technician added successfully!",
+            "addError": "Failed to add technician."
+        },
+        "confirmDelete": "Do you really want to delete this technician? It cannot be undone.",
+        "add": {
+            "title": "Add New Technician",
+            "name": "Name",
+            "email": "Email",
+            "password": "Password",
+            "confirmPassword": "Confirm Password",
+            "showPassword": "Show password",
+            "hidePassword": "Hide password",
+            "cancel": "Cancel",
+            "submit": "Add",
+            "close": "Close"
+        },
+        "edit": {
+            "title": "Edit Technician",
+            "name": "Name",
+            "email": "Email",
+            "password": "Password (leave blank to keep current)",
+            "confirmPassword": "Confirm Password",
+            "showPassword": "Show password",
+            "hidePassword": "Hide password",
+            "cancel": "Cancel",
+            "submit": "Save",
+            "close": "Close"
+        }
+    },
+    "confirmDialog": {
+        "title": "Are you sure?",
+        "close": "Close dialog",
+        "cancel": "Cancel",
+        "delete": "Delete"
+    },
+    "pagination": {
+        "showing": "Showing",
+        "to": "to",
+        "of": "of",
+        "entries": "entries",
+        "firstPage": "First page",
+        "previousPage": "Previous page",
+        "nextPage": "Next page",
+        "lastPage": "Last page"
     }
 }
