@@ -5,7 +5,6 @@ function getUserRole(type) {
 		2: "manager",
 		3: "technician",
 	};
-
 	return roles[type] || "unknown"; 
 }
 

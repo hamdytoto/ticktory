@@ -14,6 +14,7 @@ import { UserProvider } from './context/userContext';
 import TicketDetails from './Components/TicketDetails.jsx';
 import useDirection from './hooks/useDirection.js';
 import ChatUI from './modules/Chat/ChatUi.jsx';
+import PrivateRoute from './routes/PrivateRoute.jsx';
 // import AdminTickets from './modules/Admin/ticket/AdminTickets.jsx';
 
 
@@ -31,7 +32,7 @@ function App() {
         <Route path="verify-user" element={<OtpVerification />} />
         <Route path="reset-pass-otp" element={<OtpVerification />} />
       </Route>
-      <Route path="dashboard">
+      <Route path="dashboard" element={<PrivateRoute />}>
         <Route path=":page?" element={<Home />} >
           <Route path="view/:ticketId" element={<TicketDetails />} />
           <Route path=":conversationId" element={<ChatUI />} />

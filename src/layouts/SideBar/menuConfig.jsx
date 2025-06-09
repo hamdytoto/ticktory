@@ -2,7 +2,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
-import { ChatBubble} from "@mui/icons-material";
+import { ChatBubble, Settings } from "@mui/icons-material";
 // Sidebar Menu Configuration
 export const menuConfig = {
   admin: [
@@ -10,6 +10,7 @@ export const menuConfig = {
     { id: "tickets", icon: <ConfirmationNumberIcon />, labelKey: "menu.allTickets" },
     { id: "manager", icon: <ManageAccountsIcon />, labelKey: "menu.addManager" },
     { id: "service", icon: <RadioButtonCheckedIcon />, labelKey: "menu.addService" },
+    { id: "settings", icon: <Settings />, labelKey: "menu.settings" },
   ],
   user: [
     { id: "dashboard", icon: <DashboardIcon />, labelKey: "menu.dashboard" },

@@ -2,7 +2,7 @@
     "greeting": "مرحبا",
     "date": "١٢ ديسمبر ٢٠٢٤",
     "profile": "الملف الشخصي",
-    "settings": "الإعدادات",
+    "setting": "الإعدادات",
     "logout": "تسجيل الخروج",
     "menu": {
         "dashboard": "لوحة التحكم",
@@ -14,7 +14,8 @@
         "addTechnician": "إضافة فني",
         "addService": "إضافة خدمة",
         "chat": "المحادثة",
-        "collapse": "طي"
+        "collapse": "طي",
+        "settings": "الإعدادات"
     },
     "stats": {
         "allTickets": "كل التذاكر",
@@ -363,7 +364,7 @@
             "ticketResolved": "تم حل التذكرة بنجاح!",
             "resolveFailed": "فشل في حل التذكرة!"
         },
-        "tooltip":{
+        "tooltip": {
             "ticketResolved": "تم حل التذكرة",
             "resolveTicket": "حل التذكرة",
             "editTicket": "تعديل التذكرة"
@@ -461,5 +462,19 @@
         "previousPage": "الصفحة السابقة",
         "nextPage": "الصفحة التالية",
         "lastPage": "الصفحة الأخيرة"
+    },
+    "settings": {
+        "title": "الإعدادات",
+        "passwordSection": "تغيير كلمة المرور",
+        "currentPassword": "كلمة المرور الحالية",
+        "newPassword": "كلمة المرور الجديدة",
+        "confirmPassword": "تأكيد كلمة المرور الجديدة",
+        "updatePassword": "تحديث كلمة المرور",
+        "preferences": "التفضيلات",
+        "darkMode": "الوضع الداكن",
+        "emailNotifications": "إشعارات البريد الإلكتروني",
+        "passwordMismatch": "كلمة المرور الجديدة والتأكيد غير متطابقين",
+        "passwordUpdateSuccess": "تم تحديث كلمة المرور بنجاح",
+        "passwordUpdateError": "فشل في تحديث كلمة المرور"
     }
 }
