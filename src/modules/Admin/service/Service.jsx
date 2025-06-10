@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useParams } from "react-router-dom";
+// import { useParams, useNavigate } from "react-router-dom";
 import ServiceActions from "./ServiceAction.jsx";
 import ServiceTable from "./ServiceTable.jsx";
 import AddServiceModal from "./AddService.jsx";
@@ -8,16 +10,18 @@ import {
   useShowAllServicesApiQuery,
 } from "../../../redux/feature/admin/Services/admin.service.apislice.js";
 import { ToastContainer, toast } from "react-toastify";
+import Section from "./sections/Section.jsx";
 
 const Service = () => {
   const { t } = useTranslation();
+  const { serviceId } = useParams();
+  // const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [showModal, setShowModal] = useState(false);
   const [serviceName, setServiceName] = useState("");
   const [createService] = useCreateServiceApiMutation();
   const { refetch } = useShowAllServicesApiQuery();
-
   const handleAddService = async () => {
     if (!serviceName.trim()) {
       toast.warn(t("service.name_empty_warning"));
@@ -35,6 +39,9 @@ const Service = () => {
       console.error(error);
     }
   };
+  if (serviceId) {
+    return <Section/>;
+  }
 
   return (
     <div className="relative p-6 mx-auto">

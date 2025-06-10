@@ -382,6 +382,7 @@
         "confirm_delete": "Do you really want to delete this service? It cannot be undone.",
         "delete_tooltip": "Delete service",
         "edit_tooltip": "Edit service",
+        "sections_tooltip":"manage sections",
         "edit_title": "Edit Service",
         "add_title": "Add New Service",
         "name_placeholder": "Service Name",
@@ -389,10 +390,33 @@
         "add_error": "Failed to add service. Please try again.",
         "name_empty_warning": "Service name cannot be empty"
     },
+    "section": {
+        "header": "Manage Sections",
+        "search_placeholder": "Search Sections",
+        "new": "New Section",
+        "id": "Id",
+        "name": "Name",
+        "actions": "Actions",   
+        "service_info": "Service Sections",
+        "deleted_success": "Section deleted successfully",
+        "delete_error": "Failed to delete section",
+        "updated_success": "Section updated successfully",
+        "update_error": "Failed to update section",
+        "confirm_delete": "Do you really want to delete this section? It cannot be undone.",
+        "delete_tooltip": "Delete section",
+        "edit_tooltip": "Edit section",
+        "edit_title": "Edit Section",
+        "add_title": "Add New Section",
+        "name_placeholder": "Section Name",
+        "add_success": "Section added successfully!",
+        "add_error": "Failed to add section. Please try again.",
+        "name_empty_warning": "Section name cannot be empty"
+    },
     "common": {
         "cancel": "Cancel",
         "save": "Save",
-        "add": "Add"
+        "add": "Add",
+        "back": "Back"
     },
     "technician": {
         "columns": {

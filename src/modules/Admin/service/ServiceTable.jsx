@@ -1,7 +1,9 @@
+// Updated ServicesTable.jsx (Add manage sections button)
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import { FaTrash, FaEdit } from "react-icons/fa";
-import { useTranslation } from "react-i18next"; 
+import { FaTrash, FaEdit, FaSitemap } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 import {
     useShowAllServicesApiQuery,
@@ -16,7 +18,8 @@ import ConfirmDialog from "../../../common/ConfirmDialogu.jsx";
 import AppTable from "../../../Components/Table/AppTable.jsx";
 
 const ServicesTable = ({ search, itemsPerPage }) => {
-    const { t } = useTranslation(); 
+    const { t } = useTranslation();
+    const navigate = useNavigate();
 
     const { data, refetch } = useShowAllServicesApiQuery();
     const [deleteService] = useDeleteServiceApiMutation();
@@ -49,10 +52,10 @@ const ServicesTable = ({ search, itemsPerPage }) => {
     const confirmDelete = async () => {
         try {
             await deleteService(selectedId).unwrap();
-            toast.success(t("service.deleted_success")); 
+            toast.success(t("service.deleted_success"));
             refetch();
         } catch (err) {
-            toast.error(t("service.delete_error")); 
+            toast.error(t("service.delete_error"));
             console.error(err);
         } finally {
             setShowConfirm(false);
@@ -72,13 +75,17 @@ const ServicesTable = ({ search, itemsPerPage }) => {
                 id: editingService.id,
                 body: { name: editName },
             }).unwrap();
-            toast.success(t("service.updated_success")); 
+            toast.success(t("service.updated_success"));
             setEditingService(null);
             refetch();
         } catch (err) {
-            toast.error(t("service.update_error")); 
+            toast.error(t("service.update_error"));
             console.error(err);
         }
+    };
+
+    const handleManageSections = (serviceId) => {
+        navigate(`${serviceId}/sections`);
     };
 
     const displayedServices = filteredServices.slice(
@@ -89,7 +96,7 @@ const ServicesTable = ({ search, itemsPerPage }) => {
     const columns = [
         {
             key: "id",
-            header: t("service.id"), 
+            header: t("service.id"),
             render: (row) => (
                 <span className="text-gray-800 text-md font-medium">
                     #{row.id}
@@ -98,7 +105,7 @@ const ServicesTable = ({ search, itemsPerPage }) => {
         },
         {
             key: "name",
-            header: t("service.name"), 
+            header: t("service.name"),
             render: (row) => (
                 <span className="text-gray-800 text-md font-medium">
                     {row.name}
@@ -107,7 +114,7 @@ const ServicesTable = ({ search, itemsPerPage }) => {
         },
         {
             key: "actions",
-            header: t("service.actions"), // ✅
+            header: t("service.actions"),
             render: (row) => (
                 <div className="flex items-center space-x-2">
                     {renderActions(row)}
@@ -121,16 +128,23 @@ const ServicesTable = ({ search, itemsPerPage }) => {
             <button
                 onClick={() => handleDeleteClick(service.id)}
                 className="text-red-500 hover:text-red-700"
-                title={t("service.delete_tooltip")} // optional
+                title={t("service.delete_tooltip")}
             >
                 <FaTrash />
             </button>
             <button
                 onClick={() => handleEdit(service)}
                 className="text-gray-600 hover:text-black"
-                title={t("service.edit_tooltip")} // optional
+                title={t("service.edit_tooltip")}
             >
                 <FaEdit />
+            </button>
+            <button
+                onClick={() => handleManageSections(service.id)}
+                className="text-blue-600 hover:text-blue-800"
+                title={t("service.sections_tooltip")}
+            >
+                <FaSitemap />
             </button>
         </>
     );
@@ -158,7 +172,7 @@ const ServicesTable = ({ search, itemsPerPage }) => {
 
             <ConfirmDialog
                 show={showConfirm}
-                message={t("service.confirm_delete")} 
+                message={t("service.confirm_delete")}
                 onConfirm={confirmDelete}
                 onCancel={() => setShowConfirm(false)}
             />

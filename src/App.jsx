@@ -15,6 +15,7 @@ import TicketDetails from './Components/TicketDetails.jsx';
 import useDirection from './hooks/useDirection.js';
 import ChatUI from './modules/Chat/ChatUi.jsx';
 import PrivateRoute from './routes/PrivateRoute.jsx';
+import Section from './modules/Admin/service/sections/Section.jsx';
 // import AdminTickets from './modules/Admin/ticket/AdminTickets.jsx';
 
 
@@ -36,6 +37,7 @@ function App() {
         <Route path=":page?" element={<Home />} >
           <Route path="view/:ticketId" element={<TicketDetails />} />
           <Route path=":conversationId" element={<ChatUI />} />
+          <Route path=":serviceId/sections" element={<Section />} />
         </Route>
       </Route>
       <Route path="about" element={<AboutPage />} />

@@ -36,7 +36,7 @@ const TicketsTable = ({
     {
       key: "description",
       label: t("table.columns.description"),
-      render: (ticket) => `${ticket.description?.slice(0, 50)} ...`,
+      render: (ticket) => `${ticket.description?.slice(0, 40)} ...`,
     },
     {
       key: "status",

@@ -384,6 +384,7 @@
         "confirm_delete": "هل أنت متأكد من حذف هذه الخدمة؟ لا يمكن التراجع.",
         "delete_tooltip": "حذف الخدمة",
         "edit_tooltip": "تعديل الخدمة",
+        "sections_tooltip": "إدارة الأقسام",
         "edit_title": "تعديل الخدمة",
         "add_title": "إضافة خدمة جديدة",
         "name_placeholder": "اسم الخدمة",
@@ -391,10 +392,33 @@
         "add_error": "فشل في إضافة الخدمة. حاول مرة أخرى.",
         "name_empty_warning": "لا يمكن ترك اسم الخدمة فارغًا"
     },
+    "section": {
+        "header": "إدارة الأقسام",
+        "search_placeholder": "ابحث في الأقسام",
+        "new": "قسم جديد",
+        "id": "المعرّف",
+        "name": "الاسم",
+        "actions": "الإجراءات",
+        "service_info": "أقسام الخدمة",
+        "deleted_success": "تم حذف القسم بنجاح",
+        "delete_error": "فشل حذف القسم",
+        "updated_success": "تم تحديث القسم بنجاح",
+        "update_error": "فشل تحديث القسم",
+        "confirm_delete": "هل تريد حقًا حذف هذا القسم؟ لا يمكن التراجع عن هذا الإجراء.",
+        "delete_tooltip": "حذف القسم",
+        "edit_tooltip": "تعديل القسم",
+        "edit_title": "تعديل القسم",
+        "add_title": "إضافة قسم جديد",
+        "name_placeholder": "اسم القسم",
+        "add_success": "تمت إضافة القسم بنجاح!",
+        "add_error": "فشل إضافة القسم. يرجى المحاولة مرة أخرى.",
+        "name_empty_warning": "لا يمكن أن يكون اسم القسم فارغًا"
+    },
     "common": {
         "cancel": "إلغاء",
         "save": "حفظ",
-        "add": "إضافة"
+        "add": "إضافة",
+        "back": "عودة"
     },
     "technician": {
         "columns": {
