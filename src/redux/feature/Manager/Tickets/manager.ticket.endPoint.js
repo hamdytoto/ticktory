@@ -16,10 +16,10 @@ export const showOneTicketApi = (builder) =>
 	});
 export const AssignTicketApi = (builder) =>
 	builder.mutation({
-		query: ({ id, technician_id }) => ({
+		query: ({ id, technician_id , maximum_minutes }) => ({
 			url: `api/managers/tickets/${id}/assign`,
 			method: "POST",
-			body: { technician_id },
+			body: { technician_id , maximum_minutes },
 		}),
 	});
 
@@ -28,5 +28,14 @@ export const finishTicketApi = (builder) =>
 		query: (id) => ({
 			url: `api/managers/tickets/${id}/finish`,
 			method: "POST",
+		}),
+	});
+
+export const changeMaximumMinutesApi = (builder) =>
+	builder.mutation({
+		query: ({ id, maximum_minutes }) => ({
+			url: `api/managers/tickets/${id}`,
+			method: "PATCH",
+			body: { maximum_minutes },
 		}),
 	});

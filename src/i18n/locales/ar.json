@@ -188,7 +188,9 @@
             "department": "القسم",
             "name": "الاسم",
             "avatar": "الصورة الشخصية",
-            "email": "البريد الإلكتروني"
+            "email": "البريد الإلكتروني",
+            "assignedAt": "تم تعيين في",
+            "maxMinutes": "الحد الأقصى من الدقائق"
         },
         "pagination": {
             "showing": "عرض",
@@ -362,17 +364,43 @@
         "create_success": "تم إنشاء التذكرة بنجاح!",
         "create_failed": "فشل في إنشاء التذكرة!",
         "toast": {
-            "ticketUpdated": "تم تحديث التذكرة بنجاح!",
-            "updateFailed": "فشل في تحديث التذكرة!",
-            "createSuccess": "تم إنشاء التذكرة بنجاح!",
-            "createError": "فشل في إنشاء التذكرة!",
-            "ticketResolved": "تم حل التذكرة بنجاح!",
-            "resolveFailed": "فشل في حل التذكرة!"
+            "ticketAssigned": "تم تعيين التذكرة بنجاح",
+            "assignFailed": "فشل في تعيين التذكرة",
+            "ticketResolved": "تم حل التذكرة بنجاح",
+            "resolveFailed": "فشل في حل التذكرة",
+            "maxMinutesUpdated": "تم تحديث الوقت الأقصى بنجاح",
+            "maxMinutesUpdateFailed": "فشل في تحديث الوقت الأقصى",
+            "createSuccess": "تم إنشاء التذكرة بنجاح",
+            "createError": "فشل في إنشاء التذكرة",
+            "ticketUpdated": "تم تحديث التذكرة بنجاح",
+            "updateFailed": "فشل في تحديث التذكرة"
         },
         "tooltip": {
             "ticketResolved": "تم حل التذكرة",
             "resolveTicket": "حل التذكرة",
-            "editTicket": "تعديل التذكرة"
+            "editTicket": "تعديل التذكرة",
+            "closed": "هذه التذكرة مغلقة",
+            "changeMaxMinutes": "تغيير الوقت الأقصى",
+            "technicianAssigned": "تم تعيين فني بالفعل",
+            "assignTechnician": "تعيين فني"
+        },
+        "maxMinutes": {
+            "title": "تعيين الوقت الأقصى",
+            "label": "الحد الأقصى لوقت الاستجابة (دقائق)",
+            "placeholder": "أدخل الحد الأقصى من الدقائق",
+            "validation": {
+                "min": "الحد الأدنى هو 1 دقيقة",
+                "required": "الحد الأقصى لوقت الاستجابة مطلوب"
+            }
+        },
+        "assign": {
+            "title": "تعيين فني",
+            "loading": "جاري تحميل الفنيين...",
+            "error": "فشل في تحميل الفنيين",
+            "selectTechnician": "اختر فني",
+            "button": "تعيين",
+            "maxMinutes": "الحد الأقصى لوقت الاستجابة",
+            "enterMaxMinutes": "أدخل الحد الأقصى للدقائق"
         }
     },
     "service": {
@@ -517,7 +545,11 @@
             "passwordMismatch": "كلمة المرور الجديدة وتأكيدها غير متطابقين",
             "incorrectCurrentPassword": "كلمة المرور الحالية غير صحيحة",
             "invalidNewPassword": "كلمة المرور الجديدة غير صالحة",
-            "updateFailed": "فشل في تحديث كلمة المرور. يرجى المحاولة مرة أخرى."
-        }
+            "updateFailed": "فشل في تحديث كلمة المرور. يرجى المحاولة مرة أخرى.",
+            "autoAssignUpdateFailed": "فشل في تحديث إعداد التوزيع التلقائي",
+            "settingsLoadFailed": "فشل في تحميل الإعدادات"
+        },
+        "autoAssignDesc": "عند التفعيل، سيتم توزيع التذاكر تلقائياً على المديرين المتاحين",
+        "autoAssignUpdateSuccess": "تم تحديث إعداد التوزيع التلقائي بنجاح"
     }
 }

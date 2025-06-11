@@ -1,16 +1,18 @@
 /* eslint-disable react/prop-types */
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
-import { FaRegCircle, FaCheckCircle, FaPaperPlane, FaCheckDouble, FaLock } from "react-icons/fa";
+import { FaRegCircle, FaCheckCircle, FaPaperPlane, FaCheckDouble, FaLock, FaClock } from "react-icons/fa";
 
 import Pagination from "../../../common/Pagnitation.jsx";
 import Table from "../../../Components/Table/Table.jsx";
 import TechnicianAssignModal from "./TechnicianAssignModal.jsx";
+import MaxMinutesModal from "./MaxMinutesModal.jsx";
 import { getTicketStatusInfo } from "../../../Components/utils/ticketSatus.js";
 
 import {
     useFinishTicketApiMutation,
     useAssignTicketApiMutation,
+    useChangeMaximumMinutesMutation,
 } from "../../../redux/feature/Manager/Tickets/manager.ticket.apislice.js";
 import { useState } from "react";
 
@@ -29,8 +31,11 @@ const TicketsTable = ({
 
     const [finishTicket] = useFinishTicketApiMutation();
     const [assignTicket] = useAssignTicketApiMutation();
+    const [changeMaxMinutes] = useChangeMaximumMinutesMutation();
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [showMaxMinutesModal, setShowMaxMinutesModal] = useState(false);
     const [selectedTicketId, setSelectedTicketId] = useState(null);
+    const [selectedTicket, setSelectedTicket] = useState(null);
 
     const handleAssignClick = (ticket) => {
         if (!ticket.technician) {
@@ -39,13 +44,13 @@ const TicketsTable = ({
         }
     };
 
-    const handleTechnicianSubmit = async (ticketId, technicianId) => {
+    const handleTechnicianSubmit = async (ticketId, technicianId, maximum_minutes) => {
         try {
-            await assignTicket({ id: ticketId, technician_id: technicianId }).unwrap();
-            toast.success(t("toast.ticketAssigned"));
+            await assignTicket({ id: ticketId, technician_id: technicianId, maximum_minutes: maximum_minutes }).unwrap();
+            toast.success(t("tickets.toast.ticketAssigned"));
             refetch();
         } catch (err) {
-            toast.error(t("toast.assignFailed"));
+            toast.error(t("tickets.toast.assignFailed"));
             console.error("Assignment Error:", err);
         }
     };
@@ -54,12 +59,26 @@ const TicketsTable = ({
         if (ticket.status !== 2) {
             try {
                 await finishTicket(ticket.id).unwrap();
-                toast.success(t("toast.ticketResolved"));
+                toast.success(t("tickets.toast.ticketResolved"));
                 refetch();
             } catch (err) {
-                toast.error(t("toast.resolveFailed"));
+                toast.error(t("tickets.toast.resolveFailed"));
                 console.error("Resolve Error:", err);
             }
+        }
+    };
+
+    const handleMaxMinutesSubmit = async (minutes) => {
+        try {
+            await changeMaxMinutes({
+                id: selectedTicket.id,
+                maximum_minutes: minutes,
+            }).unwrap();
+            toast.success(t("tickets.toast.maxMinutesUpdated"));
+            refetch();
+        } catch (err) {
+            toast.error(t("tickets.toast.maxMinutesUpdateFailed"));
+            console.error("Max Minutes Update Error:", err);
         }
     };
 
@@ -94,6 +113,22 @@ const TicketsTable = ({
             render: (ticket) => ticket.technician?.user?.name || "—",
         },
         {
+            key: "assignedAt",
+            label: t("table.columns.assignedAt"),
+            render: (ticket) => {
+                if (!ticket.technician || !ticket.assigned_at) return "—";
+                return new Date(ticket.assigned_at).toLocaleString(`${isArabic ? "ar-EG" : "en-US"}`, {
+                    dateStyle: "medium",
+                    timeStyle: "short",
+                });
+            },
+        },
+        {
+            key: "maxMinutes",
+            label: t("table.columns.maxMinutes"),
+            render: (ticket) => ticket.maximum_minutes || "—",
+        },
+        {
             key: "createdAt",
             label: t("table.columns.createdAt"),
             render: (ticket) => new Date(ticket.created_at).toLocaleString(`${isArabic ? "ar-EG" : "en-US"}`, {
@@ -106,18 +141,19 @@ const TicketsTable = ({
             label: t("table.columns.actions"),
             render: (ticket) =>
                 ticket.status === 3 ? (
-                    <span className="text-gray-500 flex items-center space-x-1" title={t("tooltip.closed")}>
+                    <span className="text-gray-500 flex items-center space-x-1" title={t("tickets.tooltip.closed")}>
                         <FaLock /> <span className="text-sm">{t("status.closed")}</span>
                     </span>
                 ) : (
                     <div className="flex items-center space-x-3">
+
                         <button
                             onClick={() => handleAssignClick(ticket)}
                             className={`${ticket.technician ? "text-green-600 cursor-default" : "text-blue-500 hover:text-blue-700"}`}
                             title={
                                 ticket.technician
-                                    ? t("tooltip.technicianAssigned")
-                                    : t("tooltip.assignTechnician")
+                                    ? t("tickets.tooltip.technicianAssigned")
+                                    : t("tickets.tooltip.assignTechnician")
                             }
                         >
                             {ticket.technician ? <FaCheckDouble /> : <FaPaperPlane />}
@@ -127,12 +163,24 @@ const TicketsTable = ({
                             className={`${ticket.status === 2 ? "text-green-600 cursor-default" : "text-yellow-500 hover:text-yellow-600"}`}
                             title={
                                 ticket.status === 2
-                                    ? t("tooltip.ticketResolved")
-                                    : t("tooltip.resolveTicket")
+                                    ? t("tickets.tooltip.ticketResolved")
+                                    : t("tickets.tooltip.resolveTicket")
                             }
                         >
                             {ticket.status === 2 ? <FaCheckCircle /> : <FaRegCircle />}
                         </button>
+                        {ticket.status !== 2 && ticket.status !== 3 && (
+                            <button
+                                onClick={() => {
+                                    setSelectedTicket(ticket);
+                                    setShowMaxMinutesModal(true);
+                                }}
+                                className="text-blue-500 hover:text-blue-700"
+                                title={t("tickets.tooltip.changeMaxMinutes")}
+                            >
+                                <FaClock />
+                            </button>
+                        )}
                     </div>
                 ),
         },
@@ -176,6 +224,17 @@ const TicketsTable = ({
                 onClose={() => setIsModalOpen(false)}
                 onSubmit={handleTechnicianSubmit}
                 ticketId={selectedTicketId}
+            />
+
+            {/* Modal for changing maximum minutes */}
+            <MaxMinutesModal
+                isOpen={showMaxMinutesModal}
+                onClose={() => {
+                    setShowMaxMinutesModal(false);
+                    setSelectedTicket(null);
+                }}
+                onSubmit={handleMaxMinutesSubmit}
+                currentValue={selectedTicket?.maximum_minutes}
             />
         </div>
     );

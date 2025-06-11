@@ -7,11 +7,13 @@ export const ManagerTicketSlice = apiSlice.injectEndpoints({
 		showOneTicketApi: ticketApi.showOneTicketApi(builder),
 		assignTicketApi: ticketApi.AssignTicketApi(builder),
 		finishTicketApi: ticketApi.finishTicketApi(builder),
+		changeMaximumMinutes: ticketApi.changeMaximumMinutesApi(builder),
 	}),
 });
 export const {
     useShowAllTicketsApiQuery,
     useShowOneTicketApiQuery,
 	useAssignTicketApiMutation,
-	useFinishTicketApiMutation
+	useFinishTicketApiMutation,
+	useChangeMaximumMinutesMutation,
 } = ManagerTicketSlice;

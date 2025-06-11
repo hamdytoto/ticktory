@@ -10,7 +10,6 @@ export const menuConfig = {
     { id: "tickets", icon: <ConfirmationNumberIcon />, labelKey: "menu.allTickets" },
     { id: "manager", icon: <ManageAccountsIcon />, labelKey: "menu.addManager" },
     { id: "service", icon: <RadioButtonCheckedIcon />, labelKey: "menu.addService" },
-    { id: "settings", icon: <Settings />, labelKey: "menu.settings" },
   ],
   user: [
     { id: "dashboard", icon: <DashboardIcon />, labelKey: "menu.dashboard" },

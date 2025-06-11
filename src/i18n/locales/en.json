@@ -188,7 +188,10 @@
             "department": "Department",
             "name": "Name",
             "avatar": "Avatar",
-            "email": "Email"
+            "email": "Email",
+            "assignedAt": "Assigned At",
+            "maxMinutes": "Max Minutes"
+
         },
         "pagination": {
             "showing": "Showing",
@@ -365,12 +368,38 @@
             "createSuccess": "Ticket created successfully!",
             "createError": "Failed to create ticket!",
             "ticketResolved": "Ticket resolved successfully!",
-            "resolveFailed": "Failed to resolve ticket!"
+            "resolveFailed": "Failed to resolve ticket!",
+            "ticketAssigned": "Ticket assigned successfully",
+            "assignFailed": "Failed to assign ticket",
+            "maxMinutesUpdated": "Maximum time updated successfully",
+            "maxMinutesUpdateFailed": "Failed to update maximum time"
         },
         "tooltip": {
             "ticketResolved": "Ticket Resolved",
             "resolveTicket": "Resolve Ticket",
-            "editTicket": "Edit Ticket"
+            "editTicket": "Edit Ticket",
+            "closed": "This ticket is closed",
+            "changeMaxMinutes": "Change maximum time",
+            "technicianAssigned": "Technician already assigned",
+            "assignTechnician": "Assign technician"
+        },
+        "maxMinutes": {
+            "title": "Set Maximum Time",
+            "label": "Maximum Response Time (Minutes)",
+            "placeholder": "Enter maximum minutes",
+            "validation": {
+                "min": "Minimum value is 1 minute",
+                "required": "Please enter maximum minutes"
+            }
+        },
+        "assign": {
+            "title": "Assign Technician",
+            "loading": "Loading technicians...",
+            "error": "Failed to load technicians",
+            "selectTechnician": "Select Technician",
+            "button": "Assign",
+            "maxMinutes": "Maximum Response Time",
+            "enterMaxMinutes": "Enter maximum minutes"
         }
     },
     "service": {
@@ -516,6 +545,8 @@
             "incorrectCurrentPassword": "Current password is incorrect",
             "invalidNewPassword": "New password is invalid",
             "updateFailed": "Failed to update password. Please try again."
-        }
+        },
+        "autoAssignDesc": "When enabled, tickets will be automatically assigned to available managers",
+        "autoAssignUpdateSuccess": "Automatic assignment setting updated successfully"
     }
 }
