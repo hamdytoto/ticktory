@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
-import { FaRegCircle, FaCheckCircle, FaPaperPlane, FaCheckDouble, FaLock, FaClock } from "react-icons/fa";
+import { FaRegCircle, FaCheckCircle, FaPaperPlane, FaCheckDouble, FaLock, FaClock, FaRegClock, FaExclamationCircle, FaCheck } from "react-icons/fa";
 
 import Pagination from "../../../common/Pagnitation.jsx";
 import Table from "../../../Components/Table/Table.jsx";
@@ -112,17 +112,17 @@ const TicketsTable = ({
             label: t("table.columns.technician"),
             render: (ticket) => ticket.technician?.user?.name || "—",
         },
-        {
-            key: "assignedAt",
-            label: t("table.columns.assignedAt"),
-            render: (ticket) => {
-                if (!ticket.technician || !ticket.assigned_at) return "—";
-                return new Date(ticket.assigned_at).toLocaleString(`${isArabic ? "ar-EG" : "en-US"}`, {
-                    dateStyle: "medium",
-                    timeStyle: "short",
-                });
-            },
-        },
+        // {
+        //     key: "assignedAt",
+        //     label: t("table.columns.assignedAt"),
+        //     render: (ticket) => {
+        //         if (!ticket.technician || !ticket.assigned_at) return "—";
+        //         return new Date(ticket.assigned_at).toLocaleString(`${isArabic ? "ar-EG" : "en-US"}`, {
+        //             dateStyle: "medium",
+        //             timeStyle: "short",
+        //         });
+        //     },
+        // },
         {
             key: "maxMinutes",
             label: t("table.columns.maxMinutes"),
@@ -135,6 +135,55 @@ const TicketsTable = ({
                 dateStyle: "medium",
                 timeStyle: "short",
             }),
+        },
+        {
+            key: "overdue",
+            label: t("table.columns.overdue"),
+            render: (ticket) => {
+                if (ticket.status === 2 || ticket.status === 3) {
+                    return (
+                        <span
+                            className="flex items-center gap-2 text-green-600"
+                            title={t("tickets.tooltip.completed")}
+                        >
+                            <FaCheck className="w-4 h-4" />
+                            <span className="text-sm">{t("tickets.status.completed")}</span>
+                        </span>
+                    );
+                }
+
+                if (!ticket.technician) {
+                    return (
+                        <span
+                            className="flex items-center gap-2 text-gray-500"
+                            title={t("tickets.tooltip.notAssigned")}
+                        >
+                            <FaRegClock className="w-4 h-4" />
+                            <span className="text-sm">{t("tickets.status.pending")}</span>
+                        </span>
+                    );
+                }
+
+                return (
+                    <span
+                        className={`flex items-center gap-2 ${ticket.is_overdue ? 'text-red-600' : 'text-green-600'
+                            }`}
+                        title={t(ticket.is_overdue ? "tickets.tooltip.overdue" : "tickets.tooltip.onTime")}
+                    >
+                        {ticket.is_overdue ? (
+                            <>
+                                <FaExclamationCircle className="w-4 h-4" />
+                                <span className="text-sm">{t("tickets.status.overdue")}</span>
+                            </>
+                        ) : (
+                            <>
+                                <FaCheck className="w-4 h-4" />
+                                <span className="text-sm">{t("tickets.status.onTime")}</span>
+                            </>
+                        )}
+                    </span>
+                );
+            },
         },
         {
             key: "actions",

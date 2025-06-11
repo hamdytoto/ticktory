@@ -190,8 +190,8 @@
             "avatar": "Avatar",
             "email": "Email",
             "assignedAt": "Assigned At",
-            "maxMinutes": "Max Minutes"
-
+            "maxMinutes": "Max Minutes",
+            "overdue": "Time Status"
         },
         "pagination": {
             "showing": "Showing",
@@ -381,7 +381,11 @@
             "closed": "This ticket is closed",
             "changeMaxMinutes": "Change maximum time",
             "technicianAssigned": "Technician already assigned",
-            "assignTechnician": "Assign technician"
+            "assignTechnician": "Assign technician",
+            "overdue": "Ticket has exceeded response time",
+            "onTime": "Ticket is within response time",
+            "notAssigned": "Ticket not yet assigned",
+            "completed": "Ticket has been completed"
         },
         "maxMinutes": {
             "title": "Set Maximum Time",
@@ -400,6 +404,12 @@
             "button": "Assign",
             "maxMinutes": "Maximum Response Time",
             "enterMaxMinutes": "Enter maximum minutes"
+        },
+        "status": {
+            "overdue": "Overdue",
+            "onTime": "On Time",
+            "pending": "Pending",
+            "completed": "Completed"
         }
     },
     "service": {

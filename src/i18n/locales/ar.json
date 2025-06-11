@@ -190,7 +190,8 @@
             "avatar": "الصورة الشخصية",
             "email": "البريد الإلكتروني",
             "assignedAt": "تم تعيين في",
-            "maxMinutes": "الحد الأقصى من الدقائق"
+            "maxMinutes": "الحد الأقصى من الدقائق",
+            "overdue": "حالة الوقت"
         },
         "pagination": {
             "showing": "عرض",
@@ -382,7 +383,11 @@
             "closed": "هذه التذكرة مغلقة",
             "changeMaxMinutes": "تغيير الوقت الأقصى",
             "technicianAssigned": "تم تعيين فني بالفعل",
-            "assignTechnician": "تعيين فني"
+            "assignTechnician": "تعيين فني",
+            "overdue": "تجاوزت التذكرة وقت الاستجابة",
+            "onTime": "التذكرة ضمن وقت الاستجابة",
+            "notAssigned": "لم يتم تعيين التذكرة بعد",
+            "completed": "تم إكمال التذكرة"
         },
         "maxMinutes": {
             "title": "تعيين الوقت الأقصى",
@@ -401,6 +406,12 @@
             "button": "تعيين",
             "maxMinutes": "الحد الأقصى لوقت الاستجابة",
             "enterMaxMinutes": "أدخل الحد الأقصى للدقائق"
+        },
+        "status": {
+            "overdue": "متأخر",
+            "onTime": "في الوقت",
+            "pending": "قيد الانتظار",
+            "completed": "مكتمل"
         }
     },
     "service": {
