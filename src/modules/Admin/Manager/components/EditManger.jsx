@@ -1,16 +1,15 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import { FaSave, FaTimes, FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaSave, FaTimes, FaEye, FaEyeSlash, FaCheck } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import { useGetServicesQuery } from "../../../../redux/feature/selectMenu/select.apislice";
-
+import InputField from "../../../../Components/Form/InputField";
 const EditManagerModal = ({ show, onClose, managerData, setManagerData, onSave }) => {
     const { t, i18n } = useTranslation();
     const isRTL = i18n.dir() === "rtl";
-    const { data: servicesData } = useGetServicesQuery({
-        only_unique: 1,
-    });
+    const { data: servicesData } = useGetServicesQuery({ only_unique: 1 });
     const services = servicesData?.data || [];
+
     const [showPassword, setShowPassword] = useState(false);
     const [showPasswordConfirm, setShowPasswordConfirm] = useState(false);
 
@@ -21,139 +20,126 @@ const EditManagerModal = ({ show, onClose, managerData, setManagerData, onSave }
         if (["name", "email", "password", "password_confirmation"].includes(name)) {
             setManagerData({
                 ...managerData,
-                user: {
-                    ...managerData.user,
-                    [name]: value,
-                },
+                user: { ...managerData.user, [name]: value },
             });
         } else {
-            setManagerData({
-                ...managerData,
-                [name]: value,
-            });
+            setManagerData({ ...managerData, [name]: value });
         }
     };
 
-    const handleServiceIdChange = (e) => {
-        setManagerData({
-            ...managerData,
-            service_id: e.target.value,
-        });
-    };
+    const iconPositionClass = isRTL ? "left-3" : "right-3";
 
-    // Icon position helper
-    const iconPositionClass = isRTL ? "left-3 right-auto" : "right-3 left-auto";
+    const renderPasswordIcon = (show, setShow) => (
+        <button
+            type="button"
+            onClick={() => setShow(prev => !prev)}
+            className={`absolute top-1/2 -translate-y-1/2 ${iconPositionClass} text-gray-400`}
+        >
+            {show ? <FaEyeSlash /> : <FaEye />}
+        </button>
+    );
 
     return (
-        <div className="absolute inset-0 z-50 flex items-center justify-center backdrop-blur-sm">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-sm">
             <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md mx-4 p-6 relative">
-
-                {/* Close Button */}
                 <button
-                    className="absolute top-3 right-3 text-gray-400 hover:text-red-500 transition"
                     onClick={onClose}
-                    aria-label={t("editManager.close", "Close")}
+                    className="absolute top-3 right-3 text-gray-400 hover:text-red-500"
                 >
-                    <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                    >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
+                    <FaTimes />
                 </button>
 
-                {/* Modal Header */}
-                <h2 className="text-2xl font-bold mb-6 text-gray-800">{t("editManager.title", "Edit Manager")}</h2>
+                <h2 className="text-2xl font-bold mb-6 text-gray-800">
+                    {t("editManager.title")}
+                </h2>
 
-                <div className="mb-4">
-                    <select
-                        value={managerData.service_id || ""}
-                        onChange={handleServiceIdChange}
-                        className="p-3 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    >
-                        <option value="">{t("editManager.selectService", "Select a Service")}</option>
-                        {services.map((service) => (
-                            <option key={service.id} value={service.id}>
-                                {service.name}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-                {/* Manager Info */}
-                <input
+                <select
+                    value={managerData.service_id || ""}
+                    onChange={handleChange}
+                    name="service_id"
+                    className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                >
+                    <option value="">{t("editManager.selectService")}</option>
+                    {services.map(service => (
+                        <option key={service.id} value={service.id}>{service.name}</option>
+                    ))}
+                </select>
+
+                <InputField
                     type="text"
                     name="name"
-                    placeholder={t("editManager.name", "Name")}
-                    value={managerData.user.name || ""}
+                    value={managerData.user.name}
                     onChange={handleChange}
-                    className="border border-gray-300 p-3 rounded-lg w-full mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder={t("editManager.name")}
                 />
 
-                <input
+                <InputField
                     type="email"
                     name="email"
-                    placeholder={t("editManager.email", "Email")}
-                    value={managerData.user.email || ""}
+                    value={managerData.user.email}
                     onChange={handleChange}
-                    className="border border-gray-300 p-3 rounded-lg w-full mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder={t("editManager.email")}
                 />
 
-                <div className="relative mb-4">
-                    <input
-                        type={showPassword ? "text" : "password"}
-                        name="password"
-                        placeholder={t("editManager.password", "Password (leave blank to keep current)")}
-                        value={managerData.user.password || ""}
-                        onChange={handleChange}
-                        className="border border-gray-300 p-3 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                    <button
-                        type="button"
-                        className={`absolute top-1/2 transform -translate-y-1/2 text-gray-400 ${iconPositionClass}`}
-                        onClick={() => setShowPassword((prev) => !prev)}
-                        tabIndex={-1}
-                        aria-label={showPassword ? t("editManager.hidePassword", "Hide password") : t("editManager.showPassword", "Show password")}
-                    >
-                        {showPassword ? <FaEyeSlash /> : <FaEye />}
-                    </button>
-                </div>
+                <InputField
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    value={managerData.user.password}
+                    onChange={handleChange}
+                    placeholder={t("editManager.password")}
+                    icon={renderPasswordIcon(showPassword, setShowPassword)}
+                />
 
-                <div className="relative mb-6">
-                    <input
-                        type={showPasswordConfirm ? "text" : "password"}
-                        name="password_confirmation"
-                        placeholder={t("editManager.passwordConfirmation", "Confirm Password")}
-                        value={managerData.user.password_confirmation || ""}
-                        onChange={handleChange}
-                        className="border border-gray-300 p-3 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                    <button
-                        type="button"
-                        className={`absolute top-1/2 transform -translate-y-1/2 text-gray-400 ${iconPositionClass}`}
-                        onClick={() => setShowPasswordConfirm((prev) => !prev)}
-                        tabIndex={-1}
-                        aria-label={showPasswordConfirm ? t("editManager.hidePassword", "Hide password") : t("editManager.showPassword", "Show password")}
-                    >
-                        {showPasswordConfirm ? <FaEyeSlash /> : <FaEye />}
-                    </button>
+                <InputField
+                    type={showPasswordConfirm ? "text" : "password"}
+                    name="password_confirmation"
+                    value={managerData.user.password_confirmation}
+                    onChange={handleChange}
+                    placeholder={t("editManager.passwordConfirmation")}
+                    icon={renderPasswordIcon(showPasswordConfirm, setShowPasswordConfirm)}
+                />
+
+                <div className="mb-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <label className="flex items-start gap-3 cursor-pointer">
+                        <div className="relative flex items-center justify-center w-8 h-5 border-2 border-gray-300 rounded bg-white">
+                            <input
+                                type="checkbox"
+                                checked={managerData.automatic_assignment || false}
+                                onChange={(e) => setManagerData({
+                                    ...managerData,
+                                    automatic_assignment: e.target.checked
+                                })}
+                                className="sr-only peer "
+                            />
+                            {managerData.automatic_assignment && (
+                                <FaCheck className="w-4 h-4 text-blue-600" />
+                            )}
+                        </div>
+                        <div>
+                            <span className="font-medium text-gray-700">
+                                {t("editManager.automaticAssignment")}
+                            </span>
+                            <p className="text-sm text-gray-500 mt-1">
+                                {t("editManager.automaticAssignmentDesc")}
+                            </p>
+                        </div>
+                    </label>
                 </div>
 
                 <div className="flex justify-end gap-2">
                     <button
                         onClick={onClose}
-                        className="bg-gray-200 px-4 py-2 rounded-md hover:bg-gray-300 transition flex items-center gap-1"
+                        className="px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300 flex items-center gap-2"
                     >
                         <FaTimes className="text-sm" />
-                        {t("editManager.cancel", "Cancel")}
+                        {t("editManager.cancel")}
                     </button>
                     <button
                         onClick={onSave}
-                        className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition flex items-center gap-1"
+                        className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 flex items-center gap-2"
                     >
                         <FaSave className="text-sm" />
-                        {t("editManager.save", "Save")}
+                        {t("editManager.save")}
                     </button>
                 </div>
             </div>

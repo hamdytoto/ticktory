@@ -1,15 +1,14 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaTimes, FaCheck } from "react-icons/fa";
 import { useGetServicesQuery } from "../../../../redux/feature/selectMenu/select.apislice.js";
+import InputField from "../../../../Components/Form/InputField.jsx";
 
 const AddManagerModal = ({ show, onClose, managerData, setManagerData, onAdd }) => {
     const { t, i18n } = useTranslation();
     const isRTL = i18n.dir() === "rtl";
-    const { data: servicesData } = useGetServicesQuery({
-        only_unique: 1,
-    });
+    const { data: servicesData } = useGetServicesQuery({ only_unique: 1 });
     const services = servicesData?.data || [];
 
     const [showPassword, setShowPassword] = useState(false);
@@ -21,136 +20,120 @@ const AddManagerModal = ({ show, onClose, managerData, setManagerData, onAdd }) 
         const { name, value } = e.target;
         setManagerData({
             ...managerData,
-            user: {
-                ...managerData.user,
-                [name]: value,
-            },
+            user: { ...managerData.user, [name]: value },
         });
     };
 
-    const handleServiceIdChange = (e) => {
-        setManagerData({
-            ...managerData,
-            service_id: e.target.value,
-        });
-    };
+    const iconPositionClass = isRTL ? "left-3" : "right-3";
 
-    // Helper for icon position
-    const iconPositionClass = isRTL
-        ? "left-3 right-auto"
-        : "right-3 left-auto";
+    const renderPasswordIcon = (show, setShow) => (
+        <button
+            type="button"
+            onClick={() => setShow(prev => !prev)}
+            className={`absolute top-1/2 -translate-y-1/2 ${iconPositionClass} text-gray-400`}
+        >
+            {show ? <FaEyeSlash /> : <FaEye />}
+        </button>
+    );
 
     return (
-        <div className="absolute inset-0 z-50 flex items-center justify-center backdrop-blur-sm">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-sm">
             <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md mx-4 p-6 relative">
-
-                {/* Close Button */}
                 <button
-                    className="absolute top-3 right-3 text-gray-400 hover:text-red-500 transition"
                     onClick={onClose}
-                    aria-label={t("addManager.close", "Close")}
+                    className="absolute top-3 right-3 text-gray-400 hover:text-red-500"
                 >
-                    <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                    >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
+                    <FaTimes />
                 </button>
 
-                {/* Modal Title */}
-                <h2 className="text-2xl font-bold mb-6 text-gray-800">{t("addManager.title", "Add New Manager")}</h2>
+                <h2 className="text-2xl font-bold mb-6 text-gray-800">
+                    {t("addManager.title")}
+                </h2>
 
-                {/* Service Selection Dropdown */}
-                <div className="mb-4">
-                    <select
-                        value={managerData.service_id || ''}
-                        onChange={handleServiceIdChange}
-                        className="p-3 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    >
-                        <option value="">{t("addManager.selectService", "Select a Service")}</option>
-                        {services.map((service) => (
-                            <option key={service.id} value={service.id}>
-                                {service.name}
-                            </option>
-                        ))}
-                    </select>
-                </div>
+                <select
+                    value={managerData.service_id || ''}
+                    onChange={(e) => setManagerData({ ...managerData, service_id: e.target.value })}
+                    className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                >
+                    <option value="">{t("addManager.selectService")}</option>
+                    {services.map(service => (
+                        <option key={service.id} value={service.id}>{service.name}</option>
+                    ))}
+                </select>
 
-                {/* Manager Info Inputs */}
-                <input
+                <InputField
                     type="text"
                     name="name"
-                    placeholder={t("addManager.name", "Name")}
                     value={managerData.user.name}
                     onChange={handleUserChange}
-                    className="border border-gray-300 p-3 rounded-lg w-full mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder={t("addManager.name")}
                 />
 
-                <input
+                <InputField
                     type="email"
                     name="email"
-                    placeholder={t("addManager.email", "Email")}
                     value={managerData.user.email}
                     onChange={handleUserChange}
-                    className="border border-gray-300 p-3 rounded-lg w-full mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder={t("addManager.email")}
                 />
 
-                <div className="relative mb-4">
-                    <input
-                        type={showPassword ? "text" : "password"}
-                        name="password"
-                        placeholder={t("addManager.password", "Password")}
-                        value={managerData.user.password}
-                        onChange={handleUserChange}
-                        className="border border-gray-300 p-3 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                    <button
-                        type="button"
-                        className={`absolute top-1/2 transform -translate-y-1/2 text-gray-400 ${iconPositionClass}`}
-                        onClick={() => setShowPassword((prev) => !prev)}
-                        tabIndex={-1}
-                        aria-label={showPassword ? t("addManager.hidePassword", "Hide password") : t("addManager.showPassword", "Show password")}
-                    >
-                        {showPassword ? <FaEyeSlash /> : <FaEye />}
-                    </button>
+                <InputField
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    value={managerData.user.password}
+                    onChange={handleUserChange}
+                    placeholder={t("addManager.password")}
+                    icon={renderPasswordIcon(showPassword, setShowPassword)}
+                />
+
+                <InputField
+                    type={showPasswordConfirm ? "text" : "password"}
+                    name="password_confirmation"
+                    value={managerData.user.password_confirmation}
+                    onChange={handleUserChange}
+                    placeholder={t("addManager.passwordConfirmation")}
+                    icon={renderPasswordIcon(showPasswordConfirm, setShowPasswordConfirm)}
+                />
+
+                <div className="mb-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <label className="flex items-start gap-3 cursor-pointer">
+                        <div className="relative flex items-center justify-center w-7 h-5 border-2 border-gray-300 rounded bg-white">
+                            <input
+                                type="checkbox"
+                                checked={managerData.automatic_assignment || false}
+                                onChange={(e) => setManagerData({
+                                    ...managerData,
+                                    automatic_assignment: e.target.checked
+                                })}
+                                className="sr-only peer"
+                            />
+                            {managerData.automatic_assignment && (
+                                <FaCheck className="w-4 h-4 text-blue-600" />
+                            )}
+                        </div>
+                        <div>
+                            <span className="font-medium text-gray-700">
+                                {t("addManager.automaticAssignment")}
+                            </span>
+                            <p className="text-sm text-gray-500 mt-1">
+                                {t("addManager.automaticAssignmentDesc")}
+                            </p>
+                        </div>
+                    </label>
                 </div>
 
-                <div className="relative mb-6">
-                    <input
-                        type={showPasswordConfirm ? "text" : "password"}
-                        name="password_confirmation"
-                        placeholder={t("addManager.passwordConfirmation", "Confirm Password")}
-                        value={managerData.user.password_confirmation}
-                        onChange={handleUserChange}
-                        className="border border-gray-300 p-3 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                    <button
-                        type="button"
-                        className={`absolute top-1/2 transform -translate-y-1/2 text-gray-400 ${iconPositionClass}`}
-                        onClick={() => setShowPasswordConfirm((prev) => !prev)}
-                        tabIndex={-1}
-                        aria-label={showPasswordConfirm ? t("addManager.hidePassword", "Hide password") : t("addManager.showPassword", "Show password")}
-                    >
-                        {showPasswordConfirm ? <FaEyeSlash /> : <FaEye />}
-                    </button>
-                </div>
-
-                {/* Actions */}
                 <div className="flex justify-end gap-2">
                     <button
                         onClick={onClose}
-                        className="bg-gray-200 px-4 py-2 rounded-md hover:bg-gray-300 transition"
+                        className="px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300"
                     >
-                        {t("addManager.cancel", "Cancel")}
+                        {t("addManager.cancel")}
                     </button>
                     <button
                         onClick={onAdd}
-                        className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition"
+                        className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
                     >
-                        {t("addManager.add", "Add")}
+                        {t("addManager.add")}
                     </button>
                 </div>
             </div>

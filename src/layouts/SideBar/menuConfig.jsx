@@ -22,6 +22,7 @@ export const menuConfig = {
     { id: "tickets", icon: <ConfirmationNumberIcon />, labelKey: "menu.manageTickets" },
     { id: "technician", icon: <ManageAccountsIcon />, labelKey: "menu.addTechnician" },
     { id: "chat", icon: <ChatBubble />, labelKey: "menu.chat" },
+    { id: "settings", icon: <Settings />, labelKey: "menu.settings" },
   ],
   technician: [
     { id: "dashboard", icon: <DashboardIcon />, labelKey: "menu.dashboard" },

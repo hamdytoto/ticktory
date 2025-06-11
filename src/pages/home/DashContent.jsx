@@ -14,8 +14,8 @@ import Technician from "../../modules/Manager/Technician/Technician";
 import Settings from "../setting/setting";
 
 export const dashboardContent = {
-    admin: { dashboard: <AdminDash />, tickets: <AdminTickets />, manager: <Manager />, service: <Service />, profile: <Profile /> ,settings: <Settings />},
-    user: { dashboard: <UserDash />, tickets: <UserTickets />, chat: <ChatUI />, profile: <Profile /> },
-    manager: { dashboard: <MangerDash />, tickets: <ManagerTickets />, technician: <Technician />, chat: <ChatUI />, profile: <Profile /> },
-    technician: { dashboard: <TechniDash />, tickets: <TechniTickets />, chat: <ChatUI />, profile: <Profile /> },
+    admin: { dashboard: <AdminDash />, tickets: <AdminTickets />, manager: <Manager />, service: <Service />, profile: <Profile />, settings: <Settings /> },
+    user: { dashboard: <UserDash />, tickets: <UserTickets />, chat: <ChatUI />, profile: <Profile />, settings: <Settings /> },
+    manager: { dashboard: <MangerDash />, tickets: <ManagerTickets />, technician: <Technician />, chat: <ChatUI />, profile: <Profile />, settings: <Settings /> },
+    technician: { dashboard: <TechniDash />, tickets: <TechniTickets />, chat: <ChatUI />, profile: <Profile />, settings: <Settings /> },
 };

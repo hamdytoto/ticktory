@@ -19,6 +19,7 @@ const Manager = () => {
   const [showModal, setShowModal] = useState(false);
 
   const [managerData, setManagerData] = useState({
+    automatic_assignment:false,
     service_id: "",
     user: {
       name: "",
@@ -64,8 +65,8 @@ const Manager = () => {
         user: {
           name: "",
           email: "",
-          password: "manager1Aa",
-          password_confirmation: "manager1Aa",
+          password: "manager123",
+          password_confirmation: "manager123",
         },
       });
       setShowModal(false);

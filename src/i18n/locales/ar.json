@@ -304,6 +304,7 @@
         "phone": "الهاتف",
         "department": "القسم",
         "actions": "الإجراءات",
+        "automaticAssignment": "تعيين تلقائي",
         "delete": "حذف",
         "edit": "تعديل",
         "deleteSuccess": "تم حذف المدير بنجاح",
@@ -323,7 +324,9 @@
         "showPassword": "إظهار كلمة المرور",
         "hidePassword": "إخفاء كلمة المرور",
         "cancel": "إلغاء",
-        "add": "إضافة"
+        "add": "إضافة",
+        "automaticAssignment": "تعيين تلقائي",
+        "automaticAssignmentDesc": "عند تفعيل هذا الخيار، سيتم تعيين المدير تلقائيًا للتذاكر الجديدة التي تنشئها."
     },
     "editManager": {
         "close": "إغلاق",
@@ -335,6 +338,8 @@
         "passwordConfirmation": "تأكيد كلمة المرور",
         "showPassword": "إظهار كلمة المرور",
         "hidePassword": "إخفاء كلمة المرور",
+        "automaticAssignment": "تعيين تلقائي",
+        "automaticAssignmentDesc": "عند تفعيل هذا الخيار، سيتم تعيين المدير تلقائيًا للتذاكر الجديدة التي تنشئها.",
         "cancel": "إلغاء",
         "save": "حفظ"
     },
@@ -499,6 +504,20 @@
         "emailNotifications": "إشعارات البريد الإلكتروني",
         "passwordMismatch": "كلمة المرور الجديدة والتأكيد غير متطابقين",
         "passwordUpdateSuccess": "تم تحديث كلمة المرور بنجاح",
-        "passwordUpdateError": "فشل في تحديث كلمة المرور"
+        "passwordUpdateError": "فشل في تحديث كلمة المرور",
+        "enterCurrentPassword": "أدخل كلمة المرور الحالية",
+        "enterNewPassword": "أدخل كلمة المرور الجديدة",
+        "confirmNewPassword": "تأكيد كلمة المرور الجديدة",
+        "autoAssign": "التعيين التلقائي",
+        "errors": {
+            "currentPasswordRequired": "كلمة المرور الحالية مطلوبة",
+            "newPasswordRequired": "كلمة المرور الجديدة مطلوبة",
+            "passwordTooShort": "يجب أن تكون كلمة المرور الجديدة 8 أحرف على الأقل",
+            "samePassword": "يجب أن تكون كلمة المرور الجديدة مختلفة عن كلمة المرور الحالية",
+            "passwordMismatch": "كلمة المرور الجديدة وتأكيدها غير متطابقين",
+            "incorrectCurrentPassword": "كلمة المرور الحالية غير صحيحة",
+            "invalidNewPassword": "كلمة المرور الجديدة غير صالحة",
+            "updateFailed": "فشل في تحديث كلمة المرور. يرجى المحاولة مرة أخرى."
+        }
     }
 }

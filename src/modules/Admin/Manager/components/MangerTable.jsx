@@ -71,6 +71,7 @@ const ManagerTable = ({ search, itemsPerPage, currentPage, setCurrentPage }) => 
         setEditingManager({
             id: manager.id,
             service_id: manager.service_id,
+            automatic_assignment: manager.automatic_assignment,
             user: {
                 id: manager.user.id,
                 name: manager.user.name,
@@ -98,17 +99,17 @@ const ManagerTable = ({ search, itemsPerPage, currentPage, setCurrentPage }) => 
 
     // Define columns for AppTable
     const columns = [
-        {
-            key: "avatar",
-            header: t("managerTable.avatar", "Avatar"),
-            render: (row) => (
-                <img 
-                    src={row.avatar} 
-                    alt={t("managerTable.avatarAlt", "Avatar")} 
-                    className="w-10 h-10 rounded-full object-cover"
-                />
-            ),
-        },
+        // {
+        //     key: "avatar",
+        //     header: t("managerTable.avatar", "Avatar"),
+        //     render: (row) => (
+        //         <img 
+        //             src={row.avatar} 
+        //             alt={t("managerTable.avatarAlt", "Avatar")} 
+        //             className="w-10 h-10 rounded-full object-cover"
+        //         />
+        //     ),
+        // },
         {
             key: "name",
             header: t("managerTable.name", "Name"),
@@ -127,15 +128,15 @@ const ManagerTable = ({ search, itemsPerPage, currentPage, setCurrentPage }) => 
                 </span>
             ),
         },
-        {
-            key: "phone",
-            header: t("managerTable.phone", "Phone"),
-            render: (row) => (
-                <span className="text-gray-500 text-md">
-                    {row.user.phone||"__"}
-                </span>
-            ),
-        },
+        // {
+        //     key: "phone",
+        //     header: t("managerTable.phone", "Phone"),
+        //     render: (row) => (
+        //         <span className="text-gray-500 text-md">
+        //             {row.user.phone||"__"}
+        //         </span>
+        //     ),
+        // },
         {
             key: "department",
             header: t("managerTable.department", "Department"),
@@ -144,6 +145,15 @@ const ManagerTable = ({ search, itemsPerPage, currentPage, setCurrentPage }) => 
                     {row.service?.name}
                 </span>
             ),
+        },
+        {
+            key:"automatic_assignment",
+            header: t("managerTable.automaticAssignment", "Auto Assignment"),
+            render: (row) => (
+                <span className={`font-medium ${row.automatic_assignment ? 'text-green-900' : 'text-red-900'}`}>
+                    {row.automatic_assignment ? t("managerTable.yes", "Yes") : t("managerTable.no", "No")}
+                </span>
+            )
         },
         {
             key: "actions",
