@@ -45,14 +45,14 @@ const EditTicketModal = ({ show, onClose, ticketData, setTicketData, onUpdate })
                     </svg>
                 </button>
 
-                <h2 className="text-2xl font-semibold mb-6 text-gray-800">{t("addTicket.title", "Add New Ticket")}</h2>
+                <h2 className="text-2xl font-semibold mb-6 text-gray-800">{t("editTicket.title", "Edit Ticket")}</h2>
 
                 {/* Dropdown for Service Selection */}
                 <div className="mb-4">
                     <input
                         type="text"
                         name="title"
-                        placeholder={t("addTicket.ticketTitle", "Title")}
+                        placeholder={t("editTicket.ticketTitle", "Title")}
                         value={ticketData.title}
                         onChange={handleChange}
                         className="mt-2 p-3 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -65,7 +65,7 @@ const EditTicketModal = ({ show, onClose, ticketData, setTicketData, onUpdate })
                         onChange={handleServiceChange}
                         className="mt-2 p-3 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     >
-                        <option value="">{t("addTicket.selectService", "Select a Service")}</option>
+                        <option value="">{t("editTicket.selectService", "Select a Service")}</option>
                         {services?.map(service => (
                             <option key={service.id} value={service.id}>
                                 {service.name}
@@ -76,7 +76,7 @@ const EditTicketModal = ({ show, onClose, ticketData, setTicketData, onUpdate })
                 <div className="mb-6">
                     <textarea
                         name="description"
-                        placeholder={t("addTicket.description", "Description")}
+                        placeholder={t("editTicket.description", "Description")}
                         value={ticketData.description}
                         onChange={handleChange}
                         className="mt-2 p-3 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -89,13 +89,13 @@ const EditTicketModal = ({ show, onClose, ticketData, setTicketData, onUpdate })
                         onClick={onClose}
                         className="bg-gray-200 px-4 py-2 rounded-md hover:bg-gray-300 transition"
                     >
-                        {t("addTicket.cancel", "Cancel")}
+                        {t("editTicket.cancel", "Cancel")}
                     </button>
                     <button
                         onClick={onUpdate}
                         className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition"
                     >
-                        {t("addTicket.submit", "Submit")}
+                        {t("editTicket.saveChanges", "Save Changes")}
                     </button>
                 </div>
             </div>

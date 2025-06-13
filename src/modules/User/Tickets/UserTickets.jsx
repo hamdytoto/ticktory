@@ -10,11 +10,13 @@ import {
     useGetAllTicketUserQuery,
     useCreateTicketUserMutation
 } from "../../../redux/feature/user/Tickets/user.ticket.apislice.js";
+import { useGetServicesQuery } from "../../../redux/feature/selectMenu/select.apislice"; // NEW
 
 export default function UserTickets() {
     const { t } = useTranslation();
     const { ticketId } = useParams();
     const navigate = useNavigate();
+
     // State for search, pagination, and modal
     const [search, setSearch] = useState("");
     const [searchColumn, setSearchColumn] = useState("title");
@@ -30,6 +32,15 @@ export default function UserTickets() {
         service_id: ''
     });
 
+    // NEW: Service filter
+    const [serviceId, setServiceId] = useState("");
+
+    // NEW: Fetch services
+    const { data: servicesData } = useGetServicesQuery({
+        only_associated_to_managers: 1,
+    });
+    const services = servicesData?.data || [];
+
     // Debounce search input
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -39,14 +50,14 @@ export default function UserTickets() {
         return () => clearTimeout(timer);
     }, [search]);
 
-    // Build query params (if your API supports pagination/search)
+    // Build query params
     const queryParams = {
         page: currentPage,
         per_page: itemsPerPage,
         ...(debouncedSearch && { handle: debouncedSearch, search_column: searchColumn }),
         ...(dateFrom && { from: dateFrom }),
         ...(dateTo && { to: dateTo }),
-
+        ...(serviceId && { service_id: serviceId }) // ✅ NEW
     };
 
     // Fetch tickets
@@ -88,11 +99,23 @@ export default function UserTickets() {
         setSearch(searchValue);
         setSearchColumn(column);
     };
+
     const handleDateFilter = (from, to) => {
         setDateFrom(from);
         setDateTo(to);
-        setCurrentPage(1); // Reset to first page when changing date filter
-    }
+        setCurrentPage(1);
+    };
+
+    // ✅ NEW: Service filter handlers
+    const handleServiceFilter = (selectedServiceId) => {
+        setServiceId(selectedServiceId);
+        setCurrentPage(1);
+    };
+
+    const clearServiceFilter = () => {
+        setServiceId("");
+        setCurrentPage(1);
+    };
 
     // Show ticket details if ticketId is present
     if (ticketId) {
@@ -139,6 +162,11 @@ export default function UserTickets() {
                 itemsPerPage={itemsPerPage}
                 onItemsPerPageChange={handleItemsPerPageChange}
                 onDateFilter={handleDateFilter}
+                // ✅ NEW props for service filter
+                serviceId={serviceId}
+                services={services}
+                onServiceFilter={handleServiceFilter}
+                clearServiceFilter={clearServiceFilter}
             />
 
             <TicketsTable
