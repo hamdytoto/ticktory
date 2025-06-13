@@ -13,7 +13,7 @@ const DateFilterForm = ({
   const { t } = useTranslation();
 
   return (
-    <form onSubmit={handleDateSubmit} className="p-4 bg-gray-50 rounded-xl shadow-xl">
+    <form onSubmit={handleDateSubmit} className=" bg-gray-50 rounded-xl shadow-xl w-full lg:max-w-xl p-3 ">
       <div className="flex items-center gap-2 mb-4">
         <FaCalendarAlt className="text-gray-400" />
         <label className="text-sm text-gray-600 font-medium">

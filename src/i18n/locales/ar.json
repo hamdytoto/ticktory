@@ -20,7 +20,7 @@
     "stats": {
         "allTickets": "كل التذاكر",
         "openTickets": "التذاكر المفتوحة",
-        "closedTickets": "التذاكر المغلقة",
+        "closedTickets": "التذاكر المحلولة",
         "inProgressTickets": "التذاكر قيد المعالجة",
         "managersCount": "عدد المديرين",
         "servicesCount": "عدد الخدمات",
@@ -271,7 +271,10 @@
         "clear": "مسح",
         "searchPlaceholder": "ابحث في التذاكر...",
         "searchIn": "البحث في:",
-        "clearSearch": "مسح البحث"
+        "clearSearch": "مسح البحث",
+        "service": "الخدمة",
+        "allServices": "كل الخدمات",
+        "clearService": "إزالة فلتر الخدمة"
     },
     "ticketActions": {
         "newTicket": "إنشاء تذكرة جديدة"

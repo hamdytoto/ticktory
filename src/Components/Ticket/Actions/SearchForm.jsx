@@ -6,8 +6,8 @@ const SearchForm = ({
     localSearch,
     setLocalSearch,
     localSearchColumn,
-    setLocalSearchColumn,
-    columns,
+    // setLocalSearchColumn,
+    // columns,
     onSearch,
     clearSearch,
     handleSearchSubmit,
@@ -46,9 +46,9 @@ const SearchForm = ({
                     </button>
                 )}
 
-                <div className="w-px h-6 bg-gray-200 hidden sm:block" />
+                {/* <div className="w-px h-6 bg-gray-200 hidden sm:block" /> */}
 
-                <select
+                {/* <select
                     value={localSearchColumn}
                     onChange={(e) => setLocalSearchColumn(e.target.value)}
                     className="hidden sm:block py-2 px-4 text-sm text-gray-600 bg-transparent outline-none appearance-none cursor-pointer flex-shrink-0"
@@ -59,18 +59,18 @@ const SearchForm = ({
                             {col.label}
                         </option>
                     ))}
-                </select>
+                </select> */}
 
-                <button
+                {/* <button
                     type="submit"
                     className="ml-2 px-3 sm:px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition-colors flex-shrink-0"
                 >
                     <span className="hidden sm:inline">{t("filters.search", "Search")}</span>
                     <FaSearch className="sm:hidden" />
-                </button>
+                </button> */}
             </form>
 
-            <div className="sm:hidden">
+            {/* <div className="sm:hidden">
                 <label className="block text-sm text-gray-600 font-medium mb-2">
                     {t("filters.searchIn", "Search in:")}
                 </label>
@@ -85,7 +85,7 @@ const SearchForm = ({
                         </option>
                     ))}
                 </select>
-            </div>
+            </div> */}
         </>
     );
 };

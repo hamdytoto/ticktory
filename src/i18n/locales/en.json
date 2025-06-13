@@ -20,7 +20,7 @@
     "stats": {
         "allTickets": "All Tickets",
         "openTickets": "Open Tickets",
-        "closedTickets": "Closed Tickets",
+        "closedTickets": "Solved Tickets",
         "inProgressTickets": "In Progress Tickets",
         "managersCount": "Managers Count",
         "servicesCount": "Services Count",
@@ -269,7 +269,10 @@
         "clear": "Clear",
         "searchPlaceholder": "Search tickets...",
         "searchIn": "Search in:",
-        "clearSearch": "Clear search"
+        "clearSearch": "Clear search",
+        "service": "Service",
+        "allServices": "All Services",
+        "clearService": "Clear service filter"
     },
     "ticketActions": {
         "newTicket": "New Ticket"

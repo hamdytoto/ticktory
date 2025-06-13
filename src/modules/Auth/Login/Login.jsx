@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useUser } from "../../../context/userContext.jsx";
 import Cookies from "js-cookie";
 import { useForm } from "react-hook-form";
@@ -9,6 +9,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import "react-toastify/dist/ReactToastify.css";
+import useFirebaseLogic from "../../Notifications/useFirebaseLogic.js";
+
 
 const Login = () => {
   const { t } = useTranslation();
@@ -16,6 +18,11 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const [login, { isLoading }] = useLoginMutation();
+  const { fcmToken, requestNotificationPermission } = useFirebaseLogic();
+  useEffect(() => {
+    requestNotificationPermission();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const schema = z.object({
     email: z.string().email(t("login.invalidEmail")),
@@ -39,6 +46,7 @@ const Login = () => {
       const response = await login({
         email: data.email,
         password: data.pass,
+        fcm_token: fcmToken,
       }).unwrap();
 
       toast.success(t("login.success"));

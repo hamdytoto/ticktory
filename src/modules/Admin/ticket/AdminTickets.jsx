@@ -3,6 +3,7 @@ import TicketDetails from "../../../Components/TicketDetails";
 import TicketsTable from "./TicketsTable";
 import TicketActions from "../../../Components/Ticket/Actions/TicketActions";
 import { useGetAllTicketsApiQuery } from "../../../redux/feature/admin/Tickets/admin.ticket.apislice";
+import { useGetServicesQuery } from "../../../redux/feature/selectMenu/select.apislice"; // Add this import
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -19,7 +20,15 @@ export default function AdminTickets() {
   const [itemsPerPage, setItemsPerPage] = useState(7);
   const [dateFrom, setDateFrom] = useState("");
   const [dateTo, setDateTo] = useState("");
+  const [serviceId, setServiceId] = useState(""); // Add service filter state
   const [debouncedSearch, setDebouncedSearch] = useState("");
+
+  // Fetch services data
+  const { data: servicesData } = useGetServicesQuery({
+    only_associated_to_managers: 1,
+  });
+
+  const services = servicesData?.data || [];
 
   // Debounce search input
   useEffect(() => {
@@ -38,6 +47,7 @@ export default function AdminTickets() {
     ...(debouncedSearch && { handle: debouncedSearch, search_column: searchColumn }),
     ...(dateFrom && { from: dateFrom }),
     ...(dateTo && { to: dateTo }),
+    ...(serviceId && { service_id: serviceId }), // Add service_id to query params
   };
 
   const { data, isLoading, error } = useGetAllTicketsApiQuery(queryParams);
@@ -77,6 +87,17 @@ export default function AdminTickets() {
     setCurrentPage(1); // Reset to first page when filtering
   };
 
+  // Add service filter handlers
+  const handleServiceFilter = (selectedServiceId) => {
+    setServiceId(selectedServiceId);
+    setCurrentPage(1); // Reset to first page when filtering
+  };
+
+  const clearServiceFilter = () => {
+    setServiceId("");
+    setCurrentPage(1);
+  };
+
   if (isLoading) {
     return (
       <div className="p-6 mx-auto">
@@ -107,6 +128,10 @@ export default function AdminTickets() {
         dateFrom={dateFrom}
         dateTo={dateTo}
         onDateFilter={handleDateFilter}
+        serviceId={serviceId}
+        services={services}
+        onServiceFilter={handleServiceFilter}
+        clearServiceFilter={clearServiceFilter}
         itemsPerPage={itemsPerPage}
         onItemsPerPageChange={handleItemsPerPageChange}
       />

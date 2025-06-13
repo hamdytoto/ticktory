@@ -5,6 +5,7 @@ import SearchForm from "./SearchForm";
 import ItemsPerPageSelector from "./ItemsPerPageSelector";
 import DateFilterForm from "./DateFilterForm";
 import ActiveFilters from "./ActiveFilters";
+import ServiceFilterDropdown from "./ServiceFilter";
 import { FaPlus } from "react-icons/fa";
 
 const TicketActions = ({
@@ -14,6 +15,10 @@ const TicketActions = ({
   dateFrom,
   dateTo,
   onDateFilter,
+  serviceId,
+  services,
+  onServiceFilter,
+  clearServiceFilter,
   itemsPerPage,
   onItemsPerPageChange,
   setShowModal,
@@ -34,11 +39,11 @@ const TicketActions = ({
 
   const columns = [
     { value: "title", label: t("table.columns.title", "Title") },
-    { value: "status", label: t("table.columns.status", "Status") },
-    { value: "user", label: t("table.columns.user", "User") },
-    { value: "manager", label: t("table.columns.manager", "Manager") },
-    { value: "technician", label: t("table.columns.technician", "Technician") },
-    { value: "service", label: t("table.columns.service", "Service") },
+    // { value: "status", label: t("table.columns.status", "Status") },
+    // { value: "user", label: t("table.columns.user", "User") },
+    // { value: "manager", label: t("table.columns.manager", "Manager") },
+    // { value: "technician", label: t("table.columns.technician", "Technician") },
+    // { value: "service", label: t("table.columns.service", "Service") },
   ];
 
   const itemsPerPageOptions = [5, 7, 10, 15, 20, 25, 50];
@@ -93,23 +98,33 @@ const TicketActions = ({
           />
         </div>
       </div>
-
-      <DateFilterForm
-        localDateFrom={localDateFrom}
-        setLocalDateFrom={setLocalDateFrom}
-        localDateTo={localDateTo}
-        setLocalDateTo={setLocalDateTo}
-        handleDateSubmit={handleDateSubmit}
-        clearDateFilter={clearDateFilter}
-      />
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+        <DateFilterForm
+          localDateFrom={localDateFrom}
+          setLocalDateFrom={setLocalDateFrom}
+          localDateTo={localDateTo}
+          setLocalDateTo={setLocalDateTo}
+          handleDateSubmit={handleDateSubmit}
+          clearDateFilter={clearDateFilter}
+        />
+        <ServiceFilterDropdown
+          serviceId={serviceId}
+          services={services}
+          onServiceChange={onServiceFilter}
+          clearServiceFilter={clearServiceFilter}
+        />
+      </div>
 
       <ActiveFilters
         search={search}
         searchColumn={searchColumn}
         dateFrom={dateFrom}
         dateTo={dateTo}
+        serviceId={serviceId}
+        services={services}
         clearSearch={clearSearch}
         clearDateFilter={clearDateFilter}
+        clearServiceFilter={clearServiceFilter}
       />
     </div>
   );
