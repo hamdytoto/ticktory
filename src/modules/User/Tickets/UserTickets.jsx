@@ -10,12 +10,14 @@ import {
     useGetAllTicketUserQuery,
     useCreateTicketUserMutation
 } from "../../../redux/feature/user/Tickets/user.ticket.apislice.js";
-import { useGetServicesQuery } from "../../../redux/feature/selectMenu/select.apislice"; // NEW
+import { useGetServicesQuery } from "../../../redux/feature/selectMenu/select.apislice";
+import { useApiCallback } from "../../../Components/utils/validation.js";
 
 export default function UserTickets() {
     const { t } = useTranslation();
     const { ticketId } = useParams();
     const navigate = useNavigate();
+    const { handleApiCallback } = useApiCallback();
 
     // State for search, pagination, and modal
     const [search, setSearch] = useState("");
@@ -57,7 +59,7 @@ export default function UserTickets() {
         ...(debouncedSearch && { handle: debouncedSearch, search_column: searchColumn }),
         ...(dateFrom && { from: dateFrom }),
         ...(dateTo && { to: dateTo }),
-        ...(serviceId && { service_id: serviceId }) // ✅ NEW
+        ...(serviceId && { service_id: serviceId })
     };
 
     // Fetch tickets
@@ -70,16 +72,13 @@ export default function UserTickets() {
 
     // Handlers
     const handleAddTicket = () => {
-        createTicket(ticketData).unwrap()
-            .then(() => {
-                toast.success(t("tickets.toast.createSuccess", "Ticket created successfully!"));
-                refetch();
-            })
-            .catch(() => {
-                toast.error(t("tickets.toast.createError", "Failed to create ticket!"));
-            });
-        setShowTicketModal(false);
-        setTicketData({ title: '', description: '', service_id: '' });
+        handleApiCallback(async () => {
+            await createTicket(ticketData).unwrap();
+            toast.success(t("tickets.toast.createSuccess", "Ticket created successfully!"));
+            refetch();
+            setTicketData({ title: '', description: '', service_id: '' });
+            setShowTicketModal(false);
+        }, "addticket");
     };
 
     const handleTicketClick = (ticketId) => {

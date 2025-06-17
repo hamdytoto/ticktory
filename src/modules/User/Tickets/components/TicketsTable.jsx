@@ -7,6 +7,7 @@ import Pagination from "../../../../common/Pagnitation.jsx";
 import Table from "../../../../Components/Table/Table.jsx";
 import { getTicketStatusInfo } from "../../../../Components/utils/ticketSatus.js";
 import EditTicketModal from "./EditTicketModal.jsx";
+import { useApiCallback } from "../../../../Components/utils/validation.js";
 
 import {
     useUpdateTicketUserMutation,
@@ -26,6 +27,7 @@ const TicketsTable = ({
     const isArabic = i18n.language === "ar";
 
     const [updateTicket] = useUpdateTicketUserMutation();
+    const { handleApiCallback } = useApiCallback();
     const [showEditModal, setShowEditModal] = useState(false);
     const [selectedTicket, setSelectedTicket] = useState(null);
 
@@ -36,22 +38,21 @@ const TicketsTable = ({
     };
 
     const handleUpdateTicket = async () => {
-        try {
+        handleApiCallback(async () => {
             await updateTicket({
                 id: selectedTicket.id,
                 data: {
                     title: selectedTicket.title,
                     description: selectedTicket.description,
                     service_id: selectedTicket.service_id,
+                    section_id: selectedTicket.section_id,
                 },
             }).unwrap();
             refetch();
             toast.success(t("tickets.toast.ticketUpdated") || "Ticket updated successfully!");
             setShowEditModal(false);
-        } catch (err) {
-            toast.error(t("tickets.toast.updateFailed") || "Failed to update ticket!");
-            console.error("Error updating ticket:", err);
-        }
+            
+        },"editticket")
     };
 
     const columns = [
@@ -70,11 +71,6 @@ const TicketsTable = ({
                 </>
             ),
         },
-        // {
-        //     key: "description",
-        //     label: t("table.columns.description") || "DESCRIPTION",
-        //     render: (ticket) => `${ticket.description.slice(0, 50)} ...`,
-        // },
         {
             key: "status",
             label: t("table.columns.status") || "STATUS",

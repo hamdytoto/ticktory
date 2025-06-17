@@ -1,9 +1,16 @@
 /* eslint-disable react/prop-types */
+import { FaTimes, FaSave } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
+import { useValidation } from "../../../../Components/utils/validation";
+import InputField from "../../../../Components/Form/InputField";
+import SelectComponent from "../../../../Components/Form/SelectComponent.jsx";
 import { useGetServicesQuery, useGetSectionsQuery } from "../../../../redux/feature/selectMenu/select.apislice.js";
 
 const EditTicketModal = ({ show, onClose, ticketData, setTicketData, onUpdate }) => {
-    const { t } = useTranslation();
+    const { t} = useTranslation();
+    const errors = useValidation().getErrors("editticket");
+
+    // Add service and section queries
     const { data: servicesData } = useGetServicesQuery({
         only_associated_to_managers: 1,
     });
@@ -26,11 +33,11 @@ const EditTicketModal = ({ show, onClose, ticketData, setTicketData, onUpdate })
     const handleSectionChange = (e) => {
         const selectedSectionId = e.target.value;
         const selectedSection = sections.find(section => section.id == selectedSectionId);
-        
+
         setTicketData({
             ...ticketData,
             section_id: selectedSectionId,
-            service_id: selectedSection?.service_id || '',
+            service_id: selectedSection.section.service_id || '',
         });
     };
 
@@ -44,8 +51,8 @@ const EditTicketModal = ({ show, onClose, ticketData, setTicketData, onUpdate })
     });
 
     return (
-        <div className="fixed inset-0 flex justify-center items-center backdrop-blur-sm z-50">
-            <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg relative">
+        <div className="absolute inset-0 z-50 flex items-center justify-center backdrop-blur-sm">
+            <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md mx-4 p-6 relative">
                 {/* Close Button */}
                 <button
                     className="absolute top-3 right-3 text-gray-400 hover:text-red-500 transition"
@@ -62,63 +69,74 @@ const EditTicketModal = ({ show, onClose, ticketData, setTicketData, onUpdate })
                     </svg>
                 </button>
 
-                <h2 className="text-2xl font-semibold mb-6 text-gray-800">{t("editTicket.title", "Edit Ticket")}</h2>
+                {/* Modal Content */}
+                <h2 className="text-2xl font-bold mb-6 text-gray-800">
+                    {t("editTicket.title", "Edit Ticket")}
+                </h2>
 
-                {/* Title Input */}
+                {/* Service-Section Dropdown */}
                 <div className="mb-4">
-                    <input
-                        type="text"
-                        name="title"
-                        placeholder={t("editTicket.ticketTitle", "Title")}
-                        value={ticketData.title}
-                        onChange={handleChange}
-                        className="mt-2 p-3 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    <SelectComponent
+                        options={groupedOptions}
+                        value={ticketData?.section.id || ''}
+                        onChange={handleSectionChange}
+                        placeholder={t("editTicket.selectSection", "Select a Section")}
+                        error={errors["section_id"]}
+                        isGrouped={true}
+                        groupDefinition={{
+                            groupKey: "service",
+                            itemsKey: "sections",
+                            groupId: "id",
+                            groupName: "name",
+                        }}
+                        definition={{
+                            id: "id",
+                            name: "name",
+                        }}
                     />
                 </div>
 
-                {/* Dropdown for Service-Section Selection */}
-                <div className="mb-4">
-                    <select
-                        value={ticketData.section_id || ''}
-                        onChange={handleSectionChange}
-                        className="mt-2 p-3 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    >
-                        <option value="">{t("editTicket.selectSection", "Select a Section ")}</option>
-                        {groupedOptions.map(({ service, sections: serviceSections }) => (
-                            <optgroup key={service.id} label={service.name}>
-                                {serviceSections.map(section => (
-                                    <option key={section.id} value={section.id}>
-                                        {section.name}
-                                    </option>
-                                ))}
-                            </optgroup>
-                        ))}
-                    </select>
-                </div>
+                {/* Title Input */}
+                <InputField
+                    type="text"
+                    name="title"
+                    placeholder={t("editTicket.ticketTitle", "Title")}
+                    value={ticketData?.title || ""}
+                    onChange={handleChange}
+                    className="border border-gray-300 p-3 rounded-lg w-full mb-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    error={errors["title"]}
+                />
 
                 {/* Description Textarea */}
                 <div className="mb-6">
                     <textarea
                         name="description"
                         placeholder={t("editTicket.description", "Description")}
-                        value={ticketData.description}
+                        value={ticketData?.description || ""}
                         onChange={handleChange}
-                        className="mt-2 p-3 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="border border-gray-300 p-3 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
                         rows="4"
                     />
+                    {errors["description"] && (
+                        <span className="text-red-500 text-sm mt-1 block">
+                            {errors["description"]}
+                        </span>
+                    )}
                 </div>
 
                 <div className="flex justify-end gap-2">
                     <button
                         onClick={onClose}
-                        className="bg-gray-200 px-4 py-2 rounded-md hover:bg-gray-300 transition"
+                        className="bg-gray-200 px-4 py-2 rounded-md hover:bg-gray-300 transition flex items-center gap-1"
                     >
+                        <FaTimes className="text-sm" />
                         {t("editTicket.cancel", "Cancel")}
                     </button>
                     <button
                         onClick={onUpdate}
-                        className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition"
+                        className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition flex items-center gap-1"
                     >
+                        <FaSave className="text-sm" />
                         {t("editTicket.saveChanges", "Save Changes")}
                     </button>
                 </div>

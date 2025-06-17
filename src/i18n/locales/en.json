@@ -499,6 +499,7 @@
       "name": "Name",
       "email": "Email",
       "password": "Password",
+      "section":"Select Section",
       "confirmPassword": "Confirm Password",
       "showPassword": "Show password",
       "hidePassword": "Hide password",

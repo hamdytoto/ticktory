@@ -2,12 +2,27 @@
 import { useState } from "react";
 import { FaTimes, FaPlus, FaEye, FaEyeSlash } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
+import { useValidation } from "../../../../Components/utils/validation";
+import InputField from "../../../../Components/Form/InputField";
+import SelectComponent from "../../../../Components/Form/SelectComponent.jsx";
+import { useGetServicesQuery, useGetSectionsQuery } from "../../../../redux/feature/selectMenu/select.apislice.js";
 
 const AddTechnicianModal = ({ show, onClose, technicianData, setTechnicianData, onAdd }) => {
     const { t, i18n } = useTranslation();
     const isRTL = i18n.dir() === "rtl";
+    const errors = useValidation().getErrors("addtechnician");
     const [showPassword, setShowPassword] = useState(false);
     const [showPasswordConfirm, setShowPasswordConfirm] = useState(false);
+
+    // Add service and section queries
+    const { data: servicesData } = useGetServicesQuery({
+        only_associated_to_managers: 1,
+    });
+    const services = servicesData?.data || [];
+
+    // Get all sections for all services
+    const { data: sectionsData } = useGetSectionsQuery();
+    const sections = sectionsData?.data || [];
 
     if (!show) return null;
 
@@ -18,6 +33,26 @@ const AddTechnicianModal = ({ show, onClose, technicianData, setTechnicianData, 
             [name]: value,
         });
     };
+
+    const handleSectionChange = (e) => {
+        const selectedSectionId = e.target.value;
+        const selectedSection = sections.find(section => section.id == selectedSectionId);
+
+        setTechnicianData({
+            ...technicianData,
+            section_id: selectedSectionId,
+            service_id: selectedSection?.service_id || '',
+        });
+    };
+
+    // Group sections by service
+    const groupedOptions = services.map(service => {
+        const serviceSections = sections.filter(section => section.service_id == service.id);
+        return {
+            service,
+            sections: serviceSections
+        };
+    });
 
     // Helper for icon position
     const iconPositionClass = isRTL ? "left-3 right-auto" : "right-3 left-auto";
@@ -46,32 +81,57 @@ const AddTechnicianModal = ({ show, onClose, technicianData, setTechnicianData, 
                     {t("technician.add.title", "Add New Technician")}
                 </h2>
 
-                <input
+                {/* Service-Section Dropdown */}
+                <div className="mb-4">
+                    <SelectComponent
+                        options={groupedOptions}
+                        value={technicianData?.section_id || ''}
+                        onChange={handleSectionChange}
+                        placeholder={t("technician.add.section", "Section")}
+                        error={errors["section_id"]}
+                        isGrouped={true}
+                        groupDefinition={{
+                            groupKey: "service",
+                            itemsKey: "sections",
+                            groupId: "id",
+                            groupName: "name",
+                        }}
+                        definition={{
+                            id: "id",
+                            name: "name",
+                        }}
+                    />
+                </div>
+                <InputField
                     type="text"
                     name="name"
                     placeholder={t("technician.add.name", "Name")}
                     value={technicianData?.name || ""}
                     onChange={handleUserChange}
-                    className="border border-gray-300 p-3 rounded-lg w-full mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="border border-gray-300 p-3 rounded-lg w-full mb-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    error={errors["name"]}
                 />
 
-                <input
+                <InputField
                     type="email"
                     name="email"
                     placeholder={t("technician.add.email", "Email")}
                     value={technicianData?.email || ""}
                     onChange={handleUserChange}
-                    className="border border-gray-300 p-3 rounded-lg w-full mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="border border-gray-300 p-3 rounded-lg w-full mb-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    error={errors["email"]}
                 />
 
-                <div className="relative mb-4">
-                    <input
+
+                <div className="relative mb-1">
+                    <InputField
                         type={showPassword ? "text" : "password"}
                         name="password"
                         placeholder={t("technician.add.password", "Password")}
                         value={technicianData?.password || ""}
                         onChange={handleUserChange}
-                        className="border border-gray-300 p-3 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="border border-gray-300 p-3 rounded-lg w-full pr-12 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        error={errors["password"]}
                     />
                     <button
                         type="button"
@@ -85,13 +145,14 @@ const AddTechnicianModal = ({ show, onClose, technicianData, setTechnicianData, 
                 </div>
 
                 <div className="relative mb-6">
-                    <input
+                    <InputField
                         type={showPasswordConfirm ? "text" : "password"}
                         name="password_confirmation"
                         placeholder={t("technician.add.confirmPassword", "Confirm Password")}
                         value={technicianData?.password_confirmation || ""}
                         onChange={handleUserChange}
-                        className="border border-gray-300 p-3 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="border border-gray-300 p-3 rounded-lg w-full pr-12 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        error={errors["password"]}
                     />
                     <button
                         type="button"
@@ -110,14 +171,14 @@ const AddTechnicianModal = ({ show, onClose, technicianData, setTechnicianData, 
                         className="bg-gray-200 px-4 py-2 rounded-md hover:bg-gray-300 transition flex items-center gap-1"
                     >
                         <FaTimes className="text-sm" />
-                        {t("technician.add.cancel", "Cancel")}
+                        {t("common.cancel", "Cancel")}
                     </button>
                     <button
                         onClick={onAdd}
                         className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition flex items-center gap-1"
                     >
                         <FaPlus className="text-sm" />
-                        {t("technician.add.submit", "Add")}
+                        {t("common.add", "Add")}
                     </button>
                 </div>
             </div>

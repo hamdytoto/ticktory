@@ -4,7 +4,7 @@ import TechnicianTable from "./components/TechnicianTable.jsx";
 import AddTechnicianModal from "./components/AddTechnician.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
-
+import { useApiCallback } from "../../../Components/utils/validation.js";
 // API Hooks
 import {
   useCreateTechnicianMutation,
@@ -16,6 +16,7 @@ const Technician = () => {
   const [search, setSearch] = useState("");
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [showModal, setShowModal] = useState(false);
+  const { handleApiCallback } = useApiCallback();
 
   const [technicianData, setTechnicianData] = useState({
     name: "",
@@ -28,29 +29,24 @@ const Technician = () => {
   const { refetch } = useShowAllTechnicianQuery();
 
   const handleAddTechnician = async () => {
-    const { name, email, password, password_confirmation } = technicianData;
+    // const { name, email, password, password_confirmation } = technicianData;
 
-    if (!name || !email || !password || !password_confirmation) {
-      toast.warn(t("technician.toast.fillFields", "Please fill all the fields."));
-      return;
-    }
-
-    try {
+    // if (!name || !email || !password || !password_confirmation) {
+    //   toast.warn(t("technician.toast.fillFields", "Please fill all the fields."));
+    //   return;
+    // }
+    handleApiCallback(async () => {
       await createTechnician(technicianData).unwrap();
       toast.success(t("technician.toast.addSuccess", "Technician added successfully!"));
       setTechnicianData({
         name: "",
         email: "",
-        password: "technician1Aa",
-        password_confirmation: "technician1Aa",
+        password: "technician123",
+        password_confirmation: "technician123",
       });
       setShowModal(false);
       refetch();
-    } catch (error) {
-      toast.error(
-        error?.data?.message || t("technician.toast.addError", "Failed to add technician.")
-      );
-    }
+    }, "addtechnician");
   };
 
   return (

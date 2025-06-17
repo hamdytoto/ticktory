@@ -49,8 +49,8 @@ const Manager = () => {
   };
 
   const handleAddManager = async () => {
-    const { service_id, user } = managerData;
-    const { name, email, password, password_confirmation } = user;
+    // const { service_id, user } = managerData;
+    // const { name, email, password, password_confirmation } = user;
 
     // if (!service_id || !name || !email || !password || !password_confirmation) {
     //   toast.warn(
@@ -112,4 +112,3 @@ const Manager = () => {
 };
 
 export default Manager;
-

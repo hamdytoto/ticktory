@@ -502,6 +502,7 @@
       "name": "الاسم",
       "email": "البريد الإلكتروني",
       "password": "كلمة المرور",
+      "section":"اختار القسم",
       "confirmPassword": "تأكيد كلمة المرور",
       "showPassword": "إظهار كلمة المرور",
       "hidePassword": "إخفاء كلمة المرور",

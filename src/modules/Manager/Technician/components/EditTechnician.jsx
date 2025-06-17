@@ -2,12 +2,27 @@
 import { useState } from "react";
 import { FaSave, FaTimes, FaEye, FaEyeSlash } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
+import { useValidation } from "../../../../Components/utils/validation";
+import InputField from "../../../../Components/Form/InputField";
+import SelectComponent from "../../../../Components/Form/SelectComponent.jsx";
+import { useGetServicesQuery, useGetSectionsQuery } from "../../../../redux/feature/selectMenu/select.apislice.js";
 
 const EditTechnicianModal = ({ show, onClose, managerData, setManagerData, onSave }) => {
     const { t, i18n } = useTranslation();
     const isRTL = i18n.dir() === "rtl";
+    const errors = useValidation().getErrors("edittechnician");
     const [showPassword, setShowPassword] = useState(false);
     const [showPasswordConfirm, setShowPasswordConfirm] = useState(false);
+
+    // Add service and section queries
+    const { data: servicesData } = useGetServicesQuery({
+        only_associated_to_managers: 1,
+    });
+    const services = servicesData?.data || [];
+
+    // Get all sections for all services
+    const { data: sectionsData } = useGetSectionsQuery();
+    const sections = sectionsData?.data || [];
 
     if (!show || !managerData) return null;
 
@@ -18,6 +33,26 @@ const EditTechnicianModal = ({ show, onClose, managerData, setManagerData, onSav
             [name]: value,
         });
     };
+
+    const handleSectionChange = (e) => {
+        const selectedSectionId = e.target.value;
+        const selectedSection = sections.find(section => section.id == selectedSectionId);
+
+        setManagerData({
+            ...managerData,
+            section_id: selectedSectionId,
+            service_id: selectedSection?.service_id || '',
+        });
+    };
+
+    // Group sections by service
+    const groupedOptions = services.map(service => {
+        const serviceSections = sections.filter(section => section.service_id == service.id);
+        return {
+            service,
+            sections: serviceSections
+        };
+    });
 
     // Helper for icon position
     const iconPositionClass = isRTL ? "left-3 right-auto" : "right-3 left-auto";
@@ -46,32 +81,57 @@ const EditTechnicianModal = ({ show, onClose, managerData, setManagerData, onSav
                     {t("technician.edit.title", "Edit Technician")}
                 </h2>
 
-                <input
+                {/* Service-Section Dropdown */}
+                <div className="mb-4">
+                    <SelectComponent
+                        options={groupedOptions}
+                        value={managerData?.section_id || ''}
+                        onChange={handleSectionChange}
+                        placeholder={t("technician.edit.section", "Section")}
+                        error={errors["section_id"]}
+                        isGrouped={true}
+                        groupDefinition={{
+                            groupKey: "service",
+                            itemsKey: "sections",
+                            groupId: "id",
+                            groupName: "name",
+                        }}
+                        definition={{
+                            id: "id",
+                            name: "name",
+                        }}
+                    />
+                </div>
+
+                <InputField
                     type="text"
                     name="name"
                     placeholder={t("technician.edit.name", "Name")}
-                    value={managerData.name || ""}
+                    value={managerData?.name || ""}
                     onChange={handleChange}
-                    className="border border-gray-300 p-3 rounded-lg w-full mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="border border-gray-300 p-3 rounded-lg w-full mb-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    error={errors["name"]}
                 />
 
-                <input
+                <InputField
                     type="email"
                     name="email"
                     placeholder={t("technician.edit.email", "Email")}
-                    value={managerData.email || ""}
+                    value={managerData?.email || ""}
                     onChange={handleChange}
-                    className="border border-gray-300 p-3 rounded-lg w-full mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="border border-gray-300 p-3 rounded-lg w-full mb-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    error={errors["email"]}
                 />
 
-                <div className="relative mb-4">
-                    <input
+                <div className="relative mb-1">
+                    <InputField
                         type={showPassword ? "text" : "password"}
                         name="password"
                         placeholder={t("technician.edit.password", "Password (leave blank to keep current)")}
-                        value={managerData.password || ""}
+                        value={managerData?.password || ""}
                         onChange={handleChange}
-                        className="border border-gray-300 p-3 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="border border-gray-300 p-3 rounded-lg w-full pr-12 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        error={errors["password"]}
                     />
                     <button
                         type="button"
@@ -85,13 +145,14 @@ const EditTechnicianModal = ({ show, onClose, managerData, setManagerData, onSav
                 </div>
 
                 <div className="relative mb-6">
-                    <input
+                    <InputField
                         type={showPasswordConfirm ? "text" : "password"}
                         name="password_confirmation"
                         placeholder={t("technician.edit.confirmPassword", "Confirm Password")}
-                        value={managerData.password_confirmation || ""}
+                        value={managerData?.password_confirmation || ""}
                         onChange={handleChange}
-                        className="border border-gray-300 p-3 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="border border-gray-300 p-3 rounded-lg w-full pr-12 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        error={errors["password_confirmation"]}
                     />
                     <button
                         type="button"

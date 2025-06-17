@@ -58,7 +58,7 @@ const RecentTicketsTable = ({ recent_tickets }) => {
                                 >
                                     <td className="py-3 px-4 text-gray-500 text-sm">{ticket?.id}</td>
                                     <td className="py-3 px-4">{ticket?.title ?? "—"}</td>
-                                    <td className="py-3 px-4">{ticket?.service?.name ?? "—"}</td>
+                                    <td className="py-3 px-4">{ticket?.section?.name ?? "—"}</td>
                                     <td className="py-3 px-4">{ticket?.manager?.user?.name ?? "—"}</td>
                                     <td className="py-3 px-4">{ticket?.user?.name ?? "—"}</td>
                                     <td className="py-3 px-4">{ticket?.technician?.user?.name ?? "—"}</td>

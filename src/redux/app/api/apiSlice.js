@@ -7,8 +7,8 @@ const baseQuery = fetchBaseQuery({
 		const token = localStorage.getItem("token");
 		if (token) {
 			headers.set("authorization", `Bearer ${token}`);
-			headers.set("Locale" ,i18n.language);
 		}
+		headers.set("Locale" ,i18n.language);
 		return headers;
 	},
 });

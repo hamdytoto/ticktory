@@ -5,7 +5,7 @@ import { FaEye, FaEyeSlash, FaTimes, FaCheck } from "react-icons/fa";
 import { useGetServicesQuery } from "../../../../redux/feature/selectMenu/select.apislice.js";
 import InputField from "../../../../Components/Form/InputField.jsx";
 import { useValidation } from "../../../../Components/utils/validation.js";
-import InputError from "../../../../Components/Form/InputError.jsx";
+// import InputError from "../../../../Components/Form/InputError.jsx";
 import SelectComponent from "../../../../Components/Form/SelectComponent.jsx";
 
 const AddManagerModal = ({

@@ -7,6 +7,7 @@ import {
     useDeleteTechnicianMutation,
     useUpdateTechnicianMutation,
 } from "../../../../redux/feature/Manager/technician/manager.tech.apiSlice.js";
+import { useApiCallback } from "../../../../Components/utils/validation.js";
 import { toast } from "react-toastify";
 import EditTechnicianModal from "./EditTechnician.jsx";
 import Pagination from "../../../../common/Pagnitation.jsx";
@@ -18,6 +19,7 @@ const TechnicianTable = ({ search, itemsPerPage }) => {
     const { data, refetch } = useShowAllTechnicianQuery();
     const [deleteTechnician] = useDeleteTechnicianMutation();
     const [updateTechnician] = useUpdateTechnicianMutation();
+    const { handleApiCallback } = useApiCallback();
     const techniciansData = data?.data || [];
     const [currentPage, setCurrentPage] = useState(1);
 
@@ -63,24 +65,22 @@ const TechnicianTable = ({ search, itemsPerPage }) => {
             id: tech.id,
             name: tech.user.name,
             email: tech.user.email,
+            section_id:tech.section.id,
             password: tech.user.password,
             password_confirmation: tech.user.password_confirmation,
         });
     };
 
     const handleEditSubmit = async () => {
-        try {
-            await updateTechnician({
+        handleApiCallback(async () => {
+             await updateTechnician({
                 id: editingTechnician.id,
                 body: editingTechnician,
             }).unwrap();
             toast.success(t("technician.toast.updateSuccess", "Technician updated successfully"));
             setEditingTechnician(null);
             refetch();
-        } catch (err) {
-            toast.error(t("technician.toast.updateFail", "Failed to update technician"));
-            console.error(err);
-        }
+        }, "editTechnician");
     };
 
     const displayedTechnicians = filteredTechnicians?.slice(
@@ -108,6 +108,22 @@ const TechnicianTable = ({ search, itemsPerPage }) => {
                 <span className="text-gray-800 text-md font-medium">
                     {row.user.name}
                 </span>
+            ),
+        },
+        {
+            key: "service",
+            header: t("table.columns.service"),
+            render: (row) => (
+                <div className="flex flex-col">
+                    <span className="font-medium">
+                        {row.section?.name || "—"}
+                    </span>
+                    {row.section?.service?.name && (
+                        <span className="text-sm text-gray-500">
+                            ({row.section.service.name})
+                        </span>
+                    )}
+                </div>
             ),
         },
         {
