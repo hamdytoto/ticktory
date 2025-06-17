@@ -178,7 +178,7 @@
             "id": "المعرف",
             "description": "الوصف",
             "status": "الحالة",
-            "service": "الخدمة",
+            "service": "القسم والخدمة",
             "manager": "المدير",
             "technician": "الفني",
             "user": "المستخدم",
@@ -289,6 +289,7 @@
         "title": "إضافة تذكرة جديدة",
         "ticketTitle": "العنوان",
         "selectService": "اختر خدمة",
+        "selectSection": "اختر قسم",
         "description": "الوصف",
         "cancel": "إلغاء",
         "submit": "إرسال"
@@ -298,6 +299,7 @@
         "title": "تعديل التذكرة",
         "ticketTitle": "العنوان",
         "selectService": "اختر خدمة",
+        "selectSection": "اختر قسم",
         "description": "الوصف",
         "cancel": "إلغاء",
         "saveChanges": "حفظ التغييرات"

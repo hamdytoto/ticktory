@@ -162,7 +162,6 @@ export default function UserTickets() {
                 itemsPerPage={itemsPerPage}
                 onItemsPerPageChange={handleItemsPerPageChange}
                 onDateFilter={handleDateFilter}
-                // ✅ NEW props for service filter
                 serviceId={serviceId}
                 services={services}
                 onServiceFilter={handleServiceFilter}

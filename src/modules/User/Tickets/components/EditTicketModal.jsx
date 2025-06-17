@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useTranslation } from "react-i18next";
-import { useGetServicesQuery } from "../../../../redux/feature/selectMenu/select.apislice.js";
+import { useGetServicesQuery, useGetSectionsQuery } from "../../../../redux/feature/selectMenu/select.apislice.js";
 
 const EditTicketModal = ({ show, onClose, ticketData, setTicketData, onUpdate }) => {
     const { t } = useTranslation();
@@ -8,6 +8,10 @@ const EditTicketModal = ({ show, onClose, ticketData, setTicketData, onUpdate })
         only_associated_to_managers: 1,
     });
     const services = servicesData?.data || [];
+
+    // Get all sections for all services
+    const { data: sectionsData } = useGetSectionsQuery();
+    const sections = sectionsData?.data || [];
 
     if (!show || !ticketData) return null;
 
@@ -19,12 +23,25 @@ const EditTicketModal = ({ show, onClose, ticketData, setTicketData, onUpdate })
         });
     };
 
-    const handleServiceChange = (e) => {
+    const handleSectionChange = (e) => {
+        const selectedSectionId = e.target.value;
+        const selectedSection = sections.find(section => section.id == selectedSectionId);
+        
         setTicketData({
             ...ticketData,
-            service_id: e.target.value,
+            section_id: selectedSectionId,
+            service_id: selectedSection?.service_id || '',
         });
     };
+
+    // Group sections by service
+    const groupedOptions = services.map(service => {
+        const serviceSections = sections.filter(section => section.service_id == service.id);
+        return {
+            service,
+            sections: serviceSections
+        };
+    });
 
     return (
         <div className="fixed inset-0 flex justify-center items-center backdrop-blur-sm z-50">
@@ -33,7 +50,7 @@ const EditTicketModal = ({ show, onClose, ticketData, setTicketData, onUpdate })
                 <button
                     className="absolute top-3 right-3 text-gray-400 hover:text-red-500 transition"
                     onClick={onClose}
-                    aria-label={t("addTicket.close", "Close")}
+                    aria-label={t("editTicket.close", "Close")}
                 >
                     <svg
                         className="w-5 h-5"
@@ -47,7 +64,7 @@ const EditTicketModal = ({ show, onClose, ticketData, setTicketData, onUpdate })
 
                 <h2 className="text-2xl font-semibold mb-6 text-gray-800">{t("editTicket.title", "Edit Ticket")}</h2>
 
-                {/* Dropdown for Service Selection */}
+                {/* Title Input */}
                 <div className="mb-4">
                     <input
                         type="text"
@@ -59,20 +76,27 @@ const EditTicketModal = ({ show, onClose, ticketData, setTicketData, onUpdate })
                     />
                 </div>
 
+                {/* Dropdown for Service-Section Selection */}
                 <div className="mb-4">
                     <select
-                        value={ticketData.service_id || ''}
-                        onChange={handleServiceChange}
+                        value={ticketData.section_id || ''}
+                        onChange={handleSectionChange}
                         className="mt-2 p-3 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     >
-                        <option value="">{t("editTicket.selectService", "Select a Service")}</option>
-                        {services?.map(service => (
-                            <option key={service.id} value={service.id}>
-                                {service.name}
-                            </option>
+                        <option value="">{t("editTicket.selectSection", "Select a Section ")}</option>
+                        {groupedOptions.map(({ service, sections: serviceSections }) => (
+                            <optgroup key={service.id} label={service.name}>
+                                {serviceSections.map(section => (
+                                    <option key={section.id} value={section.id}>
+                                        {section.name}
+                                    </option>
+                                ))}
+                            </optgroup>
                         ))}
                     </select>
                 </div>
+
+                {/* Description Textarea */}
                 <div className="mb-6">
                     <textarea
                         name="description"

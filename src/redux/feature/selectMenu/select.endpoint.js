@@ -6,6 +6,14 @@ export const getServicesApi = (builder) =>
 			params,
 		}),
 	});
+export const getSectionsApi =(builder)=>
+	builder.query({
+		query: (params) => ({
+			url: "api/select_menu/sections",
+			method: "GET",
+			params,
+		}),
+	})
 export const getTechniciansApi = (builder) =>
 	builder.query({
 		query: (params) => ({

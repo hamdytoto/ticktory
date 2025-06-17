@@ -99,8 +99,19 @@ const TicketsTable = ({
         },
         {
             key: "service",
-            label: t("table.columns.service") || "SERVICE",
-            render: (ticket) => ticket.service?.name || "—",
+            label: t("table.columns.service"),
+            render: (ticket) => (
+                <div className="flex flex-col">
+                    <span className="font-medium">
+                        {ticket.section.name || "—"}
+                    </span>
+                    {ticket.section.service?.name && (
+                        <span className="text-sm text-gray-500">
+                            ({ticket.section.service.name || "—"})
+                        </span>
+                    )}
+                </div>
+            ),
         },
         {
             key: "createdAt",

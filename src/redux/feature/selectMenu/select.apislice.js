@@ -5,6 +5,11 @@ export const techTicketSlice = apiSlice.injectEndpoints({
 	endpoints: (builder) => ({
 		getServices: menuApi.getServicesApi(builder),
 		getTechnicians: menuApi.getTechniciansApi(builder),
+		getSections: menuApi.getSectionsApi(builder),
 	}),
 });
-export const { useGetServicesQuery, useGetTechniciansQuery } = techTicketSlice;
+export const {
+	useGetServicesQuery,
+	useGetTechniciansQuery,
+	useGetSectionsQuery,
+} = techTicketSlice;
