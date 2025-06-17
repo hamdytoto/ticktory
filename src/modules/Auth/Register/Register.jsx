@@ -9,6 +9,11 @@ import HelloSection from "./HelloSection.jsx";
 import SignInLink from "./SignInLink.jsx";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import {
+  useApiCallback,
+  useValidation,
+} from "../../../Components/utils/validation.js";
+import InputField from "../../../Components/Form/InputField.jsx";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -19,15 +24,16 @@ export default function Register() {
     name: "",
     email: "",
     password: "",
-    password_confirmation: ""
+    password_confirmation: "",
   });
   const [registerApi, { isLoading }] = useRegisterApiMutation();
-
+  const { handleApiCallback } = useApiCallback();
+  const validationErrors = useValidation().getErrors("register");
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset
+    reset,
   } = useForm({
     resolver: zodResolver(schema),
     defaultValues: {
@@ -39,7 +45,7 @@ export default function Register() {
   });
 
   const onSubmit = async (data) => {
-    try {
+    await handleApiCallback(async () => {
       await registerApi({
         name: data.name,
         email: data.email,
@@ -53,13 +59,7 @@ export default function Register() {
           state: { email: data.email, type: "verify" },
         });
       }, 3000);
-    } catch (error) {
-      if (error.data?.data?.email) {
-        toast.error(error.data.data.email);
-      } else {
-        toast.error(t("register.fail"));
-      }
-    }
+    }, "register");
   };
 
   return (
@@ -84,7 +84,7 @@ export default function Register() {
                 <label className="block text-sm font-semibold text-gray-700">
                   {t("register.name")}
                 </label>
-                <input
+                <InputField
                   {...register("name")}
                   value={userInputs.name}
                   onChange={(e) =>
@@ -96,6 +96,7 @@ export default function Register() {
                   type="text"
                   className="mt-2 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none text-lg"
                   placeholder={t("register.namePlaceholder")}
+                  error={validationErrors["name"]}
                 />
                 {errors.name && (
                   <small className="text-red-500">{errors.name.message}</small>
@@ -108,7 +109,7 @@ export default function Register() {
                   {t("register.email")}
                 </label>
                 <div className="relative mt-2">
-                  <input
+                  <InputField
                     {...register("email")}
                     value={userInputs.email}
                     onChange={(e) =>
@@ -120,6 +121,7 @@ export default function Register() {
                     type="email"
                     className="w-full px-4 pr-12 pl-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none text-lg"
                     placeholder={t("register.emailPlaceholder")}
+                    error={validationErrors["email"]}
                   />
                   <i className="fas fa-envelope absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-lg"></i>
                 </div>
@@ -188,15 +190,11 @@ export default function Register() {
                   <button
                     type="button"
                     className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 text-lg"
-                    onClick={() =>
-                      setShowConfirmPassword(!showConfirmPassword)
-                    }
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                   >
                     <i
                       className={
-                        showConfirmPassword
-                          ? "fas fa-eye-slash"
-                          : "fas fa-eye"
+                        showConfirmPassword ? "fas fa-eye-slash" : "fas fa-eye"
                       }
                     ></i>
                   </button>

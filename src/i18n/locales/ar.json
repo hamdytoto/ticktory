@@ -1,571 +1,574 @@
 {
-    "greeting": "مرحبا",
-    "date": "١٢ ديسمبر ٢٠٢٤",
-    "profile": "الملف الشخصي",
-    "setting": "الإعدادات",
-    "logout": "تسجيل الخروج",
-    "menu": {
-        "dashboard": "لوحة التحكم",
-        "allTickets": "كل التذاكر",
-        "myTickets": "تذاكري",
-        "manageTickets": "إدارة التذاكر",
-        "assignedTickets": "التذاكر المسندة",
-        "addManager": "إضافة مدير",
-        "addTechnician": "إضافة فني",
-        "addService": "إضافة خدمة",
-        "chat": "المحادثة",
-        "collapse": "طي",
-        "settings": "الإعدادات"
+  "greeting": "مرحبا",
+  "date": "١٢ ديسمبر ٢٠٢٤",
+  "profile": "الملف الشخصي",
+  "setting": "الإعدادات",
+  "logout": "تسجيل الخروج",
+  "select_an_option": "حدد خيار",
+  "service_id": "الخدمة",
+  "menu": {
+    "dashboard": "لوحة التحكم",
+    "allTickets": "كل التذاكر",
+    "myTickets": "تذاكري",
+    "manageTickets": "إدارة التذاكر",
+    "assignedTickets": "التذاكر المسندة",
+    "addManager": "إضافة مدير",
+    "addTechnician": "إضافة فني",
+    "addService": "إضافة خدمة",
+    "chat": "المحادثة",
+    "collapse": "طي",
+    "settings": "الإعدادات"
+  },
+  "stats": {
+    "allTickets": "كل التذاكر",
+    "openTickets": "التذاكر المفتوحة",
+    "closedTickets": "التذاكر المحلولة",
+    "inProgressTickets": "التذاكر قيد المعالجة",
+    "managersCount": "عدد المديرين",
+    "servicesCount": "عدد الخدمات",
+    "techniciansCount": "عدد الفنيين",
+    "annualTickets": "متوسط التذاكر السنوية",
+    "dailyRespond": "الرد اليومي",
+    "recentTickets": "التذاكر الحديثة"
+  },
+  "landing": {
+    "home": "الرئيسية",
+    "about": "حول",
+    "services": "الخدمات",
+    "signin": "تسجيل الدخول",
+    "animatedText1": "سهلة",
+    "animatedText2": "سريعة"
+  },
+  "main": {
+    "headline1": "حوّل الاستفسارات إلى",
+    "headline2": "حلول",
+    "description": "قم بإدارة استفسارات العملاء بسهولة وقدم حلولًا سريعة من خلال نظام التذاكر الداعم السهل الاستخدام.",
+    "signin": "تسجيل الدخول",
+    "submitTicket": "إرسال تذكرة",
+    "bgAlt": "خلفية سداسية",
+    "dashboardAlt": "معاينة لوحة التحكم"
+  },
+  "services": {
+    "titlePart1": "تبحث عن",
+    "titlePart2": "مساعدة؟",
+    "subtitle": "إليك مثالًا على خدماتنا.",
+    "cards": [
+      {
+        "title": "إرسال تذكرة",
+        "description": "يمكنك إرسال تذكرة من هذه الصفحة الرئيسية أو من لوحة التحكم بعد تسجيل الدخول. إذا لم يكن لديك حساب، يمكنك إنشاؤه من هذا الرابط."
+      },
+      {
+        "title": "التحدث الفوري مع وكيل",
+        "description": "يمكنك التحدث مباشرةً مع وكيل إذا تأخرت الاستجابة على تذكرتك."
+      },
+      {
+        "title": "الحصول على إشعارات فورية",
+        "description": "سيتم إعلامك عند تغيير حالة التذكرة، كما يمكنك التعليق والمناقشة مع الوكيل لتذكرة معينة."
+      },
+      {
+        "title": "إغلاق التذاكر المحلولة",
+        "description": "بعد حل التذكرة، سيقوم الوكيل بإغلاقها. قد تتلقى إشعارًا عند الإغلاق."
+      }
+    ]
+  },
+  "createTicket": {
+    "title": "إنشاء تذكرة",
+    "firstName": "الاسم الأول",
+    "lastName": "اسم العائلة",
+    "email": "البريد الإلكتروني",
+    "department": "القسم",
+    "selectDepartment": "اختر القسم",
+    "support": "الدعم",
+    "technical": "فني",
+    "billing": "الفواتير",
+    "details": "تفاصيل التذكرة",
+    "placeholder": "أدخل النص هنا",
+    "submit": "إرسال"
+  },
+  "footer": {
+    "logoHighlight": "نظام",
+    "logoText": "التذاكر",
+    "description": "منصة للدعم الفني وتوفير الحلول لاستفسارات عملائنا.",
+    "navigationTitle": "التنقل",
+    "nav": {
+      "home": "الرئيسية",
+      "services": "الخدمات",
+      "about": "من نحن"
     },
-    "stats": {
-        "allTickets": "كل التذاكر",
-        "openTickets": "التذاكر المفتوحة",
-        "closedTickets": "التذاكر المحلولة",
-        "inProgressTickets": "التذاكر قيد المعالجة",
-        "managersCount": "عدد المديرين",
-        "servicesCount": "عدد الخدمات",
-        "techniciansCount": "عدد الفنيين",
-        "annualTickets": "متوسط التذاكر السنوية",
-        "dailyRespond": "الرد اليومي",
-        "recentTickets": "التذاكر الحديثة"
+    "accountTitle": "الحساب",
+    "account": {
+      "login": "تسجيل الدخول",
+      "register": "إنشاء حساب"
     },
-    "landing": {
-        "home": "الرئيسية",
-        "about": "حول",
-        "services": "الخدمات",
-        "signin": "تسجيل الدخول",
-        "animatedText1": "سهلة",
-        "animatedText2": "سريعة"
+    "followUs": "تابعنا",
+    "rights": "جميع الحقوق محفوظة."
+  },
+  "register": {
+    "alreadyHaveAccount": "هل لديك حساب بالفعل؟",
+    "signIn": "تسجيل الدخول",
+    "logoAlt": "شعار نظام التذاكر",
+    "createAccount": "إنشاء حساب",
+    "subtitle": {
+      "part1": "قم بإنشاء حسابك للوصول إلى",
+      "part2": "نظام التذاكر"
     },
-    "main": {
-        "headline1": "حوّل الاستفسارات إلى",
-        "headline2": "حلول",
-        "description": "قم بإدارة استفسارات العملاء بسهولة وقدم حلولًا سريعة من خلال نظام التذاكر الداعم السهل الاستخدام.",
-        "signin": "تسجيل الدخول",
-        "submitTicket": "إرسال تذكرة",
-        "bgAlt": "خلفية سداسية",
-        "dashboardAlt": "معاينة لوحة التحكم"
-    },
-    "services": {
-        "titlePart1": "تبحث عن",
-        "titlePart2": "مساعدة؟",
-        "subtitle": "إليك مثالًا على خدماتنا.",
-        "cards": [
-            {
-                "title": "إرسال تذكرة",
-                "description": "يمكنك إرسال تذكرة من هذه الصفحة الرئيسية أو من لوحة التحكم بعد تسجيل الدخول. إذا لم يكن لديك حساب، يمكنك إنشاؤه من هذا الرابط."
-            },
-            {
-                "title": "التحدث الفوري مع وكيل",
-                "description": "يمكنك التحدث مباشرةً مع وكيل إذا تأخرت الاستجابة على تذكرتك."
-            },
-            {
-                "title": "الحصول على إشعارات فورية",
-                "description": "سيتم إعلامك عند تغيير حالة التذكرة، كما يمكنك التعليق والمناقشة مع الوكيل لتذكرة معينة."
-            },
-            {
-                "title": "إغلاق التذاكر المحلولة",
-                "description": "بعد حل التذكرة، سيقوم الوكيل بإغلاقها. قد تتلقى إشعارًا عند الإغلاق."
-            }
-        ]
-    },
-    "createTicket": {
-        "title": "إنشاء تذكرة",
-        "firstName": "الاسم الأول",
-        "lastName": "اسم العائلة",
-        "email": "البريد الإلكتروني",
-        "department": "القسم",
-        "selectDepartment": "اختر القسم",
-        "support": "الدعم",
-        "technical": "فني",
-        "billing": "الفواتير",
-        "details": "تفاصيل التذكرة",
-        "placeholder": "أدخل النص هنا",
-        "submit": "إرسال"
-    },
-    "footer": {
-        "logoHighlight": "نظام",
-        "logoText": "التذاكر",
-        "description": "منصة للدعم الفني وتوفير الحلول لاستفسارات عملائنا.",
-        "navigationTitle": "التنقل",
-        "nav": {
-            "home": "الرئيسية",
-            "services": "الخدمات",
-            "about": "من نحن"
-        },
-        "accountTitle": "الحساب",
-        "account": {
-            "login": "تسجيل الدخول",
-            "register": "إنشاء حساب"
-        },
-        "followUs": "تابعنا",
-        "rights": "جميع الحقوق محفوظة."
-    },
-    "register": {
-        "alreadyHaveAccount": "هل لديك حساب بالفعل؟",
-        "signIn": "تسجيل الدخول",
-        "logoAlt": "شعار نظام التذاكر",
-        "createAccount": "إنشاء حساب",
-        "subtitle": {
-            "part1": "قم بإنشاء حسابك للوصول إلى",
-            "part2": "نظام التذاكر"
-        },
-        "name": "الاسم",
-        "email": "البريد الإلكتروني",
-        "password": "كلمة المرور",
-        "confirmPassword": "تأكيد كلمة المرور",
-        "namePlaceholder": "ادخل اسمك",
-        "emailPlaceholder": "ادخل بريدك الإلكتروني",
-        "passwordPlaceholder": "ادخل كلمة المرور",
-        "confirmPasswordPlaceholder": "أعد إدخال كلمة المرور",
-        "submit": "تسجيل",
-        "success": "تم التسجيل بنجاح",
-        "fail": "فشل في التسجيل",
-        "helloFriend": "مرحبًا صديقي !",
-        "toKeepConnected": " للبقاء على اتصال معنا، يرجى تسجيل الدخول بمعلوماتك الشخصية."
-    },
-    "login": {
-        "logoAlt": "شعار نظام التذاكر",
-        "noAccount": "ليس لديك حساب؟",
-        "applyNow": "إنشاء حساب الآن",
-        "invalidEmail": "تنسيق البريد الإلكتروني غير صالح",
-        "passwordMin": "يجب أن تتكون كلمة المرور من 4 أحرف على الأقل",
-        "success": "تم تسجيل الدخول بنجاح",
-        "failed": "فشل تسجيل الدخول",
-        "welcome": "مرحبًا بعودتك!",
-        "keepConnected": "للحفاظ على الاتصال بنا، يرجى تسجيل الدخول بمعلوماتك الشخصية.",
-        "signIn": "تسجيل الدخول",
-        "signingIn": "جارٍ تسجيل الدخول...",
-        "description": "من خلال لوحة تحكم نظام التذاكر، يمكنك تتبع تحليلات أداء عملك.",
-        "email": "البريد الإلكتروني",
-        "emailPlaceholder": "أدخل بريدك الإلكتروني",
-        "password": "كلمة المرور",
-        "passwordPlaceholder": "أدخل كلمة المرور الخاصة بك",
-        "remember": "تذكرني",
-        "forgot": "هل نسيت كلمة المرور؟",
-        "apply": "قدّم الآن"
-    },
-    "reset": {
-        "title": "إعادة تعيين كلمة المرور",
-        "subtitle": "سنرسل رسالة بريد إلكتروني تحتوي على تعليمات لإعادة تعيين كلمة المرور.",
-        "emailLabel": "البريد الإلكتروني",
-        "emailPlaceholder": "أدخل بريدك الإلكتروني",
-        "emailRequired": "البريد الإلكتروني مطلوب.",
-        "invalidEmail": "يرجى إدخال بريد إلكتروني صالح.",
-        "sendButton": "إرسال البريد الإلكتروني",
-        "otpSent": "تم إرسال رمز التحقق إلى بريدك الإلكتروني",
-        "failed": "فشل في إعادة تعيين كلمة المرور."
-    },
-    "notifications": {
-        "title": "الاشعارات",
-        "markAllRead": "تحديد كل الاشعارات كمقروءة",
-        "deleteAll": "حذف كل الاشعارات",
-        "loading": "جاري التحميل...",
-        "noNotifications": "لا يوجد اشعارات",
-        "delete": "حذف",
-        "loadMore": "تحميل المزيد"
-    },
-    "status": {
-        "pending": "قيد الانتظار",
-        "in_progress": "قيد التنفيذ",
-        "resolved": "تم الحل",
-        "closed": "مغلق",
-        "unknown": "غير معروف"
-    },
-    "table": {
-        "columns": {
-            "title": "العنوان",
-            "id": "المعرف",
-            "description": "الوصف",
-            "status": "الحالة",
-            "service": "القسم والخدمة",
-            "manager": "المدير",
-            "technician": "الفني",
-            "user": "المستخدم",
-            "createdAt": "تاريخ الإنشاء",
-            "actions": "الإجراءات",
-            "phone": "الهاتف",
-            "department": "القسم",
-            "name": "الاسم",
-            "avatar": "الصورة الشخصية",
-            "email": "البريد الإلكتروني",
-            "assignedAt": "تم تعيين في",
-            "maxMinutes": "الحد الأقصى من الدقائق",
-            "overdue": "حالة الوقت"
-        },
-        "pagination": {
-            "showing": "عرض",
-            "page": "صفحة",
-            "to": "إلى",
-            "of": "من",
-            "tickets": "تذاكر"
-        },
-        "show": "عرض:",
-        "perPage": "لكل صفحة",
-        "noTickets": "لا توجد تذاكر",
-        "tryAdjusting": "حاول تعديل معايير البحث أو التصفية"
-    },
-    "chat": {
-        "technician": "الفني",
-        "manager": "المدير",
-        "user": "المستخدم",
-        "quickChat": "الدردشة السريعة",
-        "chatWith": "الدردشة مع {{label}}",
-        "resolvedOrClosed": "التذكرة محلولة أو مغلقة",
-        "notAssigned": "غير مسندة"
-    },
-    "ticketDetails": {
-        "unsupportedRole": "الدور غير مدعوم",
-        "notFound": "التذكرة غير موجودة.",
-        "title": "تفاصيل التذكرة",
-        "back": "العودة",
-        "ticketId": "رقم التذكرة",
-        "ticketTitle": "العنوان",
-        "status": "الحالة",
-        "createdAt": "تاريخ الإنشاء",
-        "service": "الخدمة",
-        "user": "المستخدم",
-        "manager": "المدير",
-        "technician": "الفني",
-        "unknown": "غير معروف",
-        "notAssigned": "غير مسند",
-        "description": "الوصف",
-        "noDescription": "لم يتم توفير وصف."
-    },
-    "profilePage": {
-        "invalidImage": "يرجى تحميل ملف صورة صالح.",
-        "invalidAvatarFile": "ملف الصورة غير صالح.",
-        "updateSuccess": "تم تحديث الملف الشخصي بنجاح!",
-        "updateFail": "فشل في تحديث الملف الشخصي.",
-        "loadFail": "فشل في تحميل بيانات الملف الشخصي.",
-        "editProfile": "تعديل الملف الشخصي",
-        "personalInfo": "المعلومات الشخصية",
-        "fullName": "الاسم الكامل",
-        "email": "البريد الإلكتروني",
-        "phone": "رقم الهاتف",
-        "accountStatus": "حالة الحساب",
-        "accountType": "نوع الحساب",
-        "status": "الحالة",
-        "active": "نشط",
-        "inactive": "غير نشط",
-        "lastLogin": "آخر تسجيل دخول",
-        "memberSince": "عضو منذ {{date}}",
-        "avatarAlt": "الصورة الرمزية",
-        "updating": "جاري التحديث...",
-        "saveChanges": "حفظ التغييرات",
-        "nameMin": "الاسم يجب أن يكون على الأقل 3 أحرف",
-        "phoneMin": "رقم الهاتف يجب أن يكون على الأقل 10 أرقام",
-        "emailValid": "يرجى إدخال عنوان بريد إلكتروني صالح"
-    },
-    "filters": {
-        "activeFilters": "عوامل التصفية النشطة:",
-        "search": "بحث",
-        "in": "في",
-        "date": "التاريخ",
-        "start": "البداية",
-        "end": "النهاية",
-        "to": "إلى",
-        "dateRangeFilter": "تصفية حسب النطاق الزمني",
-        "from": "من:",
-        "applyFilter": "تطبيق التصفية",
-        "clear": "مسح",
-        "searchPlaceholder": "ابحث في التذاكر...",
-        "searchIn": "البحث في:",
-        "clearSearch": "مسح البحث",
-        "service": "الخدمة",
-        "allServices": "كل الخدمات",
-        "clearService": "إزالة فلتر الخدمة"
-    },
-    "ticketActions": {
-        "newTicket": "إنشاء تذكرة جديدة"
-    },
-    "adminTickets": {
-        "loading": "جاري تحميل التذاكر...",
-        "error": "حدث خطأ أثناء تحميل التذاكر",
-        "allTickets": "كل التذاكر"
-    },
-    "addTicket": {
-        "close": "إغلاق",
-        "title": "إضافة تذكرة جديدة",
-        "ticketTitle": "العنوان",
-        "selectService": "اختر خدمة",
-        "selectSection": "اختر قسم",
-        "description": "الوصف",
-        "cancel": "إلغاء",
-        "submit": "إرسال"
-    },
-    "editTicket": {
-        "close": "إغلاق",
-        "title": "تعديل التذكرة",
-        "ticketTitle": "العنوان",
-        "selectService": "اختر خدمة",
-        "selectSection": "اختر قسم",
-        "description": "الوصف",
-        "cancel": "إلغاء",
-        "saveChanges": "حفظ التغييرات"
-    },
-    "managerTable": {
-        "avatar": "الصورة",
-        "avatarAlt": "الصورة الرمزية",
-        "name": "الاسم",
-        "email": "البريد الإلكتروني",
-        "phone": "الهاتف",
-        "department": "القسم",
-        "actions": "الإجراءات",
-        "automaticAssignment": "تعيين تلقائي",
-        "delete": "حذف",
-        "edit": "تعديل",
-        "deleteSuccess": "تم حذف المدير بنجاح",
-        "deleteFail": "فشل في حذف المدير",
-        "updateSuccess": "تم تحديث المدير بنجاح",
-        "updateFail": "فشل في تحديث المدير",
-        "confirmDelete": "هل تريد حقًا حذف هذا المدير؟ لا يمكن التراجع عن ذلك."
-    },
-    "addManager": {
-        "close": "إغلاق",
-        "title": "إضافة مدير جديد",
-        "selectService": "اختر خدمة",
-        "name": "الاسم",
-        "email": "البريد الإلكتروني",
-        "password": "كلمة المرور",
-        "passwordConfirmation": "تأكيد كلمة المرور",
-        "showPassword": "إظهار كلمة المرور",
-        "hidePassword": "إخفاء كلمة المرور",
-        "cancel": "إلغاء",
-        "add": "إضافة",
-        "automaticAssignment": "تعيين تلقائي",
-        "automaticAssignmentDesc": "عند تفعيل هذا الخيار، سيتم تعيين المدير تلقائيًا للتذاكر الجديدة التي تنشئها."
-    },
-    "editManager": {
-        "close": "إغلاق",
-        "title": "تعديل المدير",
-        "selectService": "اختر خدمة",
-        "name": "الاسم",
-        "email": "البريد الإلكتروني",
-        "password": "كلمة المرور (اتركها فارغة للاحتفاظ بالحالية)",
-        "passwordConfirmation": "تأكيد كلمة المرور",
-        "showPassword": "إظهار كلمة المرور",
-        "hidePassword": "إخفاء كلمة المرور",
-        "automaticAssignment": "تعيين تلقائي",
-        "automaticAssignmentDesc": "عند تفعيل هذا الخيار، سيتم تعيين المدير تلقائيًا للتذاكر الجديدة التي تنشئها.",
-        "cancel": "إلغاء",
-        "save": "حفظ"
-    },
-    "managerActions": {
-        "title": "إضافة مديرين ",
-        "searchPlaceholder": "إبحث عن مديرين...",
-        "newManager": "مدير جديد"
-    },
-    "manager": {
-        "toast": {
-            "fillAllFields": "يرجى تعبئة جميع الحقول.",
-            "addSuccess": "تمت إضافة المدير بنجاح!",
-            "addFail": "فشل في إضافة المدير."
-        }
-    },
-    "tickets": {
-        "header": "جميع التذاكر",
-        "loading": "جارٍ تحميل التذاكر...",
-        "error": "حدث خطأ أثناء تحميل التذاكر",
-        "create_success": "تم إنشاء التذكرة بنجاح!",
-        "create_failed": "فشل في إنشاء التذكرة!",
-        "toast": {
-            "ticketAssigned": "تم تعيين التذكرة بنجاح",
-            "assignFailed": "فشل في تعيين التذكرة",
-            "ticketResolved": "تم حل التذكرة بنجاح",
-            "resolveFailed": "فشل في حل التذكرة",
-            "maxMinutesUpdated": "تم تحديث الوقت الأقصى بنجاح",
-            "maxMinutesUpdateFailed": "فشل في تحديث الوقت الأقصى",
-            "createSuccess": "تم إنشاء التذكرة بنجاح",
-            "createError": "فشل في إنشاء التذكرة",
-            "ticketUpdated": "تم تحديث التذكرة بنجاح",
-            "updateFailed": "فشل في تحديث التذكرة"
-        },
-        "tooltip": {
-            "ticketResolved": "تم حل التذكرة",
-            "resolveTicket": "حل التذكرة",
-            "editTicket": "تعديل التذكرة",
-            "closed": "هذه التذكرة مغلقة",
-            "changeMaxMinutes": "تغيير الوقت الأقصى",
-            "technicianAssigned": "تم تعيين فني بالفعل",
-            "assignTechnician": "تعيين فني",
-            "overdue": "تجاوزت التذكرة وقت الاستجابة",
-            "onTime": "التذكرة ضمن وقت الاستجابة",
-            "notAssigned": "لم يتم تعيين التذكرة بعد",
-            "completed": "تم إكمال التذكرة"
-        },
-        "maxMinutes": {
-            "title": "تعيين الوقت الأقصى",
-            "label": "الحد الأقصى لوقت الاستجابة (دقائق)",
-            "placeholder": "أدخل الحد الأقصى من الدقائق",
-            "validation": {
-                "min": "الحد الأدنى هو 1 دقيقة",
-                "required": "الحد الأقصى لوقت الاستجابة مطلوب"
-            }
-        },
-        "assign": {
-            "title": "تعيين فني",
-            "loading": "جاري تحميل الفنيين...",
-            "error": "فشل في تحميل الفنيين",
-            "selectTechnician": "اختر فني",
-            "button": "تعيين",
-            "maxMinutes": "الحد الأقصى لوقت الاستجابة",
-            "enterMaxMinutes": "أدخل الحد الأقصى للدقائق"
-        },
-        "status": {
-            "overdue": "متأخر",
-            "onTime": "في الوقت",
-            "pending": "قيد الانتظار",
-            "completed": "مكتمل"
-        }
-    },
-    "service": {
-        "header": "إضافة خدمات",
-        "search_placeholder": "ابحث عن خدمة",
-        "new": "خدمة جديدة",
-        "id": "المعرف",
-        "name": "الاسم",
-        "actions": "الإجراءات",
-        "deleted_success": "تم حذف الخدمة بنجاح",
-        "delete_error": "فشل في حذف الخدمة",
-        "updated_success": "تم تحديث الخدمة بنجاح",
-        "update_error": "فشل في تحديث الخدمة",
-        "confirm_delete": "هل أنت متأكد من حذف هذه الخدمة؟ لا يمكن التراجع.",
-        "delete_tooltip": "حذف الخدمة",
-        "edit_tooltip": "تعديل الخدمة",
-        "sections_tooltip": "إدارة الأقسام",
-        "edit_title": "تعديل الخدمة",
-        "add_title": "إضافة خدمة جديدة",
-        "name_placeholder": "اسم الخدمة",
-        "add_success": "تمت إضافة الخدمة بنجاح!",
-        "add_error": "فشل في إضافة الخدمة. حاول مرة أخرى.",
-        "name_empty_warning": "لا يمكن ترك اسم الخدمة فارغًا"
-    },
-    "section": {
-        "header": "إدارة الأقسام",
-        "search_placeholder": "ابحث في الأقسام",
-        "new": "قسم جديد",
-        "id": "المعرّف",
-        "name": "الاسم",
-        "actions": "الإجراءات",
-        "service_info": "أقسام الخدمة",
-        "deleted_success": "تم حذف القسم بنجاح",
-        "delete_error": "فشل حذف القسم",
-        "updated_success": "تم تحديث القسم بنجاح",
-        "update_error": "فشل تحديث القسم",
-        "confirm_delete": "هل تريد حقًا حذف هذا القسم؟ لا يمكن التراجع عن هذا الإجراء.",
-        "delete_tooltip": "حذف القسم",
-        "edit_tooltip": "تعديل القسم",
-        "edit_title": "تعديل القسم",
-        "add_title": "إضافة قسم جديد",
-        "name_placeholder": "اسم القسم",
-        "add_success": "تمت إضافة القسم بنجاح!",
-        "add_error": "فشل إضافة القسم. يرجى المحاولة مرة أخرى.",
-        "name_empty_warning": "لا يمكن أن يكون اسم القسم فارغًا"
-    },
-    "common": {
-        "cancel": "إلغاء",
-        "save": "حفظ",
-        "add": "إضافة",
-        "back": "عودة"
-    },
-    "technician": {
-        "columns": {
-            "avatar": "الصورة",
-            "name": "الاسم",
-            "email": "البريد الإلكتروني",
-            "phone": "الهاتف",
-            "actions": "الإجراءات"
-        },
-        "avatarAlt": "الصورة الرمزية",
-        "actions": {
-            "delete": "حذف الفني",
-            "edit": "تعديل الفني",
-            "title": "إضافة فنيين",
-            "searchPlaceholder": "ابحث عن الفنيين",
-            "newTechnician": "فني جديد"
-        },
-        "toast": {
-            "deleteSuccess": "تم حذف الفني بنجاح",
-            "deleteFail": "فشل في حذف الفني",
-            "updateSuccess": "تم تحديث الفني بنجاح",
-            "updateFail": "فشل في تحديث الفني",
-            "fillFields": "يرجى تعبئة جميع الحقول.",
-            "addSuccess": "تمت إضافة الفني بنجاح!",
-            "addError": "فشل في إضافة الفني."
-        },
-        "confirmDelete": "هل تريد حقاً حذف هذا الفني؟ لا يمكن التراجع عن هذا الإجراء.",
-        "add": {
-            "title": "إضافة فني جديد",
-            "name": "الاسم",
-            "email": "البريد الإلكتروني",
-            "password": "كلمة المرور",
-            "confirmPassword": "تأكيد كلمة المرور",
-            "showPassword": "إظهار كلمة المرور",
-            "hidePassword": "إخفاء كلمة المرور",
-            "cancel": "إلغاء",
-            "submit": "إضافة",
-            "close": "إغلاق"
-        },
-        "edit": {
-            "title": "تعديل الفني",
-            "name": "الاسم",
-            "email": "البريد الإلكتروني",
-            "password": "كلمة المرور (اتركها فارغة للإبقاء على الحالية)",
-            "confirmPassword": "تأكيد كلمة المرور",
-            "showPassword": "إظهار كلمة المرور",
-            "hidePassword": "إخفاء كلمة المرور",
-            "cancel": "إلغاء",
-            "submit": "حفظ",
-            "close": "إغلاق"
-        }
-    },
-    "confirmDialog": {
-        "title": "هل أنت متأكد؟",
-        "close": "إغلاق",
-        "cancel": "إلغاء",
-        "delete": "حذف"
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "namePlaceholder": "ادخل اسمك",
+    "emailPlaceholder": "ادخل بريدك الإلكتروني",
+    "passwordPlaceholder": "ادخل كلمة المرور",
+    "confirmPasswordPlaceholder": "أعد إدخال كلمة المرور",
+    "submit": "تسجيل",
+    "success": "تم التسجيل بنجاح",
+    "fail": "فشل في التسجيل",
+    "helloFriend": "مرحبًا صديقي !",
+    "toKeepConnected": " للبقاء على اتصال معنا، يرجى تسجيل الدخول بمعلوماتك الشخصية."
+  },
+  "login": {
+    "logoAlt": "شعار نظام التذاكر",
+    "noAccount": "ليس لديك حساب؟",
+    "applyNow": "إنشاء حساب الآن",
+    "invalidEmail": "تنسيق البريد الإلكتروني غير صالح",
+    "passwordMin": "يجب أن تتكون كلمة المرور من 4 أحرف على الأقل",
+    "success": "تم تسجيل الدخول بنجاح",
+    "failed": "فشل تسجيل الدخول",
+    "welcome": "مرحبًا بعودتك!",
+    "keepConnected": "للحفاظ على الاتصال بنا، يرجى تسجيل الدخول بمعلوماتك الشخصية.",
+    "signIn": "تسجيل الدخول",
+    "signingIn": "جارٍ تسجيل الدخول...",
+    "description": "من خلال لوحة تحكم نظام التذاكر، يمكنك تتبع تحليلات أداء عملك.",
+    "email": "البريد الإلكتروني",
+    "emailPlaceholder": "أدخل بريدك الإلكتروني",
+    "password": "كلمة المرور",
+    "passwordPlaceholder": "أدخل كلمة المرور الخاصة بك",
+    "remember": "تذكرني",
+    "forgot": "هل نسيت كلمة المرور؟",
+    "apply": "قدّم الآن"
+  },
+  "reset": {
+    "title": "إعادة تعيين كلمة المرور",
+    "subtitle": "سنرسل رسالة بريد إلكتروني تحتوي على تعليمات لإعادة تعيين كلمة المرور.",
+    "emailLabel": "البريد الإلكتروني",
+    "emailPlaceholder": "أدخل بريدك الإلكتروني",
+    "emailRequired": "البريد الإلكتروني مطلوب.",
+    "invalidEmail": "يرجى إدخال بريد إلكتروني صالح.",
+    "sendButton": "إرسال البريد الإلكتروني",
+    "otpSent": "تم إرسال رمز التحقق إلى بريدك الإلكتروني",
+    "failed": "فشل في إعادة تعيين كلمة المرور."
+  },
+  "notifications": {
+    "title": "الاشعارات",
+    "markAllRead": "تحديد كل الاشعارات كمقروءة",
+    "deleteAll": "حذف كل الاشعارات",
+    "loading": "جاري التحميل...",
+    "noNotifications": "لا يوجد اشعارات",
+    "delete": "حذف",
+    "loadMore": "تحميل المزيد"
+  },
+  "status": {
+    "pending": "قيد الانتظار",
+    "in_progress": "قيد التنفيذ",
+    "resolved": "تم الحل",
+    "closed": "مغلق",
+    "unknown": "غير معروف"
+  },
+  "table": {
+    "columns": {
+      "title": "العنوان",
+      "id": "المعرف",
+      "description": "الوصف",
+      "status": "الحالة",
+      "service": "القسم والخدمة",
+      "manager": "المدير",
+      "technician": "الفني",
+      "user": "المستخدم",
+      "createdAt": "تاريخ الإنشاء",
+      "actions": "الإجراءات",
+      "phone": "الهاتف",
+      "department": "القسم",
+      "name": "الاسم",
+      "avatar": "الصورة الشخصية",
+      "email": "البريد الإلكتروني",
+      "assignedAt": "تم تعيين في",
+      "maxMinutes": "الحد الأقصى من الدقائق",
+      "overdue": "حالة الوقت"
     },
     "pagination": {
-        "showing": "عرض",
-        "to": "إلى",
-        "of": "من",
-        "entries": "سجلات",
-        "firstPage": "الصفحة الأولى",
-        "previousPage": "الصفحة السابقة",
-        "nextPage": "الصفحة التالية",
-        "lastPage": "الصفحة الأخيرة"
+      "showing": "عرض",
+      "page": "صفحة",
+      "to": "إلى",
+      "of": "من",
+      "tickets": "تذاكر"
     },
-    "settings": {
-        "title": "الإعدادات",
-        "passwordSection": "تغيير كلمة المرور",
-        "currentPassword": "كلمة المرور الحالية",
-        "newPassword": "كلمة المرور الجديدة",
-        "confirmPassword": "تأكيد كلمة المرور الجديدة",
-        "updatePassword": "تحديث كلمة المرور",
-        "preferences": "التفضيلات",
-        "darkMode": "الوضع الداكن",
-        "emailNotifications": "إشعارات البريد الإلكتروني",
-        "passwordMismatch": "كلمة المرور الجديدة والتأكيد غير متطابقين",
-        "passwordUpdateSuccess": "تم تحديث كلمة المرور بنجاح",
-        "passwordUpdateError": "فشل في تحديث كلمة المرور",
-        "enterCurrentPassword": "أدخل كلمة المرور الحالية",
-        "enterNewPassword": "أدخل كلمة المرور الجديدة",
-        "confirmNewPassword": "تأكيد كلمة المرور الجديدة",
-        "autoAssign": "التعيين التلقائي",
-        "errors": {
-            "currentPasswordRequired": "كلمة المرور الحالية مطلوبة",
-            "newPasswordRequired": "كلمة المرور الجديدة مطلوبة",
-            "passwordTooShort": "يجب أن تكون كلمة المرور الجديدة 8 أحرف على الأقل",
-            "samePassword": "يجب أن تكون كلمة المرور الجديدة مختلفة عن كلمة المرور الحالية",
-            "passwordMismatch": "كلمة المرور الجديدة وتأكيدها غير متطابقين",
-            "incorrectCurrentPassword": "كلمة المرور الحالية غير صحيحة",
-            "invalidNewPassword": "كلمة المرور الجديدة غير صالحة",
-            "updateFailed": "فشل في تحديث كلمة المرور. يرجى المحاولة مرة أخرى.",
-            "autoAssignUpdateFailed": "فشل في تحديث إعداد التوزيع التلقائي",
-            "settingsLoadFailed": "فشل في تحميل الإعدادات"
-        },
-        "autoAssignDesc": "عند التفعيل، سيتم توزيع التذاكر تلقائياً على المديرين المتاحين",
-        "autoAssignUpdateSuccess": "تم تحديث إعداد التوزيع التلقائي بنجاح"
+    "show": "عرض:",
+    "perPage": "لكل صفحة",
+    "noTickets": "لا توجد تذاكر",
+    "tryAdjusting": "حاول تعديل معايير البحث أو التصفية"
+  },
+  "chat": {
+    "technician": "الفني",
+    "manager": "المدير",
+    "user": "المستخدم",
+    "quickChat": "الدردشة السريعة",
+    "chatWith": "الدردشة مع {{label}}",
+    "resolvedOrClosed": "التذكرة محلولة أو مغلقة",
+    "notAssigned": "غير مسندة"
+  },
+  "ticketDetails": {
+    "unsupportedRole": "الدور غير مدعوم",
+    "notFound": "التذكرة غير موجودة.",
+    "title": "تفاصيل التذكرة",
+    "back": "العودة",
+    "ticketId": "رقم التذكرة",
+    "ticketTitle": "العنوان",
+    "status": "الحالة",
+    "createdAt": "تاريخ الإنشاء",
+    "service": "الخدمة",
+    "user": "المستخدم",
+    "manager": "المدير",
+    "technician": "الفني",
+    "unknown": "غير معروف",
+    "notAssigned": "غير مسند",
+    "description": "الوصف",
+    "noDescription": "لم يتم توفير وصف."
+  },
+  "profilePage": {
+    "invalidImage": "يرجى تحميل ملف صورة صالح.",
+    "invalidAvatarFile": "ملف الصورة غير صالح.",
+    "updateSuccess": "تم تحديث الملف الشخصي بنجاح!",
+    "updateFail": "فشل في تحديث الملف الشخصي.",
+    "loadFail": "فشل في تحميل بيانات الملف الشخصي.",
+    "editProfile": "تعديل الملف الشخصي",
+    "personalInfo": "المعلومات الشخصية",
+    "fullName": "الاسم الكامل",
+    "email": "البريد الإلكتروني",
+    "phone": "رقم الهاتف",
+    "accountStatus": "حالة الحساب",
+    "accountType": "نوع الحساب",
+    "status": "الحالة",
+    "active": "نشط",
+    "inactive": "غير نشط",
+    "lastLogin": "آخر تسجيل دخول",
+    "memberSince": "عضو منذ {{date}}",
+    "avatarAlt": "الصورة الرمزية",
+    "updating": "جاري التحديث...",
+    "saveChanges": "حفظ التغييرات",
+    "nameMin": "الاسم يجب أن يكون على الأقل 3 أحرف",
+    "phoneMin": "رقم الهاتف يجب أن يكون على الأقل 10 أرقام",
+    "emailValid": "يرجى إدخال عنوان بريد إلكتروني صالح"
+  },
+  "filters": {
+    "activeFilters": "عوامل التصفية النشطة:",
+    "search": "بحث",
+    "in": "في",
+    "date": "التاريخ",
+    "start": "البداية",
+    "end": "النهاية",
+    "to": "إلى",
+    "dateRangeFilter": "تصفية حسب النطاق الزمني",
+    "from": "من:",
+    "applyFilter": "تطبيق التصفية",
+    "clear": "مسح",
+    "searchPlaceholder": "ابحث في التذاكر...",
+    "searchIn": "البحث في:",
+    "clearSearch": "مسح البحث",
+    "service": "الخدمة",
+    "allServices": "كل الخدمات",
+    "clearService": "إزالة فلتر الخدمة"
+  },
+  "ticketActions": {
+    "newTicket": "إنشاء تذكرة جديدة"
+  },
+  "adminTickets": {
+    "loading": "جاري تحميل التذاكر...",
+    "error": "حدث خطأ أثناء تحميل التذاكر",
+    "allTickets": "كل التذاكر"
+  },
+  "addTicket": {
+    "close": "إغلاق",
+    "title": "إضافة تذكرة جديدة",
+    "ticketTitle": "العنوان",
+    "selectService": "اختر خدمة",
+    "selectSection": "اختر قسم",
+    "description": "الوصف",
+    "cancel": "إلغاء",
+    "submit": "إرسال"
+  },
+  "editTicket": {
+    "close": "إغلاق",
+    "title": "تعديل التذكرة",
+    "ticketTitle": "العنوان",
+    "selectService": "اختر خدمة",
+    "selectSection": "اختر قسم",
+    "description": "الوصف",
+    "cancel": "إلغاء",
+    "saveChanges": "حفظ التغييرات"
+  },
+  "managerTable": {
+    "avatar": "الصورة",
+    "avatarAlt": "الصورة الرمزية",
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "phone": "الهاتف",
+    "department": "القسم",
+    "actions": "الإجراءات",
+    "automaticAssignment": "تعيين تلقائي",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "deleteSuccess": "تم حذف المدير بنجاح",
+    "deleteFail": "فشل في حذف المدير",
+    "updateSuccess": "تم تحديث المدير بنجاح",
+    "updateFail": "فشل في تحديث المدير",
+    "confirmDelete": "هل تريد حقًا حذف هذا المدير؟ لا يمكن التراجع عن ذلك."
+  },
+  "addManager": {
+    "close": "إغلاق",
+    "title": "إضافة مدير جديد",
+    "selectService": "اختر خدمة",
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "passwordConfirmation": "تأكيد كلمة المرور",
+    "showPassword": "إظهار كلمة المرور",
+    "hidePassword": "إخفاء كلمة المرور",
+    "cancel": "إلغاء",
+    "add": "إضافة",
+    "automaticAssignment": "تعيين تلقائي",
+    "automaticAssignmentDesc": "عند تفعيل هذا الخيار، سيتم تعيين المدير تلقائيًا للتذاكر الجديدة التي تنشئها."
+  },
+  "editManager": {
+    "close": "إغلاق",
+    "title": "تعديل المدير",
+    "selectService": "اختر خدمة",
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور (اتركها فارغة للاحتفاظ بالحالية)",
+    "passwordConfirmation": "تأكيد كلمة المرور",
+    "showPassword": "إظهار كلمة المرور",
+    "hidePassword": "إخفاء كلمة المرور",
+    "automaticAssignment": "تعيين تلقائي",
+    "automaticAssignmentDesc": "عند تفعيل هذا الخيار، سيتم تعيين المدير تلقائيًا للتذاكر الجديدة التي تنشئها.",
+    "cancel": "إلغاء",
+    "save": "حفظ"
+  },
+  "managerActions": {
+    "title": "إضافة مديرين ",
+    "searchPlaceholder": "إبحث عن مديرين...",
+    "newManager": "مدير جديد"
+  },
+  "manager": {
+    "toast": {
+      "fillAllFields": "يرجى تعبئة جميع الحقول.",
+      "addSuccess": "تمت إضافة المدير بنجاح!",
+      "addFail": "فشل في إضافة المدير."
     }
+  },
+  "tickets": {
+    "header": "جميع التذاكر",
+    "loading": "جارٍ تحميل التذاكر...",
+    "error": "حدث خطأ أثناء تحميل التذاكر",
+    "create_success": "تم إنشاء التذكرة بنجاح!",
+    "create_failed": "فشل في إنشاء التذكرة!",
+    "toast": {
+      "ticketAssigned": "تم تعيين التذكرة بنجاح",
+      "assignFailed": "فشل في تعيين التذكرة",
+      "ticketResolved": "تم حل التذكرة بنجاح",
+      "resolveFailed": "فشل في حل التذكرة",
+      "maxMinutesUpdated": "تم تحديث الوقت الأقصى بنجاح",
+      "maxMinutesUpdateFailed": "فشل في تحديث الوقت الأقصى",
+      "createSuccess": "تم إنشاء التذكرة بنجاح",
+      "createError": "فشل في إنشاء التذكرة",
+      "ticketUpdated": "تم تحديث التذكرة بنجاح",
+      "updateFailed": "فشل في تحديث التذكرة"
+    },
+    "tooltip": {
+      "ticketResolved": "تم حل التذكرة",
+      "resolveTicket": "حل التذكرة",
+      "editTicket": "تعديل التذكرة",
+      "closed": "هذه التذكرة مغلقة",
+      "changeMaxMinutes": "تغيير الوقت الأقصى",
+      "technicianAssigned": "تم تعيين فني بالفعل",
+      "assignTechnician": "تعيين فني",
+      "overdue": "تجاوزت التذكرة وقت الاستجابة",
+      "onTime": "التذكرة ضمن وقت الاستجابة",
+      "notAssigned": "لم يتم تعيين التذكرة بعد",
+      "completed": "تم إكمال التذكرة"
+    },
+    "maxMinutes": {
+      "title": "تعيين الوقت الأقصى",
+      "label": "الحد الأقصى لوقت الاستجابة (دقائق)",
+      "placeholder": "أدخل الحد الأقصى من الدقائق",
+      "validation": {
+        "min": "الحد الأدنى هو 1 دقيقة",
+        "required": "الحد الأقصى لوقت الاستجابة مطلوب"
+      }
+    },
+    "assign": {
+      "title": "تعيين فني",
+      "loading": "جاري تحميل الفنيين...",
+      "error": "فشل في تحميل الفنيين",
+      "selectTechnician": "اختر فني",
+      "button": "تعيين",
+      "maxMinutes": "الحد الأقصى لوقت الاستجابة",
+      "enterMaxMinutes": "أدخل الحد الأقصى للدقائق"
+    },
+    "status": {
+      "overdue": "متأخر",
+      "onTime": "في الوقت",
+      "pending": "قيد الانتظار",
+      "completed": "مكتمل"
+    }
+  },
+  "service": {
+    "header": "إضافة خدمات",
+    "search_placeholder": "ابحث عن خدمة",
+    "new": "خدمة جديدة",
+    "id": "المعرف",
+    "name": "الاسم",
+    "actions": "الإجراءات",
+    "deleted_success": "تم حذف الخدمة بنجاح",
+    "delete_error": "فشل في حذف الخدمة",
+    "updated_success": "تم تحديث الخدمة بنجاح",
+    "update_error": "فشل في تحديث الخدمة",
+    "confirm_delete": "هل أنت متأكد من حذف هذه الخدمة؟ لا يمكن التراجع.",
+    "delete_tooltip": "حذف الخدمة",
+    "edit_tooltip": "تعديل الخدمة",
+    "sections_tooltip": "إدارة الأقسام",
+    "edit_title": "تعديل الخدمة",
+    "add_title": "إضافة خدمة جديدة",
+    "name_placeholder": "اسم الخدمة",
+    "add_success": "تمت إضافة الخدمة بنجاح!",
+    "add_error": "فشل في إضافة الخدمة. حاول مرة أخرى.",
+    "name_empty_warning": "لا يمكن ترك اسم الخدمة فارغًا"
+  },
+  "section": {
+    "header": "إدارة الأقسام",
+    "search_placeholder": "ابحث في الأقسام",
+    "new": "قسم جديد",
+    "id": "المعرّف",
+    "name": "الاسم",
+    "actions": "الإجراءات",
+    "service_info": "أقسام الخدمة",
+    "deleted_success": "تم حذف القسم بنجاح",
+    "delete_error": "فشل حذف القسم",
+    "updated_success": "تم تحديث القسم بنجاح",
+    "update_error": "فشل تحديث القسم",
+    "confirm_delete": "هل تريد حقًا حذف هذا القسم؟ لا يمكن التراجع عن هذا الإجراء.",
+    "delete_tooltip": "حذف القسم",
+    "edit_tooltip": "تعديل القسم",
+    "edit_title": "تعديل القسم",
+    "add_title": "إضافة قسم جديد",
+    "name_placeholder": "اسم القسم",
+    "add_success": "تمت إضافة القسم بنجاح!",
+    "add_error": "فشل إضافة القسم. يرجى المحاولة مرة أخرى.",
+    "name_empty_warning": "لا يمكن أن يكون اسم القسم فارغًا"
+  },
+  "common": {
+    "cancel": "إلغاء",
+    "save": "حفظ",
+    "add": "إضافة",
+    "back": "عودة"
+  },
+  "technician": {
+    "columns": {
+      "avatar": "الصورة",
+      "name": "الاسم",
+      "email": "البريد الإلكتروني",
+      "phone": "الهاتف",
+      "actions": "الإجراءات"
+    },
+    "avatarAlt": "الصورة الرمزية",
+    "actions": {
+      "delete": "حذف الفني",
+      "edit": "تعديل الفني",
+      "title": "إضافة فنيين",
+      "searchPlaceholder": "ابحث عن الفنيين",
+      "newTechnician": "فني جديد"
+    },
+    "toast": {
+      "deleteSuccess": "تم حذف الفني بنجاح",
+      "deleteFail": "فشل في حذف الفني",
+      "updateSuccess": "تم تحديث الفني بنجاح",
+      "updateFail": "فشل في تحديث الفني",
+      "fillFields": "يرجى تعبئة جميع الحقول.",
+      "addSuccess": "تمت إضافة الفني بنجاح!",
+      "addError": "فشل في إضافة الفني."
+    },
+    "confirmDelete": "هل تريد حقاً حذف هذا الفني؟ لا يمكن التراجع عن هذا الإجراء.",
+    "add": {
+      "title": "إضافة فني جديد",
+      "name": "الاسم",
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "confirmPassword": "تأكيد كلمة المرور",
+      "showPassword": "إظهار كلمة المرور",
+      "hidePassword": "إخفاء كلمة المرور",
+      "cancel": "إلغاء",
+      "submit": "إضافة",
+      "close": "إغلاق"
+    },
+    "edit": {
+      "title": "تعديل الفني",
+      "name": "الاسم",
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور (اتركها فارغة للإبقاء على الحالية)",
+      "confirmPassword": "تأكيد كلمة المرور",
+      "showPassword": "إظهار كلمة المرور",
+      "hidePassword": "إخفاء كلمة المرور",
+      "cancel": "إلغاء",
+      "submit": "حفظ",
+      "close": "إغلاق"
+    }
+  },
+  "confirmDialog": {
+    "title": "هل أنت متأكد؟",
+    "close": "إغلاق",
+    "cancel": "إلغاء",
+    "delete": "حذف"
+  },
+  "pagination": {
+    "showing": "عرض",
+    "to": "إلى",
+    "of": "من",
+    "entries": "سجلات",
+    "firstPage": "الصفحة الأولى",
+    "previousPage": "الصفحة السابقة",
+    "nextPage": "الصفحة التالية",
+    "lastPage": "الصفحة الأخيرة"
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "passwordSection": "تغيير كلمة المرور",
+    "currentPassword": "كلمة المرور الحالية",
+    "newPassword": "كلمة المرور الجديدة",
+    "confirmPassword": "تأكيد كلمة المرور الجديدة",
+    "updatePassword": "تحديث كلمة المرور",
+    "preferences": "التفضيلات",
+    "darkMode": "الوضع الداكن",
+    "emailNotifications": "إشعارات البريد الإلكتروني",
+    "passwordMismatch": "كلمة المرور الجديدة والتأكيد غير متطابقين",
+    "passwordUpdateSuccess": "تم تحديث كلمة المرور بنجاح",
+    "passwordUpdateError": "فشل في تحديث كلمة المرور",
+    "enterCurrentPassword": "أدخل كلمة المرور الحالية",
+    "enterNewPassword": "أدخل كلمة المرور الجديدة",
+    "confirmNewPassword": "تأكيد كلمة المرور الجديدة",
+    "autoAssign": "التعيين التلقائي",
+    "errors": {
+      "currentPasswordRequired": "كلمة المرور الحالية مطلوبة",
+      "newPasswordRequired": "كلمة المرور الجديدة مطلوبة",
+      "passwordTooShort": "يجب أن تكون كلمة المرور الجديدة 8 أحرف على الأقل",
+      "samePassword": "يجب أن تكون كلمة المرور الجديدة مختلفة عن كلمة المرور الحالية",
+      "passwordMismatch": "كلمة المرور الجديدة وتأكيدها غير متطابقين",
+      "incorrectCurrentPassword": "كلمة المرور الحالية غير صحيحة",
+      "invalidNewPassword": "كلمة المرور الجديدة غير صالحة",
+      "updateFailed": "فشل في تحديث كلمة المرور. يرجى المحاولة مرة أخرى.",
+      "autoAssignUpdateFailed": "فشل في تحديث إعداد التوزيع التلقائي",
+      "settingsLoadFailed": "فشل في تحميل الإعدادات"
+    },
+    "autoAssignDesc": "عند التفعيل، سيتم توزيع التذاكر تلقائياً على المديرين المتاحين",
+    "autoAssignUpdateSuccess": "تم تحديث إعداد التوزيع التلقائي بنجاح"
+  }
 }
+

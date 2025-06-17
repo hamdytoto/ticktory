@@ -11,6 +11,7 @@ import {
 } from "../../../redux/feature/admin/Services/admin.service.apislice.js";
 import { ToastContainer, toast } from "react-toastify";
 import Section from "./sections/Section.jsx";
+import { useApiCallback } from "../../../Components/utils/validation.js";
 
 const Service = () => {
   const { t } = useTranslation();
@@ -22,25 +23,24 @@ const Service = () => {
   const [serviceName, setServiceName] = useState("");
   const [createService] = useCreateServiceApiMutation();
   const { refetch } = useShowAllServicesApiQuery();
+  const { handleApiCallback } = useApiCallback();
   const handleAddService = async () => {
     if (!serviceName.trim()) {
       toast.warn(t("service.name_empty_warning"));
       return;
     }
 
-    try {
+    await handleApiCallback(async () => {
       await createService({ name: serviceName }).unwrap();
       toast.success(t("service.add_success"));
       setServiceName("");
       setShowModal(false);
       refetch();
-    } catch (error) {
-      toast.error(t("service.add_error"));
-      console.error(error);
-    }
+    }, 'AddService');
   };
+
   if (serviceId) {
-    return <Section/>;
+    return <Section />;
   }
 
   return (
@@ -78,3 +78,4 @@ const Service = () => {
 };
 
 export default Service;
+

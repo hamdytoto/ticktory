@@ -1,567 +1,569 @@
 {
-    "greeting": "Hello",
-    "date": "December 12TH 2024",
-    "profile": "Profile",
-    "setting": "Settings",
-    "logout": "Logout",
-    "menu": {
-        "dashboard": "Dashboard",
-        "allTickets": "All Tickets",
-        "myTickets": "My Tickets",
-        "manageTickets": "Manage Tickets",
-        "assignedTickets": "Assigned Tickets",
-        "addManager": "Add Manager",
-        "addTechnician": "Add Technician",
-        "addService": "Add Service",
-        "chat": "Chat",
-        "collapse": "Collapse",
-        "settings": "Settings"
+  "greeting": "Hello",
+  "date": "December 12TH 2024",
+  "profile": "Profile",
+  "setting": "Settings",
+  "logout": "Logout",
+  "select_an_option": "Select an option",
+  "menu": {
+    "dashboard": "Dashboard",
+    "allTickets": "All Tickets",
+    "myTickets": "My Tickets",
+    "manageTickets": "Manage Tickets",
+    "assignedTickets": "Assigned Tickets",
+    "addManager": "Managers",
+    "addTechnician": "Add Technician",
+    "addService": "Add Service",
+    "chat": "Chat",
+    "collapse": "Collapse",
+    "settings": "Settings"
+  },
+  "stats": {
+    "allTickets": "All Tickets",
+    "openTickets": "Open Tickets",
+    "closedTickets": "Solved Tickets",
+    "inProgressTickets": "In Progress Tickets",
+    "managersCount": "Managers Count",
+    "servicesCount": "Services Count",
+    "techniciansCount": "Technicians Count",
+    "annualTickets": "Annual Tickets Average",
+    "dailyRespond": "Daily Respond",
+    "recentTickets": "Recent Tickets"
+  },
+  "landing": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "signin": "Sign In",
+    "animatedText1": "with ease",
+    "animatedText2": "efficiently"
+  },
+  "main": {
+    "headline1": "Turn Queries into",
+    "headline2": "Resolutions",
+    "description": "Effortlessly manage customer queries and deliver quick solutions with our intuitive support ticketing system.",
+    "signin": "Sign in",
+    "submitTicket": "Submit Ticket",
+    "bgAlt": "Hexagonal Background",
+    "dashboardAlt": "Dashboard Preview"
+  },
+  "services": {
+    "titlePart1": "Looking For",
+    "titlePart2": "Help?",
+    "subtitle": "Here’s an example of our services.",
+    "cards": [
+      {
+        "title": "Submit A Ticket",
+        "description": "You can submit a ticket from this home page or dashboard after login. If you don’t have an account, you can create one from this link."
+      },
+      {
+        "title": "Instant Talk with Agent",
+        "description": "You can discuss with an agent directly if your ticket is delayed in getting a response."
+      },
+      {
+        "title": "Get Notified Instantly",
+        "description": "You will be notified when the ticket status changes, or you can comment and discuss with the agent for a particular ticket."
+      },
+      {
+        "title": "Close Resolved Tickets",
+        "description": "After resolving a ticket, the agent will close it. You may receive a notification upon closure."
+      }
+    ]
+  },
+  "createTicket": {
+    "title": "Create a Ticket",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "department": "Department",
+    "selectDepartment": "Select Department",
+    "support": "Support",
+    "technical": "Technical",
+    "billing": "Billing",
+    "details": "Ticket Details",
+    "placeholder": "Enter your text",
+    "submit": "Submit"
+  },
+  "footer": {
+    "logoHighlight": "Ticketing",
+    "logoText": "System",
+    "description": "Platform for Technical Support and providing solutions for our customer queries.",
+    "navigationTitle": "Navigation",
+    "nav": {
+      "home": "Home",
+      "services": "Services",
+      "about": "About Us"
     },
-    "stats": {
-        "allTickets": "All Tickets",
-        "openTickets": "Open Tickets",
-        "closedTickets": "Solved Tickets",
-        "inProgressTickets": "In Progress Tickets",
-        "managersCount": "Managers Count",
-        "servicesCount": "Services Count",
-        "techniciansCount": "Technicians Count",
-        "annualTickets": "Annual Tickets Average",
-        "dailyRespond": "Daily Respond",
-        "recentTickets": "Recent Tickets"
+    "accountTitle": "Account",
+    "account": {
+      "login": "Login",
+      "register": "Register"
     },
-    "landing": {
-        "home": "Home",
-        "about": "About",
-        "services": "Services",
-        "signin": "Sign In",
-        "animatedText1": "with ease",
-        "animatedText2": "efficiently"
+    "followUs": "Follow Us",
+    "rights": "All rights reserved."
+  },
+  "register": {
+    "alreadyHaveAccount": "Already have an account?",
+    "signIn": "Sign in",
+    "logoAlt": "Ticketing System Logo",
+    "createAccount": "Create Account",
+    "subtitle": {
+      "part1": "Create your account to access our",
+      "part2": "Ticketing System"
     },
-    "main": {
-        "headline1": "Turn Queries into",
-        "headline2": "Resolutions",
-        "description": "Effortlessly manage customer queries and deliver quick solutions with our intuitive support ticketing system.",
-        "signin": "Sign in",
-        "submitTicket": "Submit Ticket",
-        "bgAlt": "Hexagonal Background",
-        "dashboardAlt": "Dashboard Preview"
-    },
-    "services": {
-        "titlePart1": "Looking For",
-        "titlePart2": "Help?",
-        "subtitle": "Here’s an example of our services.",
-        "cards": [
-            {
-                "title": "Submit A Ticket",
-                "description": "You can submit a ticket from this home page or dashboard after login. If you don’t have an account, you can create one from this link."
-            },
-            {
-                "title": "Instant Talk with Agent",
-                "description": "You can discuss with an agent directly if your ticket is delayed in getting a response."
-            },
-            {
-                "title": "Get Notified Instantly",
-                "description": "You will be notified when the ticket status changes, or you can comment and discuss with the agent for a particular ticket."
-            },
-            {
-                "title": "Close Resolved Tickets",
-                "description": "After resolving a ticket, the agent will close it. You may receive a notification upon closure."
-            }
-        ]
-    },
-    "createTicket": {
-        "title": "Create a Ticket",
-        "firstName": "First Name",
-        "lastName": "Last Name",
-        "email": "Email",
-        "department": "Department",
-        "selectDepartment": "Select Department",
-        "support": "Support",
-        "technical": "Technical",
-        "billing": "Billing",
-        "details": "Ticket Details",
-        "placeholder": "Enter your text",
-        "submit": "Submit"
-    },
-    "footer": {
-        "logoHighlight": "Ticketing",
-        "logoText": "System",
-        "description": "Platform for Technical Support and providing solutions for our customer queries.",
-        "navigationTitle": "Navigation",
-        "nav": {
-            "home": "Home",
-            "services": "Services",
-            "about": "About Us"
-        },
-        "accountTitle": "Account",
-        "account": {
-            "login": "Login",
-            "register": "Register"
-        },
-        "followUs": "Follow Us",
-        "rights": "All rights reserved."
-    },
-    "register": {
-        "alreadyHaveAccount": "Already have an account?",
-        "signIn": "Sign in",
-        "logoAlt": "Ticketing System Logo",
-        "createAccount": "Create Account",
-        "subtitle": {
-            "part1": "Create your account to access our",
-            "part2": "Ticketing System"
-        },
-        "name": "Name",
-        "email": "Email",
-        "password": "Password",
-        "confirmPassword": "Confirm Password",
-        "namePlaceholder": "Enter your name",
-        "emailPlaceholder": "Enter your email",
-        "passwordPlaceholder": "Enter your password",
-        "confirmPasswordPlaceholder": "Confirm your password",
-        "submit": "Sign Up",
-        "success": "Registration successful",
-        "fail": "Registration failed",
-        "helloFriend": "Hello Friend !",
-        "toKeepConnected": " To keep connected with us, please sign in with your personal info."
-    },
-    "login": {
-        "logoAlt": "Ticketing System Logo",
-        "noAccount": "Don't have an account?",
-        "applyNow": "Apply Now",
-        "invalidEmail": "Invalid email format",
-        "passwordMin": "Password must be at least 4 characters",
-        "success": "Login successful",
-        "failed": "Login failed",
-        "welcome": "Welcome Back!",
-        "keepConnected": "To keep connected with us, please login with your personal info.",
-        "signIn": "Sign In",
-        "signingIn": "Signing In...",
-        "description": "With Ticketing System dashboard, you can track analytics for how your business is performing.",
-        "email": "Email",
-        "emailPlaceholder": "Enter your email",
-        "password": "Password",
-        "passwordPlaceholder": "Enter your password",
-        "remember": "Remember me",
-        "forgot": "Forgot Password?",
-        "apply": "Apply Now"
-    },
-    "reset": {
-        "title": "Reset Your Password",
-        "subtitle": "We will send an email with instructions to reset your password.",
-        "emailLabel": "Email",
-        "emailPlaceholder": "Enter your email",
-        "emailRequired": "Email is required.",
-        "invalidEmail": "Please enter a valid email address.",
-        "sendButton": "Send Email",
-        "otpSent": "OTP sent to your email",
-        "failed": "Reset password failed."
-    },
-    "notifications": {
-        "title": "Notifications",
-        "markAllRead": "Mark All as Read",
-        "deleteAll": "Delete All",
-        "loading": "Loading...",
-        "noNotifications": "No notifications",
-        "delete": "Delete",
-        "loadMore": "Load More"
-    },
-    "status": {
-        "pending": "Pending",
-        "in_progress": "In Progress",
-        "resolved": "Resolved",
-        "closed": "Closed",
-        "unknown": "Unknown"
-    },
-    "table": {
-        "columns": {
-            "title": "Title",
-            "id": "ID",
-            "description": "Description",
-            "status": "Status",
-            "service": "Section & Service",
-            "manager": "Manager",
-            "user": "User",
-            "technician": "Technician",
-            "createdAt": "Created At",
-            "actions": "Actions",
-            "phone": "Phone",
-            "department": "Department",
-            "name": "Name",
-            "avatar": "Avatar",
-            "email": "Email",
-            "assignedAt": "Assigned At",
-            "maxMinutes": "Max Minutes",
-            "overdue": "Time Status"
-        },
-        "pagination": {
-            "showing": "Showing",
-            "to": "to",
-            "of": "of",
-            "tickets": "tickets",
-            "page": "Page"
-        },
-        "show": "Show:",
-        "perPage": "per page",
-        "noTickets": "No tickets found",
-        "tryAdjusting": "Try adjusting your search or filter criteria"
-    },
-    "chat": {
-        "technician": "Technician",
-        "manager": "Manager",
-        "user": "User",
-        "quickChat": "Quick Chat",
-        "chatWith": "Chat with {{label}}",
-        "resolvedOrClosed": "Resolved Or Closed Ticket",
-        "notAssigned": "Not assigned"
-    },
-    "ticketDetails": {
-        "unsupportedRole": "Unsupported user role. Cannot fetch ticket details.",
-        "notFound": "Ticket not found.",
-        "title": "Ticket Details",
-        "back": "Back",
-        "ticketId": "Ticket ID",
-        "ticketTitle": "Title",
-        "status": "Status",
-        "createdAt": "Created At",
-        "service": "Service",
-        "user": "User",
-        "manager": "Manager",
-        "technician": "Technician",
-        "unknown": "Unknown",
-        "notAssigned": "Not Assigned",
-        "description": "Description",
-        "noDescription": "No description provided."
-    },
-    "profilePage": {
-        "invalidImage": "Please upload a valid image file.",
-        "invalidAvatarFile": "Invalid avatar file.",
-        "updateSuccess": "Profile updated successfully!",
-        "updateFail": "Failed to update profile.",
-        "loadFail": "Failed to load profile data.",
-        "editProfile": "Edit Profile",
-        "personalInfo": "Personal Information",
-        "fullName": "Full Name",
-        "email": "Email",
-        "phone": "Phone",
-        "accountStatus": "Account Status",
-        "accountType": "Account Type",
-        "status": "Status",
-        "active": "Active",
-        "inactive": "Inactive",
-        "lastLogin": "Last Login",
-        "memberSince": "Member since {{date}}",
-        "updating": "Updating...",
-        "saveChanges": "Save Changes",
-        "nameMin": "Name must be at least 3 characters",
-        "phoneMin": "Phone number must be at least 10 digits",
-        "emailValid": "Please enter a valid email address."
-    },
-    "filters": {
-        "activeFilters": "Active Filters:",
-        "search": "Search",
-        "in": "in",
-        "date": "Date",
-        "start": "Start",
-        "end": "End",
-        "dateRangeFilter": "Date Range Filter",
-        "from": "From:",
-        "applyFilter": "Apply Filter",
-        "clear": "Clear",
-        "searchPlaceholder": "Search tickets...",
-        "searchIn": "Search in:",
-        "clearSearch": "Clear search",
-        "service": "Service",
-        "allServices": "All Services",
-        "clearService": "Clear service filter"
-    },
-    "ticketActions": {
-        "newTicket": "New Ticket"
-    },
-    "adminTickets": {
-        "loading": "Loading tickets...",
-        "error": "Error loading tickets",
-        "allTickets": "All Tickets"
-    },
-    "addTicket": {
-        "close": "Close",
-        "title": "Add New Ticket",
-        "ticketTitle": "Title",
-        "selectService": "Select a Service",
-        "selectSection": "Select a Section",
-        "description": "Description",
-        "cancel": "Cancel",
-        "submit": "Submit"
-    },
-    "editTicket": {
-        "close": "Close",
-        "title": "Edit Ticket",
-        "ticketTitle": "Title",
-        "selectService": "Select a Service",
-        "selectSection": "Select a Section",
-        "description": "Description",
-        "cancel": "Cancel",
-        "saveChanges": "Save Changes"
-    },
-    "managerTable": {
-        "avatar": "Avatar",
-        "avatarAlt": "Avatar",
-        "name": "Name",
-        "email": "Email",
-        "phone": "Phone",
-        "department": "Department",
-        "automaticAssignment": "Auto Assignment",
-        "actions": "Actions",
-        "delete": "Delete",
-        "edit": "Edit",
-        "deleteSuccess": "Manager deleted successfully",
-        "deleteFail": "Failed to delete manager",
-        "updateSuccess": "Manager updated successfully",
-        "updateFail": "Failed to update manager",
-        "confirmDelete": "Do you really want to delete this manager? It cannot be undone."
-    },
-    "addManager": {
-        "close": "Close",
-        "title": "Add New Manager",
-        "selectService": "Select a Service",
-        "name": "Name",
-        "email": "Email",
-        "password": "Password",
-        "passwordConfirmation": "Confirm Password",
-        "showPassword": "Show password",
-        "hidePassword": "Hide password",
-        "cancel": "Cancel",
-        "add": "Add",
-        "automaticAssignment": "Automatic Assignment",
-        "automaticAssignmentDesc": "Automatically assign this manager to new tickets in the selected service."
-    },
-    "managerActions": {
-        "title": "Add Managers",
-        "searchPlaceholder": "Search Managers",
-        "newManager": "New Manager"
-    },
-    "editManager": {
-        "close": "Close",
-        "title": "Edit Manager",
-        "selectService": "Select a Service",
-        "name": "Name",
-        "email": "Email",
-        "password": "Password (leave blank to keep current)",
-        "passwordConfirmation": "Confirm Password",
-        "showPassword": "Show password",
-        "hidePassword": "Hide password",
-        "automaticAssignment": "Enable Automatic Assignment",
-        "automaticAssignmentDesc": "Automatically assign incoming tickets to this manager based on service availability and workload",
-        "cancel": "Cancel",
-        "save": "Save"
-    },
-    "manager": {
-        "toast": {
-            "fillAllFields": "Please fill all the fields.",
-            "addSuccess": "Manager added successfully!",
-            "addFail": "Failed to add manager."
-        }
-    },
-    "tickets": {
-        "header": "All Tickets",
-        "loading": "Loading tickets...",
-        "error": "Error loading tickets",
-        "create_success": "Ticket created successfully!",
-        "create_failed": "Failed to create ticket!",
-        "toast": {
-            "ticketUpdated": "Ticket updated successfully!",
-            "updateFailed": "Failed to update ticket!",
-            "createSuccess": "Ticket created successfully!",
-            "createError": "Failed to create ticket!",
-            "ticketResolved": "Ticket resolved successfully!",
-            "resolveFailed": "Failed to resolve ticket!",
-            "ticketAssigned": "Ticket assigned successfully",
-            "assignFailed": "Failed to assign ticket",
-            "maxMinutesUpdated": "Maximum time updated successfully",
-            "maxMinutesUpdateFailed": "Failed to update maximum time"
-        },
-        "tooltip": {
-            "ticketResolved": "Ticket Resolved",
-            "resolveTicket": "Resolve Ticket",
-            "editTicket": "Edit Ticket",
-            "closed": "This ticket is closed",
-            "changeMaxMinutes": "Change maximum time",
-            "technicianAssigned": "Technician already assigned",
-            "assignTechnician": "Assign technician",
-            "overdue": "Ticket has exceeded response time",
-            "onTime": "Ticket is within response time",
-            "notAssigned": "Ticket not yet assigned",
-            "completed": "Ticket has been completed"
-        },
-        "maxMinutes": {
-            "title": "Set Maximum Time",
-            "label": "Maximum Response Time (Minutes)",
-            "placeholder": "Enter maximum minutes",
-            "validation": {
-                "min": "Minimum value is 1 minute",
-                "required": "Please enter maximum minutes"
-            }
-        },
-        "assign": {
-            "title": "Assign Technician",
-            "loading": "Loading technicians...",
-            "error": "Failed to load technicians",
-            "selectTechnician": "Select Technician",
-            "button": "Assign",
-            "maxMinutes": "Maximum Response Time",
-            "enterMaxMinutes": "Enter maximum minutes"
-        },
-        "status": {
-            "overdue": "Overdue",
-            "onTime": "On Time",
-            "pending": "Pending",
-            "completed": "Completed"
-        }
-    },
-    "service": {
-        "header": "Add Services",
-        "search_placeholder": "Search Services",
-        "new": "New Service",
-        "id": "Id",
-        "name": "Name",
-        "actions": "Actions",
-        "deleted_success": "Service deleted successfully",
-        "delete_error": "Failed to delete service",
-        "updated_success": "Service updated successfully",
-        "update_error": "Failed to update service",
-        "confirm_delete": "Do you really want to delete this service? It cannot be undone.",
-        "delete_tooltip": "Delete service",
-        "edit_tooltip": "Edit service",
-        "sections_tooltip": "manage sections",
-        "edit_title": "Edit Service",
-        "add_title": "Add New Service",
-        "name_placeholder": "Service Name",
-        "add_success": "Service added successfully!",
-        "add_error": "Failed to add service. Please try again.",
-        "name_empty_warning": "Service name cannot be empty"
-    },
-    "section": {
-        "header": "Manage Sections",
-        "search_placeholder": "Search Sections",
-        "new": "New Section",
-        "id": "Id",
-        "name": "Name",
-        "actions": "Actions",
-        "service_info": "Service Sections",
-        "deleted_success": "Section deleted successfully",
-        "delete_error": "Failed to delete section",
-        "updated_success": "Section updated successfully",
-        "update_error": "Failed to update section",
-        "confirm_delete": "Do you really want to delete this section? It cannot be undone.",
-        "delete_tooltip": "Delete section",
-        "edit_tooltip": "Edit section",
-        "edit_title": "Edit Section",
-        "add_title": "Add New Section",
-        "name_placeholder": "Section Name",
-        "add_success": "Section added successfully!",
-        "add_error": "Failed to add section. Please try again.",
-        "name_empty_warning": "Section name cannot be empty"
-    },
-    "common": {
-        "cancel": "Cancel",
-        "save": "Save",
-        "add": "Add",
-        "back": "Back"
-    },
-    "technician": {
-        "columns": {
-            "avatar": "Avatar",
-            "name": "Name",
-            "email": "Email",
-            "phone": "Phone",
-            "actions": "Actions"
-        },
-        "avatarAlt": "Avatar",
-        "actions": {
-            "delete": "Delete technician",
-            "edit": "Edit technician",
-            "title": "Add Technicians",
-            "searchPlaceholder": "Search Technicians",
-            "newTechnician": "New Technician"
-        },
-        "toast": {
-            "deleteSuccess": "Technician deleted successfully",
-            "deleteFail": "Failed to delete technician",
-            "updateSuccess": "Technician updated successfully",
-            "updateFail": "Failed to update technician",
-            "fillFields": "Please fill all the fields.",
-            "addSuccess": "Technician added successfully!",
-            "addError": "Failed to add technician."
-        },
-        "confirmDelete": "Do you really want to delete this technician? It cannot be undone.",
-        "add": {
-            "title": "Add New Technician",
-            "name": "Name",
-            "email": "Email",
-            "password": "Password",
-            "confirmPassword": "Confirm Password",
-            "showPassword": "Show password",
-            "hidePassword": "Hide password",
-            "cancel": "Cancel",
-            "submit": "Add",
-            "close": "Close"
-        },
-        "edit": {
-            "title": "Edit Technician",
-            "name": "Name",
-            "email": "Email",
-            "password": "Password (leave blank to keep current)",
-            "confirmPassword": "Confirm Password",
-            "showPassword": "Show password",
-            "hidePassword": "Hide password",
-            "cancel": "Cancel",
-            "submit": "Save",
-            "close": "Close"
-        }
-    },
-    "confirmDialog": {
-        "title": "Are you sure?",
-        "close": "Close dialog",
-        "cancel": "Cancel",
-        "delete": "Delete"
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "namePlaceholder": "Enter your name",
+    "emailPlaceholder": "Enter your email",
+    "passwordPlaceholder": "Enter your password",
+    "confirmPasswordPlaceholder": "Confirm your password",
+    "submit": "Sign Up",
+    "success": "Registration successful",
+    "fail": "Registration failed",
+    "helloFriend": "Hello Friend !",
+    "toKeepConnected": " To keep connected with us, please sign in with your personal info."
+  },
+  "login": {
+    "logoAlt": "Ticketing System Logo",
+    "noAccount": "Don't have an account?",
+    "applyNow": "Apply Now",
+    "invalidEmail": "Invalid email format",
+    "passwordMin": "Password must be at least 4 characters",
+    "success": "Login successful",
+    "failed": "Login failed",
+    "welcome": "Welcome Back!",
+    "keepConnected": "To keep connected with us, please login with your personal info.",
+    "signIn": "Sign In",
+    "signingIn": "Signing In...",
+    "description": "With Ticketing System dashboard, you can track analytics for how your business is performing.",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "remember": "Remember me",
+    "forgot": "Forgot Password?",
+    "apply": "Apply Now"
+  },
+  "reset": {
+    "title": "Reset Your Password",
+    "subtitle": "We will send an email with instructions to reset your password.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "Enter your email",
+    "emailRequired": "Email is required.",
+    "invalidEmail": "Please enter a valid email address.",
+    "sendButton": "Send Email",
+    "otpSent": "OTP sent to your email",
+    "failed": "Reset password failed."
+  },
+  "notifications": {
+    "title": "Notifications",
+    "markAllRead": "Mark All as Read",
+    "deleteAll": "Delete All",
+    "loading": "Loading...",
+    "noNotifications": "No notifications",
+    "delete": "Delete",
+    "loadMore": "Load More"
+  },
+  "status": {
+    "pending": "Pending",
+    "in_progress": "In Progress",
+    "resolved": "Resolved",
+    "closed": "Closed",
+    "unknown": "Unknown"
+  },
+  "table": {
+    "columns": {
+      "title": "Title",
+      "id": "ID",
+      "description": "Description",
+      "status": "Status",
+      "service": "Section & Service",
+      "manager": "Manager",
+      "user": "User",
+      "technician": "Technician",
+      "createdAt": "Created At",
+      "actions": "Actions",
+      "phone": "Phone",
+      "department": "Department",
+      "name": "Name",
+      "avatar": "Avatar",
+      "email": "Email",
+      "assignedAt": "Assigned At",
+      "maxMinutes": "Max Minutes",
+      "overdue": "Time Status"
     },
     "pagination": {
-        "showing": "Showing",
-        "to": "to",
-        "of": "of",
-        "entries": "entries",
-        "firstPage": "First page",
-        "previousPage": "Previous page",
-        "nextPage": "Next page",
-        "lastPage": "Last page"
+      "showing": "Showing",
+      "to": "to",
+      "of": "of",
+      "tickets": "tickets",
+      "page": "Page"
     },
-    "settings": {
-        "title": "Settings",
-        "passwordSection": "Change Password",
-        "currentPassword": "Current Password",
-        "newPassword": "New Password",
-        "confirmPassword": "Confirm New Password",
-        "updatePassword": "Update Password",
-        "preferences": "Preferences",
-        "darkMode": "Dark Mode",
-        "emailNotifications": "Email Notifications",
-        "passwordMismatch": "New password and confirmation do not match",
-        "passwordUpdateSuccess": "Password updated successfully",
-        "passwordUpdateError": "Failed to update password",
-        "enterCurrentPassword": "Enter your current password",
-        "enterNewPassword": "Enter your new password",
-        "confirmNewPassword": "Confirm your new password",
-        "autoAssign": "Automatic Assignment",
-        "errors": {
-            "currentPasswordRequired": "Current password is required",
-            "newPasswordRequired": "New password is required",
-            "passwordTooShort": "New password must be at least 8 characters long",
-            "samePassword": "New password must be different from current password",
-            "passwordMismatch": "New password and confirmation do not match",
-            "incorrectCurrentPassword": "Current password is incorrect",
-            "invalidNewPassword": "New password is invalid",
-            "updateFailed": "Failed to update password. Please try again."
-        },
-        "autoAssignDesc": "When enabled, tickets will be automatically assigned to available managers",
-        "autoAssignUpdateSuccess": "Automatic assignment setting updated successfully"
+    "show": "Show:",
+    "perPage": "per page",
+    "noTickets": "No tickets found",
+    "tryAdjusting": "Try adjusting your search or filter criteria"
+  },
+  "chat": {
+    "technician": "Technician",
+    "manager": "Manager",
+    "user": "User",
+    "quickChat": "Quick Chat",
+    "chatWith": "Chat with {{label}}",
+    "resolvedOrClosed": "Resolved Or Closed Ticket",
+    "notAssigned": "Not assigned"
+  },
+  "ticketDetails": {
+    "unsupportedRole": "Unsupported user role. Cannot fetch ticket details.",
+    "notFound": "Ticket not found.",
+    "title": "Ticket Details",
+    "back": "Back",
+    "ticketId": "Ticket ID",
+    "ticketTitle": "Title",
+    "status": "Status",
+    "createdAt": "Created At",
+    "service": "Service",
+    "user": "User",
+    "manager": "Manager",
+    "technician": "Technician",
+    "unknown": "Unknown",
+    "notAssigned": "Not Assigned",
+    "description": "Description",
+    "noDescription": "No description provided."
+  },
+  "profilePage": {
+    "invalidImage": "Please upload a valid image file.",
+    "invalidAvatarFile": "Invalid avatar file.",
+    "updateSuccess": "Profile updated successfully!",
+    "updateFail": "Failed to update profile.",
+    "loadFail": "Failed to load profile data.",
+    "editProfile": "Edit Profile",
+    "personalInfo": "Personal Information",
+    "fullName": "Full Name",
+    "email": "Email",
+    "phone": "Phone",
+    "accountStatus": "Account Status",
+    "accountType": "Account Type",
+    "status": "Status",
+    "active": "Active",
+    "inactive": "Inactive",
+    "lastLogin": "Last Login",
+    "memberSince": "Member since {{date}}",
+    "updating": "Updating...",
+    "saveChanges": "Save Changes",
+    "nameMin": "Name must be at least 3 characters",
+    "phoneMin": "Phone number must be at least 10 digits",
+    "emailValid": "Please enter a valid email address."
+  },
+  "filters": {
+    "activeFilters": "Active Filters:",
+    "search": "Search",
+    "in": "in",
+    "date": "Date",
+    "start": "Start",
+    "end": "End",
+    "dateRangeFilter": "Date Range Filter",
+    "from": "From:",
+    "applyFilter": "Apply Filter",
+    "clear": "Clear",
+    "searchPlaceholder": "Search tickets...",
+    "searchIn": "Search in:",
+    "clearSearch": "Clear search",
+    "service": "Service",
+    "allServices": "All Services",
+    "clearService": "Clear service filter"
+  },
+  "ticketActions": {
+    "newTicket": "New Ticket"
+  },
+  "adminTickets": {
+    "loading": "Loading tickets...",
+    "error": "Error loading tickets",
+    "allTickets": "All Tickets"
+  },
+  "addTicket": {
+    "close": "Close",
+    "title": "Add New Ticket",
+    "ticketTitle": "Title",
+    "selectService": "Select a Service",
+    "selectSection": "Select a Section",
+    "description": "Description",
+    "cancel": "Cancel",
+    "submit": "Submit"
+  },
+  "editTicket": {
+    "close": "Close",
+    "title": "Edit Ticket",
+    "ticketTitle": "Title",
+    "selectService": "Select a Service",
+    "selectSection": "Select a Section",
+    "description": "Description",
+    "cancel": "Cancel",
+    "saveChanges": "Save Changes"
+  },
+  "managerTable": {
+    "avatar": "Avatar",
+    "avatarAlt": "Avatar",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "department": "Department",
+    "automaticAssignment": "Auto Assignment",
+    "actions": "Actions",
+    "delete": "Delete",
+    "edit": "Edit",
+    "deleteSuccess": "Manager deleted successfully",
+    "deleteFail": "Failed to delete manager",
+    "updateSuccess": "Manager updated successfully",
+    "updateFail": "Failed to update manager",
+    "confirmDelete": "Do you really want to delete this manager? It cannot be undone."
+  },
+  "addManager": {
+    "close": "Close",
+    "title": "Add New Manager",
+    "selectService": "Select a Service",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "passwordConfirmation": "Confirm Password",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "cancel": "Cancel",
+    "add": "Add",
+    "automaticAssignment": "Automatic Assignment",
+    "automaticAssignmentDesc": "Automatically assign this manager to new tickets in the selected service."
+  },
+  "managerActions": {
+    "title": "Add Managers",
+    "searchPlaceholder": "Search Managers",
+    "newManager": "New Manager"
+  },
+  "editManager": {
+    "close": "Close",
+    "title": "Edit Manager",
+    "selectService": "Select a Service",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password (leave blank to keep current)",
+    "passwordConfirmation": "Confirm Password",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "automaticAssignment": "Enable Automatic Assignment",
+    "automaticAssignmentDesc": "Automatically assign incoming tickets to this manager based on service availability and workload",
+    "cancel": "Cancel",
+    "save": "Save"
+  },
+  "manager": {
+    "toast": {
+      "fillAllFields": "Please fill all the fields.",
+      "addSuccess": "Manager added successfully!",
+      "addFail": "Failed to add manager."
     }
+  },
+  "tickets": {
+    "header": "All Tickets",
+    "loading": "Loading tickets...",
+    "error": "Error loading tickets",
+    "create_success": "Ticket created successfully!",
+    "create_failed": "Failed to create ticket!",
+    "toast": {
+      "ticketUpdated": "Ticket updated successfully!",
+      "updateFailed": "Failed to update ticket!",
+      "createSuccess": "Ticket created successfully!",
+      "createError": "Failed to create ticket!",
+      "ticketResolved": "Ticket resolved successfully!",
+      "resolveFailed": "Failed to resolve ticket!",
+      "ticketAssigned": "Ticket assigned successfully",
+      "assignFailed": "Failed to assign ticket",
+      "maxMinutesUpdated": "Maximum time updated successfully",
+      "maxMinutesUpdateFailed": "Failed to update maximum time"
+    },
+    "tooltip": {
+      "ticketResolved": "Ticket Resolved",
+      "resolveTicket": "Resolve Ticket",
+      "editTicket": "Edit Ticket",
+      "closed": "This ticket is closed",
+      "changeMaxMinutes": "Change maximum time",
+      "technicianAssigned": "Technician already assigned",
+      "assignTechnician": "Assign technician",
+      "overdue": "Ticket has exceeded response time",
+      "onTime": "Ticket is within response time",
+      "notAssigned": "Ticket not yet assigned",
+      "completed": "Ticket has been completed"
+    },
+    "maxMinutes": {
+      "title": "Set Maximum Time",
+      "label": "Maximum Response Time (Minutes)",
+      "placeholder": "Enter maximum minutes",
+      "validation": {
+        "min": "Minimum value is 1 minute",
+        "required": "Please enter maximum minutes"
+      }
+    },
+    "assign": {
+      "title": "Assign Technician",
+      "loading": "Loading technicians...",
+      "error": "Failed to load technicians",
+      "selectTechnician": "Select Technician",
+      "button": "Assign",
+      "maxMinutes": "Maximum Response Time",
+      "enterMaxMinutes": "Enter maximum minutes"
+    },
+    "status": {
+      "overdue": "Overdue",
+      "onTime": "On Time",
+      "pending": "Pending",
+      "completed": "Completed"
+    }
+  },
+  "service": {
+    "header": "Add Services",
+    "search_placeholder": "Search Services",
+    "new": "New Service",
+    "id": "Id",
+    "name": "Name",
+    "actions": "Actions",
+    "deleted_success": "Service deleted successfully",
+    "delete_error": "Failed to delete service",
+    "updated_success": "Service updated successfully",
+    "update_error": "Failed to update service",
+    "confirm_delete": "Do you really want to delete this service? It cannot be undone.",
+    "delete_tooltip": "Delete service",
+    "edit_tooltip": "Edit service",
+    "sections_tooltip": "manage sections",
+    "edit_title": "Edit Service",
+    "add_title": "Add New Service",
+    "name_placeholder": "Service Name",
+    "add_success": "Service added successfully!",
+    "add_error": "Failed to add service. Please try again.",
+    "name_empty_warning": "Service name cannot be empty"
+  },
+  "section": {
+    "header": "Manage Sections",
+    "search_placeholder": "Search Sections",
+    "new": "New Section",
+    "id": "Id",
+    "name": "Name",
+    "actions": "Actions",
+    "service_info": "Service Sections",
+    "deleted_success": "Section deleted successfully",
+    "delete_error": "Failed to delete section",
+    "updated_success": "Section updated successfully",
+    "update_error": "Failed to update section",
+    "confirm_delete": "Do you really want to delete this section? It cannot be undone.",
+    "delete_tooltip": "Delete section",
+    "edit_tooltip": "Edit section",
+    "edit_title": "Edit Section",
+    "add_title": "Add New Section",
+    "name_placeholder": "Section Name",
+    "add_success": "Section added successfully!",
+    "add_error": "Failed to add section. Please try again.",
+    "name_empty_warning": "Section name cannot be empty"
+  },
+  "common": {
+    "cancel": "Cancel",
+    "save": "Save",
+    "add": "Add",
+    "back": "Back"
+  },
+  "technician": {
+    "columns": {
+      "avatar": "Avatar",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "actions": "Actions"
+    },
+    "avatarAlt": "Avatar",
+    "actions": {
+      "delete": "Delete technician",
+      "edit": "Edit technician",
+      "title": "Add Technicians",
+      "searchPlaceholder": "Search Technicians",
+      "newTechnician": "New Technician"
+    },
+    "toast": {
+      "deleteSuccess": "Technician deleted successfully",
+      "deleteFail": "Failed to delete technician",
+      "updateSuccess": "Technician updated successfully",
+      "updateFail": "Failed to update technician",
+      "fillFields": "Please fill all the fields.",
+      "addSuccess": "Technician added successfully!",
+      "addError": "Failed to add technician."
+    },
+    "confirmDelete": "Do you really want to delete this technician? It cannot be undone.",
+    "add": {
+      "title": "Add New Technician",
+      "name": "Name",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "showPassword": "Show password",
+      "hidePassword": "Hide password",
+      "cancel": "Cancel",
+      "submit": "Add",
+      "close": "Close"
+    },
+    "edit": {
+      "title": "Edit Technician",
+      "name": "Name",
+      "email": "Email",
+      "password": "Password (leave blank to keep current)",
+      "confirmPassword": "Confirm Password",
+      "showPassword": "Show password",
+      "hidePassword": "Hide password",
+      "cancel": "Cancel",
+      "submit": "Save",
+      "close": "Close"
+    }
+  },
+  "confirmDialog": {
+    "title": "Are you sure?",
+    "close": "Close dialog",
+    "cancel": "Cancel",
+    "delete": "Delete"
+  },
+  "pagination": {
+    "showing": "Showing",
+    "to": "to",
+    "of": "of",
+    "entries": "entries",
+    "firstPage": "First page",
+    "previousPage": "Previous page",
+    "nextPage": "Next page",
+    "lastPage": "Last page"
+  },
+  "settings": {
+    "title": "Settings",
+    "passwordSection": "Change Password",
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm New Password",
+    "updatePassword": "Update Password",
+    "preferences": "Preferences",
+    "darkMode": "Dark Mode",
+    "emailNotifications": "Email Notifications",
+    "passwordMismatch": "New password and confirmation do not match",
+    "passwordUpdateSuccess": "Password updated successfully",
+    "passwordUpdateError": "Failed to update password",
+    "enterCurrentPassword": "Enter your current password",
+    "enterNewPassword": "Enter your new password",
+    "confirmNewPassword": "Confirm your new password",
+    "autoAssign": "Automatic Assignment",
+    "errors": {
+      "currentPasswordRequired": "Current password is required",
+      "newPasswordRequired": "New password is required",
+      "passwordTooShort": "New password must be at least 8 characters long",
+      "samePassword": "New password must be different from current password",
+      "passwordMismatch": "New password and confirmation do not match",
+      "incorrectCurrentPassword": "Current password is incorrect",
+      "invalidNewPassword": "New password is invalid",
+      "updateFailed": "Failed to update password. Please try again."
+    },
+    "autoAssignDesc": "When enabled, tickets will be automatically assigned to available managers",
+    "autoAssignUpdateSuccess": "Automatic assignment setting updated successfully"
+  }
 }
+

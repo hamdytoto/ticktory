@@ -4,12 +4,11 @@ import ManagerTable from "./components/MangerTable.jsx";
 import AddManagerModal from "./components/AddManger.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
-
-// API Hooks
 import {
   useCreateManagerApiMutation,
   useShowAllManagersApiQuery,
 } from "../../../redux/feature/admin/Managers/admin.manager.apislice.js";
+import { useApiCallback } from "../../../Components/utils/validation.js";
 
 const Manager = () => {
   const { t } = useTranslation();
@@ -17,9 +16,10 @@ const Manager = () => {
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
+  const { handleApiCallback } = useApiCallback();
 
   const [managerData, setManagerData] = useState({
-    automatic_assignment:false,
+    automatic_assignment: false,
     service_id: "",
     user: {
       name: "",
@@ -52,14 +52,19 @@ const Manager = () => {
     const { service_id, user } = managerData;
     const { name, email, password, password_confirmation } = user;
 
-    if (!service_id || !name || !email || !password || !password_confirmation) {
-      toast.warn(t("manager.toast.fillAllFields", "Please fill all the fields."));
-      return;
-    }
+    // if (!service_id || !name || !email || !password || !password_confirmation) {
+    //   toast.warn(
+    //     t("manager.toast.fillAllFields", "Please fill all the fields."),
+    //   );
+    //   // return;
+    // }
 
-    try {
+    await handleApiCallback(async () => {
       await createManager(managerData).unwrap();
-      toast.success(t("manager.toast.addSuccess", "Manager added successfully!"));
+
+      toast.success(
+        t("manager.toast.addSuccess", "Manager added successfully!"),
+      );
       setManagerData({
         service_id: "",
         user: {
@@ -71,10 +76,7 @@ const Manager = () => {
       });
       setShowModal(false);
       refetch();
-    } catch (error) {
-      toast.error(t("manager.toast.addFail", "Failed to add manager."));
-      console.error(error);
-    }
+    }, "addManager");
   };
 
   return (
@@ -110,3 +112,4 @@ const Manager = () => {
 };
 
 export default Manager;
+
