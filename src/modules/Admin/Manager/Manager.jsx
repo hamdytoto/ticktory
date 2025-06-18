@@ -49,16 +49,6 @@ const Manager = () => {
   };
 
   const handleAddManager = async () => {
-    // const { service_id, user } = managerData;
-    // const { name, email, password, password_confirmation } = user;
-
-    // if (!service_id || !name || !email || !password || !password_confirmation) {
-    //   toast.warn(
-    //     t("manager.toast.fillAllFields", "Please fill all the fields."),
-    //   );
-    //   // return;
-    // }
-
     await handleApiCallback(async () => {
       await createManager(managerData).unwrap();
 

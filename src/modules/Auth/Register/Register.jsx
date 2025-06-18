@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useRegisterApiMutation } from "../../../redux/feature/auth/authApiSlice.js";
-import schema from "./validation.js";
+import schema from "./Schema.js";
 import HelloSection from "./HelloSection.jsx";
 import SignInLink from "./SignInLink.jsx";
 import { toast, ToastContainer } from "react-toastify";

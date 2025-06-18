@@ -11,7 +11,7 @@ const ServiceActions = ({
 
     return (
         <>
-            <h1 className="text-4xl font-bold text-gray-800">{t("service.header")}</h1> {/* ✅ */}
+            <h1 className="text-4xl font-bold text-gray-800">{t("service.header")}</h1> 
             <div className="p-0 mb-6 mt-6 flex flex-wrap items-center justify-between gap-4">
                 {/* Search Box */}
                 <div className="flex items-center rounded-xl bg-gray-50 shadow-md overflow-hidden flex-1 max-w-md p-3">
@@ -20,7 +20,7 @@ const ServiceActions = ({
                     </div>
                     <input
                         type="text"
-                        placeholder={t("service.search_placeholder")} // ✅
+                        placeholder={t("service.search_placeholder")} 
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                         className="flex-1 py-2 px-2 outline-none text-sm min-w-0 bg-transparent"

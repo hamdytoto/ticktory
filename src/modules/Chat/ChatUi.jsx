@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-// import ChatSidebar from "./sideChat.jsx";
 import ChatHeader from "./ChatHeader.jsx";
 import ChatScreen from "./ChatScreen.jsx";
 import ChatInput from "./ChatMessage.jsx";
@@ -35,18 +34,16 @@ const ChatUI = () => {
         setMessages(messagesData?.data || []);
     }, [messagesData]);
 
-
-    // console.log('obj', messagesMp)
-    // === PUSHER SUBSCRIPTIONS ===
+    // PUSHER SUBSCRIPTIONS 
     useEffect(() => {
         if (!user?.id || !conversationId || messagesMp === undefined) return;
 
         const messageChannel = pusher.subscribe(`conversations.${conversationId}`);
         console.log('channel', pusher.connection.socket_id)
         messageChannelRef.current = messageChannel;
-        // 🔁 Listen for conversation list update (last message, etc.)
+        //  Listen for conversation list update (last message, etc.)
 
-        // 📥 Listen for new incoming message
+        //  Listen for new incoming message
         messageChannel.bind("new-message", (data) => {
             console.log('mp', messagesMp)
             if (messagesMp[data.message.id] !== undefined) return
@@ -59,10 +56,7 @@ const ChatUI = () => {
             setMessages((prevMessages) => [...prevMessages, data.message]);
         });
 
-        // messageChannel.bind('client-typing', function (data) {
-        //     console.log('you are typing', data)
-        // })
-        // ❌ Listen for message deleted
+        // Listen for message deleted
         messageChannel.bind("message-deleted", (deletedMessage) => {
             setMessages((prevMessages) =>
                 prevMessages.filter((msg) => msg.id !== deletedMessage.id)
@@ -75,7 +69,6 @@ const ChatUI = () => {
         };
     }, [user?.id, conversationId, messagesMp]);
 
-    // Log or handle real-time update to conversation
 
 
     const [newMessage, setNewMessage] = useState("");
@@ -85,48 +78,10 @@ const ChatUI = () => {
         if (!newMessage.trim()) return;
         setNewMessage(""); // We'll rely on ChatScreen's Pusher listener to append the message
     };
-
-    // useEffect(() => {
-    // if (!messageChannelRef.current) return;
-
-    // const handleTyping = debounce(() => {
-    //     if (message.trim("")) {
-    //         messageChannelRef.current.trigger("client-typing", {
-    //             user_id: user.id,
-    //             conversation_id: conversationId,
-    //             type: 'start-typing',
-    //         });
-    //     } else {
-    //         messageChannelRef.current.trigger("client-typing", {
-    //             user_id: user.id,
-    //             conversation_id: conversationId,
-    //             type: 'stop-typing',
-    //         });
-    //     }
-    // }, 500)
-
-    //     handleTyping();
-
-    //     return () => {
-    //         handleTyping.cancel();
-    //     };
-
-    // }, [message, messageChannelRef])
-
     return (
         <div className="flex flex-col md:flex-row h-100vh w-full overflow-hidden bg-gray-100">
-            {/* Optional Sidebar */}
-            {/* <div className="hidden md:block w-full md:w-1/4 bg-white border-r">
-                <ChatSidebar
-                    user={user}
-                    activeChat={selectedUser.id}
-                    setActiveChat={setSelectedUser}
-                    chats={users}
-                />
-            </div> */}
-
+           
             {/* Chat Section */}
-
             <div className="flex flex-col flex-1 bg-white shadow-md rounded-none md:rounded-xl">
                 <ChatHeader selectedUser={userId} />
                 <div className="flex-1 overflow-y-auto px-4 py-2">

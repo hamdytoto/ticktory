@@ -107,17 +107,6 @@ const ManagerTable = ({
 
   // Define columns for AppTable
   const columns = [
-    // {
-    //     key: "avatar",
-    //     header: t("managerTable.avatar", "Avatar"),
-    //     render: (row) => (
-    //         <img
-    //             src={row.avatar}
-    //             alt={t("managerTable.avatarAlt", "Avatar")}
-    //             className="w-10 h-10 rounded-full object-cover"
-    //         />
-    //     ),
-    // },
     {
       key: "name",
       header: t("managerTable.name", "Name"),
@@ -134,15 +123,6 @@ const ManagerTable = ({
         <span className="text-gray-500 text-md">{row.user.email}</span>
       ),
     },
-    // {
-    //     key: "phone",
-    //     header: t("managerTable.phone", "Phone"),
-    //     render: (row) => (
-    //         <span className="text-gray-500 text-md">
-    //             {row.user.phone||"__"}
-    //         </span>
-    //     ),
-    // },
     {
       key: "department",
       header: t("managerTable.department", "Department"),

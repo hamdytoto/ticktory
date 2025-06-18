@@ -29,12 +29,6 @@ const Technician = () => {
   const { refetch } = useShowAllTechnicianQuery();
 
   const handleAddTechnician = async () => {
-    // const { name, email, password, password_confirmation } = technicianData;
-
-    // if (!name || !email || !password || !password_confirmation) {
-    //   toast.warn(t("technician.toast.fillFields", "Please fill all the fields."));
-    //   return;
-    // }
     handleApiCallback(async () => {
       await createTechnician(technicianData).unwrap();
       toast.success(t("technician.toast.addSuccess", "Technician added successfully!"));

@@ -82,4 +82,3 @@ const Footer = () => {
 };
 
 export default Footer;
-// This code defines a Footer component for a web application. It includes sections for the logo and description, navigation links, account links, and social media icons. The footer is styled with Tailwind CSS classes and uses the i18next library for internationalization. The component is responsive and adjusts its layout based on screen size.
