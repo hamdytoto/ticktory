@@ -14,12 +14,14 @@ import LoadingSpinner from "../../common/Loadingspinner";
 import ErrorAlert from "../../common/ErrorAlert";
 import ProfileCard from "./components/profileCard";
 import EditProfileModal from "./components/EditProfileModal";
+import { useApiCallback } from "../utils/validation";
 
 export default function ProfileUpdate() {
   const { t } = useTranslation();
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [avatar, setAvatar] = useState(null);
   const [avatarPreview, setAvatarPreview] = useState(null);
+  const { handleApiCallback } = useApiCallback();
 
   const schema = z.object({
     name: z.string().min(2, t("profilePage.nameMin")),
@@ -78,15 +80,12 @@ export default function ProfileUpdate() {
       formData.append("avatar", avatar);
     }
 
-    try {
+    await handleApiCallback(async () => {
       await updateProfile(formData).unwrap();
       toast.success(t("profilePage.updateSuccess"));
       await refetch();
       setIsEditModalOpen(false);
-    } catch (error) {
-      toast.error(t("profilePage.updateFail"));
-      console.error("Error updating profile:", error);
-    }
+    }, "profile");
   };
 
   if (isLoading) return <LoadingSpinner />;

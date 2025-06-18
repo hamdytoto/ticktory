@@ -14,19 +14,16 @@ export const menuConfig = {
   user: [
     { id: "dashboard", icon: <DashboardIcon />, labelKey: "menu.dashboard" },
     { id: "tickets", icon: <ConfirmationNumberIcon />, labelKey: "menu.myTickets" },
-    { id: "chat", icon: <ChatBubble />, labelKey: "menu.chat" },
   ],
   manager: [
     { id: "dashboard", icon: <DashboardIcon />, labelKey: "menu.dashboard" },
     { id: "tickets", icon: <ConfirmationNumberIcon />, labelKey: "menu.manageTickets" },
     { id: "technician", icon: <ManageAccountsIcon />, labelKey: "menu.addTechnician" },
-    { id: "chat", icon: <ChatBubble />, labelKey: "menu.chat" },
     { id: "settings", icon: <Settings />, labelKey: "menu.settings" },
   ],
   technician: [
     { id: "dashboard", icon: <DashboardIcon />, labelKey: "menu.dashboard" },
     { id: "tickets", icon: <ConfirmationNumberIcon />, labelKey: "menu.assignedTickets" },
-    { id: "chat", icon: <ChatBubble />, labelKey: "menu.chat" },
   ],
 };
 

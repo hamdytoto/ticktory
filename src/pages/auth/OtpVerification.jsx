@@ -1,29 +1,44 @@
 import { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
-
 import LoginHeader from "../../layouts/Navbar/LoginHeader";
 import {
   useVerifyUserMutation,
   useVerifyUserResendMutation,
   useValidatePasswordMutation,
 } from "../../redux/feature/auth/authApiSlice";
+import {
+  useApiCallback,
+  useValidation,
+} from "../../Components/utils/validation";
+import InputField from "../../Components/Form/InputField";
+import InputError from "../../Components/Form/InputError";
 
 const OtpVerification = () => {
   const [otp, setOtp] = useState(["", "", "", ""]);
   const inputRefs = useRef([]);
   const [timeLeft, setTimeLeft] = useState(60);
   const [canResend, setCanResend] = useState(false);
-
   const navigate = useNavigate();
   const location = useLocation();
-  const { email, type } = location.state || {};
-
+  const { email, type, redirectFromType } = location.state || {};
   const [verifyUser, { isLoading: isVerifying }] = useVerifyUserMutation();
   const [verifyUserResend] = useVerifyUserResendMutation();
-  const [validatePassword, { isLoading: isResetting }] = useValidatePasswordMutation();
+  const [validatePassword, { isLoading: isResetting }] =
+    useValidatePasswordMutation();
+  const { handleApiCallback } = useApiCallback();
+  const errors = useValidation().getErrors("resetPassword");
 
-  // Handle OTP input change
+  useEffect(() => {
+    if (!["login", "reset", "register"].includes(redirectFromType)) {
+      navigate("/dashboard");
+    }
+
+    if (redirectFromType === "login") {
+      handleResendOtp();
+    }
+  }, [redirectFromType]);
+
   const handleInputChange = (index, value) => {
     if (/^\d*$/.test(value) && value.length <= 1) {
       setOtp((prevOtp) => {
@@ -62,8 +77,9 @@ const OtpVerification = () => {
       return;
     }
 
-    try {
+    await handleApiCallback(async () => {
       const verificationData = { handle: email, code: otp.join("") };
+
       if (type === "verify") {
         await verifyUser(verificationData).unwrap();
         toast.success("Verification successful 🎉");
@@ -71,27 +87,25 @@ const OtpVerification = () => {
       } else if (type === "reset") {
         await validatePassword(verificationData).unwrap();
         toast.success("OTP Verified ✅ Redirecting...");
-        setTimeout(() => navigate("/auth/new-password", { state: { email:email ,otp:otp.join("") } }), 1500);
+        setTimeout(
+          () =>
+            navigate("/auth/new-password", {
+              state: { email: email, otp: otp.join("") },
+            }),
+          1500,
+        );
       }
-    } catch (error) {
-      const errorMessage = error?.data?.data?.code === "Invalid verification code"
-        ? "Invalid OTP! Please try again ❌"
-        : error?.data?.message || "Verification failed ❌";
-      toast.error(errorMessage);
-    }
+    }, "resetPassword");
   };
 
-  // Handle Resend OTP
   const handleResendOtp = async () => {
     setTimeLeft(60);
     setCanResend(false);
 
-    try {
+    await handleApiCallback(async () => {
       await verifyUserResend({ handle: email });
       toast.info("New OTP sent to your email 📩");
-    } catch (error) {
-      toast.error(error?.data?.message || "Resend OTP failed ❌");
-    }
+    }, "resetPassword");
   };
 
   return (
@@ -104,18 +118,17 @@ const OtpVerification = () => {
             <i className="fas fa-lock text-6xl text-blue-600"></i>
           </div>
 
-          {/* Title */}
           <h2 className="text-3xl font-extrabold text-black mb-2">
             {type === "verify" ? "Enter OTP Code" : "Reset Password OTP"}
           </h2>
           <p className="text-lg text-gray-600 mb-6">
-            We have sent a 4-digit OTP to <strong>{email}</strong>. Enter it below to continue.
+            We have sent a 4-digit OTP to <strong>{email}</strong>. Enter it
+            below to continue.
           </p>
 
-          {/* OTP Input Fields */}
-          <div className="flex justify-center gap-3 mb-4">
+          <div className="flex justify-center gap-3 mb-1">
             {otp.map((digit, index) => (
-              <input
+              <InputField
                 key={index}
                 type="text"
                 value={digit}
@@ -128,11 +141,12 @@ const OtpVerification = () => {
               />
             ))}
           </div>
-
-          {/* Verify Button */}
+          <InputError error={errors.code} additionalClasse="mb-2" />
           <button
             onClick={handleVerify}
-            disabled={otp.some((digit) => digit === "") || isVerifying || isResetting}
+            disabled={
+              otp.some((digit) => digit === "") || isVerifying || isResetting
+            }
             className={`w-full font-bold py-3 px-4 rounded-lg transition text-lg mb-4 ${
               otp.some((digit) => digit === "") || isVerifying || isResetting
                 ? "bg-gray-400 cursor-not-allowed"
@@ -144,7 +158,10 @@ const OtpVerification = () => {
 
           {/* Resend OTP */}
           {canResend ? (
-            <button onClick={handleResendOtp} className="text-blue-600 hover:underline text-lg">
+            <button
+              onClick={handleResendOtp}
+              className="text-blue-600 hover:underline text-lg"
+            >
               Resend OTP
             </button>
           ) : (

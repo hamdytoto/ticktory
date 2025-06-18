@@ -11,7 +11,6 @@ import { useTranslation } from "react-i18next";
 import "react-toastify/dist/ReactToastify.css";
 import useFirebaseLogic from "../../Notifications/useFirebaseLogic.js";
 
-
 const Login = () => {
   const { t } = useTranslation();
   const { setUser } = useUser();
@@ -19,9 +18,17 @@ const Login = () => {
   const navigate = useNavigate();
   const [login, { isLoading }] = useLoginMutation();
   const { fcmToken, requestNotificationPermission } = useFirebaseLogic();
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (user) {
+      navigate("/dashboard");
+    }
+  }, []);
   useEffect(() => {
     requestNotificationPermission();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const schema = z.object({
@@ -61,6 +68,16 @@ const Login = () => {
       }, 1500);
     } catch (error) {
       toast.error(error.data?.message || t("login.failed"));
+
+      if (error.data.code === 403 && error.data.forbidding_reason == 0) {
+        navigate("/auth/verify-user", {
+          state: {
+            email: data.email,
+            redirectFromType: "login",
+            type: "verify",
+          },
+        });
+      }
     }
   };
 
@@ -125,7 +142,11 @@ const Login = () => {
                     className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 text-lg"
                     onClick={() => setShowPassword(!showPassword)}
                   >
-                    <i className={showPassword ? "fas fa-eye-slash" : "fas fa-eye"}></i>
+                    <i
+                      className={
+                        showPassword ? "fas fa-eye-slash" : "fas fa-eye"
+                      }
+                    ></i>
                   </button>
                 </div>
                 {errors.pass && (
@@ -136,9 +157,13 @@ const Login = () => {
               {/* Remember Me + Forgot */}
               <div className="flex justify-between items-center text-sm text-gray-600">
                 <label className="flex items-center">
-                  <input type="checkbox" className="mr-2" /> {t("login.remember")}
+                  <input type="checkbox" className="mr-2" />{" "}
+                  {t("login.remember")}
                 </label>
-                <Link to="/auth/forget-password" className="text-blue-500 hover:underline">
+                <Link
+                  to="/auth/forget-password"
+                  className="text-blue-500 hover:underline"
+                >
                   {t("login.forgot")}
                 </Link>
               </div>
@@ -156,7 +181,10 @@ const Login = () => {
             {/* Sign Up */}
             <div className="mt-4 text-center">
               <span className="text-gray-600">{t("login.noAccount")} </span>
-              <Link to="/auth/register" className="text-blue-500 font-semibold hover:underline">
+              <Link
+                to="/auth/register"
+                className="text-blue-500 font-semibold hover:underline"
+              >
                 {t("login.apply")}
               </Link>
             </div>

@@ -226,6 +226,7 @@
     "status": "الحالة",
     "createdAt": "تاريخ الإنشاء",
     "service": "الخدمة",
+    "section": "القسم",
     "user": "المستخدم",
     "manager": "المدير",
     "technician": "الفني",
@@ -390,7 +391,7 @@
       "closed": "هذه التذكرة مغلقة",
       "changeMaxMinutes": "تغيير الوقت الأقصى",
       "technicianAssigned": "تم تعيين فني بالفعل",
-      "assignTechnician": "تعيين فني",
+      "assignTechnician": "تغيير الفني",
       "overdue": "تجاوزت التذكرة وقت الاستجابة",
       "onTime": "التذكرة ضمن وقت الاستجابة",
       "notAssigned": "لم يتم تعيين التذكرة بعد",
@@ -502,7 +503,7 @@
       "name": "الاسم",
       "email": "البريد الإلكتروني",
       "password": "كلمة المرور",
-      "section":"اختار القسم",
+      "section": "اختار القسم",
       "confirmPassword": "تأكيد كلمة المرور",
       "showPassword": "إظهار كلمة المرور",
       "hidePassword": "إخفاء كلمة المرور",
@@ -572,4 +573,3 @@
     "autoAssignUpdateSuccess": "تم تحديث إعداد التوزيع التلقائي بنجاح"
   }
 }
-

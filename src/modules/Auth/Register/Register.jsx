@@ -56,7 +56,11 @@ export default function Register() {
       reset();
       setTimeout(() => {
         navigate("/auth/verify-user", {
-          state: { email: data.email, type: "verify" },
+          state: {
+            email: data.email,
+            type: "verify",
+            redirectFromType: "register",
+          },
         });
       }, 3000);
     }, "register");

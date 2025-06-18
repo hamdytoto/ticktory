@@ -39,15 +39,9 @@ function showNotification(payload) {
 	const body = payload.notification.body;
 	const data = payload.data;
 
-	data.url = "https://admin.wadjetapp.com";
+	data.url = "https://ticktory.vercel.app";
 
-	return self.registration.showNotification(notificationTitle, {
-		body,
-		icon: "/favicon.ico",
-		silent: false,
-		data,
-		tag: payload.data.type,
-	});
+	return self.registration.showNotification();
 }
 
 self.addEventListener("notificationclick", (event) => {

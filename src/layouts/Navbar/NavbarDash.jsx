@@ -7,22 +7,29 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import NotificationModal from "../../modules/Notifications/Notification";
 import { useGetUnreadNotifiQuery } from "../../redux/feature/notifications/notifi.apislice";
 import LanguageSelector from "../../i18n/languageSelector";
-import '../../index.css'
+import "../../index.css";
+import { handleLogout } from "../../modules/Auth/logout";
 
 // eslint-disable-next-line react/prop-types
-export default function Navbar({ UserName, Image, setActivePage, isCollapsed, isMobile, isMobileOpen }) {
+export default function Navbar({
+  UserName,
+  Image,
+  setActivePage,
+  isCollapsed,
+  isMobile,
+  isMobileOpen,
+}) {
   const { t } = useTranslation();
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const { data, refetch } = useGetUnreadNotifiQuery();
   const unreadCount = data?.data?.unreadNotificationsCount;
 
-  const marginClass =
-    isMobile
-      ? isMobileOpen
-        ? "ms-20"
-        : "ms-4"
-      : isCollapsed
+  const marginClass = isMobile
+    ? isMobileOpen
+      ? "ms-20"
+      : "ms-4"
+    : isCollapsed
       ? "ms-20"
       : "ms-64";
 
@@ -33,9 +40,7 @@ export default function Navbar({ UserName, Image, setActivePage, isCollapsed, is
         <p className="text-sm md:text-lg font-semibold text-gray-700">
           {t("greeting")} {UserName}
         </p>
-        <p className="text-xs md:text-sm text-gray-500">
-          {t("date")}
-        </p>
+        <p className="text-xs md:text-sm text-gray-500">{t("date")}</p>
       </div>
 
       {/* Right Section */}
@@ -56,7 +61,7 @@ export default function Navbar({ UserName, Image, setActivePage, isCollapsed, is
               badgeContent={unreadCount}
               color="error"
               overlap="circular"
-              anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+              anchorOrigin={{ vertical: "top", horizontal: "right" }}
             >
               <NotificationsIcon />
             </Badge>
@@ -76,8 +81,14 @@ export default function Navbar({ UserName, Image, setActivePage, isCollapsed, is
             onClick={() => setIsProfileOpen(!isProfileOpen)}
             aria-label="Toggle profile menu"
           >
-            <img className="w-10 h-10 rounded-full border-2 border-gray-300" src={Image} alt="User" />
-            <span className="text-sm md:text-base text-gray-700 font-medium">{UserName}</span>
+            <img
+              className="w-10 h-10 rounded-full border-2 border-gray-300"
+              src={Image}
+              alt="User"
+            />
+            <span className="text-sm md:text-base text-gray-700 font-medium">
+              {UserName}
+            </span>
             <ExpandMoreIcon className="text-gray-500" />
           </button>
 
@@ -89,10 +100,20 @@ export default function Navbar({ UserName, Image, setActivePage, isCollapsed, is
               >
                 {t("profile")}
               </button>
-              <Link to="/dashboard/settings" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+              <Link
+                to="/dashboard/settings"
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              >
                 {t("setting")}
               </Link>
-              <Link to="/auth/login" className="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100">
+              <Link
+                to={""}
+                className="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleLogout();
+                }}
+              >
                 {t("logout")}
               </Link>
             </div>
@@ -102,3 +123,4 @@ export default function Navbar({ UserName, Image, setActivePage, isCollapsed, is
     </nav>
   );
 }
+
