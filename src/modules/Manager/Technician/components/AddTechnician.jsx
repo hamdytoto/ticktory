@@ -108,7 +108,7 @@ const AddTechnicianModal = ({
           value={technicianData?.email || ""}
           onChange={handleUserChange}
           className="border border-gray-300 p-3 rounded-lg w-full mb-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          error={errors["email"]}
+          error={errors["user.email"]}
         />
 
         <div className="relative mb-1">
