@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
@@ -13,8 +14,10 @@ import {
 } from "../../Components/utils/validation";
 import InputField from "../../Components/Form/InputField";
 import InputError from "../../Components/Form/InputError";
+import { useTranslation } from "react-i18next";
 
 const OtpVerification = () => {
+  const { t } = useTranslation();
   const [otp, setOtp] = useState(["", "", "", ""]);
   const inputRefs = useRef([]);
   const [timeLeft, setTimeLeft] = useState(60);
@@ -73,7 +76,7 @@ const OtpVerification = () => {
   // Handle OTP verification
   const handleVerify = async () => {
     if (otp.some((digit) => digit === "")) {
-      toast.error("Please enter all 4 digits");
+      toast.error(t("resetPassword.otpRequired"));
       return;
     }
 
@@ -82,11 +85,11 @@ const OtpVerification = () => {
 
       if (type === "verify") {
         await verifyUser(verificationData).unwrap();
-        toast.success("Verification successful 🎉");
+        toast.success(t("otpVerification.success"));
         setTimeout(() => navigate("/auth/login"), 1500);
       } else if (type === "reset") {
         await validatePassword(verificationData).unwrap();
-        toast.success("OTP Verified ✅ Redirecting...");
+        toast.success(t("resetPassword.otpSuccess"));
         setTimeout(
           () =>
             navigate("/auth/new-password", {
@@ -104,7 +107,7 @@ const OtpVerification = () => {
 
     await handleApiCallback(async () => {
       await verifyUserResend({ handle: email });
-      toast.info("New OTP sent to your email 📩");
+      toast.info(t("resetPassword.otpResendSuccess"));
     }, "resetPassword");
   };
 
@@ -119,14 +122,13 @@ const OtpVerification = () => {
           </div>
 
           <h2 className="text-3xl font-extrabold text-black mb-2">
-            {type === "verify" ? "Enter OTP Code" : "Reset Password OTP"}
+            {type === "verify" ? t("otpVerification.title") : t("resetPassword.otpTitle")}
           </h2>
           <p className="text-lg text-gray-600 mb-6">
-            We have sent a 4-digit OTP to <strong>{email}</strong>. Enter it
-            below to continue.
+            {type === "verify" ? t("otpVerification.subtitle", { email }) : t("resetPassword.otpSubtitle", { email })}
           </p>
 
-          <div className="flex justify-center gap-3 mb-1">
+          <div className="flex justify-center gap-3 mb-1" dir="ltr">
             {otp.map((digit, index) => (
               <InputField
                 key={index}
@@ -147,13 +149,12 @@ const OtpVerification = () => {
             disabled={
               otp.some((digit) => digit === "") || isVerifying || isResetting
             }
-            className={`w-full font-bold py-3 px-4 rounded-lg transition text-lg mb-4 ${
-              otp.some((digit) => digit === "") || isVerifying || isResetting
-                ? "bg-gray-400 cursor-not-allowed"
-                : "bg-blue-900 hover:bg-blue-800 text-white"
-            }`}
+            className={`w-full font-bold py-3 px-4 rounded-lg transition text-lg mb-4 ${otp.some((digit) => digit === "") || isVerifying || isResetting
+              ? "bg-gray-400 cursor-not-allowed"
+              : "bg-blue-900 hover:bg-blue-800 text-white"
+              }`}
           >
-            {isVerifying || isResetting ? "Verifying..." : "Verify OTP"}
+            {isVerifying || isResetting ? t("otpVerification.loading") : t("otpVerification.submit")}
           </button>
 
           {/* Resend OTP */}
@@ -162,10 +163,12 @@ const OtpVerification = () => {
               onClick={handleResendOtp}
               className="text-blue-600 hover:underline text-lg"
             >
-              Resend OTP
+              {t("otpVerification.resend")}
             </button>
           ) : (
-            <p className="text-gray-600 text-lg">Resend OTP in {timeLeft}s</p>
+            <p className="text-gray-600 text-lg">
+              {t("otpVerification.timer", { seconds: timeLeft })}
+            </p>
           )}
         </div>
         <ToastContainer position="top-center" autoClose={1500} />

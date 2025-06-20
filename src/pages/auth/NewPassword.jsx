@@ -8,8 +8,10 @@ import {
   useValidation,
 } from "../../Components/utils/validation";
 import InputField from "../../Components/Form/InputField";
+import { useTranslation } from "react-i18next";
 
 const NewPassword = () => {
+  const { t } = useTranslation();
   // State for password fields
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -34,15 +36,9 @@ const NewPassword = () => {
 
     // Validate input fields
     if (!state?.email) {
-      toast.error("Invalid request. Please restart the process.");
+      toast.error(t("resetPassword.invalidRequest"));
       return;
     }
-
-    if (password !== confirmPassword) {
-      toast.error("Passwords do not match!");
-      return;
-    }
-
     await handleApiCallback(async () => {
       await resetPassword({
         handle: state.email,
@@ -51,7 +47,7 @@ const NewPassword = () => {
         code: otpCode,
       }).unwrap();
 
-      toast.success("Password reset successfully!");
+      toast.success(t("resetPassword.success"));
       setTimeout(() => navigate("/auth/login"), 1000);
     }, "resetPassword");
   };
@@ -63,11 +59,10 @@ const NewPassword = () => {
         <div className="w-full max-w-md text-center">
           {/* Title */}
           <h2 className="text-3xl font-extrabold text-black mb-2">
-            Create New Password
+            {t("resetPassword.title")}
           </h2>
           <p className="text-lg text-gray-600 mb-6">
-            Your new password must be different from the previously used
-            password
+            {t("resetPassword.subtitle")}
           </p>
 
           {/* Form */}
@@ -75,7 +70,7 @@ const NewPassword = () => {
             {/* New Password */}
             <div className="text-left">
               <label className="block text-sm font-semibold text-gray-700">
-                New Password
+                {t("resetPassword.newPassword")}
               </label>
               <div className="relative mt-2">
                 <span className="absolute left-3 top-3 text-gray-400">
@@ -83,7 +78,7 @@ const NewPassword = () => {
                 </span>
                 <InputField
                   type={showPassword ? "text" : "password"}
-                  placeholder="Enter Password"
+                  placeholder={t("resetPassword.placeholder")}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
@@ -104,7 +99,7 @@ const NewPassword = () => {
             {/* Confirm Password */}
             <div className="text-left mt-4">
               <label className="block text-sm font-semibold text-gray-700">
-                Confirm Password
+                {t("resetPassword.confirmPassword")}
               </label>
               <div className="relative mt-2">
                 <span className="absolute left-3 top-3 text-gray-400">
@@ -112,7 +107,7 @@ const NewPassword = () => {
                 </span>
                 <InputField
                   type={showConfirmPassword ? "text" : "password"}
-                  placeholder="Enter Password"
+                  placeholder={t("resetPassword.placeholder")}
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   className="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
@@ -138,7 +133,7 @@ const NewPassword = () => {
               disabled={isLoading}
               className={`w-full mt-6 ${isLoading ? "bg-gray-300 cursor-not-allowed" : "bg-blue-400 hover:bg-blue-500"} text-white font-semibold py-3 px-4 rounded-lg transition text-lg`}
             >
-              {isLoading ? "Processing..." : "Sign In"}
+              {isLoading ? t("resetPassword.processing") : t("resetPassword.submited")}
             </button>
           </form>
           <ToastContainer position="top-center" autoClose={1000} />

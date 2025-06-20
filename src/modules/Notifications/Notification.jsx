@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import {
     useGetAllNotifiQuery,
@@ -12,7 +13,7 @@ import { t } from "i18next";
 import { useTranslation } from "react-i18next";
 import ConfirmDialog from "../../common/ConfirmDialogu.jsx";
 
-export default function Notifications() {
+export default function Notifications({ setIsNotificationOpen}) {
     const [page, setPage] = useState(1);
     const [allNotifications, setAllNotifications] = useState([]);
     const [meta, setMeta] = useState({});
@@ -50,6 +51,7 @@ export default function Notifications() {
             await markOneAsRead({ id: notification.id });
             refetch();
         }
+        setIsNotificationOpen(false);
         navigate(`/dashboard/tickets/view/${notification.data.model_id}`);
         return;
     };

@@ -1,4 +1,5 @@
-import { useState } from "react";
+/* eslint-disable react/prop-types */
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { useTranslation } from "react-i18next";
@@ -10,7 +11,6 @@ import LanguageSelector from "../../i18n/languageSelector";
 import "../../index.css";
 import { handleLogout } from "../../modules/Auth/logout";
 
-// eslint-disable-next-line react/prop-types
 export default function Navbar({
   UserName,
   Image,
@@ -25,6 +25,10 @@ export default function Navbar({
   const { data, refetch } = useGetUnreadNotifiQuery();
   const unreadCount = data?.data?.unreadNotificationsCount;
 
+  // Refs for dropdown containers
+  const profileRef = useRef(null);
+  const notificationRef = useRef(null);
+
   const marginClass = isMobile
     ? isMobileOpen
       ? "ms-20"
@@ -32,6 +36,31 @@ export default function Navbar({
     : isCollapsed
       ? "ms-20"
       : "ms-64";
+
+  // Close dropdowns when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // Close profile dropdown if clicking outside
+      if (profileRef.current && !profileRef.current.contains(event.target)) {
+        setIsProfileOpen(false);
+      }
+      
+      // Close notification dropdown if clicking outside
+      if (notificationRef.current && !notificationRef.current.contains(event.target)) {
+        setIsNotificationOpen(false);
+      }
+    };
+
+    // Add event listener when any dropdown is open
+    if (isProfileOpen || isNotificationOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    // Cleanup event listener
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isProfileOpen, isNotificationOpen]);
 
   return (
     <nav className=" fixed top-0 left-0 h-20 z-50 w-full bg-white border-b border-gray-200 px-4 md:px-6 py-3 shadow-md flex items-center justify-between">
@@ -48,7 +77,7 @@ export default function Navbar({
         <LanguageSelector />
 
         {/* Notifications Dropdown */}
-        <div className="relative">
+        <div className="relative" ref={notificationRef}>
           <button
             onClick={() => {
               setIsNotificationOpen((prev) => !prev);
@@ -75,7 +104,7 @@ export default function Navbar({
         </div>
 
         {/* Profile Dropdown */}
-        <div className="relative">
+        <div className="relative" ref={profileRef}>
           <button
             className="flex items-center gap-2"
             onClick={() => setIsProfileOpen(!isProfileOpen)}
@@ -123,4 +152,3 @@ export default function Navbar({
     </nav>
   );
 }
-

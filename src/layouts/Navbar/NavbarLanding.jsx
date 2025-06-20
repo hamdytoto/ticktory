@@ -58,7 +58,7 @@ export default function NavbarLanding() {
             to={! isLoggedIn() ? "/auth/login" : "/dashboard"}
             className="block md:hidden bg-gradient-to-r from-blue-500 to-cyan-400 text-white px-6 py-2 w-full text-center rounded-[16px] text-lg font-medium shadow-md hover:opacity-90 transition mt-4"
           >
-            {t(! isLoggedIn() ? "landing.signin" : "dashboard")}
+            {t(! isLoggedIn() ? "landing.signin" : "landing.dashboard")}
           </Link>
         </div>
 
@@ -67,7 +67,7 @@ export default function NavbarLanding() {
           to={! isLoggedIn() ? "/auth/login" : "/dashboard"}
           className="hidden md:inline bg-gradient-to-r from-blue-500 to-cyan-400 text-white px-6 py-2 rounded-[16px] text-lg font-medium shadow-md hover:opacity-90 transition md:ml-4"
         >
-          {t(! isLoggedIn() ? "landing.signin" : "dashboard")}
+          {t(! isLoggedIn() ? "landing.signin" : "landing.dashboard")}
         </Link>
       </div>
     </nav>

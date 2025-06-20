@@ -1,17 +1,15 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import {
   FaRegCircle,
   FaCheckCircle,
-  FaPaperPlane,
-  FaCheckDouble,
   FaLock,
   FaClock,
   FaRegClock,
   FaExclamationCircle,
   FaCheck,
-  FaUserCog,
   FaTools,
 } from "react-icons/fa";
 
