@@ -98,7 +98,7 @@ export default function Navbar({
 
           {isNotificationOpen && (
             <div className="absolute right-0 mt-2">
-              <NotificationModal />
+              <NotificationModal setIsNotificationOpen={setIsNotificationOpen} />
             </div>
           )}
         </div>
