@@ -17,7 +17,7 @@ const AddManagerModal = ({
 }) => {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.dir() === "rtl";
-  const { data: servicesData } = useGetServicesQuery({ only_unique: 1 });
+  const { data: servicesData, refetch } = useGetServicesQuery({ only_unique: 1 });
   const services = servicesData?.data || [];
   const [showPassword, setShowPassword] = useState(false);
   const [showPasswordConfirm, setShowPasswordConfirm] = useState(false);
@@ -144,7 +144,11 @@ const AddManagerModal = ({
             {t("addManager.cancel")}
           </button>
           <button
-            onClick={onAdd}
+            onClick={() => {
+              onAdd;
+              refetch(); // Refetch services to ensure the latest data is available
+              onClose(); // Close the modal after adding
+            }}
             className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
           >
             {t("addManager.add")}
