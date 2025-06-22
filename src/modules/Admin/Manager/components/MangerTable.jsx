@@ -87,6 +87,10 @@ const ManagerTable = ({
         email: manager.user.email,
         password: manager.user.password,
         password_confirmation: manager.user.password,
+        ...((manager.user.password_confirmation || manager.user.password) && {
+          password_confirmation: manager.user.password_confirmation,
+          password: manager.user.password,
+        }),
       },
     });
   };
@@ -216,4 +220,3 @@ const ManagerTable = ({
 };
 
 export default ManagerTable;
-
