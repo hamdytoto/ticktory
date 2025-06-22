@@ -88,13 +88,15 @@ const Manager = () => {
         />
       </div>
 
-      <AddManagerModal
-        show={showModal}
-        onClose={() => setShowModal(false)}
-        managerData={managerData}
-        setManagerData={setManagerData}
-        onAdd={handleAddManager}
-      />
+      {showModal &&
+        <AddManagerModal
+          show={showModal}
+          onClose={() => setShowModal(false)}
+          managerData={managerData}
+          setManagerData={setManagerData}
+          onAdd={handleAddManager}
+        />
+      }
 
       <ToastContainer position="top-right" autoClose={3000} />
     </div>

@@ -11,7 +11,7 @@ const TechnicianAssignModal = ({ isOpen, onClose, onSubmit, ticket }) => {
   useEffect(() => {
     if (!ticket?.technician?.id) return;
 
-    setSelectedTechnician(ticket?.technician.id);
+    setSelectedTechnician(ticket?.technician?.id);
   }, [ticket]);
 
   const [maxMinutes, setMaxMinutes] = useState(60); // Add state for maximum minutes
@@ -19,7 +19,7 @@ const TechnicianAssignModal = ({ isOpen, onClose, onSubmit, ticket }) => {
   // Fetch technicians from API (inside modal)
   const { data, isLoading, isError } = useGetTechniciansQuery(
     {
-      section_id: ticket?.section.id,
+      section_id: ticket?.section?.id,
     },
     {
       skip: !isOpen, // Only fetch when modal is open

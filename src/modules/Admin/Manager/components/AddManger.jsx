@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { FaEye, FaEyeSlash, FaTimes, FaCheck } from "react-icons/fa";
 import { useGetServicesQuery } from "../../../../redux/feature/selectMenu/select.apislice.js";
@@ -24,7 +24,11 @@ const AddManagerModal = ({
   const { getErrors } = useValidation();
   const errors = getErrors("addManager");
 
+  useEffect(() => { refetch(); }, []);
+
   if (!show) return null;
+
+
 
   const handleUserChange = (e) => {
     const { name, value } = e.target;
