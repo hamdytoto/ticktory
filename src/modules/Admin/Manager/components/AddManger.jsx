@@ -149,7 +149,7 @@ const AddManagerModal = ({
           </button>
           <button
             onClick={() => {
-              onAdd;
+              onAdd();
               refetch(); // Refetch services to ensure the latest data is available
               onClose(); // Close the modal after adding
             }}
