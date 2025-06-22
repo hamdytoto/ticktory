@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
@@ -151,7 +152,7 @@ const AddManagerModal = ({
             onClick={() => {
               onAdd();
               refetch(); // Refetch services to ensure the latest data is available
-              onClose(); // Close the modal after adding
+              // onClose(); // Close the modal after adding
             }}
             className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
           >

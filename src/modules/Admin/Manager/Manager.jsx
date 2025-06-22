@@ -60,10 +60,11 @@ const Manager = () => {
         user: {
           name: "",
           email: "",
-          password: "manager123",
-          password_confirmation: "manager123",
+          password: "",
+          password_confirmation: "",
         },
       });
+
       setShowModal(false);
       refetch();
     }, "addManager");
